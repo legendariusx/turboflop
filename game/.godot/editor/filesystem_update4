@@ -1,2 +1,3 @@
 res://main/main.tscn
 res://state/game_state.gd
+res://main/main.gd
