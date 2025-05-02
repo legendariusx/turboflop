@@ -14,6 +14,16 @@ config/name="TurboFlop"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SpacetimeDB="*res://addons/SpacetimeDB/Core/SpacetimeDBClient.gd"
+UserState="*res://state/user_state.gd"
+GameState="*res://state/game_state.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/SpacetimeDB/plugin.cfg", "res://addons/better_path3d_handles/plugin.cfg")
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
