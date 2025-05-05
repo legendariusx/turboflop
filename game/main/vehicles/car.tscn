@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3 uid="uid://cht5jxw36yq3"]
+
+[ext_resource type="PackedScene" uid="uid://cadoa0w0nh1ml" path="res://assets/Low_Poly_Cars_DevilsWorkShop_V03/DAE_COLLADA/Low_Poly_Vehicles_car01.dae" id="1_0bfph"]
+[ext_resource type="Texture2D" uid="uid://cia7sktc6c2rq" path="res://assets/Low_Poly_Cars_DevilsWorkShop_V03/Texture/car02.png" id="2_ovge2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fq34f"]
+albedo_texture = ExtResource("2_ovge2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ka1s"]
+albedo_texture = ExtResource("2_ovge2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vadob"]
+albedo_texture = ExtResource("2_ovge2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ash5"]
+albedo_texture = ExtResource("2_ovge2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8jfu1"]
+albedo_texture = ExtResource("2_ovge2")
+
+[node name="car" instance=ExtResource("1_0bfph")]
+
+[node name="car01" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_fq34f")
+
+[node name="wheel" parent="car01" index="0"]
+material_override = SubResource("StandardMaterial3D_7ka1s")
+
+[node name="wheel_2" parent="car01" index="1"]
+material_override = SubResource("StandardMaterial3D_vadob")
+
+[node name="wheel_3" parent="car01" index="2"]
+material_override = SubResource("StandardMaterial3D_7ash5")
+
+[node name="wheel_4" parent="car01" index="3"]
+material_override = SubResource("StandardMaterial3D_8jfu1")

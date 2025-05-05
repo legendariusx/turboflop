@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3 uid="uid://cyt6l7debm854"]
+
+[ext_resource type="PackedScene" uid="uid://hgya85jfx0cp" path="res://assets/Low_Poly_Cars_DevilsWorkShop_V03/DAE_COLLADA/Low_Poly_Vehicles_pickupTruck01.dae" id="1_6qt2h"]
+[ext_resource type="Texture2D" uid="uid://b3ron0dd8130r" path="res://assets/Low_Poly_Cars_DevilsWorkShop_V03/Texture/pickupTruck01.png" id="1_xf6c5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qeh5g"]
+albedo_texture = ExtResource("1_xf6c5")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_itjju"]
+albedo_texture = ExtResource("1_xf6c5")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a5g66"]
+albedo_texture = ExtResource("1_xf6c5")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fn4g3"]
+albedo_texture = ExtResource("1_xf6c5")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5v5je"]
+albedo_texture = ExtResource("1_xf6c5")
+
+[node name="truck" instance=ExtResource("1_6qt2h")]
+
+[node name="pickupTruck01" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_qeh5g")
+
+[node name="wheel" parent="pickupTruck01" index="0"]
+material_override = SubResource("StandardMaterial3D_itjju")
+
+[node name="wheel_2" parent="pickupTruck01" index="1"]
+material_override = SubResource("StandardMaterial3D_a5g66")
+
+[node name="wheel_3" parent="pickupTruck01" index="2"]
+material_override = SubResource("StandardMaterial3D_fn4g3")
+
+[node name="wheel_4" parent="pickupTruck01" index="3"]
+material_override = SubResource("StandardMaterial3D_5v5je")
