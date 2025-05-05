@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bc1xh08d260lt"
-path="res://.godot/imported/modEngine.tga-96e9c060b22bb3f0c8085a6ba3a174a5.ctex"
+uid="uid://bbe17fnjksu1l"
+path="res://.godot/imported/car03.png-4f6b3f7003a014f7abf1d878f69c72aa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Low_Poly_Cars_DevilsWorkShop_V03/Texture/modEngine.tga"
-dest_files=["res://.godot/imported/modEngine.tga-96e9c060b22bb3f0c8085a6ba3a174a5.ctex"]
+source_file="res://vehicles/textures/car03.png"
+dest_files=["res://.godot/imported/car03.png-4f6b3f7003a014f7abf1d878f69c72aa.ctex"]
 
 [params]
 
