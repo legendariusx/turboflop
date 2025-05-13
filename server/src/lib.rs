@@ -1,6 +1,6 @@
 pub mod types;
 
-use spacetimedb::{Identity, ReducerContext, Table, reducer, table};
+use spacetimedb::{Identity, ReducerContext, Table, Timestamp, reducer, table};
 use types::vector3::Vector3;
 
 #[table(name = user, public)]
@@ -20,6 +20,22 @@ pub struct UserData {
     linear_velocity: Vector3,
     angular_velocity: Vector3,
     is_active: bool,
+}
+
+#[table(
+    name = personal_best,
+    public
+)]
+pub struct PersonalBest {
+    // id primary key is necessary for client SDK
+    #[auto_inc]
+    #[primary_key]
+    id: u64,
+    identity: Identity,
+    #[index(btree)]
+    track_id: u64,
+    time: u64,
+    date: Timestamp,
 }
 
 #[reducer(client_connected)]
@@ -118,6 +134,38 @@ pub fn set_user_data(
             linear_velocity: linear_velocity,
             angular_velocity: angular_velocity,
             is_active: is_active,
+        });
+    }
+}
+
+#[reducer]
+pub fn update_personal_best(ctx: &ReducerContext, track_id: u64, time: u64) {
+    // filter personal bests on track_id to find user identity
+    // (unfortunately spacetimedb does not allow find with multiple properties)
+    if let Some(personal_best) = ctx
+        .db
+        .personal_best()
+        .track_id()
+        .filter(track_id)
+        .find(|personal_best| personal_best.identity == ctx.sender)
+    {
+        // update only if new time is better
+        if personal_best.time < time {
+            return;
+        }
+
+        ctx.db.personal_best().id().update(PersonalBest {
+            time: time,
+            date: ctx.timestamp,
+            ..personal_best
+        });
+    } else {
+        ctx.db.personal_best().insert(PersonalBest {
+            id: 0,
+            identity: ctx.sender,
+            track_id: track_id,
+            time: time,
+            date: ctx.timestamp,
         });
     }
 }
