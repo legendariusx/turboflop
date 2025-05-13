@@ -4,3 +4,10 @@
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_53q0u")
+
+[node name="Button" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Update User Data"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
