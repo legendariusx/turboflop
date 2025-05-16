@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://cppcnfng4sqhv"]
+
+[ext_resource type="PackedScene" uid="uid://clthdr6beclys" path="res://track/track.tscn" id="1_3dh60"]
+[ext_resource type="PackedScene" uid="uid://bnd1qqdentrpd" path="res://checkpoint/checkpoint.tscn" id="2_wrt2c"]
+[ext_resource type="PackedScene" uid="uid://p7atvo2gj2c5" path="res://checkpoint/finish/finish.tscn" id="3_tv5bj"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_038fw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_038fw"]
+
+[node name="Track" instance=ExtResource("1_3dh60")]
+track_id = 1
+
+[node name="Checkpoint" parent="Checkpoints" index="0" instance=ExtResource("2_wrt2c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.513344, 6.66061)
+
+[node name="Finish" parent="Finishes" index="0" instance=ExtResource("3_tv5bj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.74401, 19.0665)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="6"]
+transform = Transform3D(43.9516, -0.00147033, 8.28426, 0.374001, 0.992596, -17.3216, -2.52449, 0.121454, 141.664, 0, 0, 0)
+mesh = SubResource("BoxMesh_038fw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_038fw")

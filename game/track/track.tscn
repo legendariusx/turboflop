@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://clthdr6beclys"]
+
+[ext_resource type="Script" uid="uid://b4fwattb13utc" path="res://track/track.gd" id="1_76lv3"]
+[ext_resource type="PackedScene" uid="uid://bip0a8c663lj2" path="res://checkpoint/start/start.tscn" id="3_038fw"]
+[ext_resource type="PackedScene" uid="uid://baihr0lcc5kf3" path="res://vehicles/car.scn" id="5_038fw"]
+
+[sub_resource type="Environment" id="Environment_038fw"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_m4vyt"]
+
+[sub_resource type="Compositor" id="Compositor_pk2yb"]
+
+[node name="Track" type="Node3D"]
+script = ExtResource("1_76lv3")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_038fw")
+camera_attributes = SubResource("CameraAttributesPractical_m4vyt")
+compositor = SubResource("Compositor_pk2yb")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.52202, 0)
+
+[node name="Start" parent="." instance=ExtResource("3_038fw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.955756, -3.94829)
+
+[node name="Car" parent="." instance=ExtResource("5_038fw")]
+
+[node name="Checkpoints" type="Node" parent="."]
+
+[node name="Finishes" type="Node" parent="."]
