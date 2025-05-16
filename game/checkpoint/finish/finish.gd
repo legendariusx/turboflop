@@ -5,4 +5,4 @@ extends Checkpoint
 signal finish_entered
 
 func _init() -> void:
-	checkpoint_entered.connect(func(): finish_entered.emit())
+	checkpoint_entered.connect(func(_checkpoint: Checkpoint): finish_entered.emit())

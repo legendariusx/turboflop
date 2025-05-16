@@ -8,6 +8,7 @@ signal finished
 @onready var start_node: Checkpoint = $Start
 @onready var checkpoints = $Checkpoints
 @onready var finishes = $Finishes
+@onready var last_checkpoint: Checkpoint = start_node
 
 @export var track_id: int = -1
 
@@ -33,13 +34,33 @@ func _ready() -> void:
 	# TODO: implement starting from user input
 	start()
 
+func _input(event: InputEvent) -> void:
+	if event.is_action(&"respawn"):
+		respawn_at(last_checkpoint)
+	elif event.is_action(&"reset"):
+		start()
+
 func start():
-	player_vehicle.global_position = start_node.spawnpoint.global_position
-	player_vehicle.global_rotation = start_node.spawnpoint.global_rotation
+	# reset track state
+	checkpoint_times.clear()
+	last_checkpoint = start_node
+	for checkpoint in checkpoints.get_children():
+		(checkpoint as Checkpoint).was_entered = false
+	
+	# respawn player and start
+	respawn_at(start_node)
 	started_at = Time.get_ticks_msec()
 
-func _on_checkpoint_entered():
+func respawn_at(checkpoint: Checkpoint):
+	player_vehicle.global_position = checkpoint.spawnpoint.global_position
+	player_vehicle.global_rotation = checkpoint.spawnpoint.global_rotation
+	player_vehicle.linear_velocity = Vector3.ZERO
+	player_vehicle.angular_velocity = Vector3.ZERO
+	player_vehicle.engine_force = 0
+
+func _on_checkpoint_entered(checkpoint: Checkpoint):
 	checkpoint_times.append(Time.get_ticks_msec() - started_at)
+	last_checkpoint = checkpoint
 	print("CP ENTERED")
 	print(checkpoint_times)
 
