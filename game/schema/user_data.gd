@@ -15,7 +15,7 @@ func _init():
 	set_meta("bsatn_type_identity", "identity")
 
 # reducer - see server/lib::set_user_data
-static func set_user_data(position: Vector3, rotation: Vector3, linear_velocity: Vector3, angular_velocity: Vector3, is_active: bool):
+static func set_user_data(u_position: Vector3, u_rotation: Vector3, u_linear_velocity: Vector3, u_angular_velocity: Vector3, u_is_active: bool):
 	if not SpacetimeDB.is_connected_db():
 		await SpacetimeDB.connected
-	SpacetimeDB.call_reducer("set_user_data", [position, rotation, linear_velocity, angular_velocity, is_active])
+	SpacetimeDB.call_reducer("set_user_data", [u_position, u_rotation, u_linear_velocity, u_angular_velocity, u_is_active])

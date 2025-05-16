@@ -5,7 +5,7 @@ extends Node3D
 signal finished
 
 @onready var player_vehicle: Vehicle = $Car
-@onready var start_node: Start = $Start
+@onready var start_node: Checkpoint = $Start
 @onready var checkpoints = $Checkpoints
 @onready var finishes = $Finishes
 
@@ -21,7 +21,7 @@ func _ready() -> void:
 	
 	# verify checkpoints and connect signals
 	for checkpoint in checkpoints.get_children():
-		assert(checkpoint is Checkpoint and checkpoint is not Start and checkpoint is not Finish, "child of Checkpoints must be of type Checkpoint and neither type Start nor Finish")
+		assert(checkpoint is Checkpoint and checkpoint is not Finish, "child of Checkpoints must be of type Checkpoint and not of type Finish")
 		(checkpoint as Checkpoint).checkpoint_entered.connect(_on_checkpoint_entered)
 	
 	# verify finishes and connect signals
@@ -49,5 +49,6 @@ func _on_finish_entered():
 		print("FINISHED")
 		print(finish_time)
 		PersonalBest.update_personal_best(track_id, finish_time)
+		finished.emit()
 	else:
 		print("finish entered but not finished")

@@ -18,8 +18,8 @@ func _init():
 	set_meta("bsatn_type_date", "timestamp")
 
 # reducer - see server/lib::update_personal_best
-static func update_personal_best(track_id: int, time: int):
+static func update_personal_best(u_track_id: int, u_time: int):
 	if not SpacetimeDB.is_connected_db():
 		await SpacetimeDB.connected
 	
-	SpacetimeDB.call_reducer("update_personal_best", [track_id, time])
+	SpacetimeDB.call_reducer("update_personal_best", [u_track_id, u_time])
