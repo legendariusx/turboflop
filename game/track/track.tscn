@@ -27,10 +27,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.955756, -3.94829)
 
 [node name="Car" parent="." instance=ExtResource("5_038fw")]
 
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("4_76lv3")
+target = NodePath("../Car")
+
 [node name="Checkpoints" type="Node" parent="."]
 
 [node name="Finishes" type="Node" parent="."]
 
-[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
-script = ExtResource("4_76lv3")
-target = NodePath("../Car")
+[node name="Opponents" type="Node" parent="."]

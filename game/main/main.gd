@@ -1,8 +1,6 @@
 class_name Main
 extends Node3D
 
-@onready var user_data = UserDataState.new()
-
 const TRACK_PATH_TEMPLATE = &"res://tracks/track%s.tscn"
 
 var current_track: Track
@@ -18,7 +16,6 @@ func _ready() -> void:
 	)
 
 	UserState.update.connect(_on_user_updated)
-	user_data.update.connect(_on_user_data_updated)
 	
 	_load_track(1)
 
@@ -34,9 +31,6 @@ func _load_track(track_id: int):
 
 func _on_user_updated(row: User):
 	print("user updated: (name: %s, online: %s)" % [row.name, row.online])
-	
-func _on_user_data_updated(row: UserData):
-	print("user_data updated:", row)
 
 func _on_reload_track_button_pressed() -> void:
 	_load_track(current_track.track_id)

@@ -4,12 +4,18 @@ extends Node3D
 
 signal finished
 
+const CAR_SCENE = preload("res://vehicles/car.scn")
+
 @onready var player_vehicle: Vehicle = $Car
 @onready var start_node: Checkpoint = $Start
 @onready var checkpoints: Node = $Checkpoints
 @onready var finishes: Node = $Finishes
+@onready var opponents: Node = $Opponents
+
 @onready var last_checkpoint: Checkpoint = start_node
+
 @onready var personal_best_state = PersonalBestState.new(track_id)
+@onready var user_data = UserDataState.new()
 
 @export var track_id: int = -1
 
@@ -35,6 +41,10 @@ func _ready() -> void:
 		(finish as Finish).finish_entered.connect(_on_finish_entered)
 		
 	personal_best_state.update.connect(_on_pesonal_best_updated)
+	user_data.update.connect(_on_user_data_updated)
+	
+	if SpacetimeDB.is_connected_db():
+		player_vehicle.set_owner_data(GameState.identity, GameState.name)
 		
 	# TODO: implement starting from user input
 	_start()
@@ -49,9 +59,10 @@ func _start():
 	# respawn player and start
 	_respawn_at(start_node)
 	started_at = Time.get_ticks_msec()
+	
+	print(user_data.data)
 
 func _respawn_at(checkpoint: Checkpoint):
-	# TODO: fix sometimes not resetting position
 	player_vehicle.global_position = checkpoint.spawnpoint.global_position
 	player_vehicle.global_rotation = checkpoint.spawnpoint.global_rotation
 	player_vehicle.linear_velocity = Vector3.ZERO
@@ -59,13 +70,36 @@ func _respawn_at(checkpoint: Checkpoint):
 	player_vehicle.engine_force = 0
 
 func _input(event: InputEvent) -> void:
-	if event.is_action(&"respawn"):
+	if event.is_action_pressed(&"respawn"):
 		_respawn_at(last_checkpoint)
-	elif event.is_action(&"reset"):
+	elif event.is_action_pressed(&"reset"):
 		_start()
 
 func _on_pesonal_best_updated(row: PersonalBest):
 	print("personal best updated: (id: %s, track_id: %s, time: %s, cp times: %s)" % [row.id, row.track_id, row.time, row.checkpoint_times])
+	
+func _on_user_data_updated(row: UserData):
+	# ignore current users updates
+	if GameState.identity == row.identity: return
+	
+	var opponent_index = opponents.get_children().find_custom(func(node: Vehicle): return node.owner_identity == row.identity)
+	var opponent: Vehicle = opponents.get_children()[opponent_index] if opponent_index != -1 else null
+	# opponent exists but is not active anymore -> remove
+	if opponent and row.is_active == false:
+		opponent.queue_free()
+	# opponent exists and is active -> update data from row
+	elif opponent != null:
+		opponent.global_position = row.position
+		opponent.rotation = row.rotation
+		opponent.linear_velocity = row.linear_velocity
+		opponent.angular_velocity = row.angular_velocity
+	# otherwise if row is active -> add new vehicle to container
+	elif row.is_active:
+		var user = UserState.find_by_pk(row.identity)
+		if not user: return
+		var new_vehicle = CAR_SCENE.instantiate()
+		new_vehicle.set_owner_data(row.identity, user.name)
+		opponents.add_child(new_vehicle)
 
 func _on_checkpoint_entered(checkpoint: Checkpoint):
 	checkpoint_times.append(Time.get_ticks_msec() - started_at)

@@ -9,10 +9,6 @@ signal checkpoint_entered
 var was_entered: bool = false
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body is Vehicle and _is_current_player(body) and not was_entered:
+	if body is Vehicle and (body as Vehicle).is_current_user and not was_entered:
 		checkpoint_entered.emit()
 		was_entered = true
-
-# TODO: implement check for current player
-func _is_current_player(_vehicle: Vehicle):
-	return true

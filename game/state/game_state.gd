@@ -2,9 +2,15 @@ extends Node
 
 var identity: PackedByteArray
 var current_user: User
+var visibility: Enum.Visibility = Enum.Visibility.TRANSPARENT:
+	set(u_visibility):
+		visibility = u_visibility
+		visibility_changed.emit(u_visibility)
+var visibility_index: int = 1
 
 signal identity_updated(identity: PackedByteArray)
 signal current_user_upated(user: User)
+signal visibility_changed(visibility: Enum.Visibility)
 
 func _init():
 	if SpacetimeDB.get_local_identity() == null:
@@ -22,3 +28,10 @@ func _on_user_update(user: User):
 	if user.identity == identity:
 		current_user = user
 		current_user_upated.emit(current_user)
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("cycle_opponent_visibility"):
+		var new_visibility_index = visibility_index + 1 if visibility_index < 2 else 0
+		visibility = Enum.Visibility.values()[new_visibility_index]
+		visibility_index = new_visibility_index
+		

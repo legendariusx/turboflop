@@ -5,6 +5,15 @@ const STEER_SPEED = 1.5
 const STEER_LIMIT = 0.4
 const BRAKE_STRENGTH = 2.0
 const BRAKE_SOFT_STRENGTH = 0.5
+const MATERIAL_CAR_OPAQUE = preload("res://vehicles/car.tres")
+const MATERIAL_CAR_TRANSPARENT = preload("res://vehicles/car_transparent.tres")
+
+@onready var mesh: MeshInstance3D = $Mesh
+
+var owner_identity: PackedByteArray
+var owner_name: String
+var is_current_user: bool = true
+var is_input_enabled: bool = true
 
 var _is_steering : bool
 var _is_accelerating : bool
@@ -13,8 +22,25 @@ var _is_braking : bool
 var _speed : float
 
 @export var acceleration_force := 40.0
+@export var wheels: Array[VehicleWheel3D]
+
+func set_owner_data(u_owner_identity: PackedByteArray, u_owner_name: String):
+	owner_identity = u_owner_identity
+	is_current_user = u_owner_identity == GameState.identity or not SpacetimeDB.is_connected_db()
+	owner_name = u_owner_name
+
+func _ready():
+	if not is_current_user:
+		$Collider.disabled = true
+		
+	GameState.visibility_changed.connect(_on_visibility_changed)
+	_on_visibility_changed(GameState.visibility)
 
 func _physics_process(delta: float) -> void:
+	if not is_current_user or not is_input_enabled: return
+	
+	UserData.set_user_data(global_position, global_rotation, linear_velocity, angular_velocity, true)
+	
 	# get input
 	var steer_axis = Input.get_axis(&"turn_right", &"turn_left")
 	var force_axis = Input.get_axis(&"reverse", &"accelerate")
@@ -49,4 +75,17 @@ func _physics_process(delta: float) -> void:
 			engine_force = force
 	else:
 		engine_force = 0.0
+
+func _on_visibility_changed(u_visibility: Enum.Visibility):
+	if is_current_user: return
 	
+	if u_visibility == Enum.Visibility.NONE:
+		visible = false
+		return
+	
+	var new_material = MATERIAL_CAR_OPAQUE if u_visibility == Enum.Visibility.OPAQUE else MATERIAL_CAR_TRANSPARENT
+	mesh.material_override = new_material
+	for wheel in wheels:
+		wheel.get_node("Mesh").material_override = new_material
+		
+	visible = true
