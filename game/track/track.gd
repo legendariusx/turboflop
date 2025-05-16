@@ -59,8 +59,6 @@ func _start():
 	# respawn player and start
 	_respawn_at(start_node)
 	started_at = Time.get_ticks_msec()
-	
-	print(user_data.data)
 
 func _respawn_at(checkpoint: Checkpoint):
 	player_vehicle.global_position = checkpoint.spawnpoint.global_position

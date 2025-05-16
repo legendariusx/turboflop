@@ -14,8 +14,6 @@ func _ready() -> void:
 		true,
 		true
 	)
-
-	UserState.update.connect(_on_user_updated)
 	
 	_load_track(1)
 
@@ -28,9 +26,6 @@ func _load_track(track_id: int):
 		
 	add_child(new_track)
 	current_track = new_track
-
-func _on_user_updated(row: User):
-	print("user updated: (name: %s, online: %s)" % [row.name, row.online])
 
 func _on_reload_track_button_pressed() -> void:
 	_load_track(current_track.track_id)
