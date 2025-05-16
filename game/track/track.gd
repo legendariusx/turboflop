@@ -9,6 +9,7 @@ signal finished
 @onready var checkpoints: Node = $Checkpoints
 @onready var finishes: Node = $Finishes
 @onready var last_checkpoint: Checkpoint = start_node
+@onready var personal_best_state = PersonalBestState.new(track_id)
 
 @export var track_id: int = -1
 
@@ -32,6 +33,8 @@ func _ready() -> void:
 	for finish in finishes.get_children():
 		assert(finish is Finish, "children of Finishes must be of type Finish")
 		(finish as Finish).finish_entered.connect(_on_finish_entered)
+		
+	personal_best_state.update.connect(_on_pesonal_best_updated)
 		
 	# TODO: implement starting from user input
 	_start()
@@ -60,6 +63,9 @@ func _input(event: InputEvent) -> void:
 		_respawn_at(last_checkpoint)
 	elif event.is_action(&"reset"):
 		_start()
+
+func _on_pesonal_best_updated(row: PersonalBest):
+	print("personal best updated: (id: %s, track_id: %s, time: %s, cp times: %s)" % [row.id, row.track_id, row.time, row.checkpoint_times])
 
 func _on_checkpoint_entered(checkpoint: Checkpoint):
 	checkpoint_times.append(Time.get_ticks_msec() - started_at)
