@@ -127,6 +127,11 @@ func write_vec_u8(v: PackedByteArray) -> void:
 	write_u32_le(v.size())
 	if v.size() > 0: write_bytes(v) # Avoid calling put_data with empty array if possible
 
+# TODO: temporary hack to write u64 arrays to spacetimedb -> can be mitigated by updating client SDK
+func write_vec_u64(v: Array[int]) -> void:
+	write_u32_le(v.size())
+	for entry in v:
+		write_u64_le(entry + 1)
 # --- Core Serialization Logic ---
 
 # Helper to get the specific BSATN writer METHOD NAME based on metadata value.
@@ -303,7 +308,7 @@ func _write_argument_value(value) -> bool:
 		TYPE_COLOR: write_color(value)
 		TYPE_QUATERNION: write_quaternion(value)
 		TYPE_PACKED_BYTE_ARRAY: write_vec_u8(value) # Default Vec<u8> for arguments
-		TYPE_ARRAY: _set_error("Cannot serialize Array as direct argument."); return false # Arrays usually need structure
+		TYPE_ARRAY: write_vec_u64(value)
 		TYPE_OBJECT:
 			if value is Resource:
 				# Serialize resource fields directly inline (recursive)

@@ -35,6 +35,7 @@ pub struct PersonalBest {
     #[index(btree)]
     track_id: u64,
     time: u64,
+    checkpoint_times: Vec<u64>,
     date: Timestamp,
 }
 
@@ -139,7 +140,7 @@ pub fn set_user_data(
 }
 
 #[reducer]
-pub fn update_personal_best(ctx: &ReducerContext, track_id: u64, time: u64) {
+pub fn update_personal_best(ctx: &ReducerContext, track_id: u64, time: u64, checkpoint_times: Vec<u64>) {
     // filter personal bests on track_id to find user identity
     // (unfortunately spacetimedb does not allow find with multiple properties)
     if let Some(personal_best) = ctx
@@ -157,6 +158,7 @@ pub fn update_personal_best(ctx: &ReducerContext, track_id: u64, time: u64) {
         ctx.db.personal_best().id().update(PersonalBest {
             time: time,
             date: ctx.timestamp,
+            checkpoint_times,
             ..personal_best
         });
     } else {
@@ -166,6 +168,7 @@ pub fn update_personal_best(ctx: &ReducerContext, track_id: u64, time: u64) {
             track_id: track_id,
             time: time,
             date: ctx.timestamp,
+            checkpoint_times
         });
     }
 }

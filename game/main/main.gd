@@ -44,7 +44,7 @@ func _on_user_data_updated(row: UserData):
 	print("user_data updated:", row)
 
 func _on_pesonal_best_updated(row: PersonalBest):
-	print("personal best updated: (id: %s, track_id: %s, time: %s)" % [row.id, row.track_id, row.time])
+	print("personal best updated: (id: %s, track_id: %s, time: %s, cp times: %s)" % [row.id, row.track_id, row.time, row.checkpoint_times])
 
 func _on_reload_track_button_pressed() -> void:
 	_load_track(current_track.track_id)

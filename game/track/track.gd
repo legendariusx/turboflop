@@ -13,7 +13,7 @@ signal finished
 @export var track_id: int = -1
 
 var started_at: int
-var checkpoint_times: Array[int] = []
+var checkpoint_times: Array[int] = [0]
 
 func _ready() -> void:
 	# verify parent type
@@ -38,7 +38,7 @@ func _ready() -> void:
 
 func _start():
 	# reset track state
-	checkpoint_times.clear()
+	checkpoint_times.assign([0])
 	last_checkpoint = start_node
 	for checkpoint in checkpoints.get_children():
 		(checkpoint as Checkpoint).was_entered = false
@@ -69,5 +69,8 @@ func _on_finish_entered():
 	# check if all checkpoints were entered
 	if not checkpoints.get_children().all(func(cp: Checkpoint): return cp.was_entered): return
 	
-	PersonalBest.update_personal_best(track_id, Time.get_ticks_msec() - started_at)
+	var finish_time: int = Time.get_ticks_msec() - started_at
+	checkpoint_times.append(finish_time)
+	
+	PersonalBest.update_personal_best(track_id, finish_time, checkpoint_times)
 	finished.emit()
