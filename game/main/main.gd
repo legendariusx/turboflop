@@ -26,7 +26,7 @@ func _on_user_data_updated(row: UserData):
 
 func _on_pesonal_best_updated(row: PersonalBest):
 	print("personal best updated: (id: %s, track_id: %s, time: %s)" % [row.id, row.track_id, row.time])
-
+	
 func _on_update_user_data_button_pressed() -> void:
 	UserData.set_user_data(Vector3(randf() * 10, randf() * 10, randf() * 10), Vector3.ZERO, Vector3.ZERO, Vector3.ZERO, false)
 	UserData.set_user_data(Vector3(randf() * 10, randf() * 10, randf() * 10), Vector3.ZERO, Vector3.ZERO, Vector3.ZERO, false)

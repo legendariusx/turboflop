@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c6rj66dp3pqy5"]
+[gd_scene load_steps=3 format=3 uid="uid://c6rj66dp3pqy5"]
 
 [ext_resource type="Script" uid="uid://ppvoptwh35wf" path="res://main/main.gd" id="1_53q0u"]
+[ext_resource type="PackedScene" uid="uid://cppcnfng4sqhv" path="res://tracks/track001.tscn" id="2_pjrb6"]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_53q0u")
@@ -16,6 +17,8 @@ text = "Update User Data"
 [node name="UpdatePersonalBestButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Update Personal Best"
+
+[node name="Track" parent="." instance=ExtResource("2_pjrb6")]
 
 [connection signal="pressed" from="VBoxContainer/UpdateUserDataButton" to="." method="_on_update_user_data_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/UpdatePersonalBestButton" to="." method="_on_update_personal_best_button_pressed"]
