@@ -1,3 +1,4 @@
+class_name Main
 extends Node3D
 
 @onready var user_data = UserDataState.new()
