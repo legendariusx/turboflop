@@ -4,6 +4,8 @@ extends Node3D
 
 signal checkpoint_entered
 
+@onready var spawnpoint: Marker3D = $Spawnpoint
+
 var was_entered: bool = false
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
@@ -11,5 +13,5 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		checkpoint_entered.emit()
 		was_entered = true
 
-func _is_current_player(vehicle: Vehicle):
+func _is_current_player(_vehicle: Vehicle):
 	return true

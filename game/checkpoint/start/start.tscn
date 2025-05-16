@@ -1,16 +1,19 @@
 [gd_scene load_steps=4 format=3 uid="uid://bip0a8c663lj2"]
 
 [ext_resource type="PackedScene" uid="uid://bnd1qqdentrpd" path="res://checkpoint/checkpoint.tscn" id="1_6kjkp"]
-[ext_resource type="Script" uid="uid://bmkpschc48q41" path="res://checkpoint/start/start.gd" id="2_ssmyu"]
+
+[sub_resource type="GDScript" id="GDScript_amehq"]
+script/source = "class_name Start
+
+extends Checkpoint
+"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6kjkp"]
 transparency = 1
 albedo_color = Color(0, 1, 0, 0.392157)
 
 [node name="Start" instance=ExtResource("1_6kjkp")]
-script = ExtResource("2_ssmyu")
+script = SubResource("GDScript_amehq")
 
 [node name="MeshInstance3D" parent="." index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_6kjkp")
-
-[node name="Spawnpoint" type="Marker3D" parent="." index="1"]
