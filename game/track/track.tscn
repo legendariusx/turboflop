@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://clthdr6beclys"]
+[gd_scene load_steps=8 format=3 uid="uid://clthdr6beclys"]
 
 [ext_resource type="Script" uid="uid://b4fwattb13utc" path="res://track/track.gd" id="1_76lv3"]
 [ext_resource type="PackedScene" uid="uid://bip0a8c663lj2" path="res://checkpoint/start/start.tscn" id="3_038fw"]
+[ext_resource type="Script" uid="uid://dnqvalo71k0hi" path="res://camera_follow.gd" id="4_76lv3"]
 [ext_resource type="PackedScene" uid="uid://baihr0lcc5kf3" path="res://vehicles/car.scn" id="5_038fw"]
 
 [sub_resource type="Environment" id="Environment_038fw"]
@@ -29,3 +30,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.955756, -3.94829)
 [node name="Checkpoints" type="Node" parent="."]
 
 [node name="Finishes" type="Node" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("4_76lv3")
+target = NodePath("../Car")
