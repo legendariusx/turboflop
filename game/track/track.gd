@@ -32,15 +32,9 @@ func _ready() -> void:
 		(finish as Finish).finish_entered.connect(_on_finish_entered)
 		
 	# TODO: implement starting from user input
-	start()
+	_start()
 
-func _input(event: InputEvent) -> void:
-	if event.is_action(&"respawn"):
-		respawn_at(last_checkpoint)
-	elif event.is_action(&"reset"):
-		start()
-
-func start():
+func _start():
 	# reset track state
 	checkpoint_times.clear()
 	last_checkpoint = start_node
@@ -48,15 +42,22 @@ func start():
 		(checkpoint as Checkpoint).was_entered = false
 	
 	# respawn player and start
-	respawn_at(start_node)
+	_respawn_at(start_node)
 	started_at = Time.get_ticks_msec()
 
-func respawn_at(checkpoint: Checkpoint):
+func _respawn_at(checkpoint: Checkpoint):
+	# TODO: fix sometimes not resetting position
 	player_vehicle.global_position = checkpoint.spawnpoint.global_position
 	player_vehicle.global_rotation = checkpoint.spawnpoint.global_rotation
 	player_vehicle.linear_velocity = Vector3.ZERO
 	player_vehicle.angular_velocity = Vector3.ZERO
 	player_vehicle.engine_force = 0
+
+func _input(event: InputEvent) -> void:
+	if event.is_action(&"respawn"):
+		_respawn_at(last_checkpoint)
+	elif event.is_action(&"reset"):
+		_start()
 
 func _on_checkpoint_entered(checkpoint: Checkpoint):
 	checkpoint_times.append(Time.get_ticks_msec() - started_at)
