@@ -23,7 +23,41 @@ GameState="*res://state/game_state.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/SpacetimeDB/plugin.cfg", "res://addons/better_path3d_handles/plugin.cfg")
+enabled=PackedStringArray("res://addons/SpacetimeDB/plugin.cfg", "res://addons/better_path3d_handles/plugin.cfg", "res://addons/terrain_3d/plugin.cfg")
+
+[importer_defaults]
+
+scene={
+"_subresources": {
+"materials": {
+"citybits_texture": {
+"use_external/enabled": true,
+"use_external/path": "uid://df8af0ggl3kpl"
+}
+}
+},
+"animation/fps": 30,
+"animation/import": true,
+"animation/import_rest_as_RESET": false,
+"animation/remove_immutable_tracks": true,
+"animation/trimming": false,
+"gltf/embedded_image_handling": 1,
+"gltf/naming_version": 1,
+"import_script/path": "",
+"meshes/create_shadow_meshes": true,
+"meshes/ensure_tangents": true,
+"meshes/force_disable_compression": false,
+"meshes/generate_lods": true,
+"meshes/light_baking": 1,
+"meshes/lightmap_texel_size": 0.2,
+"nodes/apply_root_scale": true,
+"nodes/import_as_skeleton_bones": false,
+"nodes/root_name": "",
+"nodes/root_scale": 1.0,
+"nodes/root_type": "",
+"nodes/use_node_type_suffixes": true,
+"skins/use_named_skins": true
+}
 
 [input]
 

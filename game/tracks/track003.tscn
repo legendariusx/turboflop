@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://ce7uyrofns7ml"]
+
+[ext_resource type="PackedScene" uid="uid://clthdr6beclys" path="res://track/track.tscn" id="1_mn4nu"]
+[ext_resource type="PackedScene" uid="uid://p7atvo2gj2c5" path="res://checkpoint/finish/finish.tscn" id="2_7j01r"]
+[ext_resource type="PackedScene" uid="uid://w4x7lllpyfuy" path="res://assets/terrain/terrain_track003.blend" id="2_mn4nu"]
+
+[node name="Track" instance=ExtResource("1_mn4nu")]
+track_id = 3
+
+[node name="DirectionalLight3D" parent="." index="1"]
+light_angular_distance = 74.2
+
+[node name="Finish" parent="Finishes" index="0" instance=ExtResource("2_7j01r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25213, 0.000699043, 17.7423)
+
+[node name="terrain" parent="." index="8" instance=ExtResource("2_mn4nu")]

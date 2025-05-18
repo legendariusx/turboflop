@@ -15,7 +15,7 @@ func _ready() -> void:
 		true
 	)
 	
-	_load_track(1)
+	_load_track(3)
 
 func _load_track(track_id: int):
 	# TODO: error-handling if file does not exist?
