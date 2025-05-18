@@ -23,7 +23,7 @@ GameState="*res://state/game_state.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/SpacetimeDB/plugin.cfg", "res://addons/better_path3d_handles/plugin.cfg", "res://addons/terrain_3d/plugin.cfg")
+enabled=PackedStringArray("res://addons/SpacetimeDB/plugin.cfg", "res://addons/better_path3d_handles/plugin.cfg", "res://addons/proton_scatter/plugin.cfg", "res://addons/terrain_3d/plugin.cfg")
 
 [importer_defaults]
 
@@ -105,8 +105,3 @@ cycle_opponent_visibility={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":79,"key_label":0,"unicode":111,"location":0,"echo":false,"script":null)
 ]
 }
-
-[rendering]
-
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"

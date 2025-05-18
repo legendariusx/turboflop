@@ -1,11 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://clthdr6beclys"]
+[gd_scene load_steps=10 format=3 uid="uid://clthdr6beclys"]
 
 [ext_resource type="Script" uid="uid://b4fwattb13utc" path="res://track/track.gd" id="1_76lv3"]
+[ext_resource type="Material" uid="uid://ceuc5jtl8b5e8" path="res://assets/materials/Sky1.tres" id="2_038fw"]
 [ext_resource type="PackedScene" uid="uid://bip0a8c663lj2" path="res://checkpoint/start/start.tscn" id="3_038fw"]
 [ext_resource type="Script" uid="uid://dnqvalo71k0hi" path="res://camera_follow.gd" id="4_76lv3"]
 [ext_resource type="PackedScene" uid="uid://baihr0lcc5kf3" path="res://vehicles/car.scn" id="5_038fw"]
 
+[sub_resource type="Sky" id="Sky_76lv3"]
+sky_material = ExtResource("2_038fw")
+
 [sub_resource type="Environment" id="Environment_038fw"]
+background_mode = 2
+sky = SubResource("Sky_76lv3")
+sky_custom_fov = 76.0
+sky_rotation = Vector3(-0.0610865, 0, 0)
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_m4vyt"]
 
@@ -20,7 +28,8 @@ camera_attributes = SubResource("CameraAttributesPractical_m4vyt")
 compositor = SubResource("Compositor_pk2yb")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.52202, 0)
+transform = Transform3D(1, 0, 0, 0, 0.573576, 0.819152, 0, -0.819152, 0.573576, 0, 9.52202, 0)
+light_angular_distance = 5.0
 
 [node name="Start" parent="." instance=ExtResource("3_038fw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.955756, -3.94829)
