@@ -23,8 +23,9 @@ func _load_track(track_id: int):
 	
 	if current_track:
 		current_track.queue_free()
-		
+	
 	add_child(new_track)
+	GameState.track_id = track_id
 	current_track = new_track
 
 func _on_reload_track_button_pressed() -> void:

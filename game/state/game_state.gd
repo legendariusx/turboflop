@@ -7,10 +7,15 @@ var visibility: Enum.Visibility = Enum.Visibility.TRANSPARENT:
 		visibility = u_visibility
 		visibility_changed.emit(u_visibility)
 var visibility_index: int = 1
+var track_id: int = -1:
+	set(u_track_id):
+		track_id = u_track_id
+		track_id_changed.emit(u_track_id)
 
 signal identity_updated(identity: PackedByteArray)
 signal current_user_upated(user: User)
 signal visibility_changed(visibility: Enum.Visibility)
+signal track_id_changed(track_id: int)
 
 func _init():
 	if SpacetimeDB.get_local_identity() == null:

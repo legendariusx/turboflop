@@ -20,6 +20,7 @@ pub struct UserData {
     linear_velocity: Vector3,
     angular_velocity: Vector3,
     is_active: bool,
+    track_id: u8,
 }
 
 #[table(
@@ -81,6 +82,7 @@ pub fn identity_disconnected(ctx: &ReducerContext) {
     if let Some(user_data) = ctx.db.user_data().identity().find(ctx.sender) {
         ctx.db.user_data().identity().update(UserData {
             is_active: false,
+            track_id: 0,
             ..user_data
         });
     }
@@ -117,6 +119,7 @@ pub fn set_user_data(
     linear_velocity: Vector3,
     angular_velocity: Vector3,
     is_active: bool,
+    track_id: u8,
 ) {
     if let Some(user_data) = ctx.db.user_data().identity().find(ctx.sender) {
         ctx.db.user_data().identity().update(UserData {
@@ -125,6 +128,7 @@ pub fn set_user_data(
             linear_velocity: linear_velocity,
             angular_velocity: angular_velocity,
             is_active: is_active,
+            track_id: track_id,
             ..user_data
         });
     } else {
@@ -135,6 +139,7 @@ pub fn set_user_data(
             linear_velocity: linear_velocity,
             angular_velocity: angular_velocity,
             is_active: is_active,
+            track_id: track_id,
         });
     }
 }

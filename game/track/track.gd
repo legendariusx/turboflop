@@ -91,8 +91,8 @@ func _on_user_data_updated(row: UserData):
 		opponent.rotation = row.rotation
 		opponent.linear_velocity = row.linear_velocity
 		opponent.angular_velocity = row.angular_velocity
-	# otherwise if row is active -> add new vehicle to container
-	elif row.is_active:
+	# otherwise if row is active and is on current track -> add new vehicle to container
+	elif row.is_active and row.track_id == GameState.track_id:
 		var user = UserState.find_by_pk(row.identity)
 		if not user: return
 		var new_vehicle = CAR_SCENE.instantiate()

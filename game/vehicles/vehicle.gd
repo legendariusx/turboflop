@@ -39,7 +39,7 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	if not is_current_user or not is_input_enabled: return
 	
-	UserData.set_user_data(global_position, global_rotation, linear_velocity, angular_velocity, true)
+	UserData.set_user_data(global_position, global_rotation, linear_velocity, angular_velocity, true, GameState.track_id)
 	
 	# get input
 	var steer_axis = Input.get_axis(&"turn_right", &"turn_left")
