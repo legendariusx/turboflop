@@ -19,3 +19,8 @@ mono_crash.*.json
 .vscode/
 
 *.tmp
+
+# Temporary Blender files.
+blendcache_*
+*.blend1
+*.blend2
