@@ -18,10 +18,11 @@ var is_input_enabled: bool = true
 var _is_steering : bool
 var _is_accelerating : bool
 var _is_braking : bool
+var _is_update_disabled: bool = false
 
 var _speed : float
 
-@export var acceleration_force := 40.0
+@export var acceleration_force := 100.0
 @export var wheels: Array[VehicleWheel3D]
 
 func set_owner_data(u_owner_identity: PackedByteArray, u_owner_name: String):
@@ -35,9 +36,12 @@ func _ready():
 		
 	GameState.visibility_changed.connect(_on_visibility_changed)
 	_on_visibility_changed(GameState.visibility)
+	
+	get_window().focus_entered.connect(_on_window_focus_entered)
+	get_window().focus_exited.connect(_on_window_focus_exited)
 
 func _physics_process(delta: float) -> void:
-	if not is_current_user or not is_input_enabled: return
+	if not is_current_user or not is_input_enabled or _is_update_disabled: return
 	
 	UserData.set_user_data(global_position, global_rotation, linear_velocity, angular_velocity, true, GameState.track_id)
 	
@@ -89,3 +93,9 @@ func _on_visibility_changed(u_visibility: Enum.Visibility):
 		wheel.get_node("Mesh").material_override = new_material
 		
 	visible = true
+
+func _on_window_focus_entered():
+	_is_update_disabled = false
+	
+func _on_window_focus_exited():
+	_is_update_disabled = true
