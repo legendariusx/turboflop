@@ -15,6 +15,7 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 
 [node name="CPSplit" type="CenterContainer"]
+visible = false
 material = SubResource("CanvasItemMaterial_7f7ei")
 anchors_preset = 8
 anchor_left = 0.5
@@ -43,6 +44,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_6r7wx")
 text = "00:00.000"
 
 [node name="Difference" type="PanelContainer" parent="PanelContainer/Container"]
+visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_6r7wx")
 
