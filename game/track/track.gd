@@ -82,7 +82,7 @@ func _start():
 	# reset track state
 	checkpoint_times.assign([0])
 	last_checkpoint = start_node
-	for checkpoint in checkpoints.get_children():
+	for checkpoint in checkpoints.get_children() + finishes.get_children():
 		(checkpoint as Checkpoint).was_entered = false
 	
 	respawn_location = start_node
@@ -108,7 +108,7 @@ func _countdown():
 	$TrackUI/Countdown.text = ""
 	_update_track_state(TrackState.RUNNING)
 	started.emit()
-	
+
 func _update_track_state(u_track_state: TrackState):
 	track_state = u_track_state
 	player_vehicle.is_input_enabled = track_state == TrackState.RUNNING
