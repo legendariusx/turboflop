@@ -2,6 +2,14 @@ class_name Track
 
 extends Node3D
 
+enum TrackState {
+	IDLE,
+	COUNTDOWN,
+	RUNNING,
+	FINISHED
+}
+
+signal started
 signal finished
 
 const CAR_SCENE = preload("res://vehicles/car.scn")
@@ -19,6 +27,7 @@ const CAR_SCENE = preload("res://vehicles/car.scn")
 
 @export var track_id: int = -1
 
+var track_state = TrackState.IDLE
 var started_at: int
 var checkpoint_times: Array[int] = [0]
 
@@ -49,6 +58,16 @@ func _ready() -> void:
 	# TODO: implement starting from user input
 	_start()
 
+func _process(_delta: float) -> void:
+	_on_update_ui()
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed(&"respawn"):
+		if track_state == TrackState.RUNNING: _respawn_at(last_checkpoint)
+		else: _start()
+	elif event.is_action_pressed(&"reset"):
+		_start()
+
 func _start():
 	# reset track state
 	checkpoint_times.assign([0])
@@ -58,6 +77,7 @@ func _start():
 	
 	_respawn_at(start_node)
 	_countdown()
+	await started
 	started_at = Time.get_ticks_msec()
 
 func _respawn_at(checkpoint: Checkpoint):
@@ -68,19 +88,23 @@ func _respawn_at(checkpoint: Checkpoint):
 	player_vehicle.engine_force = 0
 	
 func _countdown():
-	$Car.is_input_enabled = false
+	_update_track_state(TrackState.COUNTDOWN)
 	for i in range(3,0,-1):
 		$TrackUI/Countdown.text = str(i)
 		$CountdownTimer.start()
 		await $CountdownTimer.timeout
 	$TrackUI/Countdown.text = ""
-	$Car.is_input_enabled = true
+	_update_track_state(TrackState.RUNNING)
+	started.emit()
 	
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed(&"respawn"):
-		_respawn_at(last_checkpoint)
-	elif event.is_action_pressed(&"reset"):
-		_start()
+func _update_track_state(u_track_state: TrackState):
+	track_state = u_track_state
+	player_vehicle.is_input_enabled = track_state == TrackState.RUNNING
+	if track_state == TrackState.COUNTDOWN: $TrackUI/Timer.text = "00.000"
+
+func _on_update_ui():
+	if track_state == TrackState.RUNNING:
+		$TrackUI/Timer.text = TimeHelper.format_time_ms(Time.get_ticks_msec() - started_at)
 
 func _on_pesonal_best_updated(row: PersonalBest):
 	print("personal best updated: (id: %s, track_id: %s, time: %s, cp times: %s)" % [row.id, row.track_id, row.time, row.checkpoint_times])
@@ -120,4 +144,5 @@ func _on_finish_entered():
 	checkpoint_times.append(finish_time)
 	
 	PersonalBest.update_personal_best(track_id, finish_time, checkpoint_times)
+	_update_track_state(TrackState.FINISHED)
 	finished.emit()
