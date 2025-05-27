@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bip0a8c663lj2" path="res://checkpoint/start/start.tscn" id="3_038fw"]
 [ext_resource type="Script" uid="uid://dnqvalo71k0hi" path="res://camera_follow.gd" id="4_76lv3"]
 [ext_resource type="PackedScene" uid="uid://baihr0lcc5kf3" path="res://vehicles/car.scn" id="5_038fw"]
-[ext_resource type="PackedScene" uid="uid://bosqmluqvhhcb" path="res://ui/track/track_ui.tscn" id="6_m4vyt"]
+[ext_resource type="PackedScene" uid="uid://b7myrwvkhwi71" path="res://ui/track/track_ui.tscn" id="6_m4vyt"]
 
 [sub_resource type="Sky" id="Sky_76lv3"]
 sky_material = ExtResource("2_038fw")

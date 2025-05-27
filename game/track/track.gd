@@ -51,9 +51,11 @@ func _ready() -> void:
 	for finish in finishes.get_children():
 		assert(finish is Finish, "children of Finishes must be of type Finish")
 		(finish as Finish).finish_entered.connect(_on_finish_entered)
-		
+	
+	# connect state
 	personal_best_state.update.connect(_on_pesonal_best_updated)
 	user_data.update.connect(_on_user_data_updated)
+	$TrackUI.connect_personal_best_state(personal_best_state)
 	
 	if SpacetimeDB.is_connected_db():
 		player_vehicle.set_owner_data(GameState.identity, GameState.name)
