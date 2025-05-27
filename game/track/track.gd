@@ -30,6 +30,8 @@ const CAR_SCENE = preload("res://vehicles/car.scn")
 var track_state = TrackState.IDLE
 var started_at: int
 var checkpoint_times: Array[int] = [0]
+# bit of an ugly fix to allow player position updates based on _input
+var respawn_location: Checkpoint
 
 func _ready() -> void:
 	# verify parent type
@@ -60,12 +62,15 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	_on_update_ui()
+	if respawn_location:
+		_respawn_at(respawn_location)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"respawn"):
 		match track_state:
 			TrackState.RUNNING:
-				_respawn_at(last_checkpoint)
+				#_respawn_at(last_checkpoint)
+				respawn_location = last_checkpoint
 			TrackState.FINISHED:
 				_start()
 	elif event.is_action_pressed(&"reset"):
@@ -78,7 +83,8 @@ func _start():
 	for checkpoint in checkpoints.get_children():
 		(checkpoint as Checkpoint).was_entered = false
 	
-	_respawn_at(start_node)
+	respawn_location = start_node
+	
 	_countdown()
 	await started
 	started_at = Time.get_ticks_msec()
@@ -89,6 +95,7 @@ func _respawn_at(checkpoint: Checkpoint):
 	player_vehicle.linear_velocity = Vector3.ZERO
 	player_vehicle.angular_velocity = Vector3.ZERO
 	player_vehicle.engine_force = 0
+	respawn_location = null
 	
 func _countdown():
 	_update_track_state(TrackState.COUNTDOWN)
