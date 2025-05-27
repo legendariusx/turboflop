@@ -31,7 +31,7 @@ const CAR_SCENE = preload("res://vehicles/car.scn")
 var track_state = TrackState.IDLE
 var started_at: int
 var checkpoint_times: Array[int] = [0]
-# bit of an ugly fix to allow player position updates based on _input
+# FIXME bit of an ugly fix to allow player position updates based on _input
 var respawn_location: Checkpoint
 
 func _ready() -> void:
@@ -53,7 +53,6 @@ func _ready() -> void:
 		(finish as Finish).finish_entered.connect(_on_finish_entered)
 	
 	# connect state
-	personal_best_state.update.connect(_on_pesonal_best_updated)
 	user_data.update.connect(_on_user_data_updated)
 	$TrackUI.connect_personal_best_state(personal_best_state)
 	
@@ -118,9 +117,6 @@ func _on_update_ui():
 	if track_state == TrackState.RUNNING:
 		$TrackUI/Timer.text = TimeHelper.format_time_ms(Time.get_ticks_msec() - started_at)
 
-func _on_pesonal_best_updated(row: PersonalBest):
-	print("personal best updated: (id: %s, track_id: %s, time: %s, cp times: %s)" % [row.id, row.track_id, row.time, row.checkpoint_times])
-	
 func _on_user_data_updated(row: UserData):
 	# ignore current users updates
 	if GameState.identity == row.identity: return
