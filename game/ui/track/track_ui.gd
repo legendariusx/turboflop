@@ -1,12 +1,28 @@
+class_name TrackUI
+
 extends Control
 
 const MAX_SCORES = 10
 
+@onready var countdown: Label = $Countdown
+@onready var timer: Label = $Timer
 @onready var scoreboard: Tree = $Scoreboard
+@onready var cp_times: Tree = $CheckpointTimes
 
 var personal_best_state: PersonalBestState
+var cp_tree_root: TreeItem
 
 func _ready():
+	# parent has to be Track in order to connect relevant signals
+	assert(get_parent() is Track, "parent of TrackUI has to be of type Track")
+	
+	var parent: Track = get_parent()
+	if not parent.is_node_ready(): await parent.ready
+	
+	parent.finished.connect(_on_finished)
+	personal_best_state = parent.personal_best_state
+	personal_best_state.update.connect(_on_personal_best_updated)
+	
 	scoreboard.set_column_title(0, "#")
 	scoreboard.set_column_title(1, "Player")
 	scoreboard.set_column_title(2, "Time")
@@ -18,13 +34,25 @@ func _ready():
 	scoreboard.set_column_title_alignment(0, HORIZONTAL_ALIGNMENT_CENTER)
 	scoreboard.set_column_title_alignment(1, HORIZONTAL_ALIGNMENT_CENTER)
 	scoreboard.set_column_title_alignment(2, HORIZONTAL_ALIGNMENT_CENTER)
+	
+	cp_times.set_column_title(0, "#")
+	cp_times.set_column_title(1, "Time")
+	
+	cp_times.set_column_expand_ratio(0, 1)
+	cp_times.set_column_expand_ratio(1, 2)
 
 func _process(_delta: float) -> void:
 	scoreboard.visible = Input.is_action_pressed("show_scoreboard")
 
-func connect_personal_best_state(u_personal_best_state: PersonalBestState):
-	personal_best_state = u_personal_best_state
-	personal_best_state.update.connect(_on_personal_best_updated)
+func reset():
+	cp_times.clear()
+	cp_tree_root = cp_times.create_item()
+
+func on_checkpoint_entered(index: int, time: int):
+	_add_checkpoint_label("%02d" % index, time)
+
+func _on_finished(time: int):
+	_add_checkpoint_label("🏁", time)
 
 func _on_personal_best_updated(_row: PersonalBest):
 	scoreboard.clear()
@@ -46,12 +74,12 @@ func _on_personal_best_updated(_row: PersonalBest):
 		if not user: continue
 		var player_name = user.name
 		if pb.identity == GameState.identity: player_name += " (You)"
-		create_scoreboard_row(tree_root, i + 1, player_name, pb.time)
+		_create_scoreboard_row(tree_root, i + 1, player_name, pb.time)
 
 	if current_player_not_in_top:
-		create_scoreboard_row(tree_root, current_player_index + 1, GameState.current_user.name + " (You)", sorted_pbs[current_player_index].time)
+		_create_scoreboard_row(tree_root, current_player_index + 1, GameState.current_user.name + " (You)", sorted_pbs[current_player_index].time)
 
-func create_scoreboard_row(root: TreeItem, placement: int, player_name: String, time: int):
+func _create_scoreboard_row(root: TreeItem, placement: int, player_name: String, time: int):
 	var new_row = scoreboard.create_item(root)
 	new_row.set_text(0, str(placement))
 	new_row.set_text(1, player_name) 
@@ -60,3 +88,11 @@ func create_scoreboard_row(root: TreeItem, placement: int, player_name: String, 
 	new_row.set_text_alignment(0, HORIZONTAL_ALIGNMENT_CENTER)
 	new_row.set_text_alignment(1, HORIZONTAL_ALIGNMENT_CENTER)
 	new_row.set_text_alignment(2, HORIZONTAL_ALIGNMENT_CENTER)
+
+func _add_checkpoint_label(number: String, time: int) -> void:
+	var new_row = cp_times.create_item(cp_tree_root)
+	new_row.set_text(0, number)
+	new_row.set_text(1, TimeHelper.format_time_ms(time))
+	
+	new_row.set_text_alignment(0, HORIZONTAL_ALIGNMENT_CENTER)
+	new_row.set_text_alignment(1, HORIZONTAL_ALIGNMENT_CENTER)

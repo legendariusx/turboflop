@@ -10,7 +10,7 @@ enum TrackState {
 }
 
 signal started
-signal finished
+signal finished(time: int)
 
 const CAR_SCENE = preload("res://vehicles/car.scn")
 
@@ -20,9 +20,7 @@ const CAR_SCENE = preload("res://vehicles/car.scn")
 @onready var finishes: Node = $Finishes
 @onready var opponents: Node = $Opponents
 @onready var countdown_timer: Timer = $CountdownTimer
-
-@onready var checkpoint_time_labels: VBoxContainer = $UI/CheckpointTimeLabels
-@onready var stopwatch_label: Label = $UI/Stopwatch
+@onready var track_ui: TrackUI = $TrackUI
 
 @onready var last_checkpoint: Checkpoint = start_node
 
@@ -55,9 +53,7 @@ func _ready() -> void:
 		assert(finish is Finish, "children of Finishes must be of type Finish")
 		(finish as Finish).finish_entered.connect(_on_finish_entered)
 	
-	# connect state
 	user_data.update.connect(_on_user_data_updated)
-	$TrackUI.connect_personal_best_state(personal_best_state)
 	
 	if SpacetimeDB.is_connected_db():
 		player_vehicle.set_owner_data(GameState.identity, GameState.name)
@@ -87,15 +83,13 @@ func _start():
 	for checkpoint in checkpoints.get_children() + finishes.get_children():
 		(checkpoint as Checkpoint).was_entered = false
 	
+	track_ui.reset()
+	
 	respawn_location = start_node
 	
 	_countdown()
 	await started
 	started_at = Time.get_ticks_msec()
-	
-#func _process(delta: float) -> void:
-	#Noop 
-	#
 
 func _respawn_at(checkpoint: Checkpoint):
 	player_vehicle.global_position = checkpoint.spawnpoint.global_position
@@ -108,21 +102,21 @@ func _respawn_at(checkpoint: Checkpoint):
 func _countdown():
 	_update_track_state(TrackState.COUNTDOWN)
 	for i in range(3,0,-1):
-		$TrackUI/Countdown.text = str(i)
+		track_ui.countdown.text = str(i)
 		countdown_timer.start()
 		await countdown_timer.timeout
-	$TrackUI/Countdown.text = ""
+	track_ui.countdown.text = ""
 	_update_track_state(TrackState.RUNNING)
 	started.emit()
 
 func _update_track_state(u_track_state: TrackState):
 	track_state = u_track_state
 	player_vehicle.is_input_enabled = track_state == TrackState.RUNNING
-	if track_state == TrackState.COUNTDOWN: $TrackUI/Timer.text = "00.000"
+	if track_state == TrackState.COUNTDOWN: track_ui.timer.text = "00.000"
 
 func _on_update_ui():
 	if track_state == TrackState.RUNNING:
-		$TrackUI/Timer.text = TimeHelper.format_time_ms(Time.get_ticks_msec() - started_at)
+		track_ui.timer.text = TimeHelper.format_time_ms(Time.get_ticks_msec() - started_at)
 
 func _on_user_data_updated(row: UserData):
 	# ignore current users updates
@@ -152,7 +146,7 @@ func _on_checkpoint_entered(checkpoint: Checkpoint):
 	checkpoint_times.append(time)
 	last_checkpoint = checkpoint
 	
-	_add_checkpoint_label(checkpoint_times.size(), time)
+	track_ui.on_checkpoint_entered(checkpoint_times.size() - 1, time)
 
 func _on_finish_entered():
 	# store time immediately to minimize time increases due to process updates
@@ -163,13 +157,8 @@ func _on_finish_entered():
 	
 	_update_track_state(TrackState.FINISHED)
 	
-	$TrackUI/Timer.text = TimeHelper.format_time_ms(finish_time)
+	track_ui.timer.text = TimeHelper.format_time_ms(finish_time)
 	checkpoint_times.append(finish_time)
 	
 	PersonalBest.update_personal_best(track_id, finish_time, checkpoint_times)
-	finished.emit()
-
-func _add_checkpoint_label(index, time) -> void:
-	var label = Label.new()
-	label.text = str("Checkpoint ", index, ": ", time)
-	checkpoint_time_labels.add_child(label)
+	finished.emit(finish_time)
