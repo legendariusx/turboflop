@@ -1,8 +1,9 @@
-[gd_scene load_steps=27 format=3 uid="uid://ce7uyrofns7ml"]
+[gd_scene load_steps=28 format=3 uid="uid://ce7uyrofns7ml"]
 
 [ext_resource type="PackedScene" uid="uid://clthdr6beclys" path="res://track/track.tscn" id="1_mn4nu"]
 [ext_resource type="PackedScene" uid="uid://p7atvo2gj2c5" path="res://checkpoint/finish/finish.tscn" id="2_7j01r"]
 [ext_resource type="PackedScene" uid="uid://w4x7lllpyfuy" path="res://assets/terrain/terrain_track003.blend" id="2_mn4nu"]
+[ext_resource type="PackedScene" uid="uid://bnd1qqdentrpd" path="res://checkpoint/checkpoint.tscn" id="2_qu104"]
 [ext_resource type="PackedScene" uid="uid://cxcwbirhuxbun" path="res://assets/models/wooden_birdge.blend" id="4_5mkpt"]
 [ext_resource type="PackedScene" uid="uid://duba1hy6lraw6" path="res://assets/models/wooden_pillar.blend" id="4_w7cg1"]
 [ext_resource type="Script" uid="uid://ddvrs0wphyqwy" path="res://addons/proton_scatter/src/scatter.gd" id="6_l7hs5"]
@@ -109,13 +110,25 @@ transform = Transform3D(0.19971, 0, 0.979855, 0, 1, 0, -0.979855, 0, 0.19971, 0,
 track_id = 3
 
 [node name="Start" parent="." index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46694, 0.0789867, 0.0472251)
+transform = Transform3D(0.475025, 0, 0.879972, 0, 1, 0, -0.879972, 0, 0.475025, -1.65791, 0.0789867, 9.26451)
 
 [node name="Car" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.4772, 0, -42.6389)
 
+[node name="Checkpoint" parent="Checkpoints" index="0" instance=ExtResource("2_qu104")]
+transform = Transform3D(-0.773475, 0, 0.633827, 0, 1, 0, -0.633827, 0, -0.773475, 32.0294, 0, -22.2635)
+
+[node name="Checkpoint2" parent="Checkpoints" index="1" instance=ExtResource("2_qu104")]
+transform = Transform3D(-0.110532, 0, -0.993873, 0, 1, 0, 0.993873, 0, -0.110532, -1.27765, 0, -53.5408)
+
+[node name="Checkpoint3" parent="Checkpoints" index="2" instance=ExtResource("2_qu104")]
+transform = Transform3D(0.874391, 0, 0.485222, 0, 1, 0, -0.485222, 0, 0.874391, -62.2266, 0, 35.7612)
+
+[node name="Checkpoint4" parent="Checkpoints" index="3" instance=ExtResource("2_qu104")]
+transform = Transform3D(-0.178991, 0, 0.983851, 0, 1, 0, -0.983851, 0, -0.178991, -15.9798, 0, 63.6642)
+
 [node name="Finish" parent="Finishes" index="0" instance=ExtResource("2_7j01r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25213, 0.000699043, 17.7423)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.788, 0.000699043, 17.7423)
 
 [node name="terrain" parent="." index="8" instance=ExtResource("2_mn4nu")]
 
