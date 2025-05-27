@@ -21,6 +21,9 @@ const CAR_SCENE = preload("res://vehicles/car.scn")
 @onready var opponents: Node = $Opponents
 @onready var countdown_timer: Timer = $CountdownTimer
 
+@onready var checkpoint_time_labels: VBoxContainer = $UI/CheckpointTimeLabels
+@onready var stopwatch_label: Label = $UI/Stopwatch
+
 @onready var last_checkpoint: Checkpoint = start_node
 
 @onready var personal_best_state = PersonalBestState.new(track_id)
@@ -89,6 +92,10 @@ func _start():
 	_countdown()
 	await started
 	started_at = Time.get_ticks_msec()
+	
+#func _process(delta: float) -> void:
+	#Noop 
+	#
 
 func _respawn_at(checkpoint: Checkpoint):
 	player_vehicle.global_position = checkpoint.spawnpoint.global_position
@@ -141,8 +148,11 @@ func _on_user_data_updated(row: UserData):
 		opponents.add_child(new_vehicle)
 
 func _on_checkpoint_entered(checkpoint: Checkpoint):
-	checkpoint_times.append(Time.get_ticks_msec() - started_at)
+	var time = Time.get_ticks_msec() - started_at
+	checkpoint_times.append(time)
 	last_checkpoint = checkpoint
+	
+	_add_checkpoint_label(checkpoint_times.size(), time)
 
 func _on_finish_entered():
 	# store time immediately to minimize time increases due to process updates
@@ -158,3 +168,8 @@ func _on_finish_entered():
 	
 	PersonalBest.update_personal_best(track_id, finish_time, checkpoint_times)
 	finished.emit()
+
+func _add_checkpoint_label(index, time) -> void:
+	var label = Label.new()
+	label.text = str("Checkpoint ", index, ": ", time)
+	checkpoint_time_labels.add_child(label)

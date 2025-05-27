@@ -23,7 +23,7 @@ GameState="*res://state/game_state.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/SpacetimeDB/plugin.cfg", "res://addons/better_path3d_handles/plugin.cfg", "res://addons/proton_scatter/plugin.cfg", "res://addons/terrain_3d/plugin.cfg")
+enabled=PackedStringArray("res://addons/SpacetimeDB/plugin.cfg", "res://addons/better_path3d_handles/plugin.cfg", "res://addons/terrain_3d/plugin.cfg")
 
 [importer_defaults]
 

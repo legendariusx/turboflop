@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bnd1qqdentrpd"]
+[gd_scene load_steps=6 format=3 uid="uid://bnd1qqdentrpd"]
 
 [ext_resource type="Script" uid="uid://e6o61seog4qh" path="res://checkpoint/checkpoint.gd" id="1_slojq"]
+[ext_resource type="PackedScene" uid="uid://duba1hy6lraw6" path="res://assets/models/wooden_pillar.blend" id="2_q42b1"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_630c4"]
 
@@ -14,7 +15,8 @@ albedo_color = Color(0.0156863, 0, 1, 0.392157)
 script = ExtResource("1_slojq")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(4.09482, 0, 0, 0, 1.9, 0, 0, 0, 0.068812, 0, 1, 0)
+transform = Transform3D(6, 0, 0, 0, 1.9, 0, 0, 0, 0.069, 0, 1, 0)
+visible = false
 mesh = SubResource("BoxMesh_630c4")
 surface_material_override/0 = SubResource("StandardMaterial3D_slojq")
 
@@ -25,5 +27,11 @@ shape = SubResource("BoxShape3D_slojq")
 
 [node name="Spawnpoint" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -2)
+
+[node name="LeftPillar" parent="." instance=ExtResource("2_q42b1")]
+transform = Transform3D(0.25, 0, 0, 0, 0.2, 0, 0, 0, 0.25, 3, 0, 0)
+
+[node name="RightPillar" parent="." instance=ExtResource("2_q42b1")]
+transform = Transform3D(0.25, 0, 0, 0, 0.2, 0, 0, 0, 0.25, -3, 0, 0)
 
 [connection signal="body_entered" from="MeshInstance3D/Area3D" to="." method="_on_area_3d_body_entered"]

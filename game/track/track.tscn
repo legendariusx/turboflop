@@ -54,3 +54,28 @@ wait_time = 0.75
 one_shot = true
 
 [node name="TrackUI" parent="." instance=ExtResource("6_m4vyt")]
+
+[node name="UI" type="Node" parent="."]
+
+[node name="CheckpointTimeLabels" type="VBoxContainer" parent="UI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -213.0
+offset_bottom = 89.0
+grow_horizontal = 0
+
+[node name="Label" type="Label" parent="UI/CheckpointTimeLabels"]
+layout_mode = 2
+text = "Checkpoints"
+horizontal_alignment = 1
+
+[node name="Stopwatch" type="Label" parent="UI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "00:00"

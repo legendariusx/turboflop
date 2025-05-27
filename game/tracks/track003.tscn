@@ -106,7 +106,7 @@ curve = SubResource("Curve3D_mjtea")
 metadata/_custom_type_script = "uid://qx7sfd12m26j"
 
 [node name="Track" instance=ExtResource("1_mn4nu")]
-transform = Transform3D(0.19971, 0, 0.979855, 0, 1, 0, -0.979855, 0, 0.19971, 0, 0, -1.66841)
+transform = Transform3D(0.19971, 0, 0.979855, 0, 1, 0, -0.979855, 0, 0.19971, 0, 0, 0)
 track_id = 3
 
 [node name="Start" parent="." index="2"]
@@ -130,7 +130,7 @@ transform = Transform3D(-0.178991, 0, 0.983851, 0, 1, 0, -0.983851, 0, -0.178991
 [node name="Finish" parent="Finishes" index="0" instance=ExtResource("2_7j01r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.788, 0.000699043, 17.7423)
 
-[node name="terrain" parent="." index="8" instance=ExtResource("2_mn4nu")]
+[node name="Terrain" parent="." index="8" instance=ExtResource("2_mn4nu")]
 
 [node name="Bridge" type="Node" parent="." index="9"]
 
@@ -151,52 +151,3 @@ transform = Transform3D(0.0628254, 0, 0.998025, 0, 1.57256, 0, -0.998025, 0, 0.0
 
 [node name="wooden_pillar4" parent="Bridge" index="5" instance=ExtResource("4_w7cg1")]
 transform = Transform3D(0.0628254, 0, 0.998025, 0, 1.57256, 0, -0.998025, 0, 0.0628254, -60.1183, -13.4803, 6.28747)
-
-[node name="ProtonScatter" type="Node3D" parent="." index="10"]
-script = ExtResource("6_l7hs5")
-keep_static_colliders = true
-modifier_stack = SubResource("Resource_v1pjo")
-Performance/use_chunks = true
-Performance/chunk_dimensions = Vector3(15, 15, 15)
-metadata/_custom_type_script = "uid://ddvrs0wphyqwy"
-
-[node name="ScatterItem" type="Node3D" parent="ProtonScatter" index="0"]
-script = ExtResource("13_yjdcy")
-path = "uid://d3i62fw6hlwwb"
-
-[node name="ScatterItem2" type="Node3D" parent="ProtonScatter" index="1"]
-script = ExtResource("13_yjdcy")
-path = "uid://ck8kymv0k8w48"
-
-[node name="ScatterItem3" type="Node3D" parent="ProtonScatter" index="2"]
-script = ExtResource("13_yjdcy")
-path = "uid://bk1o23cvdh87v"
-
-[node name="ScatterItem4" type="Node3D" parent="ProtonScatter" index="3"]
-script = ExtResource("13_yjdcy")
-path = "uid://dst3rpuxl2vya"
-
-[node name="ScatterItem5" type="Node3D" parent="ProtonScatter" index="4"]
-script = ExtResource("13_yjdcy")
-path = "uid://cuj33aj0lrou1"
-
-[node name="ScatterItem6" type="Node3D" parent="ProtonScatter" index="5"]
-script = ExtResource("13_yjdcy")
-path = "uid://cx4p6flenfm8f"
-
-[node name="Sphere" type="Node3D" parent="ProtonScatter" index="6"]
-transform = Transform3D(1, -7.45058e-09, -4.47035e-08, 1.49012e-08, 1, 2.8871e-08, 4.47035e-08, -3.72529e-09, 1, 0, 0, 0)
-script = ExtResource("14_pva00")
-shape = SubResource("Resource_nylmg")
-
-[node name="Path2" type="Node3D" parent="ProtonScatter" index="7"]
-transform = Transform3D(1, -7.45058e-09, -4.47035e-08, 1.49012e-08, 1, 2.8871e-08, 4.47035e-08, -3.72529e-09, 1, -20.0825, 0, -37.8083)
-script = ExtResource("14_pva00")
-negative = true
-shape = SubResource("Resource_pva00")
-
-[node name="Path" type="Node3D" parent="ProtonScatter" index="8"]
-transform = Transform3D(1, -7.45058e-09, -4.47035e-08, 1.49012e-08, 1, 2.8871e-08, 4.47035e-08, -3.72529e-09, 1, 0.210852, 0.214279, 0.0614484)
-script = ExtResource("14_pva00")
-negative = true
-shape = SubResource("Resource_yjdcy")
