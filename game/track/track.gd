@@ -19,6 +19,7 @@ const CAR_SCENE = preload("res://vehicles/car.scn")
 @onready var checkpoints: Node = $Checkpoints
 @onready var finishes: Node = $Finishes
 @onready var opponents: Node = $Opponents
+@onready var countdown_timer: Timer = $CountdownTimer
 
 @onready var last_checkpoint: Checkpoint = start_node
 
@@ -69,7 +70,6 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"respawn"):
 		match track_state:
 			TrackState.RUNNING:
-				#_respawn_at(last_checkpoint)
 				respawn_location = last_checkpoint
 			TrackState.FINISHED:
 				_start()
@@ -101,8 +101,8 @@ func _countdown():
 	_update_track_state(TrackState.COUNTDOWN)
 	for i in range(3,0,-1):
 		$TrackUI/Countdown.text = str(i)
-		$CountdownTimer.start()
-		await $CountdownTimer.timeout
+		countdown_timer.start()
+		await countdown_timer.timeout
 	$TrackUI/Countdown.text = ""
 	_update_track_state(TrackState.RUNNING)
 	started.emit()
