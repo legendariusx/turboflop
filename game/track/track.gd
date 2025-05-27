@@ -56,8 +56,8 @@ func _start():
 	for checkpoint in checkpoints.get_children():
 		(checkpoint as Checkpoint).was_entered = false
 	
-	# respawn player and start
 	_respawn_at(start_node)
+	_countdown()
 	started_at = Time.get_ticks_msec()
 
 func _respawn_at(checkpoint: Checkpoint):
@@ -66,7 +66,16 @@ func _respawn_at(checkpoint: Checkpoint):
 	player_vehicle.linear_velocity = Vector3.ZERO
 	player_vehicle.angular_velocity = Vector3.ZERO
 	player_vehicle.engine_force = 0
-
+	
+func _countdown():
+	$Car.is_input_enabled = false
+	for i in range(3,0,-1):
+		$TrackUI/Countdown.text = str(i)
+		$CountdownTimer.start()
+		await $CountdownTimer.timeout
+	$TrackUI/Countdown.text = ""
+	$Car.is_input_enabled = true
+	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"respawn"):
 		_respawn_at(last_checkpoint)

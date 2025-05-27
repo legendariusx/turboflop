@@ -13,7 +13,7 @@ const MATERIAL_CAR_TRANSPARENT = preload("res://vehicles/car_transparent.tres")
 var owner_identity: PackedByteArray
 var owner_name: String
 var is_current_user: bool = true
-var is_input_enabled: bool = true
+var is_input_enabled: bool = false
 
 var _is_steering : bool
 var _is_accelerating : bool

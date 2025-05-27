@@ -42,7 +42,7 @@ script = ExtResource("11_nylmg")
 iterations = 3
 offset_step = 0.2
 consecutive_step_multiplier = 0.75
-use_computeshader = true
+use_computeshader = false
 enabled = true
 override_global_seed = false
 custom_seed = 0
@@ -107,6 +107,9 @@ metadata/_custom_type_script = "uid://qx7sfd12m26j"
 [node name="Track" instance=ExtResource("1_mn4nu")]
 transform = Transform3D(0.19971, 0, 0.979855, 0, 1, 0, -0.979855, 0, 0.19971, 0, 0, -1.66841)
 track_id = 3
+
+[node name="Start" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46694, 0.0789867, 0.0472251)
 
 [node name="Car" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.4772, 0, -42.6389)
