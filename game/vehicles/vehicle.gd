@@ -34,6 +34,8 @@ func _ready():
 	if not is_current_user:
 		$Collider.disabled = true
 		$NameLabel.text = owner_name
+		# FIXME: ugly fix for cars bugging around when tabbed out (#14)
+		freeze = true
 	else:
 		$NameLabel.visible = false
 		
@@ -41,9 +43,6 @@ func _ready():
 	_on_visibility_changed(GameState.visibility)
 	
 	UserState.update.connect(_on_user_updated)
-	
-	get_window().focus_entered.connect(_on_window_focus_entered)
-	get_window().focus_exited.connect(_on_window_focus_exited)
 
 func _physics_process(delta: float) -> void:
 	if not is_current_user or not is_input_enabled or _is_update_disabled: return
@@ -103,9 +102,3 @@ func _on_user_updated(row: User):
 	if row.identity == owner_identity:
 		$NameLabel.text = row.name
 		owner_name = row.name
-
-func _on_window_focus_entered():
-	_is_update_disabled = false
-	
-func _on_window_focus_exited():
-	_is_update_disabled = true
