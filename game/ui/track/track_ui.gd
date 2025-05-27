@@ -8,6 +8,7 @@ const MAX_SCORES = 10
 @onready var timer: Label = $Timer
 @onready var scoreboard: Tree = $Scoreboard
 @onready var cp_times: Tree = $CheckpointTimes
+@onready var cp_split: CPSplit = $CPSplit
 
 var personal_best_state: PersonalBestState
 var cp_tree_root: TreeItem
@@ -50,9 +51,11 @@ func reset():
 
 func on_checkpoint_entered(index: int, time: int):
 	_add_checkpoint_label("%02d" % index, time)
+	_show_checkpoint_time(index, time)
 
 func _on_finished(time: int):
 	_add_checkpoint_label("🏁", time)
+	_show_checkpoint_time((get_parent() as Track).checkpoint_times.size(), time)
 
 func _on_personal_best_updated(_row: PersonalBest):
 	scoreboard.clear()
@@ -96,3 +99,8 @@ func _add_checkpoint_label(number: String, time: int) -> void:
 	
 	new_row.set_text_alignment(0, HORIZONTAL_ALIGNMENT_CENTER)
 	new_row.set_text_alignment(1, HORIZONTAL_ALIGNMENT_CENTER)
+
+func _show_checkpoint_time(index: int, time: int):
+	var current_pb_index = personal_best_state.data.find_custom(func(pb): return pb.identity == GameState.identity)
+	var current_pb = personal_best_state.data[current_pb_index] if current_pb_index != -1 else null
+	cp_split.show_split(index, time, current_pb)
