@@ -63,8 +63,11 @@ func _process(_delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"respawn"):
-		if track_state == TrackState.RUNNING: _respawn_at(last_checkpoint)
-		else: _start()
+		match track_state:
+			TrackState.RUNNING:
+				_respawn_at(last_checkpoint)
+			TrackState.FINISHED:
+				_start()
 	elif event.is_action_pressed(&"reset"):
 		_start()
 
@@ -137,12 +140,16 @@ func _on_checkpoint_entered(checkpoint: Checkpoint):
 	last_checkpoint = checkpoint
 
 func _on_finish_entered():
+	# store time immediately to minimize time increases due to process updates
+	var finish_time = Time.get_ticks_msec() - started_at
+	
 	# check if all checkpoints were entered
 	if not checkpoints.get_children().all(func(cp: Checkpoint): return cp.was_entered): return
 	
-	var finish_time: int = Time.get_ticks_msec() - started_at
+	_update_track_state(TrackState.FINISHED)
+	
+	$TrackUI/Timer.text = TimeHelper.format_time_ms(finish_time)
 	checkpoint_times.append(finish_time)
 	
 	PersonalBest.update_personal_best(track_id, finish_time, checkpoint_times)
-	_update_track_state(TrackState.FINISHED)
 	finished.emit()
