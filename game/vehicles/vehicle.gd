@@ -33,9 +33,14 @@ func set_owner_data(u_owner_identity: PackedByteArray, u_owner_name: String):
 func _ready():
 	if not is_current_user:
 		$Collider.disabled = true
+		$NameLabel.text = owner_name
+	else:
+		$NameLabel.visible = false
 		
 	GameState.visibility_changed.connect(_on_visibility_changed)
 	_on_visibility_changed(GameState.visibility)
+	
+	UserState.update.connect(_on_user_updated)
 	
 	get_window().focus_entered.connect(_on_window_focus_entered)
 	get_window().focus_exited.connect(_on_window_focus_exited)
@@ -93,6 +98,11 @@ func _on_visibility_changed(u_visibility: Enum.Visibility):
 		wheel.get_node("Mesh").material_override = new_material
 		
 	visible = true
+	
+func _on_user_updated(row: User):
+	if row.identity == owner_identity:
+		$NameLabel.text = row.name
+		owner_name = row.name
 
 func _on_window_focus_entered():
 	_is_update_disabled = false
