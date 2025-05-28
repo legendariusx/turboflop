@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://clthdr6beclys"]
+[gd_scene load_steps=13 format=3 uid="uid://clthdr6beclys"]
 
 [ext_resource type="Script" uid="uid://b4fwattb13utc" path="res://track/track.gd" id="1_76lv3"]
 [ext_resource type="Material" uid="uid://ceuc5jtl8b5e8" path="res://assets/materials/Sky1.tres" id="2_038fw"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://dnqvalo71k0hi" path="res://camera_follow.gd" id="4_76lv3"]
 [ext_resource type="PackedScene" uid="uid://baihr0lcc5kf3" path="res://vehicles/car.scn" id="5_038fw"]
 [ext_resource type="PackedScene" uid="uid://b7myrwvkhwi71" path="res://ui/track/track_ui.tscn" id="6_m4vyt"]
+[ext_resource type="AudioStream" uid="uid://76pgk3kxq1rp" path="res://assets/sounds/countdown-sound-effect-8-bit.mp3" id="7_pk2yb"]
+[ext_resource type="AudioStream" uid="uid://d0lvyb272uhw3" path="res://assets/sounds/camera-flash.mp3" id="8_fnbnb"]
 
 [sub_resource type="Sky" id="Sky_76lv3"]
 sky_material = ExtResource("2_038fw")
@@ -52,5 +54,13 @@ target = NodePath("../Car")
 [node name="CountdownTimer" type="Timer" parent="."]
 wait_time = 0.75
 one_shot = true
+
+[node name="CountdownSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_pk2yb")
+volume_db = -10.0
+
+[node name="CheckpointSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_fnbnb")
+volume_db = -10.0
 
 [node name="TrackUI" parent="." instance=ExtResource("6_m4vyt")]
