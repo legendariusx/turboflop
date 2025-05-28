@@ -54,7 +54,7 @@ func _physics_process(delta: float) -> void:
 	# get current speed
 	_speed = linear_velocity.dot(transform.basis.z)
 	
-	$Speedometer.text = str(int(_speed * 15))
+	$Speedometer.text = str(abs(int(_speed * 15)))
 	
 	if not is_current_user or _is_update_disabled: return
 	elif not is_input_enabled:
