@@ -20,8 +20,8 @@ const CAR_SCENE = preload("res://vehicles/car.scn")
 @onready var finishes: Node = $Finishes
 @onready var opponents: Node = $Opponents
 @onready var countdown_timer: Timer = $CountdownTimer
-@onready var countdown_sound_player: AudioStreamPlayer = $CountdownSoundPlayer
-@onready var checkpoint_sound_player: AudioStreamPlayer = $CheckpointSoundPlayer
+@onready var countdown_sound: AudioStreamPlayer = $CountdownSound
+@onready var checkpoint_sound: AudioStreamPlayer = $CheckpointSound
 @onready var track_ui: TrackUI = $TrackUI
 
 @onready var last_checkpoint: Checkpoint = start_node
@@ -104,12 +104,12 @@ func _respawn_at(checkpoint: Checkpoint):
 func _countdown():
 	_update_track_state(TrackState.COUNTDOWN)
 	for i in range(3,0,-1):
-		countdown_sound_player.play()
+		countdown_sound.play()
 		track_ui.countdown.text = str(i)
 		countdown_timer.start()
 		await countdown_timer.timeout
-		countdown_sound_player.stop()
-	countdown_sound_player.play(2.95)
+		countdown_sound.stop()
+	countdown_sound.play(2.95)
 	track_ui.countdown.text = ""
 	_update_track_state(TrackState.RUNNING)
 	started.emit()
@@ -152,7 +152,7 @@ func _on_checkpoint_entered(checkpoint: Checkpoint):
 	last_checkpoint = checkpoint
 	
 	track_ui.on_checkpoint_entered(checkpoint_times.size() - 1, time)
-	checkpoint_sound_player.play()
+	checkpoint_sound.play()
 
 func _on_finish_entered():
 	# store time immediately to minimize time increases due to process updates
@@ -165,7 +165,7 @@ func _on_finish_entered():
 	
 	checkpoint_times.append(finish_time)
 	track_ui.timer.text = TimeHelper.format_time_ms(finish_time)
-	checkpoint_sound_player.play()
+	checkpoint_sound.play()
 	
 	PersonalBest.update_personal_best(track_id, finish_time, checkpoint_times)
 	finished.emit(finish_time)

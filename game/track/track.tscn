@@ -55,11 +55,11 @@ target = NodePath("../Car")
 wait_time = 0.75
 one_shot = true
 
-[node name="CountdownSoundPlayer" type="AudioStreamPlayer" parent="."]
+[node name="CountdownSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_pk2yb")
 volume_db = -10.0
 
-[node name="CheckpointSoundPlayer" type="AudioStreamPlayer" parent="."]
+[node name="CheckpointSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_fnbnb")
 volume_db = -10.0
 
