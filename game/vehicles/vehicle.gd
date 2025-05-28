@@ -25,6 +25,8 @@ var _speed : float
 @export var acceleration_force := 100.0
 @export var wheels: Array[VehicleWheel3D]
 
+@onready var audio_listener: AudioListener3D = $AudioListener3D
+
 func set_owner_data(u_owner_identity: PackedByteArray, u_owner_name: String):
 	owner_identity = u_owner_identity
 	is_current_user = u_owner_identity == GameState.identity or not SpacetimeDB.is_connected_db()
@@ -36,6 +38,7 @@ func _ready():
 		$NameLabel.text = owner_name
 		# FIXME: ugly fix for cars bugging around when tabbed out (#14)
 		freeze = true
+		audio_listener.queue_free()
 	else:
 		$NameLabel.visible = false
 		
@@ -45,6 +48,9 @@ func _ready():
 	UserState.update.connect(_on_user_updated)
 
 func _physics_process(delta: float) -> void:
+	var desired_engine_pitch = 0.05 + linear_velocity.length() / (acceleration_force * 0.5)
+	$EngineSound.pitch_scale = lerpf($EngineSound.pitch_scale, desired_engine_pitch, 0.2)
+	
 	if not is_current_user or not is_input_enabled or _is_update_disabled: return
 	
 	UserData.set_user_data(global_position, global_rotation, linear_velocity, angular_velocity, true, GameState.track_id)
