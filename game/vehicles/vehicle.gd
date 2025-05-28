@@ -51,6 +51,11 @@ func _physics_process(delta: float) -> void:
 	var desired_engine_pitch = 0.05 + linear_velocity.length() / (acceleration_force * 0.5)
 	$EngineSound.pitch_scale = lerpf($EngineSound.pitch_scale, desired_engine_pitch, 0.2)
 	
+	# get current speed
+	_speed = linear_velocity.dot(transform.basis.z)
+	
+	$Speedometer.text = str(int(_speed * 15))
+	
 	if not is_current_user or _is_update_disabled: return
 	elif not is_input_enabled:
 		engine_force = 0.0
@@ -67,9 +72,6 @@ func _physics_process(delta: float) -> void:
 	_is_steering = not is_zero_approx(steer_axis)
 	_is_accelerating = not is_zero_approx(force_axis)
 	_is_braking = Input.is_action_pressed(&"brake")
-	
-	# get current speed
-	_speed = linear_velocity.dot(transform.basis.z)
 	
 	# set steering angle
 	steering = move_toward(steering, steer_axis * STEER_LIMIT, delta * STEER_SPEED)
