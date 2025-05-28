@@ -15,3 +15,7 @@ Run `server/publish.sh` (or its contents separately).
 
 ### Start the game in Godot
 Should be pretty straightforward.
+
+## References
+* Countdown sound by [Lesiakower from Pixabay](https://pixabay.com/users/lesiakower-25701529/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=151797)
+* Checkpoint sound by [Štefan Baša from Pixabay](https://pixabay.com/users/malarbrush-43159066/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=204151)
