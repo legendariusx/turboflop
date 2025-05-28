@@ -59,6 +59,8 @@ func _physics_process(delta: float) -> void:
 	if not is_current_user or _is_update_disabled: return
 	elif not is_input_enabled:
 		engine_force = 0.0
+		steering = 0.0
+		brake = 0.0
 		return
 	
 	UserData.set_user_data(global_position, global_rotation, linear_velocity, angular_velocity, true, GameState.track_id)
