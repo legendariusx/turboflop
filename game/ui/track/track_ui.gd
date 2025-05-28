@@ -55,7 +55,7 @@ func on_checkpoint_entered(index: int, time: int):
 
 func _on_finished(time: int):
 	_add_checkpoint_label("🏁", time)
-	_show_checkpoint_time((get_parent() as Track).checkpoint_times.size(), time)
+	_show_checkpoint_time((get_parent() as Track).checkpoint_times.size() - 1, time)
 
 func _on_personal_best_updated(_row: PersonalBest):
 	scoreboard.clear()
