@@ -22,7 +22,7 @@ sky_rotation = Vector3(-0.0610865, 0, 0)
 
 [sub_resource type="Compositor" id="Compositor_pk2yb"]
 
-[node name="Track" type="Node3D"]
+[node name="Track2" type="Node3D"]
 script = ExtResource("1_76lv3")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

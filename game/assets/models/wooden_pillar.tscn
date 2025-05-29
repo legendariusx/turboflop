@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkmhvg2o6djws"]
+
+[ext_resource type="PackedScene" uid="uid://duba1hy6lraw6" path="res://assets/models/wooden_pillar.blend" id="1_7s176"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7s176"]
+radius = 0.132045
+height = 1.6629
+
+[node name="WoodenPillar" type="Node3D"]
+
+[node name="wooden_pillar" parent="." instance=ExtResource("1_7s176")]
+transform = Transform3D(0.25, 0, 0, 0, 0.2, 0, 0, 0, 0.25, -0.0120447, 0, 0)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.74147, 0)
+shape = SubResource("CapsuleShape3D_7s176")
