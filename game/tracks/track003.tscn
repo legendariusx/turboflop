@@ -17,6 +17,15 @@ transform = Transform3D(0.699801, 0, -0.714339, 0, 1, 0, 0.714339, 0, 0.699801, 
 [node name="Car" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.4772, 0, -42.6389)
 
+[node name="Checkpoint" parent="Checkpoints" index="0" instance=ExtResource("2_qu104")]
+transform = Transform3D(0.597527, 0, 0.801849, 0, 1, 0, -0.801849, 0, 0.597527, -33.2249, -0.0913386, 61.0009)
+
+[node name="Checkpoint2" parent="Checkpoints" index="1" instance=ExtResource("2_qu104")]
+transform = Transform3D(-0.230322, 0, 0.973115, 0, 1, 0, -0.973115, 0, -0.230322, 14.5382, -0.126095, 70.0656)
+
+[node name="Checkpoint3" parent="Checkpoints" index="2" instance=ExtResource("2_qu104")]
+transform = Transform3D(0.983315, 0, 0.18191, 0, 1, 0, -0.18191, 0, 0.983315, 46.6199, 4.50339, 32.622)
+
 [node name="Finish" parent="Finishes" index="0" instance=ExtResource("2_7j01r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.788, 0.0506732, 17.7423)
 
@@ -41,12 +50,3 @@ transform = Transform3D(0.0628254, 0, 0.998025, 0, 1.57256, 0, -0.998025, 0, 0.0
 
 [node name="wooden_pillar4" parent="Bridge" index="5" instance=ExtResource("4_w7cg1")]
 transform = Transform3D(0.0628254, 0, 0.998025, 0, 1.57256, 0, -0.998025, 0, 0.0628254, -60.1183, -13.4803, 6.28747)
-
-[node name="Checkpoint" parent="." index="13" instance=ExtResource("2_qu104")]
-transform = Transform3D(0.905028, 0, -0.425353, 0, 1, 0, 0.425353, 0, 0.905028, -66.4074, -0.0913386, -20.3731)
-
-[node name="Checkpoint2" parent="." index="14" instance=ExtResource("2_qu104")]
-transform = Transform3D(0.907514, 0, 0.420023, 0, 1, 0, -0.420023, 0, 0.907514, -65.7507, -0.126095, 28.2381)
-
-[node name="Checkpoint3" parent="." index="15" instance=ExtResource("2_qu104")]
-transform = Transform3D(0.374623, 0, -0.927177, 0, 1, 0, 0.927177, 0, 0.374623, -22.6544, 4.50339, 52.1957)
