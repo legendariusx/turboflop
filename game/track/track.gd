@@ -15,6 +15,7 @@ signal finished(time: int)
 const CAR_SCENE = preload("res://vehicles/car.scn")
 
 @onready var player_vehicle: Vehicle = $Car
+@onready var camera: CameraFollow = $Camera3D
 @onready var start_node: Checkpoint = $Start
 @onready var checkpoints: Node = $Checkpoints
 @onready var finishes: Node = $Finishes
@@ -87,6 +88,7 @@ func _start():
 		(checkpoint as Checkpoint).was_entered = false
 	
 	track_ui.reset()
+	camera.start()
 	
 	respawn_location = start_node
 	
@@ -167,6 +169,7 @@ func _on_finish_entered():
 	checkpoint_times.append(finish_time)
 	track_ui.timer.text = TimeHelper.format_time_ms(finish_time)
 	checkpoint_sound.play()
+	camera.stop()
 	
 	PersonalBest.update_personal_best(track_id, finish_time, checkpoint_times)
 	finished.emit(finish_time)

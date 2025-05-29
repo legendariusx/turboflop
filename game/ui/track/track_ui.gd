@@ -48,14 +48,15 @@ func _process(_delta: float) -> void:
 func reset():
 	cp_times.clear()
 	cp_tree_root = cp_times.create_item()
+	_hide_checkpoint_time()
 
 func on_checkpoint_entered(index: int, time: int):
 	_add_checkpoint_label("%02d" % index, time)
-	_show_checkpoint_time(index, time)
+	_show_checkpoint_time("%02d" % index, index, time, false)
 
 func _on_finished(time: int):
 	_add_checkpoint_label("🏁", time)
-	_show_checkpoint_time((get_parent() as Track).checkpoint_times.size() - 1, time)
+	_show_checkpoint_time("🏁", (get_parent() as Track).checkpoint_times.size() - 1, time, true)
 
 func _on_personal_best_updated(_row: PersonalBest):
 	scoreboard.clear()
@@ -100,7 +101,10 @@ func _add_checkpoint_label(number: String, time: int) -> void:
 	new_row.set_text_alignment(0, HORIZONTAL_ALIGNMENT_CENTER)
 	new_row.set_text_alignment(1, HORIZONTAL_ALIGNMENT_CENTER)
 
-func _show_checkpoint_time(index: int, time: int):
+func _show_checkpoint_time(checkpoint_text: String, index: int, time: int, is_finish: bool):
 	var current_pb_index = personal_best_state.data.find_custom(func(pb): return pb.identity == GameState.identity)
 	var current_pb = personal_best_state.data[current_pb_index] if current_pb_index != -1 else null
-	cp_split.show_split(index, time, current_pb)
+	cp_split.show_split(checkpoint_text, index, time, is_finish, current_pb)
+
+func _hide_checkpoint_time():
+	cp_split.reset()
