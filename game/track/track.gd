@@ -58,7 +58,8 @@ func _ready() -> void:
 	user_data.update.connect(_on_user_data_updated)
 	
 	if SpacetimeDB.is_connected_db():
-		player_vehicle.set_owner_data(GameState.identity, GameState.name)
+		if not GameState.current_user: await GameState.current_user_upated
+		player_vehicle.set_owner_data(GameState.identity, GameState.current_user.name)
 		
 	# TODO: implement starting from user input
 	_start()
@@ -140,7 +141,7 @@ func _on_user_data_updated(row: UserData):
 		opponent.angular_velocity = row.angular_velocity
 	# otherwise if row is active and is on current track -> add new vehicle to container
 	elif row.is_active and row.track_id == GameState.track_id:
-		var user = UserState.find_by_pk(row.identity)
+		var user := UserState.find_by_pk(row.identity)
 		if not user: return
 		var new_vehicle = CAR_SCENE.instantiate()
 		new_vehicle.set_owner_data(row.identity, user.name)

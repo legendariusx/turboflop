@@ -26,6 +26,7 @@ var _speed : float
 @export var wheels: Array[VehicleWheel3D]
 
 @onready var audio_listener: AudioListener3D = $AudioListener3D
+@onready var speedometer: Label3D = $Speedometer
 
 func set_owner_data(u_owner_identity: PackedByteArray, u_owner_name: String):
 	owner_identity = u_owner_identity
@@ -39,6 +40,7 @@ func _ready():
 		# FIXME: ugly fix for cars bugging around when tabbed out (#14)
 		freeze = true
 		audio_listener.queue_free()
+		speedometer.queue_free()
 	else:
 		$NameLabel.visible = false
 		
@@ -51,19 +53,13 @@ func _physics_process(delta: float) -> void:
 	var desired_engine_pitch = 0.05 + linear_velocity.length() / (acceleration_force * 0.5)
 	$EngineSound.pitch_scale = lerpf($EngineSound.pitch_scale, desired_engine_pitch, 0.2)
 	
-	# get current speed
-	_speed = linear_velocity.dot(transform.basis.z)
-	
-	$Speedometer.text = str(abs(int(_speed * 15)))
-	
 	if not is_current_user or _is_update_disabled: return
-	elif not is_input_enabled:
-		engine_force = 0.0
-		steering = 0.0
-		brake = 0.0
-		return
 	
 	UserData.set_user_data(global_position, global_rotation, linear_velocity, angular_velocity, true, GameState.track_id)
+	
+	# get current speed
+	_speed = linear_velocity.dot(transform.basis.z)
+	speedometer.text = str(abs(int(_speed * 15)))
 	
 	# get input
 	var steer_axis = Input.get_axis(&"turn_right", &"turn_left")
@@ -96,6 +92,12 @@ func _physics_process(delta: float) -> void:
 			engine_force = force
 	else:
 		engine_force = 0.0
+	
+	# FIXME: ugly way to reset inputs if input is disabled
+	if not is_input_enabled:
+		engine_force = 0.0
+		steering = 0.0
+		brake = 0.0
 
 func _on_visibility_changed(u_visibility: Enum.Visibility):
 	if is_current_user: return
