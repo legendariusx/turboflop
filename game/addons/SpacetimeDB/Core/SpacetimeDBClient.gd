@@ -179,7 +179,6 @@ func _on_websocket_message_received(bsatn_bytes: PackedByteArray):
 	elif message_resource is UnsubscribeMultiAppliedData:
 		var unsub: UnsubscribeMultiAppliedData = message_resource
 		_local_db.apply_database_update(unsub.database_update)
-		print_log("Unsubscribe: " + str(current_subscriptions[unsub.query_id.id]))
 		if current_subscriptions.has(unsub.query_id.id):
 			current_subscriptions.erase(unsub.query_id.id)
 		
@@ -280,7 +279,6 @@ func unsubscribe(id:int) -> bool:
 	if not is_connected_db():
 		printerr("SpacetimeDBClient: Cannot subscribe_bin, not connected.")
 		return false # Indicate error
-		
 	
 	var payload_data := UnsubscribeMultiData.new(id)
 	
@@ -301,7 +299,7 @@ func unsubscribe(id:int) -> bool:
 			return false # Indicate error
 		else:
 			print_log("SpacetimeDBClient: UnsubscribeMulti request sent successfully (BSATN), Req ID: %d" % id)
-			#current_subscriptions.erase(id)
+			current_subscriptions.erase(id)
 			return true # Return the ID on success
 	else:
 		printerr("SpacetimeDBClient: Internal error - WebSocket peer not available in connection.")

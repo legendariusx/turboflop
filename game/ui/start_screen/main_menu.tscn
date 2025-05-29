@@ -1,0 +1,78 @@
+[gd_scene load_steps=2 format=3 uid="uid://cj4nalfx5w66b"]
+
+[ext_resource type="Script" uid="uid://bcsnjxv5g6ndm" path="res://ui/start_screen/main_menu.gd" id="1_66k6o"]
+
+[node name="MainMenu" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_66k6o")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+use_top_left = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "TurboFlop"
+horizontal_alignment = 1
+
+[node name="UsernameContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/UsernameContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Please enter a username:"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/UsernameContainer"]
+layout_mode = 2
+
+[node name="NameInput" type="LineEdit" parent="CenterContainer/VBoxContainer/UsernameContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+size_flags_horizontal = 3
+max_length = 15
+
+[node name="Confirm" type="Button" parent="CenterContainer/VBoxContainer/UsernameContainer/HBoxContainer"]
+layout_mode = 2
+disabled = true
+text = "Confirm"
+
+[node name="TrackSelectionContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/TrackSelectionContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Select a track to play"
+horizontal_alignment = 1
+
+[node name="TrackContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/TrackSelectionContainer"]
+layout_mode = 2
+alignment = 1
+
+[connection signal="text_changed" from="CenterContainer/VBoxContainer/UsernameContainer/HBoxContainer/NameInput" to="." method="_on_name_input_text_changed"]
+[connection signal="text_submitted" from="CenterContainer/VBoxContainer/UsernameContainer/HBoxContainer/NameInput" to="." method="_on_name_input_text_submitted"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/UsernameContainer/HBoxContainer/Confirm" to="." method="_on_confirm_pressed"]
