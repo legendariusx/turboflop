@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7myrwvkhwi71"]
+[gd_scene load_steps=4 format=3 uid="uid://b7myrwvkhwi71"]
 
 [ext_resource type="Script" uid="uid://jt2pf5ygs2y1" path="res://ui/track/track_ui.gd" id="1_7f7ei"]
 [ext_resource type="PackedScene" uid="uid://dvfr7tv4f8suv" path="res://ui/track/cp_split/cp_split.tscn" id="2_fii46"]
+[ext_resource type="PackedScene" uid="uid://vsldeuxso8ge" path="res://ui/github_link.tscn" id="3_fek1n"]
 
 [node name="TrackUI" type="Control"]
 layout_mode = 3
@@ -97,3 +98,6 @@ auto_tooltip = false
 layout_mode = 1
 offset_top = -364.0
 offset_bottom = -364.0
+
+[node name="GithubLink" parent="." instance=ExtResource("3_fek1n")]
+layout_mode = 1

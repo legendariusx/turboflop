@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cj4nalfx5w66b"]
+[gd_scene load_steps=4 format=3 uid="uid://cj4nalfx5w66b"]
 
 [ext_resource type="Script" uid="uid://bcsnjxv5g6ndm" path="res://ui/start_screen/main_menu.gd" id="1_66k6o"]
 [ext_resource type="PackedScene" uid="uid://ckwtqyml8hjep" path="res://ui/start_screen/track_select.tscn" id="2_yiyh1"]
+[ext_resource type="PackedScene" uid="uid://vsldeuxso8ge" path="res://ui/github_link.tscn" id="3_tvvmp"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -81,6 +82,9 @@ layout_mode = 2
 theme_override_constants/h_separation = 15
 theme_override_constants/v_separation = 15
 alignment = 1
+
+[node name="GithubLink" parent="." instance=ExtResource("3_tvvmp")]
+layout_mode = 1
 
 [connection signal="text_changed" from="CenterContainer/VBoxContainer/UsernameContainer/HBoxContainer/NameInput" to="." method="_on_name_input_text_changed"]
 [connection signal="text_submitted" from="CenterContainer/VBoxContainer/UsernameContainer/HBoxContainer/NameInput" to="." method="_on_name_input_text_submitted"]
