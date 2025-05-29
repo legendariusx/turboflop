@@ -56,6 +56,10 @@ func _on_confirm_pressed() -> void:
 func _on_confirm(u_name: String):
 	if len(name_input.text) < USERNAME_MIN_LENGTH: return
 	
-	User.set_name_reducer(u_name)
-	await GameState.current_user_upated
-	display(true)
+	if GameState.current_user.online:
+		User.set_name_reducer(u_name)
+		await GameState.current_user_upated
+	else:
+		GameState.current_user.name = u_name
+			
+	display(GameState.current_user.online)
