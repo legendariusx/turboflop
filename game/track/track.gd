@@ -173,8 +173,3 @@ func _on_finish_entered():
 	
 	PersonalBest.update_personal_best(track_id, finish_time, checkpoint_times)
 	finished.emit()
-
-func _add_checkpoint_label(index, time) -> void:
-	var label = Label.new()
-	label.text = str("Checkpoint ", index, ": ", TimeHelper.format_time_ms(time))
-	checkpoint_time_labels.add_child(label)
