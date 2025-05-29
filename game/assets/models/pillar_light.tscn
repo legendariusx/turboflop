@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ly5txd370i8a"]
 
-[ext_resource type="Material" uid="uid://dti4jqmjack7a" path="res://assets/materials/PillarLightGreen.tres" id="1_hdkrw"]
+[ext_resource type="Material" uid="uid://bcik4ab3xd5lm" path="res://assets/materials/PillarLightRed.tres" id="1_hdkrw"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_ke0ac"]
 

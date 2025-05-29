@@ -26,6 +26,7 @@ const CAR_SCENE = preload("res://vehicles/car.scn")
 @onready var track_ui: TrackUI = $TrackUI
 
 @onready var last_checkpoint: Checkpoint = start_node
+@onready var checkpoint_index: int = -1
 
 @onready var personal_best_state = PersonalBestState.new(track_id)
 @onready var user_data = UserDataState.new()
@@ -61,7 +62,8 @@ func _ready() -> void:
 	if SpacetimeDB.is_connected_db():
 		if not GameState.current_user: await GameState.current_user_upated
 		player_vehicle.set_owner_data(GameState.identity, GameState.current_user.name)
-		
+	
+	_set_next_checkpoint()
 	# TODO: implement starting from user input
 	_start()
 
@@ -86,6 +88,7 @@ func _start():
 	last_checkpoint = start_node
 	for checkpoint in checkpoints.get_children() + finishes.get_children():
 		(checkpoint as Checkpoint).was_entered = false
+		(checkpoint as Checkpoint).set_red_light()
 	
 	track_ui.reset()
 	camera.start()
@@ -155,6 +158,7 @@ func _on_checkpoint_entered(checkpoint: Checkpoint):
 	last_checkpoint = checkpoint
 	
 	track_ui.on_checkpoint_entered(checkpoint_times.size() - 1, time)
+	_set_next_checkpoint()
 	checkpoint_sound.play()
 
 func _on_finish_entered():
@@ -173,3 +177,15 @@ func _on_finish_entered():
 	
 	PersonalBest.update_personal_best(track_id, finish_time, checkpoint_times)
 	finished.emit()
+
+func _set_next_checkpoint():
+	checkpoint_index += 1
+	var checkpoint_instances = checkpoints.get_children()
+	
+	if checkpoint_index < checkpoint_instances.size():
+		checkpoint_instances[checkpoint_index].set_orange_light()
+	else:
+		for finish in finishes.get_children():
+			finish.set_orange_light()
+		
+		

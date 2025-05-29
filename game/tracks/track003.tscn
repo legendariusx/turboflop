@@ -17,17 +17,32 @@ transform = Transform3D(0.699801, 0, -0.714339, 0, 1, 0, 0.714339, 0, 0.699801, 
 [node name="Car" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.4772, 0, -42.6389)
 
-[node name="Checkpoint" parent="Checkpoints" index="0" instance=ExtResource("2_qu104")]
-transform = Transform3D(0.597527, 0, 0.801849, 0, 1, 0, -0.801849, 0, 0.597527, -33.2249, -0.0913386, 61.0009)
+[node name="Checkpoint2" parent="Checkpoints" index="0" instance=ExtResource("2_qu104")]
+transform = Transform3D(-0.410672, 0, 0.911784, 0, 1, 0, -0.911784, 0, -0.410672, 20.3299, -0.126095, 68.9361)
 
-[node name="Checkpoint2" parent="Checkpoints" index="1" instance=ExtResource("2_qu104")]
-transform = Transform3D(-0.230322, 0, 0.973115, 0, 1, 0, -0.973115, 0, -0.230322, 14.5382, -0.126095, 70.0656)
+[node name="Checkpoint3" parent="Checkpoints" index="1" instance=ExtResource("2_qu104")]
+transform = Transform3D(0.972337, 0, -0.233581, 0, 1, 0, 0.233581, 0, 0.972337, 46.6043, 4.23829, 32.5672)
 
-[node name="Checkpoint3" parent="Checkpoints" index="2" instance=ExtResource("2_qu104")]
-transform = Transform3D(0.983315, 0, 0.18191, 0, 1, 0, -0.18191, 0, 0.983315, 46.6199, 4.50339, 32.622)
+[node name="Checkpoint5" parent="Checkpoints" index="2" instance=ExtResource("2_qu104")]
+transform = Transform3D(-0.912371, -0.154646, -0.379031, -0.143992, 0.987965, -0.0564879, 0.383205, 0.00303955, -0.923658, 74.3548, -0.0723088, -51.6055)
+
+[node name="Checkpoint6" parent="Checkpoints" index="3" instance=ExtResource("2_qu104")]
+transform = Transform3D(0.313199, 0.0180374, -0.949516, -0.0512308, 0.998685, 0.00207287, 0.948305, 0.0479953, 0.313711, -25.2308, 0.0794177, -75.5888)
+
+[node name="Checkpoint7" parent="Checkpoints" index="4" instance=ExtResource("2_qu104")]
+transform = Transform3D(0.944135, 0, -0.329559, 0, 1, 0, 0.329559, 0, 0.944135, -61.5676, 0.0835225, -25.5651)
+
+[node name="Checkpoint8" parent="Checkpoints" index="5" instance=ExtResource("2_qu104")]
+transform = Transform3D(0.977948, 0, 0.208851, 0, 1, 0, -0.208851, 0, 0.977948, -72.0857, -0.105497, 43.2012)
+
+[node name="Checkpoint" parent="Checkpoints" index="6" instance=ExtResource("2_qu104")]
+transform = Transform3D(0.269623, 0.041686, 0.962063, -0.298861, 0.953352, 0.0424487, -0.915416, -0.298969, 0.269504, -49.6859, 2.77476, 86.2385)
+
+[node name="Checkpoint4" parent="Checkpoints" index="7" instance=ExtResource("2_qu104")]
+transform = Transform3D(-0.936819, 0, 0.349815, 0, 1, 0, -0.349815, 0, -0.936819, -3.12935, -0.112796, 34.0726)
 
 [node name="Finish" parent="Finishes" index="0" instance=ExtResource("2_7j01r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.788, 0.0506732, 17.7423)
+transform = Transform3D(-0.99367, 0, 0.112336, 0, 1, 0, -0.112336, 0, -0.99367, 18.4606, 1.33035, -74.6559)
 
 [node name="Terrain" parent="." index="8" instance=ExtResource("2_mn4nu")]
 
