@@ -7,6 +7,6 @@
 [node name="Main" type="Node3D"]
 script = ExtResource("1_53q0u")
 
-[node name="LoadingScreen" parent="." instance=ExtResource("2_xwkvk")]
-
 [node name="MainMenu" parent="." instance=ExtResource("3_c651c")]
+
+[node name="LoadingScreen" parent="." instance=ExtResource("2_xwkvk")]

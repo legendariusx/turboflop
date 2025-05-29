@@ -14,6 +14,7 @@ func show_connection_failed() -> void:
 	$CenterContainer/VBoxContainer/ButtonContainer.visible = true
 
 func _on_play_offline_pressed() -> void:
+	GameState.current_user = User.new()
 	play_offline.emit()
 
 func _on_try_again_pressed() -> void:

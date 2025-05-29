@@ -40,6 +40,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 15
 alignment = 1
+metadata/_edit_group_ = true
 
 [node name="PlayOffline" type="Button" parent="CenterContainer/VBoxContainer/ButtonContainer"]
 layout_mode = 2

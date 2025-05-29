@@ -21,6 +21,8 @@ func _init():
 	if SpacetimeDB.get_local_identity() == null:
 		await SpacetimeDB.identity_received
 		
+	current_user = User.new()
+		
 	identity = SpacetimeDB.get_local_identity().identity
 	identity_updated.emit(identity)
 	
