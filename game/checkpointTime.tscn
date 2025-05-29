@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://cdjqiigcb5o62"]
-
-[node name="CheckpointTime" type="Label"]
-text = "---"
-horizontal_alignment = 1

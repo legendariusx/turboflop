@@ -6,6 +6,8 @@ signal track_selected(track_id: int)
 
 const USERNAME_MIN_LENGTH = 4
 
+@export var track_select_scene: PackedScene
+
 @onready var username_container = $CenterContainer/VBoxContainer/UsernameContainer
 @onready var name_input = $CenterContainer/VBoxContainer/UsernameContainer/HBoxContainer/NameInput
 @onready var confirm_button = $CenterContainer/VBoxContainer/UsernameContainer/HBoxContainer/Confirm
@@ -35,7 +37,7 @@ func _render_track_selection():
 		var file_name = dir.get_next()
 		var i = 1
 		while file_name != "":
-			var new_button = Button.new()
+			var new_button = track_select_scene.instantiate()
 			new_button.text = file_name.replace("track", "").replace(".tscn", "").replace(".remap", "")
 			new_button.pressed.connect(func(): track_selected.emit(i))
 			track_container.add_child(new_button)
