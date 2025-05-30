@@ -25,9 +25,6 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"back_to_menu"):
 		main_menu.display(SpacetimeDB.is_connected_db())
 		if current_track:
-			# FIXME: very ugly fix because _exit_tree was not called on children
-			current_track.personal_best_state._exit_tree()
-			current_track.user_data._exit_tree()
 			# FIXME: could probably be handled better than just deleting the current track
 			# TODO: implement menu as menu rendered on top of track
 			current_track.queue_free()

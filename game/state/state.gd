@@ -14,9 +14,15 @@ var data: Array[Resource] = []:
 	get():
 		return SpacetimeDB.get_local_database().get_all_rows(table_name)
 
-func _init() -> void:
+func _init(parent: Node = null) -> void:
 	assert(table_name != "", "table_name has to be set")
 	assert(query != "", "query has to be set")
+	
+	if parent:
+		print(parent)
+		if not parent.is_node_ready():
+			await parent.ready
+		parent.add_child(self)
 	
 	if not SpacetimeDB.is_connected_db():
 		await SpacetimeDB.connected

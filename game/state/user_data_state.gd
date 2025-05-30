@@ -2,7 +2,7 @@ class_name UserDataState
 
 extends State
 
-func _init() -> void:
+func _init(parent: Node) -> void:
 	table_name = "user_data"
 	query = "SELECT * FROM user_data"
-	super._init()
+	super._init(parent)

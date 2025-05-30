@@ -26,10 +26,9 @@ const CAR_SCENE = preload("res://vehicles/car.scn")
 @onready var track_ui: TrackUI = $TrackUI
 
 @onready var last_checkpoint: Checkpoint = start_node
-@onready var checkpoint_index: int = -1
 
-@onready var personal_best_state = PersonalBestState.new(track_id)
-@onready var user_data = UserDataState.new()
+@onready var personal_best_state = PersonalBestState.new(self, track_id)
+@onready var user_data = UserDataState.new(self)
 
 @export var track_id: int = -1
 
@@ -38,6 +37,7 @@ var started_at: int
 var checkpoint_times: Array[int] = [0]
 # FIXME bit of an ugly fix to allow player position updates based on _input
 var respawn_location: Checkpoint
+var checkpoint_index: int = -1
 
 func _ready() -> void:
 	# verify parent type
@@ -161,12 +161,16 @@ func _on_checkpoint_entered(checkpoint: Checkpoint):
 	_set_next_checkpoint()
 	checkpoint_sound.play()
 
-func _on_finish_entered():
+func _on_finish_entered(finish: Finish):
 	# store time immediately to minimize time increases due to process updates
 	var finish_time = Time.get_ticks_msec() - started_at
 	
 	# check if all checkpoints were entered
-	if not checkpoints.get_children().all(func(cp: Checkpoint): return cp.was_entered): return
+	if not checkpoints.get_children().all(func(cp: Checkpoint): return cp.was_entered):
+		# FIXME: ugly way of resetting finish if not all checkpoints were entered
+		finish.was_entered = false
+		finish.set_red_light()
+		return
 	
 	_update_track_state(TrackState.FINISHED)
 	
@@ -187,5 +191,3 @@ func _set_next_checkpoint():
 	else:
 		for finish in finishes.get_children():
 			finish.set_orange_light()
-		
-		
