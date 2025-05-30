@@ -8,5 +8,6 @@
 script = ExtResource("1_53q0u")
 
 [node name="MainMenu" parent="." instance=ExtResource("3_c651c")]
+visible = false
 
 [node name="LoadingScreen" parent="." instance=ExtResource("2_xwkvk")]

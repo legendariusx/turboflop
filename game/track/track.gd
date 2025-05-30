@@ -176,7 +176,7 @@ func _on_finish_entered():
 	camera.stop()
 	
 	PersonalBest.update_personal_best(track_id, finish_time, checkpoint_times)
-	finished.emit()
+	finished.emit(finish_time)
 
 func _set_next_checkpoint():
 	checkpoint_index += 1
