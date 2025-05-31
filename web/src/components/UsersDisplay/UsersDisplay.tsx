@@ -1,14 +1,13 @@
-import { memo } from 'react';
 import { Block, Check, PersonRemove } from '@mui/icons-material';
-import { DataGrid, GridColDef, GridEventListener, GridRowEditStopReasons, GridRowModel } from '@mui/x-data-grid';
-import { Identity } from '@clockworklabs/spacetimedb-sdk';
-import { Checkbox, IconButton, Tooltip, Typography } from '@mui/material';
+import { Checkbox, IconButton, Tooltip } from '@mui/material';
+import { DataGrid, GridColDef, GridRowModel } from '@mui/x-data-grid';
+import { memo } from 'react';
 
-import useUserData from '../hooks/useUserData';
-
-import { formatVector3 } from '../lib/helpers';
-import { useAppSelector } from '../redux/hooks';
-import { User, UserData } from '../module_bindings';
+import useUserData from '../../hooks/useUserData';
+import { formatIdentity, formatVector3 } from '../../lib/helpers';
+import { User, UserData } from '../../module_bindings';
+import { useAppSelector } from '../../redux/hooks';
+import SectionTitle from '../SectionTitle/SectionTitle';
 
 interface Props {
     users: Map<string, User>;
@@ -25,7 +24,7 @@ const UsersDisplay = ({ users }: Props) => {
             field: 'identity',
             headerName: 'Identity',
             flex: 1,
-            valueGetter: (value: Identity) => value.toHexString().substring(0, 8),
+            valueGetter: formatIdentity,
         },
         {
             field: 'name',
@@ -108,7 +107,7 @@ const UsersDisplay = ({ users }: Props) => {
 
     return (
         <div>
-            <Typography variant="h4">Users</Typography>
+            <SectionTitle title='Users' />
             <DataGrid
                 columns={columns}
                 rows={mappedUsers}

@@ -10,6 +10,8 @@ import './index.scss';
 import { store } from './redux/store';
 import App from './App';
 import defaultTheme from './lib/defaultTheme';
+import { ErrorBoundary } from 'react-error-boundary';
+import ErrorBoundaryFallback from './components/ErrorBoundaryFallback/ErrorBoundaryFallback';
 
 const Root = () => (
     <React.StrictMode>
@@ -17,7 +19,9 @@ const Root = () => (
             <ThemeProvider theme={defaultTheme}>
                 <BrowserRouter>
                     <ToastContainer autoClose={3000} theme="colored" />
-                    <App />
+                    <ErrorBoundary FallbackComponent={ErrorBoundaryFallback}>
+                        <App />
+                    </ErrorBoundary>
                 </BrowserRouter>
             </ThemeProvider>
         </Provider>

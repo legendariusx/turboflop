@@ -1,0 +1,12 @@
+.user-information {
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        &__admin-token {
+            display: flex;
+            gap: 0.5rem;
+        }
+    }
+}

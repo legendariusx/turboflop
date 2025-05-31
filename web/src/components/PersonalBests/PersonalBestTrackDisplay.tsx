@@ -1,12 +1,11 @@
-import { Identity } from '@clockworklabs/spacetimedb-sdk';
 import { DeleteForever } from '@mui/icons-material';
-import { IconButton, Tooltip, Typography } from '@mui/material';
+import { IconButton, Tooltip } from '@mui/material';
 import { DataGrid, GridColDef, GridComparatorFn, GridSortDirection } from '@mui/x-data-grid';
 import { memo, useMemo } from 'react';
 
-import { formatTime } from '../lib/helpers';
-import { PersonalBest, User } from '../module_bindings';
-import { useAppSelector } from '../redux/hooks';
+import { formatIdentity, formatTime } from '../../lib/helpers';
+import { PersonalBest, User } from '../../module_bindings';
+import { useAppSelector } from '../../redux/hooks';
 
 const getPersonalBestSort = (sortDirection: GridSortDirection): GridComparatorFn => {
     if (sortDirection == 'desc') return (a: bigint, b: bigint) => Number(b) - Number(a);
@@ -19,7 +18,7 @@ interface Props {
     users: Map<string, User>;
 }
 
-const PersonalBestsDisplay = ({ hidden, personalBests, users }: Props) => {
+const PersonalBestTrackDisplay = ({ hidden, personalBests, users }: Props) => {
     const { conn } = useAppSelector((state) => state.spacetime);
 
     const currentUser = conn?.identity ? users.get(conn?.identity.toHexString()) : null;
@@ -36,7 +35,7 @@ const PersonalBestsDisplay = ({ hidden, personalBests, users }: Props) => {
             field: 'identity',
             headerName: 'Identity',
             flex: 2,
-            valueGetter: (value: Identity) => value.toHexString().substring(0, 8),
+            valueGetter: formatIdentity,
         },
         {
             field: 'name',
@@ -105,4 +104,4 @@ const PersonalBestsDisplay = ({ hidden, personalBests, users }: Props) => {
     );
 };
 
-export default memo(PersonalBestsDisplay);
+export default memo(PersonalBestTrackDisplay);
