@@ -1,8 +1,9 @@
 import { DeleteForever } from '@mui/icons-material';
 import { IconButton, Tooltip } from '@mui/material';
-import { DataGrid, GridColDef, GridComparatorFn, GridSortDirection } from '@mui/x-data-grid';
+import { DataGrid, GridColDef, GridComparatorFn, GridFilterInputValue, GridSortDirection } from '@mui/x-data-grid';
 import { memo, useMemo } from 'react';
 
+import createGridFilterOperator from '../../lib/createGridFilterOperator';
 import { formatIdentity, formatTime } from '../../lib/helpers';
 import { PersonalBest, User } from '../../module_bindings';
 import { useAppSelector } from '../../redux/hooks';
@@ -30,23 +31,39 @@ const PersonalBestTrackDisplay = ({ hidden, personalBests, users }: Props) => {
             flex: 1,
             align: 'center',
             headerAlign: 'center',
+            filterable: false,
+            hideable: false,
         },
         {
             field: 'identity',
             headerName: 'Identity',
             flex: 2,
             valueGetter: formatIdentity,
+            filterable: false,
+            hideable: false,
         },
         {
             field: 'name',
             headerName: 'Name',
             flex: 6,
+            hideable: false,
+            filterOperators: [
+                createGridFilterOperator(GridFilterInputValue),
+                createGridFilterOperator<string>(
+                    GridFilterInputValue,
+                    'Includes',
+                    'includes',
+                    (value, filterValue) => !filterValue || value.includes(filterValue)
+                ),
+            ],
         },
         {
             field: 'time',
             headerName: 'Time',
             flex: 4,
             valueFormatter: formatTime,
+            filterable: false,
+            hideable: false,
             getSortComparator: (sortDirection) => getPersonalBestSort(sortDirection),
             sortingOrder: ['asc', 'desc'],
         },
@@ -56,6 +73,10 @@ const PersonalBestTrackDisplay = ({ hidden, personalBests, users }: Props) => {
             flex: 1,
             headerAlign: 'center',
             align: 'center',
+            disableColumnMenu: true,
+            hideable: false,
+            filterable: false,
+            sortable: false,
             renderCell: (params) => (
                 <Tooltip title="Delete Personal Best" placement="top">
                     <span>
@@ -98,7 +119,10 @@ const PersonalBestTrackDisplay = ({ hidden, personalBests, users }: Props) => {
                     sorting: {
                         sortModel: [{ field: 'time', sort: 'asc' }],
                     },
+                    pagination: { paginationModel: { pageSize: 10 } },
                 }}
+                hideFooter={mappedPersonalBests.length < 10}
+                pageSizeOptions={[10]}
             />
         </div>
     );
