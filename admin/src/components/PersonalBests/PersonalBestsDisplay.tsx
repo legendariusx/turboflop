@@ -1,6 +1,6 @@
 import { Tab, Tabs } from '@mui/material';
 import { groupBy } from 'lodash';
-import { memo, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 
 import usePersonalBests from '../../hooks/usePersonalBests';
 import { PersonalBest, User } from '../../module_bindings';
@@ -17,6 +17,17 @@ const PersonalBestsDisplay = ({ users }: Props) => {
     const { conn } = useAppSelector((state) => state.spacetime);
 
     const personalBests = usePersonalBests(conn);
+
+    useEffect(() => {
+        const trackIds: number[] = []
+        for (const pb of personalBests.values()) {
+            if (!trackIds.includes(Number(pb.trackId))) trackIds.push(Number(pb.trackId))
+        }
+
+        if (personalBests.size > 0 && !trackIds.includes(parseInt(selectedTab))) {
+            setSelectedTab(Math.min(...trackIds).toString())
+        } 
+    }, [personalBests])
 
     const groupedPersonalBests: { [key: string]: PersonalBest[] } = groupBy(
         [...personalBests.values()].map((p) => ({ ...p, trackId: Number(p.trackId) })),
