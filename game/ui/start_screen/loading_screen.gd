@@ -6,10 +6,12 @@ signal play_offline
 signal try_again
 
 func show_connecting():
+	visible = true
 	$CenterContainer/VBoxContainer/ConnectionStatus.text = "Connecting..."
 	$CenterContainer/VBoxContainer/ButtonContainer.visible = false
 
 func show_connection_failed() -> void:
+	visible = true
 	$CenterContainer/VBoxContainer/ConnectionStatus.text = "Connection failed"
 	$CenterContainer/VBoxContainer/ButtonContainer.visible = true
 

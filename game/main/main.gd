@@ -13,6 +13,7 @@ var current_track: Track
 func _ready() -> void:
 	SpacetimeDB.connected.connect(func(): spacetime_connection_callback.emit(true))
 	SpacetimeDB.connection_error.connect(func(_code: int, _reason: String): spacetime_connection_callback.emit(false))
+	SpacetimeDB.disconnected.connect(_on_disconnected)
 	
 	loading_screen.play_offline.connect(func(): _transition_to_main_menu(false))
 	loading_screen.try_again.connect(_connect)
@@ -37,7 +38,7 @@ func _connect():
 		"http://localhost:3000",
 		"turboflop",
 		SpacetimeDBConnection.CompressionPreference.NONE,
-		true,
+		false,
 		true
 	)
 	
@@ -58,3 +59,8 @@ func _load_track(track_id: int):
 func _transition_to_main_menu(connected: bool):
 	loading_screen.visible = false
 	main_menu.display(connected)
+
+func _on_disconnected():
+	if current_track:
+		current_track.queue_free()
+	loading_screen.show_connection_failed()

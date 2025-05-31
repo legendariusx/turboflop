@@ -35,6 +35,9 @@ func _on_user_update(user: User):
 	if user.identity == identity:
 		current_user = user
 		current_user_upated.emit(current_user)
+		
+		if not user.online or user.banned:
+			SpacetimeDB.disconnect_db()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("cycle_opponent_visibility"):
