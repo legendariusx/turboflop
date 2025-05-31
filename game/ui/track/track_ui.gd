@@ -21,8 +21,13 @@ func _ready():
 	if not parent.is_node_ready(): await parent.ready
 	
 	parent.finished.connect(_on_finished)
+	
 	personal_best_state = parent.personal_best_state
-	personal_best_state.update.connect(_on_personal_best_updated)
+	personal_best_state.update.connect(func(_row): _update_ui())
+	personal_best_state.delete.connect(func(_row): _update_ui())
+	
+	UserState.update.connect(func(_row): _update_ui())
+	UserState.delete.connect(func(_row): _update_ui())
 	
 	scoreboard.set_column_title(0, "#")
 	scoreboard.set_column_title(1, "Player")
@@ -58,7 +63,7 @@ func _on_finished(time: int):
 	_add_checkpoint_label("🏁", time)
 	_show_checkpoint_time("🏁", (get_parent() as Track).checkpoint_times.size() - 1, time, true)
 
-func _on_personal_best_updated(_row: PersonalBest):
+func _update_ui():
 	scoreboard.clear()
 	var tree_root = scoreboard.create_item()
 	
