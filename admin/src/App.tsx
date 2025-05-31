@@ -1,14 +1,15 @@
 import { Paper } from '@mui/material';
 import { useEffect } from 'react';
 
+import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
+import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner';
 import Home from './pages/Home';
 import { useAppDispatch, useAppSelector } from './redux/hooks';
 import { RootState } from './redux/store';
 import { initSpacetimeConnection } from './redux/thunks/spacetimeThunk';
 
 import './App.scss';
-import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner';
 
 const App = () => {
     const dispatch = useAppDispatch();
@@ -26,7 +27,7 @@ const App = () => {
             <main className={'layout__main'}>
                 {isConnected ? <Home /> : <LoadingSpinner message="Connecting..." />}
             </main>
-            {/* <Footer {...footerProps} /> */}
+            <Footer />
         </Paper>
     );
 };
