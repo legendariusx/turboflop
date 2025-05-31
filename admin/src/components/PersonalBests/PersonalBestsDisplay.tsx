@@ -19,24 +19,21 @@ const PersonalBestsDisplay = ({ users }: Props) => {
     const personalBests = usePersonalBests(conn);
 
     useEffect(() => {
-        const trackIds: number[] = []
+        const trackIds: number[] = [];
         for (const pb of personalBests.values()) {
-            if (!trackIds.includes(Number(pb.trackId))) trackIds.push(Number(pb.trackId))
+            if (!trackIds.includes(Number(pb.trackId))) trackIds.push(Number(pb.trackId));
         }
 
         if (personalBests.size > 0 && !trackIds.includes(parseInt(selectedTab))) {
-            setSelectedTab(Math.min(...trackIds).toString())
-        } 
-    }, [personalBests])
+            setSelectedTab(Math.min(...trackIds).toString());
+        }
+    }, [personalBests]);
 
-    const groupedPersonalBests: { [key: string]: PersonalBest[] } = groupBy(
-        [...personalBests.values()].map((p) => ({ ...p, trackId: Number(p.trackId) })),
-        'trackId'
-    );
+    const groupedPersonalBests: { [key: string]: PersonalBest[] } = groupBy([...personalBests.values()], 'trackId');
 
     return (
         <div>
-            <SectionTitle title='Personal Bests' />
+            <SectionTitle title="Personal Bests" />
 
             <Tabs value={selectedTab} onChange={(_, newValue) => setSelectedTab(newValue)}>
                 {Object.entries(groupedPersonalBests).map((g) => (
