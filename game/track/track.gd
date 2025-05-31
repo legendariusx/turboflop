@@ -82,6 +82,9 @@ func _input(event: InputEvent) -> void:
 	elif event.is_action_pressed(&"reset"):
 		_start()
 
+func _exit_tree() -> void:
+	UserData.set_user_data(Vector3.ZERO, Vector3.ZERO, Vector3.ZERO, Vector3.ZERO, false, 0)
+
 func _start():
 	# reset track state
 	checkpoint_times.assign([0])
