@@ -14,7 +14,7 @@ const getPersonalBestSort = (sortDirection: GridSortDirection): GridComparatorFn
 interface Props {
     trackId: number;
     personalBests: PersonalBest[];
-    users: Map<string, User >
+    users: Map<string, User>;
 }
 
 const PersonalBestsDisplay = ({ trackId, personalBests, users }: Props) => {
@@ -22,22 +22,25 @@ const PersonalBestsDisplay = ({ trackId, personalBests, users }: Props) => {
         {
             field: 'placement',
             headerName: '#',
+            flex: 1,
+            align: 'center',
+            headerAlign: 'center',
         },
         {
             field: 'identity',
             headerName: 'Identity',
-            flex: 1,
+            flex: 2,
             valueGetter: (value: Identity) => value.toHexString().substring(0, 8),
         },
         {
             field: 'name',
             headerName: 'Name',
-            flex: 2,
+            flex: 6,
         },
         {
             field: 'time',
             headerName: 'Time',
-            flex: 1,
+            flex: 4,
             valueFormatter: formatTime,
             getSortComparator: (sortDirection) => getPersonalBestSort(sortDirection),
             sortingOrder: ['asc', 'desc'],
@@ -49,12 +52,14 @@ const PersonalBestsDisplay = ({ trackId, personalBests, users }: Props) => {
         [personalBests]
     );
 
-    const mappedPersonalBests: ({ placement: number } & User & PersonalBest)[] = sortedPersonalBests
-        .reduce((acc: ({ placement: number } & User & PersonalBest)[], pb, index) => {
+    const mappedPersonalBests: ({ placement: number } & User & PersonalBest)[] = sortedPersonalBests.reduce(
+        (acc: ({ placement: number } & User & PersonalBest)[], pb, index) => {
             const user = users.get(pb.identity.toHexString());
             if (user) acc.push({ placement: index + 1, ...pb, ...user });
             return acc;
-        }, []);
+        },
+        []
+    );
 
     return (
         <div>
