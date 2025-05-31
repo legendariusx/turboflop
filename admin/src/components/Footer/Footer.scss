@@ -1,0 +1,24 @@
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: calc(100% - 2rem);
+    padding: 0.5rem 1rem;
+    height: calc(var(--ldx-footer-height) - 1rem);
+    max-height: calc(var(--ldx-footer-height) - 1rem);
+
+    z-index: 100;
+
+    display: flex;
+    gap: 1em;
+
+    justify-content: space-between;
+    align-items: center;
+
+    border-top: 2px solid var(--mui-palette-divider);
+
+    background-image: none !important;
+
+    &__item {
+        color: var(--mui-palette-text-secondary);
+    }
+}
