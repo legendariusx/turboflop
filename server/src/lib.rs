@@ -94,6 +94,18 @@ pub fn set_name(ctx: &ReducerContext, name: String) -> Result<(), String> {
     }
 }
 
+#[reducer]
+/// Clients invoke this reducer to set another users name.
+pub fn set_name_for(ctx: &ReducerContext, identity: Identity, name: String) -> Result<(), String> {
+    let name = validate_name(name)?;
+    if let Some(user) = ctx.db.user().identity().find(identity) {
+        ctx.db.user().identity().update(User { name: name, ..user });
+        Ok(())
+    } else {
+        Err("Cannot set name for unknown user".to_string())
+    }
+}
+
 /// Takes a name and checks if it's acceptable as a user's name.
 fn validate_name(name: String) -> Result<String, String> {
     if name.is_empty() {

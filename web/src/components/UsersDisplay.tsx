@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { PersonRemove } from '@mui/icons-material';
-import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import { DataGrid, GridColDef, GridEventListener, GridRowEditStopReasons, GridRowModel } from '@mui/x-data-grid';
 import { Identity } from '@clockworklabs/spacetimedb-sdk';
 import { Checkbox, IconButton, Tooltip, Typography } from '@mui/material';
 
@@ -29,6 +29,7 @@ const UsersDisplay = ({ users }: Props) => {
             field: 'name',
             headerName: 'Name',
             flex: 2,
+            editable: true,
         },
         {
             field: 'online',
@@ -74,6 +75,11 @@ const UsersDisplay = ({ users }: Props) => {
         },
     ];
 
+    const processRowUpdate = (newRow: GridRowModel<User & UserData>) => {
+        conn?.reducers.setNameFor(newRow.identity, newRow.name);
+        return newRow;
+    };
+
     const mappedUsers: (User & UserData)[] = users.values().reduce((acc: (User & UserData)[], user) => {
         const data = userData.get(user.identity.toHexString());
         if (data) acc.push({ ...user, ...data });
@@ -88,6 +94,12 @@ const UsersDisplay = ({ users }: Props) => {
                 rows={mappedUsers}
                 disableRowSelectionOnClick={true}
                 getRowId={(row) => row.identity.toHexString()}
+                processRowUpdate={processRowUpdate}
+                initialState={{
+                    sorting: {
+                        sortModel: [{ field: 'identity', sort: 'asc' }],
+                    },
+                }}
             />
         </div>
     );

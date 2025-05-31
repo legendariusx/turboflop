@@ -40,6 +40,8 @@ import { KickPlayer } from "./kick_player_reducer.ts";
 export { KickPlayer };
 import { SetName } from "./set_name_reducer.ts";
 export { SetName };
+import { SetNameFor } from "./set_name_for_reducer.ts";
+export { SetNameFor };
 import { SetUserData } from "./set_user_data_reducer.ts";
 export { SetUserData };
 import { UpdatePersonalBest } from "./update_personal_best_reducer.ts";
@@ -98,6 +100,10 @@ const REMOTE_MODULE = {
       reducerName: "set_name",
       argsType: SetName.getTypeScriptAlgebraicType(),
     },
+    set_name_for: {
+      reducerName: "set_name_for",
+      argsType: SetNameFor.getTypeScriptAlgebraicType(),
+    },
     set_user_data: {
       reducerName: "set_user_data",
       argsType: SetUserData.getTypeScriptAlgebraicType(),
@@ -137,6 +143,7 @@ export type Reducer = never
 | { name: "IdentityDisconnected", args: IdentityDisconnected }
 | { name: "KickPlayer", args: KickPlayer }
 | { name: "SetName", args: SetName }
+| { name: "SetNameFor", args: SetNameFor }
 | { name: "SetUserData", args: SetUserData }
 | { name: "UpdatePersonalBest", args: UpdatePersonalBest }
 ;
@@ -192,6 +199,22 @@ export class RemoteReducers {
     this.connection.offReducer("set_name", callback);
   }
 
+  setNameFor(identity: Identity, name: string) {
+    const __args = { identity, name };
+    let __writer = new BinaryWriter(1024);
+    SetNameFor.getTypeScriptAlgebraicType().serialize(__writer, __args);
+    let __argsBuffer = __writer.getBuffer();
+    this.connection.callReducer("set_name_for", __argsBuffer, this.setCallReducerFlags.setNameForFlags);
+  }
+
+  onSetNameFor(callback: (ctx: ReducerEventContext, identity: Identity, name: string) => void) {
+    this.connection.onReducer("set_name_for", callback);
+  }
+
+  removeOnSetNameFor(callback: (ctx: ReducerEventContext, identity: Identity, name: string) => void) {
+    this.connection.offReducer("set_name_for", callback);
+  }
+
   setUserData(position: Vector3, rotation: Vector3, linearVelocity: Vector3, angularVelocity: Vector3, isActive: boolean, trackId: number) {
     const __args = { position, rotation, linearVelocity, angularVelocity, isActive, trackId };
     let __writer = new BinaryWriter(1024);
@@ -235,6 +258,11 @@ export class SetReducerFlags {
   setNameFlags: CallReducerFlags = 'FullUpdate';
   setName(flags: CallReducerFlags) {
     this.setNameFlags = flags;
+  }
+
+  setNameForFlags: CallReducerFlags = 'FullUpdate';
+  setNameFor(flags: CallReducerFlags) {
+    this.setNameForFlags = flags;
   }
 
   setUserDataFlags: CallReducerFlags = 'FullUpdate';

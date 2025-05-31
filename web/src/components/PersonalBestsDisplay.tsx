@@ -69,6 +69,11 @@ const PersonalBestsDisplay = ({ trackId, personalBests, users }: Props) => {
                 rows={mappedPersonalBests}
                 disableRowSelectionOnClick={true}
                 getRowId={(row) => row.identity.toHexString()}
+                initialState={{
+                    sorting: {
+                        sortModel: [{ field: 'time', sort: 'asc' }],
+                    },
+                }}
             />
         </div>
     );
