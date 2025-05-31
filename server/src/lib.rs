@@ -1,6 +1,6 @@
 pub mod types;
 
-use spacetimedb::{Identity, ReducerContext, Table, Timestamp, reducer, table};
+use spacetimedb::{DbContext, Identity, ReducerContext, Table, Timestamp, reducer, table};
 use types::vector3::Vector3;
 
 #[table(name = user, public)]
@@ -79,13 +79,7 @@ pub fn identity_disconnected(ctx: &ReducerContext) {
     }
 
     // set user inactive
-    if let Some(user_data) = ctx.db.user_data().identity().find(ctx.sender) {
-        ctx.db.user_data().identity().update(UserData {
-            is_active: false,
-            track_id: 0,
-            ..user_data
-        });
-    }
+    reset_user_data(ctx, ctx.sender);
 }
 
 #[reducer]
@@ -109,6 +103,32 @@ fn validate_name(name: String) -> Result<String, String> {
     }
 }
 
+#[reducer]
+pub fn kick_player(ctx: &ReducerContext, identity: Identity) {
+    if let Some(user) = ctx.db.user().identity().find(identity) {
+        ctx.db.user().identity().update(User {
+            online: false,
+            ..user
+        });
+    }
+
+    reset_user_data(ctx, identity);
+}
+
+pub fn reset_user_data(ctx: &ReducerContext, identity: Identity) {
+    if let Some(user_data) = ctx.db.user_data().identity().find(identity) {
+        ctx.db.user_data().identity().update(UserData {
+            position: Vector3::ZERO,
+            rotation: Vector3::ZERO,
+            linear_velocity: Vector3::ZERO,
+            angular_velocity: Vector3::ZERO,
+            is_active: false,
+            track_id: 0,
+            ..user_data
+        });
+    }
+}
+
 // Updates user data
 // TODO: could probably be split up to reduce size of individual calls
 #[reducer]
@@ -120,7 +140,13 @@ pub fn set_user_data(
     angular_velocity: Vector3,
     is_active: bool,
     track_id: u8,
-) {
+) -> Result<(), String> {
+    match ctx.db().user().identity().find(ctx.sender) {
+        Some(user) if user.online => user,
+        Some(_) => return Err("Disconnected user cannot update user data".to_string()),
+        None => return Err("User not found".to_string()),
+    };
+
     if let Some(user_data) = ctx.db.user_data().identity().find(ctx.sender) {
         ctx.db.user_data().identity().update(UserData {
             position: position,
@@ -142,10 +168,17 @@ pub fn set_user_data(
             track_id: track_id,
         });
     }
+
+    Ok(())
 }
 
 #[reducer]
-pub fn update_personal_best(ctx: &ReducerContext, track_id: u64, time: u64, checkpoint_times: Vec<u64>) {
+pub fn update_personal_best(
+    ctx: &ReducerContext,
+    track_id: u64,
+    time: u64,
+    checkpoint_times: Vec<u64>,
+) {
     // filter personal bests on track_id to find user identity
     // (unfortunately spacetimedb does not allow find with multiple properties)
     if let Some(personal_best) = ctx
@@ -173,7 +206,7 @@ pub fn update_personal_best(ctx: &ReducerContext, track_id: u64, time: u64, chec
             track_id: track_id,
             time: time,
             date: ctx.timestamp,
-            checkpoint_times
+            checkpoint_times,
         });
     }
 }

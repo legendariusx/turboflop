@@ -1,7 +1,8 @@
 import { memo } from 'react';
-import { Checkbox, Typography } from '@mui/material';
+import { PersonRemove } from '@mui/icons-material';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { Identity } from '@clockworklabs/spacetimedb-sdk';
+import { Checkbox, IconButton, Tooltip, Typography } from '@mui/material';
 
 import useUsers from '../hooks/useUsers';
 import useUserData from '../hooks/useUserData';
@@ -47,16 +48,35 @@ const UsersDisplay = () => {
         {
             field: 'position',
             headerName: 'Position',
-            flex: 3,
-            valueGetter: formatVector3
+            flex: 2,
+            valueGetter: formatVector3,
+        },
+        {
+            field: 'actions',
+            headerName: 'Actions',
+            flex: 1,
+            headerAlign: 'center',
+            align: 'center',
+            renderCell: (params) => (
+                <Tooltip title="Kick Player" placement="top">
+                    <span>
+                        <IconButton
+                            onClick={() => conn?.reducers.kickPlayer(params.row.identity)}
+                            disabled={!params.row.online}
+                        >
+                            <PersonRemove />
+                        </IconButton>
+                    </span>
+                </Tooltip>
+            ),
         },
     ];
 
     const mappedUsers: (User & UserData)[] = users.values().reduce((acc: (User & UserData)[], user) => {
-        const data = userData.get(user.identity.toHexString())
-        if (data) acc.push({ ...user, ...data })
-        return acc
-    }, [])
+        const data = userData.get(user.identity.toHexString());
+        if (data) acc.push({ ...user, ...data });
+        return acc;
+    }, []);
 
     return (
         <div>

@@ -36,6 +36,8 @@ import { ClientConnected } from "./client_connected_reducer.ts";
 export { ClientConnected };
 import { IdentityDisconnected } from "./identity_disconnected_reducer.ts";
 export { IdentityDisconnected };
+import { KickPlayer } from "./kick_player_reducer.ts";
+export { KickPlayer };
 import { SetName } from "./set_name_reducer.ts";
 export { SetName };
 import { SetUserData } from "./set_user_data_reducer.ts";
@@ -88,6 +90,10 @@ const REMOTE_MODULE = {
       reducerName: "identity_disconnected",
       argsType: IdentityDisconnected.getTypeScriptAlgebraicType(),
     },
+    kick_player: {
+      reducerName: "kick_player",
+      argsType: KickPlayer.getTypeScriptAlgebraicType(),
+    },
     set_name: {
       reducerName: "set_name",
       argsType: SetName.getTypeScriptAlgebraicType(),
@@ -129,6 +135,7 @@ const REMOTE_MODULE = {
 export type Reducer = never
 | { name: "ClientConnected", args: ClientConnected }
 | { name: "IdentityDisconnected", args: IdentityDisconnected }
+| { name: "KickPlayer", args: KickPlayer }
 | { name: "SetName", args: SetName }
 | { name: "SetUserData", args: SetUserData }
 | { name: "UpdatePersonalBest", args: UpdatePersonalBest }
@@ -151,6 +158,22 @@ export class RemoteReducers {
 
   removeOnIdentityDisconnected(callback: (ctx: ReducerEventContext) => void) {
     this.connection.offReducer("identity_disconnected", callback);
+  }
+
+  kickPlayer(identity: Identity) {
+    const __args = { identity };
+    let __writer = new BinaryWriter(1024);
+    KickPlayer.getTypeScriptAlgebraicType().serialize(__writer, __args);
+    let __argsBuffer = __writer.getBuffer();
+    this.connection.callReducer("kick_player", __argsBuffer, this.setCallReducerFlags.kickPlayerFlags);
+  }
+
+  onKickPlayer(callback: (ctx: ReducerEventContext, identity: Identity) => void) {
+    this.connection.onReducer("kick_player", callback);
+  }
+
+  removeOnKickPlayer(callback: (ctx: ReducerEventContext, identity: Identity) => void) {
+    this.connection.offReducer("kick_player", callback);
   }
 
   setName(name: string) {
@@ -204,6 +227,11 @@ export class RemoteReducers {
 }
 
 export class SetReducerFlags {
+  kickPlayerFlags: CallReducerFlags = 'FullUpdate';
+  kickPlayer(flags: CallReducerFlags) {
+    this.kickPlayerFlags = flags;
+  }
+
   setNameFlags: CallReducerFlags = 'FullUpdate';
   setName(flags: CallReducerFlags) {
     this.setNameFlags = flags;
