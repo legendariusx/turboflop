@@ -14,12 +14,12 @@ const getPersonalBestSort = (sortDirection: GridSortDirection): GridComparatorFn
 };
 
 interface Props {
-    trackId: number;
+    hidden: boolean;
     personalBests: PersonalBest[];
     users: Map<string, User>;
 }
 
-const PersonalBestsDisplay = ({ trackId, personalBests, users }: Props) => {
+const PersonalBestsDisplay = ({ hidden, personalBests, users }: Props) => {
     const { conn } = useAppSelector((state) => state.spacetime);
 
     const currentUser = conn?.identity ? users.get(conn?.identity.toHexString()) : null;
@@ -86,9 +86,10 @@ const PersonalBestsDisplay = ({ trackId, personalBests, users }: Props) => {
         []
     );
 
+    if (hidden) return null;
+
     return (
         <div>
-            <Typography>Track {trackId}</Typography>
             <DataGrid
                 columns={columns}
                 rows={mappedPersonalBests}

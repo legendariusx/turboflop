@@ -1,4 +1,4 @@
-import { Button, Container, TextField, Typography } from '@mui/material';
+import { Button, Container, Tab, Tabs, TextField, Typography } from '@mui/material';
 import { groupBy } from 'lodash';
 import { useEffect, useState } from 'react';
 
@@ -15,6 +15,7 @@ import defaultTheme from './lib/defaultTheme';
 
 const App = () => {
     const [adminToken, setAdminToken] = useState('');
+    const [selectedTab, setSelectedTab] = useState('1');
 
     const dispatch = useAppDispatch();
     const { isConnected, identity, error, conn } = useAppSelector((state: RootState) => state.spacetime);
@@ -63,8 +64,14 @@ const App = () => {
             <UsersDisplay users={users} />
             <div>
                 <Typography variant="h4">Personal Bests</Typography>
+                <Tabs value={selectedTab} onChange={(_, newValue) => setSelectedTab(newValue)}>
+                    {Object.entries(groupedPersonalBests).map((g) => (
+                        <Tab key={g[0]} value={g[0]} label={`Track ${g[0]}`} />
+                    ))}
+                </Tabs>
+
                 {Object.entries(groupedPersonalBests).map((g) => (
-                    <PersonalBestsDisplay key={g[0]} trackId={parseInt(g[0])} personalBests={g[1]} users={users} />
+                    <PersonalBestsDisplay key={g[0]} hidden={g[0].toString() !== selectedTab} personalBests={g[1]} users={users} />
                 ))}
             </div>
         </Container>
