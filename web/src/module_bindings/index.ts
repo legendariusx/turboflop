@@ -36,6 +36,8 @@ import { AuthenticateAdmin } from "./authenticate_admin_reducer.ts";
 export { AuthenticateAdmin };
 import { ClientConnected } from "./client_connected_reducer.ts";
 export { ClientConnected };
+import { DeletePersonalBest } from "./delete_personal_best_reducer.ts";
+export { DeletePersonalBest };
 import { IdentityDisconnected } from "./identity_disconnected_reducer.ts";
 export { IdentityDisconnected };
 import { KickPlayer } from "./kick_player_reducer.ts";
@@ -105,6 +107,10 @@ const REMOTE_MODULE = {
       reducerName: "client_connected",
       argsType: ClientConnected.getTypeScriptAlgebraicType(),
     },
+    delete_personal_best: {
+      reducerName: "delete_personal_best",
+      argsType: DeletePersonalBest.getTypeScriptAlgebraicType(),
+    },
     identity_disconnected: {
       reducerName: "identity_disconnected",
       argsType: IdentityDisconnected.getTypeScriptAlgebraicType(),
@@ -162,6 +168,7 @@ const REMOTE_MODULE = {
 export type Reducer = never
 | { name: "AuthenticateAdmin", args: AuthenticateAdmin }
 | { name: "ClientConnected", args: ClientConnected }
+| { name: "DeletePersonalBest", args: DeletePersonalBest }
 | { name: "IdentityDisconnected", args: IdentityDisconnected }
 | { name: "KickPlayer", args: KickPlayer }
 | { name: "SetName", args: SetName }
@@ -196,6 +203,22 @@ export class RemoteReducers {
 
   removeOnClientConnected(callback: (ctx: ReducerEventContext) => void) {
     this.connection.offReducer("client_connected", callback);
+  }
+
+  deletePersonalBest(id: bigint) {
+    const __args = { id };
+    let __writer = new BinaryWriter(1024);
+    DeletePersonalBest.getTypeScriptAlgebraicType().serialize(__writer, __args);
+    let __argsBuffer = __writer.getBuffer();
+    this.connection.callReducer("delete_personal_best", __argsBuffer, this.setCallReducerFlags.deletePersonalBestFlags);
+  }
+
+  onDeletePersonalBest(callback: (ctx: ReducerEventContext, id: bigint) => void) {
+    this.connection.onReducer("delete_personal_best", callback);
+  }
+
+  removeOnDeletePersonalBest(callback: (ctx: ReducerEventContext, id: bigint) => void) {
+    this.connection.offReducer("delete_personal_best", callback);
   }
 
   onIdentityDisconnected(callback: (ctx: ReducerEventContext) => void) {
@@ -308,6 +331,11 @@ export class SetReducerFlags {
   authenticateAdminFlags: CallReducerFlags = 'FullUpdate';
   authenticateAdmin(flags: CallReducerFlags) {
     this.authenticateAdminFlags = flags;
+  }
+
+  deletePersonalBestFlags: CallReducerFlags = 'FullUpdate';
+  deletePersonalBest(flags: CallReducerFlags) {
+    this.deletePersonalBestFlags = flags;
   }
 
   kickPlayerFlags: CallReducerFlags = 'FullUpdate';

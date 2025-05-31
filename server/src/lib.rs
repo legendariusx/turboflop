@@ -3,8 +3,8 @@ pub mod validation;
 
 use spacetimedb::{DbContext, Identity, ReducerContext, Table, Timestamp, reducer, table};
 use types::vector3::Vector3;
-use validation::name::validate_name;
 use validation::admin::is_admin;
+use validation::name::validate_name;
 
 #[table(name = user, public)]
 pub struct User {
@@ -13,7 +13,7 @@ pub struct User {
     name: String,
     online: bool,
     admin: bool,
-    banned: bool
+    banned: bool,
 }
 
 #[table(name = user_data, public)]
@@ -117,7 +117,7 @@ pub fn client_connected(ctx: &ReducerContext) -> Result<(), String> {
             name: String::from(""),
             online: true,
             admin: false,
-            banned: false
+            banned: false,
         });
     }
     Ok(())
@@ -227,7 +227,11 @@ pub fn kick_player(ctx: &ReducerContext, identity: Identity) -> Result<(), Strin
 }
 
 #[reducer]
-pub fn set_player_banned(ctx: &ReducerContext, identity: Identity, banned: bool) -> Result<(), String> {
+pub fn set_player_banned(
+    ctx: &ReducerContext,
+    identity: Identity,
+    banned: bool,
+) -> Result<(), String> {
     is_admin(ctx)?;
 
     if let Some(user) = ctx.db.user().identity().find(identity) {
@@ -335,5 +339,17 @@ pub fn update_personal_best(
             date: ctx.timestamp,
             checkpoint_times,
         });
+    }
+}
+
+#[reducer]
+pub fn delete_personal_best(ctx: &ReducerContext, id: u64) -> Result<(), String> {
+    is_admin(ctx)?;
+
+    let res = ctx.db.personal_best().id().delete(id);
+    if res {
+        Ok(())
+    } else {
+        Err("Personal best not found".to_string())
     }
 }

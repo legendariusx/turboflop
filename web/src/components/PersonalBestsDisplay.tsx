@@ -1,10 +1,12 @@
-import { memo, useMemo } from 'react';
-import { DataGrid, GridColDef, GridComparatorFn, GridSortDirection } from '@mui/x-data-grid';
 import { Identity } from '@clockworklabs/spacetimedb-sdk';
-import { Typography } from '@mui/material';
+import { DeleteForever } from '@mui/icons-material';
+import { IconButton, Tooltip, Typography } from '@mui/material';
+import { DataGrid, GridColDef, GridComparatorFn, GridSortDirection } from '@mui/x-data-grid';
+import { memo, useMemo } from 'react';
 
-import { PersonalBest, User } from '../module_bindings';
 import { formatTime } from '../lib/helpers';
+import { PersonalBest, User } from '../module_bindings';
+import { useAppSelector } from '../redux/hooks';
 
 const getPersonalBestSort = (sortDirection: GridSortDirection): GridComparatorFn => {
     if (sortDirection == 'desc') return (a: bigint, b: bigint) => Number(b) - Number(a);
@@ -18,6 +20,10 @@ interface Props {
 }
 
 const PersonalBestsDisplay = ({ trackId, personalBests, users }: Props) => {
+    const { conn } = useAppSelector((state) => state.spacetime);
+
+    const currentUser = conn?.identity ? users.get(conn?.identity.toHexString()) : null;
+
     const columns: GridColDef<{ placement: number } & User & PersonalBest>[] = [
         {
             field: 'placement',
@@ -44,6 +50,25 @@ const PersonalBestsDisplay = ({ trackId, personalBests, users }: Props) => {
             valueFormatter: formatTime,
             getSortComparator: (sortDirection) => getPersonalBestSort(sortDirection),
             sortingOrder: ['asc', 'desc'],
+        },
+        {
+            field: 'actions',
+            headerName: 'Actions',
+            flex: 1,
+            headerAlign: 'center',
+            align: 'center',
+            renderCell: (params) => (
+                <Tooltip title="Delete Personal Best" placement="top">
+                    <span>
+                        <IconButton
+                            onClick={() => conn?.reducers.deletePersonalBest(params.row.id)}
+                            disabled={!currentUser?.admin}
+                        >
+                            <DeleteForever />
+                        </IconButton>
+                    </span>
+                </Tooltip>
+            ),
         },
     ];
 
