@@ -13,6 +13,7 @@ pub struct User {
     name: String,
     online: bool,
     admin: bool,
+    banned: bool
 }
 
 #[table(name = user_data, public)]
@@ -98,10 +99,12 @@ fn generate_secure_token(ctx: &ReducerContext) -> String {
 
 #[reducer(client_connected)]
 // Called when a client connects to a SpacetimeDB database server
-pub fn client_connected(ctx: &ReducerContext) {
+pub fn client_connected(ctx: &ReducerContext) -> Result<(), String> {
     if let Some(user) = ctx.db.user().identity().find(ctx.sender) {
-        // If this is a returning user, i.e. we already have a `User` with this `Identity`,
-        // set `online: true`, but leave `name` and `identity` unchanged.
+        if user.banned {
+            return Err("User is banned.".to_string());
+        }
+
         ctx.db.user().identity().update(User {
             online: true,
             ..user
@@ -114,8 +117,10 @@ pub fn client_connected(ctx: &ReducerContext) {
             name: String::from(""),
             online: true,
             admin: false,
+            banned: false
         });
     }
+    Ok(())
 }
 
 #[reducer(client_disconnected)]
@@ -213,6 +218,22 @@ pub fn kick_player(ctx: &ReducerContext, identity: Identity) -> Result<(), Strin
     if let Some(user) = ctx.db.user().identity().find(identity) {
         ctx.db.user().identity().update(User {
             online: false,
+            ..user
+        });
+    }
+
+    reset_user_data(ctx, identity);
+    Ok(())
+}
+
+#[reducer]
+pub fn set_player_banned(ctx: &ReducerContext, identity: Identity, banned: bool) -> Result<(), String> {
+    is_admin(ctx)?;
+
+    if let Some(user) = ctx.db.user().identity().find(identity) {
+        ctx.db.user().identity().update(User {
+            online: false,
+            banned: banned,
             ..user
         });
     }

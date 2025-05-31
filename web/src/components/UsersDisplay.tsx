@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { PersonRemove } from '@mui/icons-material';
+import { Block, Check, PersonRemove } from '@mui/icons-material';
 import { DataGrid, GridColDef, GridEventListener, GridRowEditStopReasons, GridRowModel } from '@mui/x-data-grid';
 import { Identity } from '@clockworklabs/spacetimedb-sdk';
 import { Checkbox, IconButton, Tooltip, Typography } from '@mui/material';
@@ -40,6 +40,12 @@ const UsersDisplay = ({ users }: Props) => {
             renderCell: (params) => <Checkbox checked={params.row.online} disabled />,
         },
         {
+            field: 'banned',
+            headerName: 'Banned',
+            flex: 1,
+            renderCell: (params) => <Checkbox checked={params.row.banned} disabled />,
+        },
+        {
             field: 'isActive',
             headerName: 'Active',
             flex: 1,
@@ -63,16 +69,28 @@ const UsersDisplay = ({ users }: Props) => {
             headerAlign: 'center',
             align: 'center',
             renderCell: (params) => (
-                <Tooltip title="Kick Player" placement="top">
-                    <span>
-                        <IconButton
-                            onClick={() => conn?.reducers.kickPlayer(params.row.identity)}
-                            disabled={!params.row.online || !currentUser?.admin}
-                        >
-                            <PersonRemove />
-                        </IconButton>
-                    </span>
-                </Tooltip>
+                <div>
+                    <Tooltip title="Kick Player" placement="top">
+                        <span>
+                            <IconButton
+                                onClick={() => conn?.reducers.kickPlayer(params.row.identity)}
+                                disabled={!params.row.online || !currentUser?.admin}
+                            >
+                                <PersonRemove />
+                            </IconButton>
+                        </span>
+                    </Tooltip>
+                    <Tooltip title={params.row.banned ? 'Unban Player' : 'Ban Player'} placement="top">
+                        <span>
+                            <IconButton
+                                onClick={() => conn?.reducers.setPlayerBanned(params.row.identity, !params.row.banned)}
+                                disabled={!currentUser?.admin}
+                            >
+                                {params.row.banned ? <Check /> : <Block />}
+                            </IconButton>
+                        </span>
+                    </Tooltip>
+                </div>
             ),
         },
     ];

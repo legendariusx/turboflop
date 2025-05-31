@@ -1,16 +1,17 @@
-import { useEffect, useState } from 'react';
-import { groupBy } from 'lodash';
 import { Button, Container, TextField, Typography } from '@mui/material';
+import { groupBy } from 'lodash';
+import { useEffect, useState } from 'react';
 
-import { RootState } from './redux/store';
 import { useAppDispatch, useAppSelector } from './redux/hooks';
+import { RootState } from './redux/store';
 import { initSpacetimeConnection } from './redux/thunks/spacetimeThunk';
 
-import UsersDisplay from './components/UsersDisplay';
 import PersonalBestsDisplay from './components/PersonalBestsDisplay';
+import UsersDisplay from './components/UsersDisplay';
 import usePersonalBests from './hooks/usePersonalBests';
-import { PersonalBest } from './module_bindings';
 import useUsers from './hooks/useUsers';
+import { PersonalBest } from './module_bindings';
+import defaultTheme from './lib/defaultTheme';
 
 const App = () => {
     const [adminToken, setAdminToken] = useState('');

@@ -44,6 +44,8 @@ import { SetName } from "./set_name_reducer.ts";
 export { SetName };
 import { SetNameFor } from "./set_name_for_reducer.ts";
 export { SetNameFor };
+import { SetPlayerBanned } from "./set_player_banned_reducer.ts";
+export { SetPlayerBanned };
 import { SetUserData } from "./set_user_data_reducer.ts";
 export { SetUserData };
 import { UpdatePersonalBest } from "./update_personal_best_reducer.ts";
@@ -119,6 +121,10 @@ const REMOTE_MODULE = {
       reducerName: "set_name_for",
       argsType: SetNameFor.getTypeScriptAlgebraicType(),
     },
+    set_player_banned: {
+      reducerName: "set_player_banned",
+      argsType: SetPlayerBanned.getTypeScriptAlgebraicType(),
+    },
     set_user_data: {
       reducerName: "set_user_data",
       argsType: SetUserData.getTypeScriptAlgebraicType(),
@@ -160,6 +166,7 @@ export type Reducer = never
 | { name: "KickPlayer", args: KickPlayer }
 | { name: "SetName", args: SetName }
 | { name: "SetNameFor", args: SetNameFor }
+| { name: "SetPlayerBanned", args: SetPlayerBanned }
 | { name: "SetUserData", args: SetUserData }
 | { name: "UpdatePersonalBest", args: UpdatePersonalBest }
 ;
@@ -247,6 +254,22 @@ export class RemoteReducers {
     this.connection.offReducer("set_name_for", callback);
   }
 
+  setPlayerBanned(identity: Identity, banned: boolean) {
+    const __args = { identity, banned };
+    let __writer = new BinaryWriter(1024);
+    SetPlayerBanned.getTypeScriptAlgebraicType().serialize(__writer, __args);
+    let __argsBuffer = __writer.getBuffer();
+    this.connection.callReducer("set_player_banned", __argsBuffer, this.setCallReducerFlags.setPlayerBannedFlags);
+  }
+
+  onSetPlayerBanned(callback: (ctx: ReducerEventContext, identity: Identity, banned: boolean) => void) {
+    this.connection.onReducer("set_player_banned", callback);
+  }
+
+  removeOnSetPlayerBanned(callback: (ctx: ReducerEventContext, identity: Identity, banned: boolean) => void) {
+    this.connection.offReducer("set_player_banned", callback);
+  }
+
   setUserData(position: Vector3, rotation: Vector3, linearVelocity: Vector3, angularVelocity: Vector3, isActive: boolean, trackId: number) {
     const __args = { position, rotation, linearVelocity, angularVelocity, isActive, trackId };
     let __writer = new BinaryWriter(1024);
@@ -300,6 +323,11 @@ export class SetReducerFlags {
   setNameForFlags: CallReducerFlags = 'FullUpdate';
   setNameFor(flags: CallReducerFlags) {
     this.setNameForFlags = flags;
+  }
+
+  setPlayerBannedFlags: CallReducerFlags = 'FullUpdate';
+  setPlayerBanned(flags: CallReducerFlags) {
+    this.setPlayerBannedFlags = flags;
   }
 
   setUserDataFlags: CallReducerFlags = 'FullUpdate';

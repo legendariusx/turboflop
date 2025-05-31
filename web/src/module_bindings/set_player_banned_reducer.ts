@@ -30,18 +30,16 @@ import {
   Timestamp,
   deepEqual,
 } from "@clockworklabs/spacetimedb-sdk";
-export type User = {
+
+export type SetPlayerBanned = {
   identity: Identity,
-  name: string,
-  online: boolean,
-  admin: boolean,
   banned: boolean,
 };
 
 /**
  * A namespace for generated helper functions.
  */
-export namespace User {
+export namespace SetPlayerBanned {
   /**
   * A function which returns this type represented as an AlgebraicType.
   * This function is derived from the AlgebraicType used to generate this type.
@@ -49,21 +47,17 @@ export namespace User {
   export function getTypeScriptAlgebraicType(): AlgebraicType {
     return AlgebraicType.createProductType([
       new ProductTypeElement("identity", AlgebraicType.createIdentityType()),
-      new ProductTypeElement("name", AlgebraicType.createStringType()),
-      new ProductTypeElement("online", AlgebraicType.createBoolType()),
-      new ProductTypeElement("admin", AlgebraicType.createBoolType()),
       new ProductTypeElement("banned", AlgebraicType.createBoolType()),
     ]);
   }
 
-  export function serialize(writer: BinaryWriter, value: User): void {
-    User.getTypeScriptAlgebraicType().serialize(writer, value);
+  export function serialize(writer: BinaryWriter, value: SetPlayerBanned): void {
+    SetPlayerBanned.getTypeScriptAlgebraicType().serialize(writer, value);
   }
 
-  export function deserialize(reader: BinaryReader): User {
-    return User.getTypeScriptAlgebraicType().deserialize(reader);
+  export function deserialize(reader: BinaryReader): SetPlayerBanned {
+    return SetPlayerBanned.getTypeScriptAlgebraicType().deserialize(reader);
   }
 
 }
-
 
