@@ -1,6 +1,6 @@
 {
-    "name": "react-ts-boilerplate",
-    "version": "3.2.0",
+    "name": "turboflop-web",
+    "version": "0.0.1",
     "private": true,
     "dependencies": {
         "@clockworklabs/spacetimedb-sdk": "^1.1.0",
