@@ -32,6 +32,8 @@ import {
 } from "@clockworklabs/spacetimedb-sdk";
 
 // Import and reexport all reducer arg types
+import { AuthenticateAdmin } from "./authenticate_admin_reducer.ts";
+export { AuthenticateAdmin };
 import { ClientConnected } from "./client_connected_reducer.ts";
 export { ClientConnected };
 import { IdentityDisconnected } from "./identity_disconnected_reducer.ts";
@@ -50,6 +52,8 @@ export { UpdatePersonalBest };
 // Import and reexport all table handle types
 import { PersonalBestTableHandle } from "./personal_best_table.ts";
 export { PersonalBestTableHandle };
+import { SettingTableHandle } from "./setting_table.ts";
+export { SettingTableHandle };
 import { UserTableHandle } from "./user_table.ts";
 export { UserTableHandle };
 import { UserDataTableHandle } from "./user_data_table.ts";
@@ -58,6 +62,8 @@ export { UserDataTableHandle };
 // Import and reexport all types
 import { PersonalBest } from "./personal_best_type.ts";
 export { PersonalBest };
+import { Setting } from "./setting_type.ts";
+export { Setting };
 import { User } from "./user_type.ts";
 export { User };
 import { UserData } from "./user_data_type.ts";
@@ -72,6 +78,11 @@ const REMOTE_MODULE = {
       rowType: PersonalBest.getTypeScriptAlgebraicType(),
       primaryKey: "id",
     },
+    setting: {
+      tableName: "setting",
+      rowType: Setting.getTypeScriptAlgebraicType(),
+      primaryKey: "key",
+    },
     user: {
       tableName: "user",
       rowType: User.getTypeScriptAlgebraicType(),
@@ -84,6 +95,10 @@ const REMOTE_MODULE = {
     },
   },
   reducers: {
+    authenticate_admin: {
+      reducerName: "authenticate_admin",
+      argsType: AuthenticateAdmin.getTypeScriptAlgebraicType(),
+    },
     client_connected: {
       reducerName: "client_connected",
       argsType: ClientConnected.getTypeScriptAlgebraicType(),
@@ -139,6 +154,7 @@ const REMOTE_MODULE = {
 
 // A type representing all the possible variants of a reducer.
 export type Reducer = never
+| { name: "AuthenticateAdmin", args: AuthenticateAdmin }
 | { name: "ClientConnected", args: ClientConnected }
 | { name: "IdentityDisconnected", args: IdentityDisconnected }
 | { name: "KickPlayer", args: KickPlayer }
@@ -150,6 +166,22 @@ export type Reducer = never
 
 export class RemoteReducers {
   constructor(private connection: DbConnectionImpl, private setCallReducerFlags: SetReducerFlags) {}
+
+  authenticateAdmin(token: string) {
+    const __args = { token };
+    let __writer = new BinaryWriter(1024);
+    AuthenticateAdmin.getTypeScriptAlgebraicType().serialize(__writer, __args);
+    let __argsBuffer = __writer.getBuffer();
+    this.connection.callReducer("authenticate_admin", __argsBuffer, this.setCallReducerFlags.authenticateAdminFlags);
+  }
+
+  onAuthenticateAdmin(callback: (ctx: ReducerEventContext, token: string) => void) {
+    this.connection.onReducer("authenticate_admin", callback);
+  }
+
+  removeOnAuthenticateAdmin(callback: (ctx: ReducerEventContext, token: string) => void) {
+    this.connection.offReducer("authenticate_admin", callback);
+  }
 
   onClientConnected(callback: (ctx: ReducerEventContext) => void) {
     this.connection.onReducer("client_connected", callback);
@@ -250,6 +282,11 @@ export class RemoteReducers {
 }
 
 export class SetReducerFlags {
+  authenticateAdminFlags: CallReducerFlags = 'FullUpdate';
+  authenticateAdmin(flags: CallReducerFlags) {
+    this.authenticateAdminFlags = flags;
+  }
+
   kickPlayerFlags: CallReducerFlags = 'FullUpdate';
   kickPlayer(flags: CallReducerFlags) {
     this.kickPlayerFlags = flags;
@@ -282,6 +319,10 @@ export class RemoteTables {
 
   get personalBest(): PersonalBestTableHandle {
     return new PersonalBestTableHandle(this.connection.clientCache.getOrCreateTable<PersonalBest>(REMOTE_MODULE.tables.personal_best));
+  }
+
+  get setting(): SettingTableHandle {
+    return new SettingTableHandle(this.connection.clientCache.getOrCreateTable<Setting>(REMOTE_MODULE.tables.setting));
   }
 
   get user(): UserTableHandle {

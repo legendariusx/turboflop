@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { groupBy } from 'lodash';
-import { Container, Typography } from '@mui/material';
+import { Button, Container, TextField, Typography } from '@mui/material';
 
 import { RootState } from './redux/store';
 import { useAppDispatch, useAppSelector } from './redux/hooks';
@@ -13,6 +13,8 @@ import { PersonalBest } from './module_bindings';
 import useUsers from './hooks/useUsers';
 
 const App = () => {
+    const [adminToken, setAdminToken] = useState('');
+
     const dispatch = useAppDispatch();
     const { isConnected, identity, error, conn } = useAppSelector((state: RootState) => state.spacetime);
 
@@ -31,10 +33,32 @@ const App = () => {
         'trackId'
     );
 
+    const isAdmin = conn?.identity && users.get(conn.identity.toHexString())?.admin;
+
+    const onSubmitAdminToken = () => {
+        conn?.reducers.authenticateAdmin(adminToken);
+    };
+
     return (
         <Container>
             <Typography variant="h4">TurboFlop Web</Typography>
-            <Typography>Connected as: {identity?.toHexString()}</Typography>
+
+            <Typography>Connected as: {identity?.toHexString().substring(0, 8)}</Typography>
+            <div>
+                <Typography>Admin: {isAdmin ? 'Yes' : 'No'}</Typography>
+                {!isAdmin && (
+                    <Container sx={{ display: 'flex', gap: '1rem', ml: 0, paddingLeft: 0 }}>
+                        <TextField
+                            label="Admin token"
+                            value={adminToken}
+                            onChange={(event) => setAdminToken(event.target.value)}
+                        />
+                        <Button variant="contained" onClick={() => onSubmitAdminToken()}>
+                            Submit
+                        </Button>
+                    </Container>
+                )}
+            </div>
             <UsersDisplay users={users} />
             <div>
                 <Typography variant="h4">Personal Bests</Typography>

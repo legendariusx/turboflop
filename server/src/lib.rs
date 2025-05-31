@@ -1,7 +1,10 @@
 pub mod types;
+pub mod validation;
 
 use spacetimedb::{DbContext, Identity, ReducerContext, Table, Timestamp, reducer, table};
 use types::vector3::Vector3;
+use validation::name::validate_name;
+use validation::admin::is_admin;
 
 #[table(name = user, public)]
 pub struct User {
@@ -9,6 +12,7 @@ pub struct User {
     identity: Identity,
     name: String,
     online: bool,
+    admin: bool,
 }
 
 #[table(name = user_data, public)]
@@ -40,6 +44,58 @@ pub struct PersonalBest {
     date: Timestamp,
 }
 
+#[table(name = setting)]
+pub struct Setting {
+    #[primary_key]
+    key: String,
+    value: String,
+}
+
+const ADMIN_TOKEN_SETTING_KEY: &str = "ADMIN_TOKEN";
+
+#[reducer(init)]
+pub fn init(ctx: &ReducerContext) {
+    let new_admin_token = generate_secure_token(ctx);
+
+    match ctx
+        .db
+        .setting()
+        .key()
+        .find(ADMIN_TOKEN_SETTING_KEY.to_string())
+    {
+        Some(existing_setting) => {
+            ctx.db.setting().key().update(Setting {
+                value: new_admin_token.clone(),
+                ..existing_setting
+            });
+        }
+        None => {
+            ctx.db.setting().insert(Setting {
+                key: ADMIN_TOKEN_SETTING_KEY.to_string(),
+                value: new_admin_token.clone(),
+            });
+        }
+    }
+
+    log::info!("New admin token: {}", new_admin_token);
+}
+
+fn generate_secure_token(ctx: &ReducerContext) -> String {
+    use spacetimedb::rand::Rng;
+    let mut rng = ctx.rng();
+
+    (0..32)
+        .map(|_| {
+            let n = rng.gen_range(0..36);
+            if n < 10 {
+                (b'0' + n) as char
+            } else {
+                (b'A' + n - 10) as char
+            }
+        })
+        .collect()
+}
+
 #[reducer(client_connected)]
 // Called when a client connects to a SpacetimeDB database server
 pub fn client_connected(ctx: &ReducerContext) {
@@ -57,6 +113,7 @@ pub fn client_connected(ctx: &ReducerContext) {
             identity: ctx.sender,
             name: String::from(""),
             online: true,
+            admin: false,
         });
     }
 }
@@ -83,6 +140,47 @@ pub fn identity_disconnected(ctx: &ReducerContext) {
 }
 
 #[reducer]
+pub fn authenticate_admin(ctx: &ReducerContext, token: String) -> Result<(), String> {
+    // search admin token setting
+    match ctx
+        .db
+        .setting()
+        .key()
+        .find(ADMIN_TOKEN_SETTING_KEY.to_string())
+    {
+        Some(admin_token_setting) => {
+            // check if tokens match
+            if admin_token_setting.value == token {
+                // if yes, find user in database and update admin state
+                match ctx.db.user().identity().find(ctx.sender) {
+                    Some(user) => {
+                        ctx.db.user().identity().update(User {
+                            admin: true,
+                            ..user
+                        });
+                        Ok(())
+                    }
+                    // return error if user not found, should not be possible
+                    None => {
+                        log::error!("User not found in database!");
+                        return Err("Unknown exception occurred".to_string());
+                    }
+                }
+            }
+            // return error if token does not match
+            else {
+                return Err("Invalid admin token".to_string());
+            }
+        }
+        // return error if no setting was found
+        None => {
+            log::error!("No admin token set!");
+            return Err("Unknown exception occurred".to_string());
+        }
+    }
+}
+
+#[reducer]
 /// Clients invoke this reducer to set their user names.
 pub fn set_name(ctx: &ReducerContext, name: String) -> Result<(), String> {
     let name = validate_name(name)?;
@@ -97,6 +195,8 @@ pub fn set_name(ctx: &ReducerContext, name: String) -> Result<(), String> {
 #[reducer]
 /// Clients invoke this reducer to set another users name.
 pub fn set_name_for(ctx: &ReducerContext, identity: Identity, name: String) -> Result<(), String> {
+    is_admin(ctx)?;
+
     let name = validate_name(name)?;
     if let Some(user) = ctx.db.user().identity().find(identity) {
         ctx.db.user().identity().update(User { name: name, ..user });
@@ -106,17 +206,10 @@ pub fn set_name_for(ctx: &ReducerContext, identity: Identity, name: String) -> R
     }
 }
 
-/// Takes a name and checks if it's acceptable as a user's name.
-fn validate_name(name: String) -> Result<String, String> {
-    if name.is_empty() {
-        Err("Names must not be empty".to_string())
-    } else {
-        Ok(name)
-    }
-}
-
 #[reducer]
-pub fn kick_player(ctx: &ReducerContext, identity: Identity) {
+pub fn kick_player(ctx: &ReducerContext, identity: Identity) -> Result<(), String> {
+    is_admin(ctx)?;
+
     if let Some(user) = ctx.db.user().identity().find(identity) {
         ctx.db.user().identity().update(User {
             online: false,
@@ -125,6 +218,7 @@ pub fn kick_player(ctx: &ReducerContext, identity: Identity) {
     }
 
     reset_user_data(ctx, identity);
+    Ok(())
 }
 
 pub fn reset_user_data(ctx: &ReducerContext, identity: Identity) {

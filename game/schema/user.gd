@@ -5,6 +5,7 @@ extends Resource
 @export var identity: PackedByteArray
 @export var name: String
 @export var online: bool
+@export var admin: bool
 
 func _init():
 	set_meta("table_name", "user")

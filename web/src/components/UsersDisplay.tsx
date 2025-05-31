@@ -18,6 +18,8 @@ const UsersDisplay = ({ users }: Props) => {
     const { conn } = useAppSelector((state) => state.spacetime);
     const userData = useUserData(conn);
 
+    const currentUser = conn?.identity ? users.get(conn?.identity.toHexString()) : null;
+
     const columns: GridColDef<User & UserData>[] = [
         {
             field: 'identity',
@@ -29,7 +31,7 @@ const UsersDisplay = ({ users }: Props) => {
             field: 'name',
             headerName: 'Name',
             flex: 2,
-            editable: true,
+            editable: currentUser?.admin,
         },
         {
             field: 'online',
@@ -65,7 +67,7 @@ const UsersDisplay = ({ users }: Props) => {
                     <span>
                         <IconButton
                             onClick={() => conn?.reducers.kickPlayer(params.row.identity)}
-                            disabled={!params.row.online}
+                            disabled={!params.row.online || !currentUser?.admin}
                         >
                             <PersonRemove />
                         </IconButton>
