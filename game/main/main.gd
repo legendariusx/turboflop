@@ -64,3 +64,4 @@ func _on_disconnected():
 	if current_track:
 		current_track.queue_free()
 	loading_screen.show_connection_failed()
+	main_menu.hide()
