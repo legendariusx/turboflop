@@ -4,16 +4,18 @@ import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { Identity } from '@clockworklabs/spacetimedb-sdk';
 import { Checkbox, IconButton, Tooltip, Typography } from '@mui/material';
 
-import useUsers from '../hooks/useUsers';
 import useUserData from '../hooks/useUserData';
 
 import { formatVector3 } from '../lib/helpers';
 import { useAppSelector } from '../redux/hooks';
 import { User, UserData } from '../module_bindings';
 
-const UsersDisplay = () => {
+interface Props {
+    users: Map<string, User>;
+}
+
+const UsersDisplay = ({ users }: Props) => {
     const { conn } = useAppSelector((state) => state.spacetime);
-    const users = useUsers(conn);
     const userData = useUserData(conn);
 
     const columns: GridColDef<User & UserData>[] = [

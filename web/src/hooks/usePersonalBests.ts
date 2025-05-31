@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { DbConnection, EventContext, PersonalBest } from '../module_bindings';
 
-const usePersonalBests = (conn: DbConnection | null, trackId: number): Map<string, PersonalBest> => {
+const usePersonalBests = (conn: DbConnection | null): Map<string, PersonalBest> => {
     const [personalBests, setPersonalBests] = useState<Map<string, PersonalBest>>(new Map());
     // spacetimedb does not export the SubscriptionHandleImpl type necessary to give this the correct type...
     let subscription: any = null;
@@ -9,24 +9,25 @@ const usePersonalBests = (conn: DbConnection | null, trackId: number): Map<strin
     useEffect(() => {
         if (!conn) return;
 
-        subscription = conn?.subscriptionBuilder().subscribe([`SELECT * FROM personal_best WHERE track_id=${trackId}`]);
+        let queryString = `SELECT * FROM personal_best`
+        subscription = conn?.subscriptionBuilder().subscribe([queryString]);
 
         const onInsert = (_ctx: EventContext, personalBest: PersonalBest) => {
-            setPersonalBests((prev) => new Map(prev.set(personalBest.identity.toHexString(), personalBest)));
+            setPersonalBests((prev) => new Map(prev.set(personalBest.id.toString(), personalBest)));
         };
         conn.db.personalBest.onInsert(onInsert);
 
         const onUpdate = (_ctx: EventContext, oldPersonalBest: PersonalBest, newPersonalBest: PersonalBest) => {
             setPersonalBests((prev) => {
-                prev.delete(oldPersonalBest.identity.toHexString());
-                return new Map(prev.set(newPersonalBest.identity.toHexString(), newPersonalBest));
+                prev.delete(oldPersonalBest.id.toString());
+                return new Map(prev.set(newPersonalBest.id.toString(), newPersonalBest));
             });
         };
         conn.db.personalBest.onUpdate(onUpdate);
 
         const onDelete = (_ctx: EventContext, personalBest: PersonalBest) => {
             setPersonalBests((prev) => {
-                prev.delete(personalBest.identity.toHexString());
+                prev.delete(personalBest.id.toString());
                 return new Map(prev);
             });
         };
