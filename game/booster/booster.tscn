@@ -14,8 +14,8 @@ size = Vector3(1, 1.00378, 1)
 
 [node name="Booster" type="Node3D"]
 script = ExtResource("1_sal2f")
-boost_multiplier = null
-boost_duration = null
+boost_multiplier = 2.0
+boost_duration = 2.0
 
 [node name="CollisionMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, -1.31134e-07, -1, 0, 3, -4.37114e-08, 0, 0.5, 0)

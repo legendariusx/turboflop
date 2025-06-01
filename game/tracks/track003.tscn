@@ -60,7 +60,7 @@ transform = Transform3D(-0.912371, -0.154646, -0.379031, -0.143992, 0.987965, -0
 transform = Transform3D(0.313199, 0.0180374, -0.949516, -0.0512308, 0.998685, 0.00207287, 0.948305, 0.0479953, 0.313711, -25.2308, 0.0794177, -75.5888)
 
 [node name="Checkpoint7" parent="Checkpoints" index="4" instance=ExtResource("2_qu104")]
-transform = Transform3D(0.944135, 0, -0.329559, 0, 1, 0, 0.329559, 0, 0.944135, -61.5676, 0.0835225, -25.5651)
+transform = Transform3D(0.995637, 0, -0.0933092, 0, 1, 0, 0.0933092, 0, 0.995637, -63.8852, 0.0835225, -23.4053)
 
 [node name="Checkpoint8" parent="Checkpoints" index="5" instance=ExtResource("2_qu104")]
 transform = Transform3D(0.977948, 0, 0.208851, 0, 1, 0, -0.208851, 0, 0.977948, -72.0857, -0.105497, 43.2012)
@@ -79,13 +79,13 @@ transform = Transform3D(-0.99367, 0, 0.112336, 0, 1, 0, -0.112336, 0, -0.99367, 
 [node name="Bridge" type="Node" parent="." index="13"]
 
 [node name="wooden_birdge" parent="Bridge" index="0" instance=ExtResource("4_5mkpt")]
-transform = Transform3D(-0.998024, 0.017317, 0.0603916, 0, 0.961262, -0.275637, -0.0628253, -0.275092, -0.959363, -64.9871, 1.14044, -15.6778)
+transform = Transform3D(-0.598816, 0.0109034, 0.0618365, 0, 0.984808, -0.173648, -0.0376743, -0.173306, -0.982864, -64.9871, 0.392169, -15.6778)
 
 [node name="wooden_pillar" parent="Bridge" index="1" instance=ExtResource("4_w7cg1")]
-transform = Transform3D(0.0628254, 0, 0.998024, 0, 2.24391, 0, -0.998024, 0, 0.0628254, -59.2628, -12.2077, -5.91083)
+transform = Transform3D(0.0628254, 0, 0.998024, 0, 2.24391, 0, -0.998024, 0, 0.0628254, -62.0319, -13.8524, -5.76568)
 
 [node name="wooden_pillar2" parent="Bridge" index="2" instance=ExtResource("4_w7cg1")]
-transform = Transform3D(0.0628253, 0, 0.998024, 0, 2.47896, 0, -0.998024, 0, 0.0628253, -71.2885, -14.0652, -6.66784)
+transform = Transform3D(0.0628253, 0, 0.998024, 0, 2.47896, 0, -0.998024, 0, 0.0628253, -68.8346, -15.652, -6.36689)
 
 [node name="wooden_birdge2" parent="Bridge" index="3" instance=ExtResource("4_5mkpt")]
 transform = Transform3D(-0.998025, 0, 0.0628253, 0, 1, 0, -0.0628253, 0, -0.998025, -66.9017, -2.08168, 16.5481)
@@ -335,6 +335,23 @@ transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -9
 [node name="Desert_plant_060" parent="LevelObjects" index="78" instance=ExtResource("19_ic1si")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -99.9604, 4.50973, 17.1388)
 
-[node name="Booster" parent="." index="15" instance=ExtResource("35_uf1la")]
+[node name="Boosters" type="Node3D" parent="." index="15"]
+
+[node name="Booster" parent="Boosters" index="0" instance=ExtResource("35_uf1la")]
 transform = Transform3D(0.831586, 0, -0.555396, 0, 1, 0, 0.555396, 0, 0.831586, -56.9526, 0.00321225, -36.2156)
 boost_multiplier = 100.0
+
+[node name="Booster2" parent="Boosters" index="1" instance=ExtResource("35_uf1la")]
+transform = Transform3D(0.65239, 0, 0.757884, 0, 1, 0, -0.757884, 0, 0.65239, -60.7162, 0.358294, 38.1606)
+
+[node name="Booster3" parent="Boosters" index="2" instance=ExtResource("35_uf1la")]
+transform = Transform3D(0.603098, 0.0237198, 0.797315, -0.0664709, 0.997576, 0.0206019, -0.794894, -0.0654232, 0.603212, -55.7759, 0.407399, 41.8804)
+
+[node name="Booster4" parent="Boosters" index="3" instance=ExtResource("35_uf1la")]
+transform = Transform3D(-0.239042, 0, -0.97101, 0, 1, 0, 0.97101, 0, -0.239042, 42.9623, -0.0421939, -59.3928)
+
+[node name="Booster6" parent="Boosters" index="4" instance=ExtResource("35_uf1la")]
+transform = Transform3D(-0.223216, 0.0115831, -0.974701, -0.0528193, 0.998317, 0.0239599, 0.973337, 0.0568312, -0.222228, 19.3895, 0.1025, -64.5757)
+
+[node name="Booster5" parent="Boosters" index="5" instance=ExtResource("35_uf1la")]
+transform = Transform3D(-0.66262, 0, -0.748956, 0, 1, 0, 0.748956, 0, -0.66262, 63.9818, 0.141702, -46.5827)
