@@ -37,7 +37,8 @@ var started_at: int
 var checkpoint_times: Array[int] = [0]
 # FIXME bit of an ugly fix to allow player position updates based on _input
 var respawn_location: Checkpoint
-var checkpoint_index: int = -1
+
+var _checkpoint_index: int = -1
 
 func _ready() -> void:
 	# verify parent type
@@ -92,6 +93,12 @@ func _start():
 	for checkpoint in checkpoints.get_children() + finishes.get_children():
 		(checkpoint as Checkpoint).was_entered = false
 		(checkpoint as Checkpoint).set_red_light()
+		
+	start_node.set_green_light()
+	start_node.was_entered = true
+	
+	if checkpoints.get_children().size() > 0:
+		checkpoints.get_children()[0].set_orange_light()
 	
 	track_ui.reset()
 	camera.start()
@@ -156,9 +163,17 @@ func _on_user_data_updated(row: UserData):
 		opponents.add_child(new_vehicle)
 
 func _on_checkpoint_entered(checkpoint: Checkpoint):
+	var checkpoint_instances = checkpoints.get_children()
+	
+	if _checkpoint_index >= checkpoint_instances.size()	or checkpoint_instances[_checkpoint_index] != checkpoint:
+		return
+	
 	var time = Time.get_ticks_msec() - started_at
 	checkpoint_times.append(time)
 	last_checkpoint = checkpoint
+	
+	checkpoint.was_entered = true
+	checkpoint.set_green_light()
 	
 	track_ui.on_checkpoint_entered(checkpoint_times.size() - 1, time)
 	_set_next_checkpoint()
@@ -170,10 +185,11 @@ func _on_finish_entered(finish: Finish):
 	
 	# check if all checkpoints were entered
 	if not checkpoints.get_children().all(func(cp: Checkpoint): return cp.was_entered):
-		# FIXME: ugly way of resetting finish if not all checkpoints were entered
-		finish.was_entered = false
-		finish.set_red_light()
 		return
+		
+	for f in finishes.get_children():
+		(f as Checkpoint).was_entered = true
+		(f as Checkpoint).set_green_light()
 	
 	_update_track_state(TrackState.FINISHED)
 	
@@ -186,11 +202,11 @@ func _on_finish_entered(finish: Finish):
 	finished.emit(finish_time)
 
 func _set_next_checkpoint():
-	checkpoint_index += 1
+	_checkpoint_index += 1
 	var checkpoint_instances = checkpoints.get_children()
 	
-	if checkpoint_index < checkpoint_instances.size():
-		checkpoint_instances[checkpoint_index].set_orange_light()
+	if _checkpoint_index < checkpoint_instances.size():
+		checkpoint_instances[_checkpoint_index].set_orange_light()
 	else:
 		for finish in finishes.get_children():
 			finish.set_orange_light()

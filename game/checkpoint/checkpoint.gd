@@ -16,9 +16,6 @@ var was_entered: bool = false
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is Vehicle and (body as Vehicle).is_current_user and not was_entered:
-		was_entered = true
-		set_green_light()
-		
 		checkpoint_entered.emit()
 		
 func set_green_light():
