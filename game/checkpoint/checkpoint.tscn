@@ -17,7 +17,7 @@ size = Vector3(1, 1.00378, 1)
 script = ExtResource("1_slojq")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(6, 0, 0, 0, 3.2, 0, 0, 0, 0.069, 0, 1.52124, 0)
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 0.069, 0, 3, 0)
 visible = false
 mesh = SubResource("BoxMesh_630c4")
 surface_material_override/0 = SubResource("StandardMaterial3D_slojq")

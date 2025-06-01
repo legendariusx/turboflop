@@ -31,7 +31,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/SpacetimeDB/plugin.cfg", "res://addons/better_path3d_handles/plugin.cfg", "res://addons/terrain_3d/plugin.cfg")
+enabled=PackedStringArray("res://addons/SpacetimeDB/plugin.cfg", "res://addons/better_path3d_handles/plugin.cfg", "res://addons/scene_object_brush/plugin.cfg", "res://addons/terrain_3d/plugin.cfg")
 
 [importer_defaults]
 
