@@ -20,6 +20,9 @@ var _is_accelerating : bool
 var _is_braking : bool
 var _is_update_disabled: bool = false
 
+var _boost_finish_time: int = 0
+var _boost_multiplier: float = 1
+
 var _speed : float
 
 @export var acceleration_force := 100.0
@@ -32,6 +35,10 @@ func set_owner_data(u_owner_identity: PackedByteArray, u_owner_name: String):
 	owner_identity = u_owner_identity
 	is_current_user = u_owner_identity == GameState.identity or not SpacetimeDB.is_connected_db()
 	owner_name = u_owner_name
+	
+func booster_entered(boost_multiplier: float, boost_duration: float):
+	_boost_finish_time = Time.get_ticks_msec() + (boost_duration * 1000.0)
+	_boost_multiplier = boost_multiplier
 
 func _ready():
 	if not is_current_user:
@@ -56,6 +63,10 @@ func _physics_process(delta: float) -> void:
 	if not is_current_user or _is_update_disabled: return
 	
 	UserData.set_user_data(global_position, global_rotation, linear_velocity, angular_velocity, true, GameState.track_id)
+	
+	# check if boost has finished
+	if Time.get_ticks_msec() > _boost_finish_time:
+		_boost_multiplier = 1.0
 	
 	# get current speed
 	_speed = linear_velocity.dot(transform.basis.z)
@@ -90,6 +101,9 @@ func _physics_process(delta: float) -> void:
 			engine_force = clampf(force * 5.0 / abs(_speed), -100.0, 100.0)
 		else:
 			engine_force = force
+		
+		# add booster multiplier
+		engine_force *= _boost_multiplier
 	else:
 		engine_force = 0.0
 	
@@ -117,3 +131,4 @@ func _on_user_updated(row: User):
 	if row.identity == owner_identity:
 		$NameLabel.text = row.name
 		owner_name = row.name
+		

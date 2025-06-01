@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ce7uyrofns7ml"]
+[gd_scene load_steps=37 format=3 uid="uid://ce7uyrofns7ml"]
 
 [ext_resource type="PackedScene" uid="uid://clthdr6beclys" path="res://track/track.tscn" id="1_mn4nu"]
 [ext_resource type="PackedScene" uid="uid://p7atvo2gj2c5" path="res://checkpoint/finish/finish.tscn" id="2_7j01r"]
@@ -6,6 +6,36 @@
 [ext_resource type="PackedScene" uid="uid://bnd1qqdentrpd" path="res://checkpoint/checkpoint.tscn" id="2_qu104"]
 [ext_resource type="PackedScene" uid="uid://cxcwbirhuxbun" path="res://assets/models/wooden_birdge.blend" id="4_5mkpt"]
 [ext_resource type="PackedScene" uid="uid://duba1hy6lraw6" path="res://assets/models/wooden_pillar.blend" id="4_w7cg1"]
+[ext_resource type="PackedScene" uid="uid://d3i62fw6hlwwb" path="res://assets/models/Desert_plant_001.fbx" id="7_e0rd0"]
+[ext_resource type="PackedScene" uid="uid://b6iso4tnup1rv" path="res://assets/models/Desert_plant_002.fbx" id="9_08abp"]
+[ext_resource type="PackedScene" uid="uid://b1g5kcpulenk7" path="res://assets/models/Desert_plant_003.fbx" id="10_hbnb1"]
+[ext_resource type="PackedScene" uid="uid://cqch1k0015h2" path="res://assets/models/Desert_plant_006.fbx" id="12_6shoj"]
+[ext_resource type="PackedScene" uid="uid://celrsr2tyo6xu" path="res://assets/models/dead_tree1.blend" id="12_siero"]
+[ext_resource type="PackedScene" uid="uid://c1sbcrg1tc3jx" path="res://assets/models/Desert_plant_007.fbx" id="13_0npag"]
+[ext_resource type="PackedScene" uid="uid://glj3n2gyxj2r" path="res://assets/models/Desert_plant_004.fbx" id="13_v1pjo"]
+[ext_resource type="PackedScene" uid="uid://bk1o23cvdh87v" path="res://assets/models/Desert_plant_008.fbx" id="14_l45x7"]
+[ext_resource type="PackedScene" uid="uid://ck8kymv0k8w48" path="res://assets/models/Desert_plant_009.fbx" id="15_ie14x"]
+[ext_resource type="PackedScene" uid="uid://dfts5wcne62bc" path="res://assets/models/Desert_plant_010.fbx" id="16_oxnaw"]
+[ext_resource type="PackedScene" uid="uid://c00besqiaof3u" path="res://assets/models/dead_tree4.blend" id="16_yjdcy"]
+[ext_resource type="PackedScene" uid="uid://dfudh3l86xshj" path="res://assets/models/Desert_plant_011.fbx" id="17_kfcen"]
+[ext_resource type="PackedScene" uid="uid://dst3rpuxl2vya" path="res://assets/models/Desert_plant_012.fbx" id="18_uf1la"]
+[ext_resource type="PackedScene" uid="uid://cx4p6flenfm8f" path="res://assets/models/Desert_plant_013.fbx" id="19_ic1si"]
+[ext_resource type="PackedScene" uid="uid://c6gbuhwqtqvwl" path="res://assets/models/Desert_plant_014.fbx" id="20_sesbr"]
+[ext_resource type="PackedScene" uid="uid://cuj33aj0lrou1" path="res://assets/models/Desert_plant_015.fbx" id="21_a8o0p"]
+[ext_resource type="PackedScene" uid="uid://cyr1rwru64oih" path="res://assets/models/Desert_plant_016.fbx" id="22_pgcb2"]
+[ext_resource type="PackedScene" uid="uid://dxxubgy6tkt3g" path="res://assets/models/stone3.blend" id="22_yjdcy"]
+[ext_resource type="PackedScene" uid="uid://y2bklh6q5rcr" path="res://assets/models/stone6.blend" id="23_kfcen"]
+[ext_resource type="PackedScene" uid="uid://b7oacurkc47p4" path="res://assets/models/Desert_plant_017.fbx" id="23_obujn"]
+[ext_resource type="PackedScene" uid="uid://d4hn4mopao4pj" path="res://assets/models/Desert_plant_018.fbx" id="24_tqvxf"]
+[ext_resource type="PackedScene" uid="uid://cetwhv6xs4w5s" path="res://assets/models/Desert_plant_020.fbx" id="24_uf1la"]
+[ext_resource type="PackedScene" uid="uid://xde76opw0agn" path="res://assets/models/stone1.blend" id="25_ic1si"]
+[ext_resource type="PackedScene" uid="uid://jnrpmviu137d" path="res://assets/models/Desert_plant_019.fbx" id="25_u8rub"]
+[ext_resource type="PackedScene" uid="uid://kitwvubkfsq7" path="res://assets/models/dead_tree3.blend" id="27_sesbr"]
+[ext_resource type="PackedScene" uid="uid://ctyrv2yd05ik" path="res://assets/models/dead_tree2.blend" id="28_a8o0p"]
+[ext_resource type="PackedScene" uid="uid://cjab21o57b0a6" path="res://assets/models/stone2.blend" id="29_pgcb2"]
+[ext_resource type="PackedScene" uid="uid://ck62do0utl8wp" path="res://assets/models/dead_tree5.blend" id="32_obujn"]
+[ext_resource type="PackedScene" uid="uid://b4aavbm0gvunq" path="res://assets/models/stone4.blend" id="33_tqvxf"]
+[ext_resource type="PackedScene" uid="uid://0kjlkr3tctx4" path="res://booster/booster.tscn" id="35_uf1la"]
 
 [node name="Track" instance=ExtResource("1_mn4nu")]
 transform = Transform3D(0.19971, 0, 0.979855, 0, 1, 0, -0.979855, 0, 0.19971, 0, 0, 0)
@@ -44,9 +74,9 @@ transform = Transform3D(-0.936819, 0, 0.349815, 0, 1, 0, -0.349815, 0, -0.936819
 [node name="Finish" parent="Finishes" index="0" instance=ExtResource("2_7j01r")]
 transform = Transform3D(-0.99367, 0, 0.112336, 0, 1, 0, -0.112336, 0, -0.99367, 18.4606, 1.33035, -74.6559)
 
-[node name="Terrain" parent="." index="8" instance=ExtResource("2_mn4nu")]
+[node name="Terrain" parent="." index="12" instance=ExtResource("2_mn4nu")]
 
-[node name="Bridge" type="Node" parent="." index="9"]
+[node name="Bridge" type="Node" parent="." index="13"]
 
 [node name="wooden_birdge" parent="Bridge" index="0" instance=ExtResource("4_5mkpt")]
 transform = Transform3D(-0.998024, 0.017317, 0.0603916, 0, 0.961262, -0.275637, -0.0628253, -0.275092, -0.959363, -64.9871, 1.14044, -15.6778)
@@ -65,3 +95,246 @@ transform = Transform3D(0.0628254, 0, 0.998025, 0, 1.57256, 0, -0.998025, 0, 0.0
 
 [node name="wooden_pillar4" parent="Bridge" index="5" instance=ExtResource("4_w7cg1")]
 transform = Transform3D(0.0628254, 0, 0.998025, 0, 1.57256, 0, -0.998025, 0, 0.0628254, -60.1183, -13.4803, 6.28747)
+
+[node name="LevelObjects" type="Node3D" parent="." index="14"]
+
+[node name="Desert_plant_014" parent="LevelObjects" index="0" instance=ExtResource("20_sesbr")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -51.7234, 0.0057541, -57.8265)
+
+[node name="Desert_plant_016" parent="LevelObjects" index="1" instance=ExtResource("22_pgcb2")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -57.6553, 0.0079727, -53.4294)
+
+[node name="Desert_plant_019" parent="LevelObjects" index="2" instance=ExtResource("25_u8rub")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -53.718, 0.00626497, -55.7389)
+
+[node name="Desert_plant_018" parent="LevelObjects" index="3" instance=ExtResource("24_tqvxf")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -62.2566, 0.00874311, -47.4163)
+
+[node name="Desert_plant_017" parent="LevelObjects" index="4" instance=ExtResource("23_obujn")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -75.8179, 0.00016606, -28.7879)
+
+[node name="Desert_plant_020" parent="LevelObjects" index="5" instance=ExtResource("22_pgcb2")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -67.1707, 0.00379016, -38.0061)
+
+[node name="dead_tree1" parent="LevelObjects" index="6" instance=ExtResource("12_siero")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -55.1283, 0.00813396, -53.6894)
+
+[node name="Desert_plant_004" parent="LevelObjects" index="7" instance=ExtResource("13_v1pjo")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -65.4075, 0.0079141, -44.9112)
+
+[node name="Desert_plant_006" parent="LevelObjects" index="8" instance=ExtResource("12_6shoj")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -65.2616, 0.012459, -48.6787)
+
+[node name="Desert_plant_002" parent="LevelObjects" index="9" instance=ExtResource("9_08abp")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -68.3091, 0.00677972, -41.6973)
+
+[node name="dead_tree4" parent="LevelObjects" index="10" instance=ExtResource("16_yjdcy")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -72.1454, 0.00524307, -35.1801)
+
+[node name="Desert_plant_003" parent="LevelObjects" index="11" instance=ExtResource("9_08abp")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -78.0987, -0.0098505, -28.0582)
+
+[node name="Desert_plant_021" parent="LevelObjects" index="12" instance=ExtResource("24_tqvxf")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -76.1813, 0.00163666, -31.2496)
+
+[node name="Desert_plant_022" parent="LevelObjects" index="13" instance=ExtResource("22_pgcb2")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -75.7674, 0.00309779, -33.5064)
+
+[node name="Desert_plant_007" parent="LevelObjects" index="14" instance=ExtResource("13_0npag")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -78.5256, 0.000934601, -24.6186)
+
+[node name="Desert_plant_008" parent="LevelObjects" index="15" instance=ExtResource("12_6shoj")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -80.2486, 0.0552561, -21.197)
+
+[node name="Desert_plant_009" parent="LevelObjects" index="16" instance=ExtResource("13_0npag")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -80.782, 0.00396555, -16.2922)
+
+[node name="Desert_plant_012" parent="LevelObjects" index="17" instance=ExtResource("18_uf1la")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -81.9436, 0.578408, -9.17738)
+
+[node name="Desert_plant_001" parent="LevelObjects" index="18" instance=ExtResource("7_e0rd0")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -82.6292, 0.144183, -13.2582)
+
+[node name="Desert_plant_010" parent="LevelObjects" index="19" instance=ExtResource("16_oxnaw")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -82.8012, 0.866181, -8.1292)
+
+[node name="Desert_plant_011" parent="LevelObjects" index="20" instance=ExtResource("15_ie14x")]
+transform = Transform3D(0.19971, 0.209708, -0.957152, -3.72529e-09, 0.976829, 0.214019, 0.979855, -0.0427418, 0.195083, -82.8031, 0.789234, -10.3861)
+
+[node name="Desert_plant_013" parent="LevelObjects" index="21" instance=ExtResource("12_6shoj")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -61.6554, 0.00949402, -50.0464)
+
+[node name="stone3" parent="LevelObjects" index="22" instance=ExtResource("22_yjdcy")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -73.4427, 0.0764091, -33.2708)
+
+[node name="stone6" parent="LevelObjects" index="23" instance=ExtResource("23_kfcen")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -55.7805, 0.0849757, -52.4908)
+
+[node name="Desert_plant_023" parent="LevelObjects" index="24" instance=ExtResource("24_uf1la")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -60.2413, 0.00779073, -48.5649)
+
+[node name="stone1" parent="LevelObjects" index="25" instance=ExtResource("25_ic1si")]
+transform = Transform3D(0.19971, 0.214166, -0.956164, 0, 0.975821, 0.218569, 0.979855, -0.0436504, 0.194881, -81.6601, 0.585737, -11.0342)
+
+[node name="Desert_plant_015" parent="LevelObjects" index="26" instance=ExtResource("14_l45x7")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -79.8663, 0.0937143, -18.8844)
+
+[node name="dead_tree3" parent="LevelObjects" index="27" instance=ExtResource("27_sesbr")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -100.787, 7.12606, -43.0524)
+
+[node name="stone7" parent="LevelObjects" index="28" instance=ExtResource("23_kfcen")]
+transform = Transform3D(-0.179008, 0.45531, -0.872152, -5.95182e-09, 0.88647, 0.462786, 0.983848, 0.0828424, -0.158685, -100.135, 7.76941, -45.2259)
+
+[node name="Desert_plant_024" parent="LevelObjects" index="29" instance=ExtResource("24_uf1la")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -63.2579, 0.135471, 13.2983)
+
+[node name="dead_tree2" parent="LevelObjects" index="30" instance=ExtResource("28_a8o0p")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -64.7665, -0.0916119, 11.28)
+
+[node name="stone2" parent="LevelObjects" index="31" instance=ExtResource("29_pgcb2")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -64.4195, 0.0421152, 11.9844)
+
+[node name="Desert_plant_025" parent="LevelObjects" index="32" instance=ExtResource("15_ie14x")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -59.0742, -0.101481, 23.4553)
+
+[node name="Desert_plant_026" parent="LevelObjects" index="33" instance=ExtResource("16_oxnaw")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -61.9232, -0.142919, 19.9848)
+
+[node name="Desert_plant_027" parent="LevelObjects" index="34" instance=ExtResource("23_obujn")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -55.1224, -0.0466048, 28.3475)
+
+[node name="Desert_plant_005" parent="LevelObjects" index="35" instance=ExtResource("7_e0rd0")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -58.2185, -0.0914363, 23.4175)
+
+[node name="Desert_plant_028" parent="LevelObjects" index="36" instance=ExtResource("20_sesbr")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -58.0188, -0.0269069, 27.7429)
+
+[node name="Desert_plant_029" parent="LevelObjects" index="37" instance=ExtResource("18_uf1la")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -54.2745, -0.0115731, 30.9005)
+
+[node name="Desert_plant_030" parent="LevelObjects" index="38" instance=ExtResource("15_ie14x")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -56.1755, -0.075877, 25.6529)
+
+[node name="Desert_plant_031" parent="LevelObjects" index="39" instance=ExtResource("17_kfcen")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -63.4733, -0.164986, 17.4656)
+
+[node name="stone4" parent="LevelObjects" index="40" instance=ExtResource("25_ic1si")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -60.4082, 0.187643, 31.6401)
+
+[node name="stone8" parent="LevelObjects" index="41" instance=ExtResource("23_kfcen")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -60.4159, -0.00326176, 20.2821)
+
+[node name="stone5" parent="LevelObjects" index="42" instance=ExtResource("29_pgcb2")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -47.8961, 0.141824, 11.7374)
+
+[node name="Desert_plant_032" parent="LevelObjects" index="43" instance=ExtResource("9_08abp")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -60.9912, -0.132946, 18.1149)
+
+[node name="Desert_plant_033" parent="LevelObjects" index="44" instance=ExtResource("10_hbnb1")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -78.4768, 1.15925, 35.1164)
+
+[node name="dead_tree5" parent="LevelObjects" index="45" instance=ExtResource("32_obujn")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -87.7872, 2.45553, 41.4205)
+
+[node name="Desert_plant_034" parent="LevelObjects" index="46" instance=ExtResource("12_6shoj")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -74.8438, 0.918178, 36.4544)
+
+[node name="Desert_plant_035" parent="LevelObjects" index="47" instance=ExtResource("14_l45x7")]
+transform = Transform3D(0.368783, -0.024829, -0.929184, 0.00445415, 0.999679, -0.0249449, 0.929505, 0.00506055, 0.368775, -86.6592, 1.37048, 27.8125)
+
+[node name="Desert_plant_036" parent="LevelObjects" index="48" instance=ExtResource("10_hbnb1")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -89.0468, 1.60081, 25.0347)
+
+[node name="Desert_plant_037" parent="LevelObjects" index="49" instance=ExtResource("7_e0rd0")]
+transform = Transform3D(0.368783, -0.024829, -0.929184, 0.00445415, 0.999679, -0.0249449, 0.929505, 0.00506055, 0.368775, -83.0583, 1.41131, 30.6395)
+
+[node name="Desert_plant_038" parent="LevelObjects" index="50" instance=ExtResource("22_pgcb2")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -88.645, 1.70053, 22.9201)
+
+[node name="stone9" parent="LevelObjects" index="51" instance=ExtResource("33_tqvxf")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -82.0324, 2.22758, 40.292)
+
+[node name="Desert_plant_039" parent="LevelObjects" index="52" instance=ExtResource("12_6shoj")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -74.0207, 1.93231, 48.0575)
+
+[node name="Desert_plant_040" parent="LevelObjects" index="53" instance=ExtResource("13_0npag")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -84.8133, 2.17496, 35.3603)
+
+[node name="Desert_plant_041" parent="LevelObjects" index="54" instance=ExtResource("9_08abp")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -97.5951, 4.6481, 32.2017)
+
+[node name="Desert_plant_042" parent="LevelObjects" index="55" instance=ExtResource("15_ie14x")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -96.3147, 3.35424, 24.7188)
+
+[node name="Desert_plant_043" parent="LevelObjects" index="56" instance=ExtResource("16_oxnaw")]
+transform = Transform3D(0.19971, 0.571119, -0.796203, 0, 0.812572, 0.582861, 0.979855, -0.116403, 0.162279, -110.209, 7.42705, 19.4184)
+
+[node name="Desert_plant_044" parent="LevelObjects" index="57" instance=ExtResource("21_a8o0p")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -112.075, 7.7746, 10.4669)
+
+[node name="Desert_plant_045" parent="LevelObjects" index="58" instance=ExtResource("24_uf1la")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -104.649, 6.656, -21.3823)
+
+[node name="Desert_plant_046" parent="LevelObjects" index="59" instance=ExtResource("9_08abp")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -110.479, 7.86481, -10.6786)
+
+[node name="stone10" parent="LevelObjects" index="60" instance=ExtResource("22_yjdcy")]
+transform = Transform3D(0.19971, 0.476762, -0.856045, 0, 0.873645, 0.486564, 0.979855, -0.0971717, 0.174476, -107.936, 7.72229, -15.495)
+
+[node name="Desert_plant_047" parent="LevelObjects" index="61" instance=ExtResource("12_6shoj")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -112.121, 7.92951, -2.46973)
+
+[node name="Desert_plant_048" parent="LevelObjects" index="62" instance=ExtResource("15_ie14x")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -114.48, 8.89314, 5.14535)
+
+[node name="dead_tree6" parent="LevelObjects" index="63" instance=ExtResource("32_obujn")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -115.393, 9.07516, 2.26123)
+
+[node name="stone11" parent="LevelObjects" index="64" instance=ExtResource("29_pgcb2")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -98.3381, 3.77578, 18.0031)
+
+[node name="stone12" parent="LevelObjects" index="65" instance=ExtResource("33_tqvxf")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -97.4974, 3.64108, 17.0007)
+
+[node name="Desert_plant_049" parent="LevelObjects" index="66" instance=ExtResource("24_uf1la")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -97.1868, 3.54959, 18.1257)
+
+[node name="Desert_plant_050" parent="LevelObjects" index="67" instance=ExtResource("13_0npag")]
+transform = Transform3D(0.19971, 0.190238, -0.961211, -3.72529e-09, 0.980972, 0.194149, 0.979855, -0.0387734, 0.19591, -108.701, 6.45504, 5.3415)
+
+[node name="Desert_plant_051" parent="LevelObjects" index="68" instance=ExtResource("16_oxnaw")]
+transform = Transform3D(0.677813, 0, -0.735234, 0, 1, 0, 0.735234, 0, 0.677813, -108.398, 6.47049, 11.7083)
+
+[node name="Desert_plant_052" parent="LevelObjects" index="69" instance=ExtResource("7_e0rd0")]
+transform = Transform3D(0.19971, 0.0335812, -0.97928, 0, 0.999413, 0.0342716, 0.979855, -0.00684437, 0.199593, -107.232, 6.16129, -0.674805)
+
+[node name="Desert_plant_053" parent="LevelObjects" index="70" instance=ExtResource("12_6shoj")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -101.09, 4.84172, 22.558)
+
+[node name="Desert_plant_054" parent="LevelObjects" index="71" instance=ExtResource("14_l45x7")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -99.7417, 4.33182, 21.1637)
+
+[node name="Desert_plant_055" parent="LevelObjects" index="72" instance=ExtResource("13_v1pjo")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -99.3429, 4.36307, 24.5404)
+
+[node name="Desert_plant_056" parent="LevelObjects" index="73" instance=ExtResource("7_e0rd0")]
+transform = Transform3D(0.630188, 0, -0.776443, 0, 1, 0, 0.776443, 0, 0.630188, -97.8731, 4.01438, 27.7842)
+
+[node name="Desert_plant_057" parent="LevelObjects" index="74" instance=ExtResource("15_ie14x")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -102.031, 5.0824, 18.1707)
+
+[node name="stone13" parent="LevelObjects" index="75" instance=ExtResource("25_ic1si")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -93.5157, 2.63122, 26.1975)
+
+[node name="Desert_plant_058" parent="LevelObjects" index="76" instance=ExtResource("24_uf1la")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -91.6717, 2.17545, 25.4552)
+
+[node name="Desert_plant_059" parent="LevelObjects" index="77" instance=ExtResource("19_ic1si")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -90.9477, 1.98303, 23.7391)
+
+[node name="Desert_plant_060" parent="LevelObjects" index="78" instance=ExtResource("19_ic1si")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -99.9604, 4.50973, 17.1388)
+
+[node name="Booster" parent="." index="15" instance=ExtResource("35_uf1la")]
+transform = Transform3D(0.831586, 0, -0.555396, 0, 1, 0, 0.555396, 0, 0.831586, -56.9526, 0.00321225, -36.2156)
+boost_multiplier = 100.0

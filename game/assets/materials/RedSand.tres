@@ -5,6 +5,7 @@
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ne0gt"]
 
 [resource]
+albedo_color = Color(1, 1, 0.827451, 1)
 albedo_texture = ExtResource("1_kilui")
 metallic_specular = 0.0
 normal_scale = 16.0

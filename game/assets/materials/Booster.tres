@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bbp61nfj0osv6"]
+
+[ext_resource type="Texture2D" uid="uid://bppw67a3ky4im" path="res://assets/textures/booster.png" id="1_7njch"]
+
+[resource]
+albedo_texture = ExtResource("1_7njch")
+albedo_texture_force_srgb = true
+metallic_specular = 0.4
+uv1_scale = Vector3(3, 3, 1)
