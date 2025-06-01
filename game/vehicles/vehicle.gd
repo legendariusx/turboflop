@@ -98,7 +98,7 @@ func _physics_process(delta: float) -> void:
 	if _is_accelerating and not _is_braking:
 		var force = force_axis * acceleration_force
 		if abs(_speed) < 5.0 and not is_zero_approx(_speed):
-			engine_force = clampf(force * 5.0 / abs(_speed), -100.0, 100.0)
+			engine_force = clampf(force * 5.0 / abs(_speed), -acceleration_force, acceleration_force)
 		else:
 			engine_force = force
 		

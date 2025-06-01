@@ -34,7 +34,7 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
-"Default": {
+"Material": {
 "use_external/enabled": true,
 "use_external/path": "uid://cbswht8xml82d"
 }

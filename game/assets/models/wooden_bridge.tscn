@@ -3,14 +3,14 @@
 [ext_resource type="PackedScene" uid="uid://cxcwbirhuxbun" path="res://assets/models/wooden_birdge.blend" id="1_4ywdu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4ywdu"]
-size = Vector3(13.0759, 1.18842, 21.7394)
+size = Vector3(13.4632, 1.28167, 21.7394)
 
 [node name="WoodenBridge" type="Node3D"]
 
 [node name="wooden_birdge" parent="." instance=ExtResource("1_4ywdu")]
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="wooden_birdge"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19397, 0.732941, 0.388245)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wooden_birdge/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0839904, 0.702871, 0.388245)
 shape = SubResource("BoxShape3D_4ywdu")
