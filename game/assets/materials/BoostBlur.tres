@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cg6wbfbtmjuhk"]
+
+[ext_resource type="Shader" uid="uid://4acuq5p2xesr" path="res://assets/materials/EdgeBlur.gdshader" id="1_vmvs6"]
+
+[resource]
+shader = ExtResource("1_vmvs6")
+shader_parameter/blur_strength = 1.0
+shader_parameter/radius = 0.309

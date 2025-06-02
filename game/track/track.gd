@@ -13,6 +13,7 @@ signal started
 signal finished(time: int)
 
 const CAR_SCENE = preload("res://vehicles/car.scn")
+const PALM_SCENE = preload("res://assets/models/PalmTree.tscn")
 
 @onready var player_vehicle: Vehicle = $Car
 @onready var camera: CameraFollow = $Camera3D
@@ -64,6 +65,8 @@ func _ready() -> void:
 		if not GameState.current_user: await GameState.current_user_upated
 		player_vehicle.set_owner_data(GameState.identity, GameState.current_user.name)
 
+	_replace_dead_trees(get_tree().get_current_scene(), PALM_SCENE)
+	
 	# TODO: implement starting from user input
 	_start()
 
@@ -104,9 +107,6 @@ func _start():
 	camera.start()
 	
 	respawn_location = start_node
-	
-	_checkpoint_index = -1
-	_set_next_checkpoint()
 	
 	_checkpoint_index = -1
 	_set_next_checkpoint()
@@ -217,3 +217,21 @@ func _set_next_checkpoint():
 	else:
 		for finish in finishes.get_children():
 			finish.set_orange_light()
+			
+func _replace_dead_trees(root: Node, palm_scene: PackedScene):
+	for child in root.get_children():
+		_replace_dead_trees(child, palm_scene)  # Recursive
+
+		if "dead_tree" in child.name:
+			if child is Node3D:
+				var palm_instance = palm_scene.instantiate()
+				var original_transform = child.transform
+				var parent = child.get_parent()
+				var index = parent.get_children().find(child)
+
+				parent.remove_child(child)
+				child.queue_free()
+
+				palm_instance.transform = original_transform
+				parent.add_child(palm_instance)
+				parent.move_child(palm_instance, index)
