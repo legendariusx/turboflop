@@ -105,7 +105,12 @@ func _start():
 	
 	respawn_location = start_node
 	
+	_checkpoint_index = -1
 	_set_next_checkpoint()
+	
+	_checkpoint_index = -1
+	_set_next_checkpoint()
+	
 	_countdown()
 	await started
 	started_at = Time.get_ticks_msec()
