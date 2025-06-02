@@ -7,6 +7,8 @@ const BRAKE_STRENGTH = 2.0
 const BRAKE_SOFT_STRENGTH = 0.5
 const MATERIAL_CAR_OPAQUE = preload("res://vehicles/car.tres")
 const MATERIAL_CAR_TRANSPARENT = preload("res://vehicles/car_transparent.tres")
+const MATERIAL_DARK_SMOKE = preload("res://assets/materials/DarkSmoke.tres")
+const MATERIAL_GLOWING_SMOKE = preload("res://assets/materials/GlowingSmoke.tres")
 
 @onready var mesh: MeshInstance3D = $Mesh
 
@@ -30,6 +32,10 @@ var _speed : float
 
 @onready var audio_listener: AudioListener3D = $AudioListener3D
 @onready var speedometer: Label3D = $Speedometer
+@onready var dark_particles_l: GPUParticles3D = $DarkParticlesL
+@onready var dark_particles_r: GPUParticles3D = $DarkParticlesR
+@onready var glowing_particles_l: GPUParticles3D = $GlowingParticlesL
+@onready var glowing_particles_r: GPUParticles3D = $GlowingParticlesR
 
 func set_owner_data(u_owner_identity: PackedByteArray, u_owner_name: String):
 	owner_identity = u_owner_identity
@@ -39,6 +45,11 @@ func set_owner_data(u_owner_identity: PackedByteArray, u_owner_name: String):
 func booster_entered(boost_multiplier: float, boost_duration: float):
 	_boost_finish_time = Time.get_ticks_msec() + (boost_duration * 1000.0)
 	_boost_multiplier = boost_multiplier
+	
+	dark_particles_l.emitting = false
+	dark_particles_r.emitting = false
+	glowing_particles_l.emitting = true
+	glowing_particles_r.emitting = true
 
 func _ready():
 	if not is_current_user:
@@ -55,6 +66,18 @@ func _ready():
 	_on_visibility_changed(GameState.visibility)
 	
 	UserState.update.connect(_on_user_updated)
+	
+	dark_particles_l.emitting = true
+	dark_particles_l.material_override = MATERIAL_DARK_SMOKE
+	
+	dark_particles_r.emitting = true
+	dark_particles_r.material_override = MATERIAL_DARK_SMOKE
+	
+	glowing_particles_l.emitting = false
+	glowing_particles_l.material_override = MATERIAL_GLOWING_SMOKE
+	
+	glowing_particles_r.emitting = false
+	glowing_particles_r.material_override = MATERIAL_GLOWING_SMOKE
 
 func _physics_process(delta: float) -> void:
 	var desired_engine_pitch = 0.05 + linear_velocity.length() / (acceleration_force * 0.5)
@@ -67,6 +90,11 @@ func _physics_process(delta: float) -> void:
 	# check if boost has finished
 	if Time.get_ticks_msec() > _boost_finish_time:
 		_boost_multiplier = 1.0
+		
+		dark_particles_l.emitting = true
+		dark_particles_r.emitting = true
+		glowing_particles_l.emitting = false
+		glowing_particles_r.emitting = false
 	
 	# get current speed
 	_speed = linear_velocity.dot(transform.basis.z)
@@ -112,6 +140,16 @@ func _physics_process(delta: float) -> void:
 		engine_force = 0.0
 		steering = 0.0
 		brake = 0.0
+		
+	_update_particle_systems()
+	
+func _update_particle_systems():
+	var t = clampf(_speed / 6.0, 0.1, 1.0)
+	
+	dark_particles_l.amount_ratio = t
+	dark_particles_r.amount_ratio = t
+	glowing_particles_l.amount_ratio = t
+	glowing_particles_r.amount_ratio = t
 
 func _on_visibility_changed(u_visibility: Enum.Visibility):
 	if is_current_user: return

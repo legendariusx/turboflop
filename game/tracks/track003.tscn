@@ -103,10 +103,10 @@ transform = Transform3D(0.799716, 0, -0.600378, 0, 1, 0, 0.600378, 0, 0.799716, 
 boost_multiplier = 1.5
 
 [node name="Booster2" parent="Boosters" index="1" instance=ExtResource("35_uf1la")]
-transform = Transform3D(0.65239, 0, 0.757884, 0, 1, 0, -0.757884, 0, 0.65239, -60.7162, 0.358294, 38.1606)
+transform = Transform3D(0.651841, 0.00175427, 0.758355, -0.0600335, 0.996978, 0.0492953, -0.755977, -0.0776593, 0.649976, -60.6473, 0.397582, 37.4721)
 
 [node name="Booster3" parent="Boosters" index="2" instance=ExtResource("35_uf1la")]
-transform = Transform3D(0.603098, 0.0237198, 0.797315, -0.0664709, 0.997576, 0.0206019, -0.794894, -0.0654232, 0.603212, -55.7759, 0.407399, 41.8804)
+transform = Transform3D(0.602921, 0.0265861, 0.797359, -0.056995, 0.998327, 0.00980981, -0.795764, -0.05136, 0.603426, -54.7325, 0.295034, 42.2252)
 
 [node name="Booster4" parent="Boosters" index="3" instance=ExtResource("35_uf1la")]
 transform = Transform3D(-0.239042, 0, -0.97101, 0, 1, 0, 0.97101, 0, -0.239042, 42.9623, -0.0421939, -59.3928)
@@ -2761,7 +2761,7 @@ transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -4
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -41.9285, 9.23541, -90.4937)
 
 [node name="Root Scene15" parent="LevelObjects" index="837" instance=ExtResource("54_dn4ei")]
-transform = Transform3D(0.895906, 0, 0.444244, 0, 1, 0, 0.444244, 0, -0.895906, -98.1657, 4.00763, -6.65725)
+transform = Transform3D(0.895906, 0, 0.444244, 0, 1, 0, 0.444244, 0, -0.895906, -91.1777, 2.235, -5.21929)
 
 [node name="Root Scene" parent="." index="20" instance=ExtResource("54_dn4ei")]
 transform = Transform3D(-0.758931, 0, -0.651172, 0, 1, 0, -0.651172, 0, 0.758931, 6.61248, 1.85145, -77.6223)
