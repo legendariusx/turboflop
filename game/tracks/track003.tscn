@@ -261,9 +261,6 @@ transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -7
 [node name="Desert_plant_020" parent="LevelObjects" index="5" instance=ExtResource("22_pgcb2")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -67.1707, 0.00379016, -38.0061)
 
-[node name="dead_tree1" parent="LevelObjects" index="6" instance=ExtResource("12_siero")]
-transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -55.1283, 0.00813396, -53.6894)
-
 [node name="Desert_plant_004" parent="LevelObjects" index="7" instance=ExtResource("13_v1pjo")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -65.4075, 0.0079141, -44.9112)
 
@@ -272,9 +269,6 @@ transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -6
 
 [node name="Desert_plant_002" parent="LevelObjects" index="9" instance=ExtResource("9_08abp")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -68.3091, 0.00677972, -41.6973)
-
-[node name="dead_tree4" parent="LevelObjects" index="10" instance=ExtResource("16_yjdcy")]
-transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -72.1454, 0.00524307, -35.1801)
 
 [node name="Desert_plant_003" parent="LevelObjects" index="11" instance=ExtResource("9_08abp")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -78.0987, -0.0098505, -28.0582)
@@ -324,17 +318,11 @@ transform = Transform3D(0.19971, 0.214166, -0.956164, 0, 0.975821, 0.218569, 0.9
 [node name="Desert_plant_015" parent="LevelObjects" index="26" instance=ExtResource("14_l45x7")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -79.8663, 0.0937143, -18.8844)
 
-[node name="dead_tree3" parent="LevelObjects" index="27" instance=ExtResource("27_sesbr")]
-transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -100.787, 7.12606, -43.0524)
-
 [node name="stone7" parent="LevelObjects" index="28" instance=ExtResource("23_kfcen")]
 transform = Transform3D(-0.179008, 0.45531, -0.872152, -5.95182e-09, 0.88647, 0.462786, 0.983848, 0.0828424, -0.158685, -100.135, 7.40281, -45.2259)
 
 [node name="Desert_plant_024" parent="LevelObjects" index="29" instance=ExtResource("24_uf1la")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -63.2579, 0.135471, 13.2983)
-
-[node name="dead_tree2" parent="LevelObjects" index="30" instance=ExtResource("28_a8o0p")]
-transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -64.7665, -0.0916119, 11.28)
 
 [node name="stone2" parent="LevelObjects" index="31" instance=ExtResource("29_pgcb2")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -64.4195, 0.0421152, 11.9844)
@@ -377,9 +365,6 @@ transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -6
 
 [node name="Desert_plant_033" parent="LevelObjects" index="44" instance=ExtResource("10_hbnb1")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -78.4768, 1.15925, 35.1164)
-
-[node name="dead_tree5" parent="LevelObjects" index="45" instance=ExtResource("32_obujn")]
-transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -87.7872, 2.45553, 41.4205)
 
 [node name="Desert_plant_034" parent="LevelObjects" index="46" instance=ExtResource("12_6shoj")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -74.8438, 0.918178, 36.4544)
@@ -486,12 +471,6 @@ transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -6
 [node name="Desert_plant_062" parent="LevelObjects" index="80" instance=ExtResource("9_08abp")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -58.8152, -0.0814158, 16.422)
 
-[node name="dead_tree7" parent="LevelObjects" index="81" instance=ExtResource("28_a8o0p")]
-transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -54.6292, -0.0217678, 13.5016)
-
-[node name="dead_tree8" parent="LevelObjects" index="82" instance=ExtResource("12_siero")]
-transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -51.3124, 0.0132097, 11.9042)
-
 [node name="Desert_plant_063" parent="LevelObjects" index="83" instance=ExtResource("20_sesbr")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -52.9789, -0.00907153, 11.6406)
 
@@ -500,9 +479,6 @@ transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -5
 
 [node name="Desert_plant_065" parent="LevelObjects" index="85" instance=ExtResource("19_ic1si")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -55.9158, -0.0301272, 11.3308)
-
-[node name="dead_tree9" parent="LevelObjects" index="86" instance=ExtResource("27_sesbr")]
-transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -62.7486, 0.00913602, -11.7413)
 
 [node name="Desert_plant_066" parent="LevelObjects" index="87" instance=ExtResource("24_tqvxf")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -44.8862, -0.474507, -46.1263)
@@ -609,12 +585,6 @@ transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -5
 [node name="Desert_plant_093" parent="LevelObjects" index="121" instance=ExtResource("21_a8o0p")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -50.8389, -0.0296218, -10.6592)
 
-[node name="dead_tree10" parent="LevelObjects" index="122" instance=ExtResource("12_siero")]
-transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -40.2096, -0.375008, -11.4931)
-
-[node name="dead_tree11" parent="LevelObjects" index="123" instance=ExtResource("32_obujn")]
-transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -25.9521, 0.107887, 27.8895)
-
 [node name="Desert_plant_094" parent="LevelObjects" index="124" instance=ExtResource("18_uf1la")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -47.8853, -0.17419, -11.7873)
 
@@ -632,9 +602,6 @@ transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -3
 
 [node name="Desert_plant_098" parent="LevelObjects" index="129" instance=ExtResource("19_ic1si")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -48.1743, -0.10184, -9.84302)
-
-[node name="dead_tree12" parent="LevelObjects" index="130" instance=ExtResource("32_obujn")]
-transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -29.0377, -0.0525224, -5.69141)
 
 [node name="Desert_plant_099" parent="LevelObjects" index="131" instance=ExtResource("25_u8rub")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -31.1793, -0.512502, -9.31408)
@@ -672,15 +639,6 @@ transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -2
 [node name="Desert_plant_107" parent="LevelObjects" index="142" instance=ExtResource("23_obujn")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -33.5755, 0.0326243, 17.7753)
 
-[node name="dead_tree13" parent="LevelObjects" index="143" instance=ExtResource("12_siero")]
-transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -41.3468, 0.130985, 36.2072)
-
-[node name="dead_tree21" parent="LevelObjects" index="144" instance=ExtResource("12_siero")]
-transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -41.3468, 0.130985, 36.2072)
-
-[node name="dead_tree20" parent="LevelObjects" index="145" instance=ExtResource("12_siero")]
-transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -41.3468, 0.130985, 36.2072)
-
 [node name="Desert_plant_108" parent="LevelObjects" index="146" instance=ExtResource("24_uf1la")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -40.4579, 0.0178959, 17.6308)
 
@@ -689,9 +647,6 @@ transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -3
 
 [node name="Desert_plant_109" parent="LevelObjects" index="148" instance=ExtResource("15_ie14x")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -24.399, 0.0315527, 22.7639)
-
-[node name="dead_tree14" parent="LevelObjects" index="149" instance=ExtResource("27_sesbr")]
-transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -18.8118, 0.758106, 31.2433)
 
 [node name="Desert_plant_110" parent="LevelObjects" index="150" instance=ExtResource("22_pgcb2")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -14.1073, 0.256077, 31.2102)
@@ -816,9 +771,6 @@ transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -1
 [node name="Desert_plant_144" parent="LevelObjects" index="190" instance=ExtResource("24_uf1la")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -28.8125, 1.51871, 61.2099)
 
-[node name="dead_tree6" parent="LevelObjects" index="191" instance=ExtResource("16_yjdcy")]
-transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -27.4212, 0.698625, 68.183)
-
 [node name="Desert_plant_145" parent="LevelObjects" index="192" instance=ExtResource("22_pgcb2")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -38.047, 1.16644, 59.7834)
 
@@ -879,15 +831,6 @@ transform = Transform3D(1, 0.000773153, -4.02331e-07, -0.000773153, 1, 0.0002164
 [node name="ObjectBrush1_1748805418_141" parent="LevelObjects" index="211" instance=ExtResource("23_kfcen")]
 transform = Transform3D(1, 0.000768425, -4.02331e-07, -0.000768425, 1, 0.000232699, 5.96046e-07, -0.000232699, 1, -2.54187, 0.0102394, 30.1325)
 
-[node name="ObjectBrush1_1748805418_142" parent="LevelObjects" index="212" instance=ExtResource("32_obujn")]
-transform = Transform3D(1, 0.000766115, -4.02331e-07, -0.000766115, 1, 0.000240197, 5.96046e-07, -0.000240197, 1, -2.70211, 0.010309, 29.0638)
-
-[node name="ObjectBrush1_1748805418_143" parent="LevelObjects" index="213" instance=ExtResource("32_obujn")]
-transform = Transform3D(1, 0.000766268, -4.02331e-07, -0.000766268, 1, 0.000239709, 5.96046e-07, -0.000239709, 1, -1.25632, 0.00947428, 34.9617)
-
-[node name="ObjectBrush1_1748805418_144" parent="LevelObjects" index="214" instance=ExtResource("28_a8o0p")]
-transform = Transform3D(1, 0.000771329, -4.02331e-07, -0.000771329, 1, 0.000222886, 5.96046e-07, -0.000222886, 1, -2.40789, 0.0102718, 32.6829)
-
 [node name="ObjectBrush1_1748805418_443" parent="LevelObjects" index="215" instance=ExtResource("24_tqvxf")]
 transform = Transform3D(1, 0.000765782, -4.02331e-07, -0.000765782, 1, 0.000241257, 5.96046e-07, -0.000241257, 1, 3.41706, 0.00593138, 38.6249)
 
@@ -902,9 +845,6 @@ transform = Transform3D(-5.81145e-07, 0.000201146, -1, 0.000202126, 1, 0.0002011
 
 [node name="ObjectBrush1_1748805418_609" parent="LevelObjects" index="219" instance=ExtResource("37_a8o0p")]
 transform = Transform3D(-5.81145e-07, 0.000195776, -1, 0.000207333, 1, 0.000195776, 1, -0.000207333, -6.25849e-07, 9.9236, 0.00465679, 42.837)
-
-[node name="ObjectBrush1_1748805418_610" parent="LevelObjects" index="220" instance=ExtResource("27_sesbr")]
-transform = Transform3D(-5.81145e-07, 0.000195846, -1, 0.000207266, 1, 0.000195846, 1, -0.000207266, -6.25849e-07, 8.17172, 0.0041256, 36.8205)
 
 [node name="ObjectBrush1_1748805418_709" parent="LevelObjects" index="221" instance=ExtResource("29_pgcb2")]
 transform = Transform3D(-5.81145e-07, 0.000192849, -1, 0.000210057, 1, 0.000192849, 1, -0.000210057, -6.25849e-07, 14.897, 0.00478077, 51.1309)
@@ -926,9 +866,6 @@ transform = Transform3D(-5.81145e-07, 0.000198946, -1, 0.000204293, 1, 0.0001989
 
 [node name="ObjectBrush1_1748805419_542" parent="LevelObjects" index="227" instance=ExtResource("20_sesbr")]
 transform = Transform3D(-5.81145e-07, 0.00019691, -1, 0.000206256, 1, 0.00019691, 1, -0.000206256, -6.25849e-07, 22.576, 0.0029881, 51.3382)
-
-[node name="ObjectBrush1_1748805419_543" parent="LevelObjects" index="228" instance=ExtResource("28_a8o0p")]
-transform = Transform3D(-5.81145e-07, 0.000193981, -1, 0.000209013, 1, 0.000193981, 1, -0.000209013, -6.25849e-07, 22.8458, 0.00341654, 54.4692)
 
 [node name="ObjectBrush1_1748805419_659" parent="LevelObjects" index="229" instance=ExtResource("16_oxnaw")]
 transform = Transform3D(-5.81145e-07, 0.000193695, -1, 0.000209278, 1, 0.000193695, 1, -0.000209278, -6.25849e-07, 30.04, 0.00230885, 58.2942)
@@ -957,17 +894,8 @@ transform = Transform3D(-5.81145e-07, -2.13568e-05, -1, -3.63319e-05, 1, -2.1356
 [node name="ObjectBrush1_1748805419_909" parent="LevelObjects" index="237" instance=ExtResource("14_l45x7")]
 transform = Transform3D(-5.81145e-07, -2.13516e-05, -1, -3.63349e-05, 1, -2.13516e-05, 1, 3.63349e-05, -5.81145e-07, 46.6973, 0.000484943, 50.7362)
 
-[node name="ObjectBrush1_1748805419_910" parent="LevelObjects" index="238" instance=ExtResource("28_a8o0p")]
-transform = Transform3D(-5.81145e-07, -2.08752e-05, -1, -3.66107e-05, 1, -2.08752e-05, 1, 3.66107e-05, -5.81145e-07, 46.6939, 0.000399828, 53.4539)
-
-[node name="ObjectBrush1_1748805419_911" parent="LevelObjects" index="239" instance=ExtResource("16_yjdcy")]
-transform = Transform3D(1, -0.000944418, -5.36442e-07, 0.000944418, 1, -3.9625e-05, 5.81145e-07, 3.96244e-05, 1, 47.781, 0.000392199, 56.0344)
-
 [node name="ObjectBrush1_1748805420_042" parent="LevelObjects" index="240" instance=ExtResource("25_u8rub")]
 transform = Transform3D(1, -0.00094244, -5.36442e-07, 0.00094244, 1, -7.28271e-05, 6.10948e-07, 7.28265e-05, 1, 54.8746, 0.00615358, 50.495)
-
-[node name="ObjectBrush1_1748805420_043" parent="LevelObjects" index="241" instance=ExtResource("27_sesbr")]
-transform = Transform3D(1, -0.000943045, -5.36442e-07, 0.000943045, 1, -6.45151e-05, 5.96046e-07, 6.45145e-05, 1, 50.9228, 0.00276947, 52.4499)
 
 [node name="ObjectBrush1_1748805420_443" parent="LevelObjects" index="242" instance=ExtResource("23_kfcen")]
 transform = Transform3D(0.99987, -0.0161399, 0.000127599, 0.0161404, 0.999838, -0.00794325, 6.10948e-07, 0.00794428, 0.999968, 55.7203, 0.0294762, 39.1044)
@@ -993,17 +921,11 @@ transform = Transform3D(-5.81145e-07, -2.13953e-05, -1, -3.63092e-05, 1, -2.1395
 [node name="ObjectBrush1_1748805420_644" parent="LevelObjects" index="249" instance=ExtResource("14_l45x7")]
 transform = Transform3D(-5.81145e-07, -2.01355e-05, -1, -3.70227e-05, 1, -2.01355e-05, 1, 3.70227e-05, -5.81145e-07, 43.7477, 0.00079155, 38.1948)
 
-[node name="ObjectBrush1_1748805420_726" parent="LevelObjects" index="250" instance=ExtResource("16_yjdcy")]
-transform = Transform3D(-5.81145e-07, -2.01204e-05, -1, -3.70308e-05, 1, -2.01204e-05, 1, 3.70308e-05, -5.81145e-07, 38.0051, 0.000688314, 36.2799)
-
 [node name="ObjectBrush1_1748805420_727" parent="LevelObjects" index="251" instance=ExtResource("17_kfcen")]
 transform = Transform3D(-5.81145e-07, -2.0292e-05, -1, -3.69371e-05, 1, -2.0292e-05, 1, 3.69371e-05, -5.81145e-07, 41.1798, 0.000689268, 39.1288)
 
 [node name="ObjectBrush1_1748805420_943" parent="LevelObjects" index="252" instance=ExtResource("15_ie14x")]
 transform = Transform3D(-5.81145e-07, -2.14647e-05, -1, -3.62682e-05, 1, -2.14647e-05, 1, 3.62682e-05, -5.81145e-07, 27.7034, 0.000341415, 38.0207)
-
-[node name="ObjectBrush1_1748805420_944" parent="LevelObjects" index="253" instance=ExtResource("28_a8o0p")]
-transform = Transform3D(-5.81145e-07, 0.000197216, -1, 0.000205963, 1, 0.000197216, 1, -0.000205963, -6.25849e-07, 22.4531, 0.000944376, 38.1755)
 
 [node name="ObjectBrush1_1748805420_945" parent="LevelObjects" index="254" instance=ExtResource("13_0npag")]
 transform = Transform3D(-5.81145e-07, 0.000198794, -1, 0.00020444, 1, 0.000198794, 1, -0.00020444, -6.25849e-07, 24.9933, 0.000384331, 38.4569)
@@ -1038,9 +960,6 @@ transform = Transform3D(-5.81145e-07, -1.96899e-05, -1, -3.72615e-05, 1, -1.9689
 [node name="ObjectBrush1_1748805421_528" parent="LevelObjects" index="264" instance=ExtResource("7_e0rd0")]
 transform = Transform3D(-5.81145e-07, -2.13171e-05, -1, -3.63551e-05, 1, -2.13171e-05, 1, 3.63551e-05, -5.81145e-07, 37.0467, 0.000377893, 45.3631)
 
-[node name="ObjectBrush1_1748805422_393" parent="LevelObjects" index="265" instance=ExtResource("27_sesbr")]
-transform = Transform3D(0.999872, -0.0160038, 0.000130937, 0.0160044, 0.999838, -0.00821396, 5.51343e-07, 0.008215, 0.999966, 55.9055, 0.0400944, 37.3474)
-
 [node name="ObjectBrush1_1748805422_394" parent="LevelObjects" index="266" instance=ExtResource("19_ic1si")]
 transform = Transform3D(0.999615, -0.0277245, 0.000610098, 0.0277313, 0.999373, -0.0220159, 6.10948e-07, 0.0220243, 0.999758, 57.1124, -0.274941, 34.4972)
 
@@ -1074,12 +993,6 @@ transform = Transform3D(0.994537, -0.104321, 0.00368063, 0.104386, 0.993918, -0.
 [node name="ObjectBrush1_1748805423_976" parent="LevelObjects" index="276" instance=ExtResource("15_ie14x")]
 transform = Transform3D(-5.81145e-07, -3.46515e-05, -1, -0.000112747, 1, -3.46514e-05, 1, 0.000112747, -5.81145e-07, 46.5436, 0.00158763, 25.5968)
 
-[node name="ObjectBrush1_1748805423_977" parent="LevelObjects" index="277" instance=ExtResource("16_yjdcy")]
-transform = Transform3D(-5.81145e-07, -3.45116e-05, -1, -0.00011279, 1, -3.45115e-05, 1, 0.00011279, -5.81145e-07, 49.5584, 0.00138187, 29.2928)
-
-[node name="ObjectBrush1_1748805424_243" parent="LevelObjects" index="278" instance=ExtResource("32_obujn")]
-transform = Transform3D(-5.81145e-07, -2.1528e-05, -1, -3.62306e-05, 1, -2.1528e-05, 1, 3.62306e-05, -5.81145e-07, 42.2822, 0.000899553, 33.3863)
-
 [node name="ObjectBrush1_1748805424_244" parent="LevelObjects" index="279" instance=ExtResource("13_0npag")]
 transform = Transform3D(-5.81145e-07, -2.03397e-05, -1, -3.69108e-05, 1, -2.03397e-05, 1, 3.69108e-05, -5.81145e-07, 46.4529, 0.00106812, 31.791)
 
@@ -1094,9 +1007,6 @@ transform = Transform3D(-5.81145e-07, -3.39541e-05, -1, -0.000112959, 1, -3.3954
 
 [node name="ObjectBrush1_1748805428_193" parent="LevelObjects" index="283" instance=ExtResource("24_tqvxf")]
 transform = Transform3D(-5.66244e-07, 0.107335, -0.994223, -0.126608, 0.986222, 0.106471, 0.991953, 0.125877, 0.0135889, 16.1429, 0.0330489, 10.4735)
-
-[node name="ObjectBrush1_1748805428_194" parent="LevelObjects" index="284" instance=ExtResource("16_yjdcy")]
-transform = Transform3D(-5.81145e-07, -3.49202e-05, -1, -0.000112664, 1, -3.49201e-05, 1, 0.000112664, -5.81145e-07, 23.3909, 0.00133705, 15.0063)
 
 [node name="ObjectBrush1_1748805428_509" parent="LevelObjects" index="285" instance=ExtResource("20_sesbr")]
 transform = Transform3D(-5.81145e-07, -3.59543e-05, -1, -0.000112338, 1, -3.59542e-05, 1, 0.000112338, -5.81145e-07, 25.8535, 0.00185108, 11.3963)
@@ -1115,12 +1025,6 @@ transform = Transform3D(-5.51343e-07, -0.0111471, -0.999938, -0.287645, 0.957678
 
 [node name="ObjectBrush1_1748805429_293" parent="LevelObjects" index="290" instance=ExtResource("17_kfcen")]
 transform = Transform3D(0.934503, 0.348562, -0.0721646, -0.355954, 0.915097, -0.189456, 5.66244e-07, 0.202734, 0.979234, 48.9861, 0.551618, 3.18194)
-
-[node name="ObjectBrush1_1748805429_294" parent="LevelObjects" index="291" instance=ExtResource("28_a8o0p")]
-transform = Transform3D(-5.81145e-07, 0.115403, -0.993319, -0.219493, 0.969096, 0.112589, 0.975614, 0.218027, 0.0253297, 44.263, 0.615329, 6.29941)
-
-[node name="ObjectBrush1_1748805429_295" parent="LevelObjects" index="292" instance=ExtResource("16_yjdcy")]
-transform = Transform3D(-5.81145e-07, -7.92583e-05, -1, -0.0666817, 0.997774, -7.90448e-05, 0.997774, 0.0666817, -5.87106e-06, 44.4281, 0.0184798, 11.8658)
 
 [node name="ObjectBrush1_1748805429_296" parent="LevelObjects" index="293" instance=ExtResource("7_e0rd0")]
 transform = Transform3D(-5.96046e-07, 0.0623477, -0.998055, -0.161508, 0.984951, 0.0615293, 0.986871, 0.161193, 0.010069, 43.8056, 0.219713, 8.17047)
@@ -1146,9 +1050,6 @@ transform = Transform3D(0.973515, 0.224842, -0.0413991, -0.228621, 0.957422, -0.
 [node name="ObjectBrush1_1748805429_992" parent="LevelObjects" index="300" instance=ExtResource("25_u8rub")]
 transform = Transform3D(0.99966, -0.0260856, -0.000539973, 0.0260911, 0.999446, 0.0206681, 5.21541e-07, -0.0206751, 0.999786, 67.3804, 0.29496, 0.448929)
 
-[node name="ObjectBrush1_1748805429_993" parent="LevelObjects" index="301" instance=ExtResource("27_sesbr")]
-transform = Transform3D(0.999084, -0.0427811, -0.00108188, 0.0427948, 0.998765, 0.0252444, 5.81145e-07, -0.0252675, 0.999681, 63.0639, 0.332997, 10.0712)
-
 [node name="ObjectBrush1_1748805429_994" parent="LevelObjects" index="302" instance=ExtResource("14_l45x7")]
 transform = Transform3D(0.999288, -0.0377383, 5.98878e-05, 0.0377383, 0.999286, -0.00160306, 6.4075e-07, 0.00160418, 0.999999, 63.1507, 0.187194, 2.33275)
 
@@ -1157,9 +1058,6 @@ transform = Transform3D(-5.51343e-07, -0.00139243, -0.999999, -0.0108833, 0.9999
 
 [node name="ObjectBrush1_1748805431_193" parent="LevelObjects" index="304" instance=ExtResource("7_e0rd0")]
 transform = Transform3D(-5.51343e-07, 0.00751284, -0.999972, -0.0132811, 0.999884, 0.00751219, 0.999912, 0.0132807, 9.91672e-05, 28.7033, -0.0992584, -47.9684)
-
-[node name="ObjectBrush1_1748805432_143" parent="LevelObjects" index="305" instance=ExtResource("27_sesbr")]
-transform = Transform3D(0.999909, 0.0134951, -4.26173e-05, -0.0134952, 0.999904, -0.00311391, 5.96046e-07, 0.0031142, 0.999995, 23.1221, -0.151298, -48.5359)
 
 [node name="ObjectBrush1_1748805432_144" parent="LevelObjects" index="306" instance=ExtResource("24_uf1la")]
 transform = Transform3D(-5.66244e-07, -0.0012398, -0.999999, -0.0109018, 0.99994, -0.00123971, 0.999941, 0.0109018, -1.41114e-05, 18.4747, -0.122461, -74.1193)
@@ -1179,9 +1077,6 @@ transform = Transform3D(0.967497, -0.252867, 0.00266354, 0.252881, 0.967444, -0.
 [node name="ObjectBrush1_1748805434_025" parent="LevelObjects" index="311" instance=ExtResource("13_v1pjo")]
 transform = Transform3D(0.88383, -0.467739, -0.00806785, 0.467809, 0.883698, 0.0152414, 5.51343e-07, -0.017245, 0.999851, 9.96165, -1.15817, -53.6086)
 
-[node name="ObjectBrush1_1748805439_575" parent="LevelObjects" index="312" instance=ExtResource("28_a8o0p")]
-transform = Transform3D(-5.66244e-07, 0.00621407, -0.999981, 0.00843747, 0.999945, 0.00621384, 0.999964, -0.00843731, -5.30183e-05, 9.84004, -0.0191627, -32.5207)
-
 [node name="ObjectBrush1_1748805439_96" parent="LevelObjects" index="313" instance=ExtResource("17_kfcen")]
 transform = Transform3D(0.99982, 0.0189841, -0.000135139, -0.0189846, 0.999795, -0.00708604, 5.66244e-07, 0.00708733, 0.999975, 14.2316, -0.0638318, -43.0272)
 
@@ -1190,9 +1085,6 @@ transform = Transform3D(0.962312, -0.266847, -0.0524224, 0.271948, 0.944264, 0.1
 
 [node name="ObjectBrush1_1748805440_797" parent="LevelObjects" index="315" instance=ExtResource("33_tqvxf")]
 transform = Transform3D(0.996811, -0.0796015, -0.00558552, 0.0797972, 0.994367, 0.0697662, 5.81145e-07, -0.0699894, 0.997548, 6.57694, -0.289982, -37.1797)
-
-[node name="ObjectBrush1_1748805441_425" parent="LevelObjects" index="316" instance=ExtResource("32_obujn")]
-transform = Transform3D(-5.51343e-07, -0.25395, -0.967217, 0.276722, 0.929448, -0.244034, 0.96095, -0.26765, 0.070273, -6.92932, -2.01159, -35.0873)
 
 [node name="ObjectBrush1_1748805441_426" parent="LevelObjects" index="317" instance=ExtResource("23_kfcen")]
 transform = Transform3D(0.963067, -0.267306, -0.0324066, 0.269263, 0.956066, 0.115906, 5.51343e-07, -0.120351, 0.992731, -6.04462, -0.97633, -32.5246)
@@ -1221,14 +1113,8 @@ transform = Transform3D(-5.51343e-07, 0.00618993, -0.999981, 0.0084552, 0.999945
 [node name="ObjectBrush1_1748805443_195" parent="LevelObjects" index="325" instance=ExtResource("10_hbnb1")]
 transform = Transform3D(-2.6077e-07, -0.479725, -0.877419, 0.87219, 0.429204, -0.234665, 0.489167, -0.765276, 0.418411, 9.40197, 0.0158437, -37.1086)
 
-[node name="ObjectBrush1_1748805443_476" parent="LevelObjects" index="326" instance=ExtResource("28_a8o0p")]
-transform = Transform3D(0.511563, -0.774407, 0.372285, 0.859246, 0.461053, -0.221645, 3.20375e-07, 0.433271, 0.901264, 22.4621, 0.678756, -39.5117)
-
 [node name="ObjectBrush1_1748805443_477" parent="LevelObjects" index="327" instance=ExtResource("9_08abp")]
 transform = Transform3D(-5.81145e-07, 0.0050623, -0.999987, 0.00684628, 0.999964, 0.00506218, 0.999977, -0.00684619, -3.52561e-05, 16.697, -0.09306, -36.2329)
-
-[node name="ObjectBrush1_1748805443_478" parent="LevelObjects" index="328" instance=ExtResource("16_yjdcy")]
-transform = Transform3D(0.999892, -0.0146679, -0.000211418, 0.0146694, 0.999789, 0.0143668, 6.10948e-07, -0.0143683, 0.999897, 21.4125, -0.109938, -37.2079)
 
 [node name="ObjectBrush1_1748805443_617" parent="LevelObjects" index="329" instance=ExtResource("37_a8o0p")]
 transform = Transform3D(-5.81145e-07, -0.0142458, -0.999899, 0.0147885, 0.999789, -0.0142442, 0.999891, -0.014787, 0.000210091, 30.5787, -0.001724, -36.5994)
@@ -1254,9 +1140,6 @@ transform = Transform3D(-5.66244e-07, -0.0116681, -0.999932, 0.0171182, 0.999785
 [node name="ObjectBrush1_1748805446_409" parent="LevelObjects" index="336" instance=ExtResource("18_uf1la")]
 transform = Transform3D(0.993949, -0.10982, 0.0020408, 0.109839, 0.993778, -0.0184731, 6.10948e-07, 0.0185854, 0.999827, 77.5922, 0.327164, -21.178)
 
-[node name="ObjectBrush1_1748805446_410" parent="LevelObjects" index="337" instance=ExtResource("32_obujn")]
-transform = Transform3D(0.993917, -0.110116, 0.00184372, 0.110131, 0.993778, -0.0166447, 5.81145e-07, 0.0167465, 0.99986, 63.3186, 0.00943318, -16.6302)
-
 [node name="ObjectBrush1_1748805446_411" parent="LevelObjects" index="338" instance=ExtResource("20_sesbr")]
 transform = Transform3D(0.994027, -0.109107, 0.00244372, 0.109134, 0.993778, -0.022263, 5.51343e-07, 0.0223967, 0.999749, 78.3439, 0.39983, -23.1956)
 
@@ -1272,9 +1155,6 @@ transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -1
 [node name="Desert_plant_149" parent="LevelObjects" index="342" instance=ExtResource("10_hbnb1")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -11.2383, 0.0013963, 5.31966)
 
-[node name="dead_tree15" parent="LevelObjects" index="343" instance=ExtResource("16_yjdcy")]
-transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -7.07444, 0.0577814, 5.04706)
-
 [node name="Desert_plant_150" parent="LevelObjects" index="344" instance=ExtResource("13_v1pjo")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -0.732813, 1.36028, 2.6727)
 
@@ -1286,9 +1166,6 @@ transform = Transform3D(0.128777, 0.152646, -0.979855, -0.764337, 0.644818, 0, 0
 
 [node name="ObjectBrush2_1748805588_489" parent="LevelObjects" index="347" instance=ExtResource("25_ic1si")]
 transform = Transform3D(0.842238, 0.499933, -0.201748, -0.539106, 0.781039, -0.315186, 5.51343e-07, 0.374225, 0.927338, -69.6444, 3.19397, -74.1124)
-
-[node name="ObjectBrush2_1748805588_49" parent="LevelObjects" index="348" instance=ExtResource("16_yjdcy")]
-transform = Transform3D(0.859595, 0.491525, -0.139639, -0.510975, 0.826875, -0.234908, 5.06639e-07, 0.273277, 0.961935, -75.2146, 6.35495, -70.0265)
 
 [node name="ObjectBrush2_1748805588_50" parent="LevelObjects" index="349" instance=ExtResource("10_hbnb1")]
 transform = Transform3D(0.886098, 0.445894, -0.126523, -0.463497, 0.852446, -0.241881, 5.66244e-07, 0.272974, 0.962021, -71.3499, 3.35192, -72.9577)
@@ -1350,9 +1227,6 @@ transform = Transform3D(0.927322, 0.372766, -0.033449, -0.374264, 0.923611, -0.0
 [node name="ObjectBrush2_1748805589_75" parent="LevelObjects" index="368" instance=ExtResource("16_oxnaw")]
 transform = Transform3D(0.937361, 0.348128, -0.0126626, -0.348358, 0.936742, -0.0340711, 5.06639e-07, 0.0363481, 0.999339, -91.0845, 2.63386, -45.0691)
 
-[node name="ObjectBrush2_1748805589_76" parent="LevelObjects" index="369" instance=ExtResource("16_yjdcy")]
-transform = Transform3D(0.93717, 0.348714, -0.0105417, -0.348873, 0.936742, -0.0283165, 5.51343e-07, 0.0302151, 0.999543, -92.6436, 4.7829, -45.6131)
-
 [node name="ObjectBrush2_1748805589_78" parent="LevelObjects" index="370" instance=ExtResource("19_ic1si")]
 transform = Transform3D(0.938097, 0.346123, -0.0131284, -0.346372, 0.937423, -0.0355548, 4.91738e-07, 0.0379012, 0.999282, -89.9709, 3.85551, -48.9216)
 
@@ -1370,9 +1244,6 @@ transform = Transform3D(0.950319, 0.311169, 0.00823829, -0.311278, 0.949986, 0.0
 
 [node name="ObjectBrush2_1748805589_83" parent="LevelObjects" index="375" instance=ExtResource("7_e0rd0")]
 transform = Transform3D(0.925853, 0.376503, -0.0322747, -0.377883, 0.92247, -0.0790749, 5.36442e-07, 0.0854078, 0.996346, -93.6624, 5.08413, -48.1393)
-
-[node name="ObjectBrush2_1748805589_84" parent="LevelObjects" index="376" instance=ExtResource("32_obujn")]
-transform = Transform3D(0.957802, 0.285892, -0.0296916, -0.287429, 0.952678, -0.0989397, 5.21541e-07, 0.103299, 0.99465, -94.0956, 6.0758, -50.8228)
 
 [node name="ObjectBrush2_1748805590_509" parent="LevelObjects" index="377" instance=ExtResource("37_a8o0p")]
 transform = Transform3D(0.928604, 0.369486, -0.0342621, -0.371071, 0.924638, -0.0857396, 4.91738e-07, 0.0923318, 0.995728, -84.2721, 2.08704, -54.1899)
@@ -1434,9 +1305,6 @@ transform = Transform3D(0.111349, 0.479864, -0.870248, -0.761168, 0.604185, 0.23
 [node name="ObjectBrush2_1748805591_510" parent="LevelObjects" index="396" instance=ExtResource("13_v1pjo")]
 transform = Transform3D(0.112207, 0.606489, -0.787134, -0.756881, 0.565421, 0.327764, 0.643848, 0.55899, 0.522485, -63.7421, 7.75382, -78.2675)
 
-[node name="ObjectBrush2_1748805591_513" parent="LevelObjects" index="397" instance=ExtResource("16_yjdcy")]
-transform = Transform3D(0.110396, 0.554657, -0.824723, -0.765862, 0.576346, 0.285097, 0.633457, 0.600151, 0.488418, -52.3816, 8.16548, -84.2422)
-
 [node name="ObjectBrush2_1748805591_514" parent="LevelObjects" index="398" instance=ExtResource("24_tqvxf")]
 transform = Transform3D(0.111242, 0.566437, -0.816562, -0.761701, 0.576346, 0.296035, 0.638308, 0.589045, 0.49557, -53.3782, 7.01311, -82.7047)
 
@@ -1452,17 +1320,11 @@ transform = Transform3D(0.123896, 0.457096, -0.880746, -0.692276, 0.675716, 0.25
 [node name="ObjectBrush2_1748805591_725" parent="LevelObjects" index="402" instance=ExtResource("29_pgcb2")]
 transform = Transform3D(0.0503202, -0.154049, -0.986781, -0.956084, 0.278216, -0.0921877, 0.28874, 0.948085, -0.133284, -57.9405, 6.6774, -79.5647)
 
-[node name="ObjectBrush2_1748805591_726" parent="LevelObjects" index="403" instance=ExtResource("28_a8o0p")]
-transform = Transform3D(-0.0494517, 0.410232, -0.910639, -0.957621, -0.278507, -0.0734611, -0.283756, 0.868414, 0.406619, -57.6794, 6.82443, -79.5051)
-
 [node name="ObjectBrush2_1748805591_727" parent="LevelObjects" index="404" instance=ExtResource("12_6shoj")]
 transform = Transform3D(0.110448, 0.555402, -0.824215, -0.765608, 0.576346, 0.28578, 0.633755, 0.599461, 0.488877, -49.217, 7.39399, -85.4896)
 
 [node name="ObjectBrush2_1748805592_260" parent="LevelObjects" index="405" instance=ExtResource("16_oxnaw")]
 transform = Transform3D(0.595035, 0.708012, 0.380332, -0.796982, 0.580869, 0.165566, -0.1037, -0.401636, 0.90991, -39.2256, 9.00707, -89.5868)
-
-[node name="ObjectBrush2_1748805592_262" parent="LevelObjects" index="406" instance=ExtResource("16_yjdcy")]
-transform = Transform3D(0.103594, 0.581839, -0.80668, -0.797449, 0.533302, 0.282249, 0.594427, 0.614046, 0.519234, -40.0975, 8.60659, -91.792)
 
 [node name="ObjectBrush2_1748805593_142" parent="LevelObjects" index="407" instance=ExtResource("23_obujn")]
 transform = Transform3D(0.142392, 0.327764, -0.933968, -0.558711, 0.805504, 0.197501, 0.817048, 0.493695, 0.297822, -59.1359, 4.70275, -77.3112)
@@ -1478,12 +1340,6 @@ transform = Transform3D(0.140025, 0.385019, -0.912225, -0.578649, 0.77942, 0.240
 
 [node name="ObjectBrush2_1748805593_147" parent="LevelObjects" index="411" instance=ExtResource("20_sesbr")]
 transform = Transform3D(0.139535, 0.375053, -0.916442, -0.582651, 0.77942, 0.230264, 0.800654, 0.501836, 0.327281, -55.6633, 5.16886, -79.4389)
-
-[node name="ObjectBrush2_1748805593_149" parent="LevelObjects" index="412" instance=ExtResource("28_a8o0p")]
-transform = Transform3D(0.139765, 0.379791, -0.914453, -0.580781, 0.77942, 0.234943, 0.801972, 0.49826, 0.32951, -57.5822, 4.29357, -77.3784)
-
-[node name="ObjectBrush2_1748805593_150" parent="LevelObjects" index="413" instance=ExtResource("27_sesbr")]
-transform = Transform3D(-5.06639e-07, 0.410573, -0.911828, -0.475565, 0.802117, 0.361173, 0.879681, 0.433633, 0.195253, -68.028, 7.39173, -73.6559)
 
 [node name="ObjectBrush2_1748805593_151" parent="LevelObjects" index="414" instance=ExtResource("15_ie14x")]
 transform = Transform3D(0.127097, 0.555468, -0.821768, -0.672299, 0.657387, 0.340376, 0.729287, 0.509213, 0.456993, -64.7794, 5.37315, -75.1369)
@@ -1502,9 +1358,6 @@ transform = Transform3D(0.135229, 0.583987, -0.80042, -0.616136, 0.682214, 0.393
 
 [node name="ObjectBrush2_1748805593_380" parent="LevelObjects" index="419" instance=ExtResource("13_v1pjo")]
 transform = Transform3D(0.148502, 0.388549, -0.909383, -0.501843, 0.821983, 0.269255, 0.852116, 0.416382, 0.317057, -63.9168, 4.51658, -74.6526)
-
-[node name="ObjectBrush2_1748805593_381" parent="LevelObjects" index="420" instance=ExtResource("28_a8o0p")]
-transform = Transform3D(0.133873, 0.571126, -0.809873, -0.626097, 0.682214, 0.377606, 0.768167, 0.456508, 0.44891, -66.9473, 5.32201, -73.3606)
 
 [node name="ObjectBrush2_1748805593_382" parent="LevelObjects" index="421" instance=ExtResource("13_v1pjo")]
 transform = Transform3D(0.133876, 0.57115, -0.809855, -0.626079, 0.682214, 0.377635, 0.768181, 0.456477, 0.448917, -66.7819, 5.33685, -73.5113)
@@ -1572,9 +1425,6 @@ transform = Transform3D(0.956244, 0.292529, -0.00495784, -0.292502, 0.956249, 0.
 [node name="ObjectBrush2_1748805599_995" parent="LevelObjects" index="442" instance=ExtResource("22_yjdcy")]
 transform = Transform3D(0.840534, 0.535141, 0.0844165, -0.541759, 0.830267, 0.130973, 5.06639e-07, -0.155821, 0.987785, -109.29, 6.97428, -1.65137)
 
-[node name="ObjectBrush2_1748805599_996" parent="LevelObjects" index="443" instance=ExtResource("28_a8o0p")]
-transform = Transform3D(0.865698, 0.480543, 0.140163, -0.500567, 0.831067, 0.242405, 5.21541e-07, -0.280011, 0.959997, -115.981, 9.69807, 4.94574)
-
 [node name="ObjectBrush2_1748805599_997" parent="LevelObjects" index="444" instance=ExtResource("24_tqvxf")]
 transform = Transform3D(0.509234, 0.808041, 0.296225, -0.858054, 0.450086, 0.247318, 0.0665161, -0.380121, 0.922542, -110.394, 7.05842, 12.2719)
 
@@ -1590,9 +1440,6 @@ transform = Transform3D(0.952411, 0.30044, 0.0514658, -0.304723, 0.934274, 0.185
 [node name="ObjectBrush2_1748805600_361" parent="LevelObjects" index="448" instance=ExtResource("13_0npag")]
 transform = Transform3D(0.525086, 0.702515, 0.480374, -0.85105, 0.433442, 0.296384, 2.90573e-07, -0.564448, 0.825468, -107.49, 7.70733, 26.5726)
 
-[node name="ObjectBrush2_1748805600_362" parent="LevelObjects" index="449" instance=ExtResource("32_obujn")]
-transform = Transform3D(0.533525, 0.687125, 0.493164, -0.845785, 0.433442, 0.31109, 4.09782e-07, -0.583084, 0.812412, -107.523, 7.20192, 25.8441)
-
 [node name="ObjectBrush2_1748805600_575" parent="LevelObjects" index="450" instance=ExtResource("19_ic1si")]
 transform = Transform3D(0.803728, 0.530024, 0.270363, -0.594997, 0.715961, 0.365209, 4.61936e-07, -0.454395, 0.890801, -96.8264, 14.8772, 40.5257)
 
@@ -1601,9 +1448,6 @@ transform = Transform3D(0.98201, 0.188746, -0.00552621, -0.188826, 0.98159, -0.0
 
 [node name="ObjectBrush2_1748805602_380" parent="LevelObjects" index="452" instance=ExtResource("24_uf1la")]
 transform = Transform3D(0.978787, 0.204661, 0.00944373, -0.204879, 0.977747, 0.0451187, 5.21541e-07, -0.0460965, 0.998937, -95.5428, 2.93975, -23.5851)
-
-[node name="ObjectBrush2_1748805602_381" parent="LevelObjects" index="453" instance=ExtResource("32_obujn")]
-transform = Transform3D(0.978561, 0.205786, 0.00839905, -0.205957, 0.977747, 0.0399089, 5.36442e-07, -0.0407831, 0.999168, -95.7497, 2.5354, -22.012)
 
 [node name="ObjectBrush2_1748805602_382" parent="LevelObjects" index="454" instance=ExtResource("22_pgcb2")]
 transform = Transform3D(0.94316, 0.332094, 0.0127718, -0.332253, 0.941345, 0.0589758, 0.00756277, -0.0598671, 0.998178, -100.239, 4.68311, -24.0302)
@@ -1629,9 +1473,6 @@ transform = Transform3D(0.980438, 0.196688, 0.0073887, -0.196827, 0.979747, 0.03
 [node name="ObjectBrush2_1748805602_674" parent="LevelObjects" index="461" instance=ExtResource("23_obujn")]
 transform = Transform3D(0.949748, 0.312939, 0.00689155, -0.313015, 0.949518, 0.020912, 5.51343e-07, -0.0220183, 0.999758, -107.72, 7.03546, -23.4979)
 
-[node name="ObjectBrush2_1748805602_675" parent="LevelObjects" index="462" instance=ExtResource("27_sesbr")]
-transform = Transform3D(0.926271, 0.376854, 0.00145951, -0.376857, 0.926265, 0.00358871, 5.06639e-07, -0.00387415, 0.999992, -108.099, 7.18419, -23.7051)
-
 [node name="ObjectBrush2_1748805602_676" parent="LevelObjects" index="463" instance=ExtResource("25_ic1si")]
 transform = Transform3D(0.943179, 0.332035, 0.0128867, -0.332199, 0.941343, 0.059307, 0.00756122, -0.0602181, 0.998157, -101.409, 5.52864, -25.1278)
 
@@ -1643,9 +1484,6 @@ transform = Transform3D(0.943392, 0.331379, 0.0141028, -0.331593, 0.941328, 0.06
 
 [node name="ObjectBrush2_1748805602_679" parent="LevelObjects" index="466" instance=ExtResource("29_pgcb2")]
 transform = Transform3D(0.968196, 0.250191, 0.000792444, -0.250192, 0.968191, 0.00306876, 5.51343e-07, -0.00316942, 0.999995, -105.879, 6.68843, -25.7494)
-
-[node name="ObjectBrush2_1748805602_680" parent="LevelObjects" index="467" instance=ExtResource("16_yjdcy")]
-transform = Transform3D(0.968194, 0.250198, -0.000632226, -0.250199, 0.968191, -0.00244408, 6.10948e-07, 0.00252453, 0.999997, -106.866, 6.79836, -23.3937)
 
 [node name="ObjectBrush2_1748805603_384" parent="LevelObjects" index="468" instance=ExtResource("13_v1pjo")]
 transform = Transform3D(0.89957, 0.430574, 0.0733522, -0.436778, 0.886793, 0.151075, 5.51343e-07, -0.167941, 0.985797, -103.912, 5.26779, 7.32217)
@@ -1662,17 +1500,11 @@ transform = Transform3D(0.941042, 0.337736, 0.0193664, -0.338291, 0.939498, 0.05
 [node name="ObjectBrush2_1748805603_388" parent="LevelObjects" index="472" instance=ExtResource("29_pgcb2")]
 transform = Transform3D(0.941062, 0.337671, 0.0194911, -0.338234, 0.939498, 0.0542315, 5.66244e-07, -0.0576277, 0.998338, -103.726, 4.97763, 2.67828)
 
-[node name="ObjectBrush2_1748805603_389" parent="LevelObjects" index="473" instance=ExtResource("27_sesbr")]
-transform = Transform3D(0.93234, 0.359564, 0.0381526, -0.361582, 0.927135, 0.0983782, 5.66244e-07, -0.105517, 0.994417, -103.529, 4.95318, 5.44421)
-
 [node name="ObjectBrush2_1748805603_390" parent="LevelObjects" index="474" instance=ExtResource("16_oxnaw")]
 transform = Transform3D(0.947217, 0.316596, 0.0504539, -0.320592, 0.935413, 0.149073, 5.96046e-07, -0.157379, 0.987538, -105.843, 5.75466, 1.88394)
 
 [node name="ObjectBrush2_1748805603_391" parent="LevelObjects" index="475" instance=ExtResource("22_yjdcy")]
 transform = Transform3D(0.965416, 0.260641, 0.00617583, -0.260714, 0.965145, 0.022871, 5.51343e-07, -0.0236902, 0.999719, -103.565, 5.07339, -4.02882)
-
-[node name="ObjectBrush2_1748805603_392" parent="LevelObjects" index="476" instance=ExtResource("16_yjdcy")]
-transform = Transform3D(0.954483, 0.298255, -0.00267573, -0.298267, 0.954444, -0.00856072, 5.51343e-07, 0.00896915, 0.99996, -102.431, 4.74163, -3.15965)
 
 [node name="ObjectBrush2_1748805603_769" parent="LevelObjects" index="477" instance=ExtResource("17_kfcen")]
 transform = Transform3D(0.952266, 0.304181, 0.0257375, -0.305268, 0.948876, 0.0802886, 5.66244e-07, -0.0843129, 0.996439, -100.244, 3.96365, 21.7964)
@@ -1715,9 +1547,6 @@ transform = Transform3D(-3.65078e-07, 0.13518, -0.990821, 0.790441, 0.606916, 0.
 
 [node name="ObjectBrush2_1748805604_399" parent="LevelObjects" index="490" instance=ExtResource("14_l45x7")]
 transform = Transform3D(-3.8743e-07, 0.260527, -0.965467, 0.72318, 0.666808, 0.179935, 0.690659, -0.698206, -0.188409, -78.4239, 1.37258, 42.2429)
-
-[node name="ObjectBrush2_1748805612_178" parent="LevelObjects" index="491" instance=ExtResource("27_sesbr")]
-transform = Transform3D(-5.51343e-07, 0.322891, -0.946436, -0.487232, 0.826497, 0.281971, 0.873273, 0.461134, 0.157322, -24.374, 11.7959, -99.1682)
 
 [node name="Desert_plant_152" parent="LevelObjects" index="492" instance=ExtResource("18_uf1la")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, 60.4132, 0.126655, -9.13851)
@@ -1773,9 +1602,6 @@ transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, 47
 [node name="stone36" parent="LevelObjects" index="509" instance=ExtResource("25_ic1si")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, 63.1551, 0.260193, -7.07475)
 
-[node name="dead_tree16" parent="LevelObjects" index="510" instance=ExtResource("28_a8o0p")]
-transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, 45.9184, 5.48589, -15.5413)
-
 [node name="ObjectBrush1_1748810839_258" parent="LevelObjects" index="511" instance=ExtResource("12_siero")]
 transform = Transform3D(-4.17233e-07, 0.0366161, -0.999329, -0.629271, 0.776665, 0.0284578, 0.777186, 0.628849, 0.0230411, 36.6459, 6.94923, -89.9462)
 
@@ -1785,17 +1611,11 @@ transform = Transform3D(-4.17233e-07, 0.016639, -0.999862, -0.637524, 0.770323, 
 [node name="ObjectBrush1_1748810839_260" parent="LevelObjects" index="513" instance=ExtResource("14_l45x7")]
 transform = Transform3D(-4.32134e-07, 0.0469237, -0.998899, -0.628857, 0.776665, 0.0364844, 0.777521, 0.628164, 0.0295079, 37.3242, 4.19648, -88.7863)
 
-[node name="ObjectBrush1_1748810839_341" parent="LevelObjects" index="514" instance=ExtResource("28_a8o0p")]
-transform = Transform3D(-4.91738e-07, -0.108093, -0.994141, -0.600365, 0.79504, -0.0864441, 0.799726, 0.596848, -0.0648955, 27.1003, 7.60753, -91.7406)
-
 [node name="ObjectBrush1_1748810839_342" parent="LevelObjects" index="515" instance=ExtResource("29_pgcb2")]
 transform = Transform3D(-4.76837e-07, -0.092938, -0.995672, -0.414202, 0.906245, -0.0845906, 0.910185, 0.41241, -0.0384956, 29.9859, 9.3487, -94.1689)
 
 [node name="ObjectBrush1_1748810839_343" parent="LevelObjects" index="516" instance=ExtResource("10_hbnb1")]
 transform = Transform3D(-4.76837e-07, -0.0883897, -0.996086, -0.60244, 0.79504, -0.0705492, 0.798164, 0.600082, -0.0532499, 27.8557, 7.36096, -91.8689)
-
-[node name="ObjectBrush1_1748810839_344" parent="LevelObjects" index="517" instance=ExtResource("27_sesbr")]
-transform = Transform3D(-5.21541e-07, -0.110592, -0.993866, -0.453169, 0.885957, -0.0985841, 0.891425, 0.450389, -0.0501173, 27.2402, 8.5613, -94.1328)
 
 [node name="ObjectBrush1_1748810839_374" parent="LevelObjects" index="518" instance=ExtResource("12_6shoj")]
 transform = Transform3D(-5.06639e-07, -0.0255363, -0.999674, -0.50049, 0.86546, -0.0221076, 0.865742, 0.500327, -0.0127811, 20.5184, 11.2008, -96.5252)
@@ -1815,9 +1635,6 @@ transform = Transform3D(-5.06639e-07, 0.14534, -0.989382, -0.504526, 0.854229, 0
 [node name="ObjectBrush1_1748810840_094" parent="LevelObjects" index="523" instance=ExtResource("19_ic1si")]
 transform = Transform3D(-5.21541e-07, 0.0275735, -0.99962, -0.427187, 0.90382, 0.0249312, 0.904163, 0.427025, 0.0117786, 14.3777, 11.8288, -99.0757)
 
-[node name="ObjectBrush1_1748810840_191" parent="LevelObjects" index="524" instance=ExtResource("27_sesbr")]
-transform = Transform3D(-5.21541e-07, 0.158795, -0.987312, -0.501415, 0.854229, 0.13739, 0.865207, 0.495053, 0.0796216, 4.81285, 12.3375, -100.196)
-
 [node name="ObjectBrush1_1748810840_192" parent="LevelObjects" index="525" instance=ExtResource("23_obujn")]
 transform = Transform3D(-5.21541e-07, 0.133819, -0.991006, -0.506939, 0.854229, 0.11535, 0.861982, 0.50238, 0.0678377, 9.99133, 12.498, -100.762)
 
@@ -1832,9 +1649,6 @@ transform = Transform3D(-5.06639e-07, 0.310419, -0.9506, -0.499235, 0.823663, 0.
 
 [node name="ObjectBrush1_1748810840_559" parent="LevelObjects" index="529" instance=ExtResource("22_yjdcy")]
 transform = Transform3D(-4.91738e-07, 0.00859469, -0.999963, -0.567117, 0.823607, 0.00707919, 0.823637, 0.567096, 0.00487378, 13.0989, 8.53181, -94.3705)
-
-[node name="ObjectBrush1_1748810840_560" parent="LevelObjects" index="530" instance=ExtResource("16_yjdcy")]
-transform = Transform3D(-4.91738e-07, 0.0858736, -0.996306, -0.556187, 0.827987, 0.0713661, 0.831057, 0.554133, 0.0477614, 12.8911, 10.1158, -96.7612)
 
 [node name="ObjectBrush1_1748810840_591" parent="LevelObjects" index="531" instance=ExtResource("37_a8o0p")]
 transform = Transform3D(-4.76837e-07, -0.0585593, -0.998284, -0.599525, 0.798982, -0.046868, 0.800356, 0.598497, -0.0351081, 20.9545, 9.32687, -94.2174)
@@ -1860,9 +1674,6 @@ transform = Transform3D(-5.51343e-07, -0.0291127, -0.999576, -0.35136, 0.935844,
 [node name="ObjectBrush1_1748810841_258" parent="LevelObjects" index="538" instance=ExtResource("21_a8o0p")]
 transform = Transform3D(-5.66244e-07, -0.0889131, -0.996039, -0.284129, 0.954989, -0.0852485, 0.958786, 0.283003, -0.0252633, 64.0724, 1.09744, -63.9382)
 
-[node name="ObjectBrush1_1748810841_259" parent="LevelObjects" index="539" instance=ExtResource("16_yjdcy")]
-transform = Transform3D(-5.81145e-07, -0.0723507, -0.997379, -0.121188, 0.990028, -0.0718174, 0.99263, 0.120871, -0.00876863, 64.2562, 0.517226, -60.0241)
-
 [node name="ObjectBrush1_1748810841_294" parent="LevelObjects" index="540" instance=ExtResource("20_sesbr")]
 transform = Transform3D(-5.66244e-07, -0.0401351, -0.999194, -0.0660538, 0.997012, -0.0400474, 0.997816, 0.0660006, -0.00265166, 67.3293, 0.384262, -55.8403)
 
@@ -1880,9 +1691,6 @@ transform = Transform3D(-5.36442e-07, -0.0698368, -0.997558, -0.343819, 0.936743
 
 [node name="ObjectBrush1_1748810842_008" parent="LevelObjects" index="545" instance=ExtResource("15_ie14x")]
 transform = Transform3D(-5.21541e-07, -0.0295467, -0.999564, -0.351328, 0.935844, -0.027663, 0.936252, 0.351175, -0.010381, 60.5248, 0.759663, -68.2304)
-
-[node name="ObjectBrush1_1748810842_009" parent="LevelObjects" index="546" instance=ExtResource("16_yjdcy")]
-transform = Transform3D(-5.51343e-07, -0.0816595, -0.99666, -0.302739, 0.94989, -0.0778274, 0.953073, 0.301728, -0.0247221, 65.3398, 0.627692, -64.934)
 
 [node name="ObjectBrush1_1748810842_010" parent="LevelObjects" index="547" instance=ExtResource("18_uf1la")]
 transform = Transform3D(-5.66244e-07, -0.0581562, -0.998307, -0.345737, 0.936743, -0.0545696, 0.938331, 0.345152, -0.0201073, 62.8211, 0.798905, -66.3041)
@@ -1932,9 +1740,6 @@ transform = Transform3D(-5.36442e-07, -0.0438691, -0.999037, -0.384097, 0.922404
 [node name="ObjectBrush1_1748810842_811" parent="LevelObjects" index="562" instance=ExtResource("21_a8o0p")]
 transform = Transform3D(-5.36442e-07, -0.0770618, -0.997026, -0.411471, 0.908712, -0.0702357, 0.911423, 0.410248, -0.0317092, 73.0046, 12.9232, -77.9411)
 
-[node name="ObjectBrush1_1748810842_958" parent="LevelObjects" index="563" instance=ExtResource("27_sesbr")]
-transform = Transform3D(0.97737, 0.210071, -0.0248483, -0.211535, 0.970604, -0.114806, 5.21541e-07, 0.117464, 0.993077, 83.9954, 15.0605, -74.865)
-
 [node name="ObjectBrush1_1748810842_959" parent="LevelObjects" index="564" instance=ExtResource("17_kfcen")]
 transform = Transform3D(-4.76837e-07, -0.110997, -0.993821, -0.538669, 0.837311, -0.0935164, 0.842517, 0.535341, -0.059791, 76.7777, 13.4384, -76.9178)
 
@@ -1961,9 +1766,6 @@ transform = Transform3D(-4.76837e-07, 0.306986, -0.951714, 0.469746, 0.840175, 0
 
 [node name="ObjectBrush1_1748810844_141" parent="LevelObjects" index="572" instance=ExtResource("38_pgcb2")]
 transform = Transform3D(-5.96046e-07, 0.0107658, -0.999942, 0.131488, 0.99126, 0.0106723, 0.991318, -0.131481, -0.00141613, 97.7494, 14.1725, -52.0484)
-
-[node name="ObjectBrush1_1748810844_142" parent="LevelObjects" index="573" instance=ExtResource("28_a8o0p")]
-transform = Transform3D(-5.81145e-07, -0.00512801, -0.999987, 0.195828, 0.980625, -0.00502883, 0.980638, -0.195826, 0.00100364, 93.5338, 15.364, -52.8677)
 
 [node name="ObjectBrush1_1748810844_143" parent="LevelObjects" index="574" instance=ExtResource("33_tqvxf")]
 transform = Transform3D(-5.66244e-07, -0.0724602, -0.997371, 0.226296, 0.971498, -0.0705806, 0.974059, -0.225701, 0.0163969, 92.8944, 14.3705, -54.561)
@@ -2022,9 +1824,6 @@ transform = Transform3D(-5.81145e-07, -0.0118005, -0.99993, 0.0170272, 0.999785,
 [node name="ObjectBrush1_1748810845_80" parent="LevelObjects" index="592" instance=ExtResource("29_pgcb2")]
 transform = Transform3D(-5.66244e-07, -0.0118838, -0.999929, 0.0169692, 0.999785, -0.0118821, 0.999856, -0.016968, 0.000201091, 32.4589, -0.0486147, -39.9347)
 
-[node name="ObjectBrush1_1748810845_81" parent="LevelObjects" index="593" instance=ExtResource("27_sesbr")]
-transform = Transform3D(-5.81145e-07, -0.0119252, -0.999929, 0.0169401, 0.999785, -0.0119235, 0.999857, -0.0169389, 0.000201449, 33.8041, -0.0711796, -41.647)
-
 [node name="ObjectBrush1_1748810846_141" parent="LevelObjects" index="594" instance=ExtResource("33_tqvxf")]
 transform = Transform3D(-5.81145e-07, 0.0347864, -0.999395, 0.139459, 0.989628, 0.0344463, 0.990228, -0.139375, -0.00485186, 48.4001, -0.0348854, -27.7642)
 
@@ -2055,9 +1854,6 @@ transform = Transform3D(-5.96046e-07, -0.00106071, -1, 0.00183978, 0.999998, -0.
 [node name="ObjectBrush1_1748810846_731" parent="LevelObjects" index="603" instance=ExtResource("17_kfcen")]
 transform = Transform3D(0.999959, -0.00901888, -3.71337e-05, 0.00901895, 0.999951, 0.00405136, 5.96046e-07, -0.00405153, 0.999992, 59.5188, -0.0145607, -25.0623)
 
-[node name="ObjectBrush1_1748810846_732" parent="LevelObjects" index="604" instance=ExtResource("16_yjdcy")]
-transform = Transform3D(0.999964, -0.00847857, -2.85506e-05, 0.00847862, 0.999959, 0.00329547, 6.10948e-07, -0.00329559, 0.999995, 60.9828, -0.0202162, -28.0197)
-
 [node name="ObjectBrush1_1748810846_733" parent="LevelObjects" index="605" instance=ExtResource("25_u8rub")]
 transform = Transform3D(0.999959, -0.00910476, -3.57181e-05, 0.00910483, 0.999951, 0.00385449, 6.10948e-07, -0.00385466, 0.999993, 60.7073, -0.012841, -26.3674)
 
@@ -2070,20 +1866,11 @@ transform = Transform3D(0.999981, -0.00620546, 7.55489e-06, 0.00620547, 0.99998,
 [node name="ObjectBrush1_1748810846_808" parent="LevelObjects" index="608" instance=ExtResource("25_ic1si")]
 transform = Transform3D(0.999964, -0.00847178, -2.86847e-05, 0.00847183, 0.999959, 0.00331289, 5.96046e-07, -0.00331301, 0.999995, 55.7144, -0.0730555, -30.6362)
 
-[node name="ObjectBrush1_1748810846_89" parent="LevelObjects" index="609" instance=ExtResource("27_sesbr")]
-transform = Transform3D(-5.66244e-07, 0.00306948, -0.999995, -0.00361347, 0.999989, 0.00306947, 0.999993, 0.00361346, 1.05202e-05, 50.504, -0.084023, -40.8916)
-
-[node name="ObjectBrush1_1748810847_36" parent="LevelObjects" index="610" instance=ExtResource("16_yjdcy")]
-transform = Transform3D(-5.81145e-07, 0.0187241, -0.999825, -0.0362725, 0.999167, 0.0187118, 0.999342, 0.0362661, 0.000678614, 39.8185, 0.0137527, -48.405)
-
 [node name="ObjectBrush1_1748810847_37" parent="LevelObjects" index="611" instance=ExtResource("33_tqvxf")]
 transform = Transform3D(-5.96046e-07, -0.00169043, -0.999999, -0.0108411, 0.99994, -0.00169032, 0.999941, 0.010841, -1.89245e-05, 34.0856, -0.0599694, -48.3894)
 
 [node name="ObjectBrush1_1748810847_39" parent="LevelObjects" index="612" instance=ExtResource("7_e0rd0")]
 transform = Transform3D(-5.81145e-07, -0.00120978, -0.999999, -0.0109052, 0.99994, -0.00120971, 0.999941, 0.0109051, -1.37687e-05, 33.5901, -0.0370564, -50.8067)
-
-[node name="ObjectBrush1_1748810847_422" parent="LevelObjects" index="613" instance=ExtResource("16_yjdcy")]
-transform = Transform3D(0.99919, 0.040211, -0.00159322, -0.0402425, 0.998407, -0.0395434, 6.4075e-07, 0.0395755, 0.999217, 34.297, 0.00936007, -76.7452)
 
 [node name="ObjectBrush1_1748810847_423" parent="LevelObjects" index="614" instance=ExtResource("37_a8o0p")]
 transform = Transform3D(-5.81145e-07, 0.00736454, -0.999973, -0.0133639, 0.999884, 0.00736389, 0.999911, 0.0133635, 9.7841e-05, 20.1941, -0.04919, -80.187)
@@ -2111,9 +1898,6 @@ transform = Transform3D(-5.66244e-07, 0.0632285, -0.997999, -0.0638559, 0.995962
 
 [node name="ObjectBrush1_1748810847_792" parent="LevelObjects" index="622" instance=ExtResource("23_obujn")]
 transform = Transform3D(-5.81145e-07, 0.0626375, -0.998036, -0.0644358, 0.995962, 0.0625073, 0.997922, 0.0643093, 0.00403552, 9.56899, -0.31678, -56.7118)
-
-[node name="ObjectBrush1_1748810847_866" parent="LevelObjects" index="623" instance=ExtResource("16_yjdcy")]
-transform = Transform3D(0.965818, -0.259215, 0.00172615, 0.25922, 0.965797, -0.00643376, 5.96046e-07, 0.0066613, 0.999978, 12.7154, -0.237993, -50.2601)
 
 [node name="ObjectBrush1_1748810847_867" parent="LevelObjects" index="624" instance=ExtResource("16_oxnaw")]
 transform = Transform3D(0.961499, -0.273618, 0.0255672, 0.274809, 0.957328, -0.0894561, 5.06639e-07, 0.093038, 0.995663, 4.99875, -0.614471, -56.807)
@@ -2144,9 +1928,6 @@ transform = Transform3D(-4.02331e-07, -0.546508, -0.837454, -0.671811, 0.620321,
 
 [node name="ObjectBrush1_1748810852_875" parent="LevelObjects" index="633" instance=ExtResource("13_0npag")]
 transform = Transform3D(-4.02331e-07, 0.569202, -0.822198, -0.718085, 0.572213, 0.39614, 0.695956, 0.590408, 0.408735, 78.2606, 1.96491, -51.1646)
-
-[node name="ObjectBrush1_1748810853_848" parent="LevelObjects" index="634" instance=ExtResource("27_sesbr")]
-transform = Transform3D(0.994906, -0.100797, -0.00117528, 0.100804, 0.994839, 0.0115936, 6.10948e-07, -0.011653, 0.999932, 77.2405, 0.222838, -31.2128)
 
 [node name="ObjectBrush1_1748810855_621" parent="LevelObjects" index="635" instance=ExtResource("19_ic1si")]
 transform = Transform3D(-4.17233e-07, -0.447614, -0.894227, -0.744918, 0.596589, -0.298628, 0.667156, 0.666126, -0.333436, 76.359, 5.71201, -64.2476)
@@ -2181,14 +1962,8 @@ transform = Transform3D(-5.51343e-07, -0.12895, -0.991651, -0.223474, 0.966572, 
 [node name="ObjectBrush1_1748810856_43" parent="LevelObjects" index="645" instance=ExtResource("23_obujn")]
 transform = Transform3D(-5.36442e-07, 0.120511, -0.992712, 0.41263, 0.90426, 0.109773, 0.910899, -0.409622, -0.0497269, 61.3723, 13.0135, -96.1458)
 
-[node name="ObjectBrush1_1748810856_44" parent="LevelObjects" index="646" instance=ExtResource("16_yjdcy")]
-transform = Transform3D(-5.21541e-07, -0.0175007, -0.999847, 0.332557, 0.942939, -0.0165048, 0.943083, -0.332507, 0.00581948, 68.1518, 12.7039, -94.8208)
-
 [node name="ObjectBrush1_1748810858_474" parent="LevelObjects" index="647" instance=ExtResource("22_yjdcy")]
 transform = Transform3D(0.376883, -0.372723, -0.847961, -0.464467, 0.716006, -0.521158, 0.801393, 0.590265, 0.0967332, 45.0722, 10.8085, -92.7147)
-
-[node name="ObjectBrush1_1748810858_475" parent="LevelObjects" index="648" instance=ExtResource("28_a8o0p")]
-transform = Transform3D(0.377596, -0.374473, -0.846871, -0.465162, 0.714091, -0.523162, 0.800653, 0.591476, 0.0954476, 44.5522, 11.2636, -93.5462)
 
 [node name="ObjectBrush1_1748810860_729" parent="LevelObjects" index="649" instance=ExtResource("12_6shoj")]
 transform = Transform3D(-5.81145e-07, 0.305776, -0.952104, -0.363354, 0.887028, 0.284876, 0.931651, 0.345951, 0.111104, -43.0686, 2.22506, -82.0643)
@@ -2240,12 +2015,6 @@ transform = Transform3D(-5.81145e-07, -0.0134773, -0.999909, 0.106251, 0.994249,
 
 [node name="ObjectBrush1_1748810877_138" parent="LevelObjects" index="665" instance=ExtResource("25_ic1si")]
 transform = Transform3D(-5.81145e-07, -0.0493755, -0.99878, 0.193661, 0.979872, -0.0484408, 0.981068, -0.193425, 0.0095616, 30.5146, 4.27872, 79.6212)
-
-[node name="ObjectBrush1_1748810877_139" parent="LevelObjects" index="666" instance=ExtResource("28_a8o0p")]
-transform = Transform3D(-5.96046e-07, 0.0100944, -0.999949, 0.151404, 0.988422, 0.00997799, 0.988472, -0.151397, -0.00152892, 26.8802, 3.8662, 77.9029)
-
-[node name="ObjectBrush1_1748810877_140" parent="LevelObjects" index="667" instance=ExtResource("28_a8o0p")]
-transform = Transform3D(-5.66244e-07, -0.052632, -0.998614, 0.192832, 0.979872, -0.0516443, 0.981232, -0.192565, 0.0101486, 30.7498, 3.88835, 79.098)
 
 [node name="ObjectBrush1_1748810877_225" parent="LevelObjects" index="668" instance=ExtResource("13_0npag")]
 transform = Transform3D(-5.96046e-07, -0.0486205, -0.998817, 0.134309, 0.989767, -0.04818, 0.990939, -0.13415, 0.00652963, 38.1778, 3.51396, 79.5664)
@@ -2307,9 +2076,6 @@ transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, 65
 [node name="Desert_plant_170" parent="LevelObjects" index="687" instance=ExtResource("12_6shoj")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, 68.792, 8.7661, 80.1604)
 
-[node name="dead_tree17" parent="LevelObjects" index="688" instance=ExtResource("12_siero")]
-transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, 73.4241, 6.34982, 75.5944)
-
 [node name="Desert_plant_171" parent="LevelObjects" index="689" instance=ExtResource("24_uf1la")]
 transform = Transform3D(0.19971, -0.0539115, -0.978371, 0, 0.998485, -0.0550199, 0.979855, 0.010988, 0.199408, 10.6453, 5.67337, 76.2052)
 
@@ -2318,12 +2084,6 @@ transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, 17
 
 [node name="Desert_plant_173" parent="LevelObjects" index="691" instance=ExtResource("9_08abp")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, 13.1241, 6.66906, 78.1359)
-
-[node name="dead_tree18" parent="LevelObjects" index="692" instance=ExtResource("32_obujn")]
-transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, 2.42875, 3.55948, 70.8425)
-
-[node name="dead_tree19" parent="LevelObjects" index="693" instance=ExtResource("28_a8o0p")]
-transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -8.15627, 7.08884, 70.7221)
 
 [node name="Desert_plant_174" parent="LevelObjects" index="694" instance=ExtResource("18_uf1la")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -5.97661, 4.55896, 66.3063)
@@ -2441,9 +2201,6 @@ transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -1
 
 [node name="Desert_plant_018" parent="." index="31" instance=ExtResource("24_tqvxf")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -3.44093, 8.72407, -9.56906)
-
-[node name="dead_tree5" parent="." index="32" instance=ExtResource("32_obujn")]
-transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, 1.51906, 10.114, -12.3054)
 
 [node name="Desert_plant_019" parent="." index="33" instance=ExtResource("24_tqvxf")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, 14.596, 13.1653, -17.4579)
