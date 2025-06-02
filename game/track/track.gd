@@ -165,6 +165,7 @@ func _on_user_data_updated(row: UserData):
 func _on_checkpoint_entered(checkpoint: Checkpoint):
 	var checkpoint_instances = checkpoints.get_children()
 	
+	# TODO: change logic after presentation - this was intended behavior
 	if _checkpoint_index >= checkpoint_instances.size() or checkpoint_instances[_checkpoint_index] != checkpoint:
 		return
 	
