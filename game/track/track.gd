@@ -180,7 +180,7 @@ func _on_checkpoint_entered(checkpoint: Checkpoint):
 	_set_next_checkpoint()
 	checkpoint_sound.play()
 
-func _on_finish_entered(finish: Finish):
+func _on_finish_entered(_finish: Finish):
 	# store time immediately to minimize time increases due to process updates
 	var finish_time = Time.get_ticks_msec() - started_at
 	

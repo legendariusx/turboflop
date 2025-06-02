@@ -32,17 +32,21 @@ func _render_track_selection():
 	track_selection_container.visible = true
 		
 	var dir = DirAccess.open("res://tracks")
+	var track_names: Array[String] = []
 	if dir:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
-		var i = 1
-		while file_name != "":
-			var new_button = track_select_scene.instantiate()
-			new_button.text = str(i).pad_zeros(3)
-			new_button.pressed.connect(func(): track_selected.emit(i))
-			track_container.add_child(new_button)
-			i += 1
+		while file_name != "" and "track" in file_name:
+			track_names.append(file_name)
 			file_name = dir.get_next()
+	
+	track_names.sort()
+	for track_name in track_names:
+		var new_button = track_select_scene.instantiate()
+		var clean_track_name = track_name.replace("track", "").replace(".tscn", "").replace(".remap", "")
+		new_button.text = clean_track_name
+		new_button.pressed.connect(func(): track_selected.emit(clean_track_name.to_int()))
+		track_container.add_child(new_button)
 
 func _on_name_input_text_submitted(new_text: String) -> void:
 	_on_confirm(new_text)
