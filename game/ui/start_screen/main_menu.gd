@@ -38,7 +38,7 @@ func _render_track_selection():
 		var i = 1
 		while file_name != "":
 			var new_button = track_select_scene.instantiate()
-			new_button.text = file_name.replace("track", "").replace(".tscn", "").replace(".remap", "")
+			new_button.text = str(i).pad_zeros(3)
 			new_button.pressed.connect(func(): track_selected.emit(i))
 			track_container.add_child(new_button)
 			i += 1

@@ -60,8 +60,8 @@ func on_checkpoint_entered(index: int, time: int):
 	_show_checkpoint_time("%02d" % index, index, time, false)
 
 func _on_finished(time: int):
-	_add_checkpoint_label("🏁", time)
-	_show_checkpoint_time("🏁", (get_parent() as Track).checkpoint_times.size() - 1, time, true)
+	_add_checkpoint_label("F", time)
+	_show_checkpoint_time("F", (get_parent() as Track).checkpoint_times.size() - 1, time, true)
 
 func _update_ui():
 	scoreboard.clear()

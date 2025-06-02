@@ -31,6 +31,7 @@ func _input(event: InputEvent) -> void:
 			current_track.queue_free()
 
 func _connect():
+	main_menu.hide()
 	loading_screen.show_connecting()
 	
 	# TODO: add dotenv config

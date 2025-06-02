@@ -165,7 +165,7 @@ func _on_user_data_updated(row: UserData):
 func _on_checkpoint_entered(checkpoint: Checkpoint):
 	var checkpoint_instances = checkpoints.get_children()
 	
-	if _checkpoint_index >= checkpoint_instances.size()	or checkpoint_instances[_checkpoint_index] != checkpoint:
+	if _checkpoint_index >= checkpoint_instances.size() or checkpoint_instances[_checkpoint_index] != checkpoint:
 		return
 	
 	var time = Time.get_ticks_msec() - started_at
