@@ -70,7 +70,7 @@ func _ready() -> void:
 		if not GameState.current_user: await GameState.current_user_upated
 		player_vehicle.set_owner_data(GameState.identity, GameState.current_user.name)
 
-	_replace_dead_tree_instances(get_tree().get_current_scene())
+	_replace_dead_tree_instances(get_tree().get_current_scene(), palm_variants)
 	
 	# TODO: implement starting from user input
 	_start()
@@ -225,21 +225,18 @@ func _set_next_checkpoint():
 			finish.set_orange_light()
 			
 
-func _replace_dead_tree_instances(root: Node):
+func _replace_dead_tree_instances(root: Node, palm_variants: Array):
 	for child in root.get_children():
 		if "dead_tree" in child.name:
 			var palm_scene = palm_variants[randi() % palm_variants.size()]
 			var palm_instance = palm_scene.instantiate()
 			palm_instance.transform = child.transform
 			palm_instance.name = child.name
-			var parent = child.get_parent()
-			var index = parent.get_children().find(child)
 
-			parent.remove_child(child)
+			root.remove_child(child)
 			child.free()
 
-			parent.add_child(palm_instance)
-			parent.move_child(palm_instance, index)
+			root.add_child(palm_instance)
 			continue
 		else:
 			var nchild = child.get_children()
@@ -249,16 +246,11 @@ func _replace_dead_tree_instances(root: Node):
 					var palm_instance = palm_scene.instantiate()
 					palm_instance.transform = child.transform
 					palm_instance.name = child.name
-					var parent = child.get_parent()
-					var index = parent.get_children().find(child)
 
-					parent.remove_child(child)
+					root.remove_child(child)
 					child.free()
 
-					parent.add_child(palm_instance)
-					parent.move_child(palm_instance, index)
+					root.add_child(palm_instance)
 					continue
 			
-		_replace_dead_tree_instances(child)
-			
-				
+		_replace_dead_tree_instances(child, palm_variants)			
