@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bs48eudfaytov"
-path="res://.godot/imported/Palm Tree.glb-2cfa412ed0f55bfda0ecbea41815341d.scn"
+uid="uid://g5ba0iwngs3m"
+path="res://.godot/imported/Palm Tree2.glb-36ba7651747f18f0bf6606459c55801a.scn"
 
 [deps]
 
-source_file="res://assets/models/Palm Tree.glb"
-dest_files=["res://.godot/imported/Palm Tree.glb-2cfa412ed0f55bfda0ecbea41815341d.scn"]
+source_file="res://assets/models/Palm Tree2.glb"
+dest_files=["res://.godot/imported/Palm Tree2.glb-36ba7651747f18f0bf6606459c55801a.scn"]
 
 [params]
 
@@ -34,7 +34,7 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "nodes": {
-"PATH:RootNode/Environment_PalmTree_3": {
+"PATH:RootNode/Environment_PalmTree_1": {
 "generate/physics": true
 }
 }

@@ -13,7 +13,12 @@ signal started
 signal finished(time: int)
 
 const CAR_SCENE = preload("res://vehicles/car.scn")
-const PALM_SCENE = preload("res://assets/models/PalmTree.tscn")
+
+var palm_variants = [
+	preload("res://assets/models/PalmTree1.tscn"),
+	preload("res://assets/models/PalmTree2.tscn"),
+	preload("res://assets/models/PalmTree3.tscn")
+]
 
 @onready var player_vehicle: Vehicle = $Car
 @onready var camera: CameraFollow = $Camera3D
@@ -65,7 +70,7 @@ func _ready() -> void:
 		if not GameState.current_user: await GameState.current_user_upated
 		player_vehicle.set_owner_data(GameState.identity, GameState.current_user.name)
 
-	_replace_dead_trees(get_tree().get_current_scene(), PALM_SCENE)
+	_replace_dead_tree_instances(get_tree().get_current_scene())
 	
 	# TODO: implement starting from user input
 	_start()
@@ -89,6 +94,7 @@ func _exit_tree() -> void:
 	UserData.set_user_data(Vector3.ZERO, Vector3.ZERO, Vector3.ZERO, Vector3.ZERO, false, 0)
 
 func _start():
+	randomize()
 	# reset track state
 	checkpoint_times.assign([0])
 	last_checkpoint = start_node
@@ -218,20 +224,41 @@ func _set_next_checkpoint():
 		for finish in finishes.get_children():
 			finish.set_orange_light()
 			
-func _replace_dead_trees(root: Node, palm_scene: PackedScene):
+
+func _replace_dead_tree_instances(root: Node):
 	for child in root.get_children():
-		_replace_dead_trees(child, palm_scene)  # Recursive
-
 		if "dead_tree" in child.name:
-			if child is Node3D:
-				var palm_instance = palm_scene.instantiate()
-				var original_transform = child.transform
-				var parent = child.get_parent()
-				var index = parent.get_children().find(child)
+			var palm_scene = palm_variants[randi() % palm_variants.size()]
+			var palm_instance = palm_scene.instantiate()
+			palm_instance.transform = child.transform
+			palm_instance.name = child.name
+			var parent = child.get_parent()
+			var index = parent.get_children().find(child)
 
-				parent.remove_child(child)
-				child.queue_free()
+			parent.remove_child(child)
+			child.free()
 
-				palm_instance.transform = original_transform
-				parent.add_child(palm_instance)
-				parent.move_child(palm_instance, index)
+			parent.add_child(palm_instance)
+			parent.move_child(palm_instance, index)
+			continue
+		else:
+			var nchild = child.get_children()
+			if nchild.size() == 1:
+				if "DeadTree" in nchild[0].name:
+					var palm_scene = palm_variants[randi() % palm_variants.size()]
+					var palm_instance = palm_scene.instantiate()
+					palm_instance.transform = child.transform
+					palm_instance.name = child.name
+					var parent = child.get_parent()
+					var index = parent.get_children().find(child)
+
+					parent.remove_child(child)
+					child.free()
+
+					parent.add_child(palm_instance)
+					parent.move_child(palm_instance, index)
+					continue
+			
+		_replace_dead_tree_instances(child)
+			
+				

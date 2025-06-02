@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://ce7uyrofns7ml"]
+[gd_scene load_steps=50 format=3 uid="uid://ce7uyrofns7ml"]
 
 [ext_resource type="PackedScene" uid="uid://clthdr6beclys" path="res://track/track.tscn" id="1_mn4nu"]
 [ext_resource type="PackedScene" uid="uid://p7atvo2gj2c5" path="res://checkpoint/finish/finish.tscn" id="2_7j01r"]
@@ -44,7 +44,10 @@
 [ext_resource type="Script" uid="uid://csde1218ubj0b" path="res://addons/scene_object_brush/Brush.gd" id="42_u8rub"]
 [ext_resource type="PackedScene" uid="uid://cs0dduger853e" path="res://assets/models/Fence.glb" id="43_llksv"]
 [ext_resource type="PackedScene" uid="uid://dbpx74ic3icw7" path="res://assets/models/Pile of Bones.glb" id="44_lbgwf"]
-[ext_resource type="PackedScene" uid="uid://ctvehv3sq6peo" path="res://assets/models/PalmTree.tscn" id="45_m8bse"]
+[ext_resource type="PackedScene" path="res://assets/models/PalmTree.tscn" id="45_m8bse"]
+[ext_resource type="PackedScene" uid="uid://cs0n1a2fawls7" path="res://assets/models/PalmTree1.tscn" id="46_uuupp"]
+[ext_resource type="PackedScene" uid="uid://b0wtvta3as1b4" path="res://assets/models/PalmTree2.tscn" id="47_sg03t"]
+[ext_resource type="PackedScene" uid="uid://do6pp2ngvgqhd" path="res://assets/models/PalmTree3.tscn" id="48_nv1r4"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_pgcb2"]
 
@@ -2393,6 +2396,15 @@ transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -1
 
 [node name="PalmTree" parent="LevelObjects" index="717" instance=ExtResource("45_m8bse")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, 7.5092, -0.370929, 32.8959)
+
+[node name="PalmTree1" parent="LevelObjects" index="718" instance=ExtResource("46_uuupp")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -70.2543, 0.882543, 43.4758)
+
+[node name="PalmTree2" parent="LevelObjects" index="719" instance=ExtResource("47_sg03t")]
+transform = Transform3D(0.19971, 0.20108, -0.959001, 0, 0.978717, 0.205214, 0.979855, -0.0409832, 0.19546, -94.7054, 3.47308, 40.4433)
+
+[node name="PalmTree3" parent="LevelObjects" index="720" instance=ExtResource("48_nv1r4")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -78.7832, 2.36909, 49.7508)
 
 [node name="Fence" parent="." index="20" instance=ExtResource("43_llksv")]
 transform = Transform3D(1.16937, 0, -0.567965, 0, 1.3, 0, 0.567965, 0, 1.16937, 24.5078, -0.0780148, -57.0096)
