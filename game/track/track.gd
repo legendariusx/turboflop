@@ -63,8 +63,7 @@ func _ready() -> void:
 	if SpacetimeDB.is_connected_db():
 		if not GameState.current_user: await GameState.current_user_upated
 		player_vehicle.set_owner_data(GameState.identity, GameState.current_user.name)
-	
-	_set_next_checkpoint()
+
 	# TODO: implement starting from user input
 	_start()
 
@@ -90,6 +89,7 @@ func _start():
 	# reset track state
 	checkpoint_times.assign([0])
 	last_checkpoint = start_node
+	_checkpoint_index = -1
 	for checkpoint in checkpoints.get_children() + finishes.get_children():
 		(checkpoint as Checkpoint).was_entered = false
 		(checkpoint as Checkpoint).set_red_light()
@@ -105,6 +105,7 @@ func _start():
 	
 	respawn_location = start_node
 	
+	_set_next_checkpoint()
 	_countdown()
 	await started
 	started_at = Time.get_ticks_msec()
