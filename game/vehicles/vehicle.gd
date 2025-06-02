@@ -32,6 +32,7 @@ var _speed : float
 
 @onready var audio_listener: AudioListener3D = $AudioListener3D
 @onready var speedometer: Label3D = $Speedometer
+
 @onready var dark_particles_l: GPUParticles3D = $DarkParticlesL
 @onready var dark_particles_r: GPUParticles3D = $DarkParticlesR
 @onready var glowing_particles_l: GPUParticles3D = $GlowingParticlesL
