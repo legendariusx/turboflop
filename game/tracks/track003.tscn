@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://ce7uyrofns7ml"]
+[gd_scene load_steps=56 format=3 uid="uid://ce7uyrofns7ml"]
 
 [ext_resource type="PackedScene" uid="uid://clthdr6beclys" path="res://track/track.tscn" id="1_mn4nu"]
 [ext_resource type="PackedScene" uid="uid://p7atvo2gj2c5" path="res://checkpoint/finish/finish.tscn" id="2_7j01r"]
@@ -53,6 +53,7 @@
 [ext_resource type="PackedScene" uid="uid://dmckqfiyus06" path="res://assets/models/Ship.glb" id="49_sg03t"]
 [ext_resource type="PackedScene" uid="uid://cfp02i541r0nw" path="res://assets/models/Roof Radar.glb" id="52_4ak85"]
 [ext_resource type="PackedScene" uid="uid://v0sywiofxjtn" path="res://assets/models/Robot Enemy.glb" id="53_gcpo3"]
+[ext_resource type="PackedScene" uid="uid://bhjxenv77rdq7" path="res://assets/models/Arrow Sign.glb" id="54_dn4ei"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_pgcb2"]
 
@@ -2758,3 +2759,30 @@ transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -4
 
 [node name="Desert_plant_262" parent="LevelObjects" index="836" instance=ExtResource("20_sesbr")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -41.9285, 9.23541, -90.4937)
+
+[node name="Root Scene15" parent="LevelObjects" index="837" instance=ExtResource("54_dn4ei")]
+transform = Transform3D(0.895906, 0, 0.444244, 0, 1, 0, 0.444244, 0, -0.895906, -98.1657, 4.00763, -6.65725)
+
+[node name="Root Scene" parent="." index="20" instance=ExtResource("54_dn4ei")]
+transform = Transform3D(-0.758931, 0, -0.651172, 0, 1, 0, -0.651172, 0, 0.758931, 6.61248, 1.85145, -77.6223)
+
+[node name="Desert_plant_012" parent="." index="21" instance=ExtResource("18_uf1la")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, 26.9307, 11.0118, -24.2524)
+
+[node name="Desert_plant_001" parent="." index="22" instance=ExtResource("7_e0rd0")]
+transform = Transform3D(0.979757, 0, 0.200189, 0, 1, 0, -0.200189, 0, 0.979757, 21.3197, 6.33577, -25.8483)
+
+[node name="Desert_plant_002" parent="." index="23" instance=ExtResource("9_08abp")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, 31.1691, 11.609, -21.9886)
+
+[node name="Desert_plant_013" parent="." index="24" instance=ExtResource("19_ic1si")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, 27.384, 13.4739, -21.196)
+
+[node name="Desert_plant_008" parent="." index="25" instance=ExtResource("14_l45x7")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, 31.6172, 12.4918, -17.0921)
+
+[node name="Desert_plant_004" parent="." index="26" instance=ExtResource("13_v1pjo")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, 25.3175, 14.4551, -18.4244)
+
+[node name="PalmTree1" parent="." index="27" instance=ExtResource("46_uuupp")]
+transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, 20.5371, 13.9416, -16.8396)
