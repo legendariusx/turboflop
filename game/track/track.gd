@@ -77,6 +77,9 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	_on_update_ui()
+	if player_vehicle.global_position.y < -100:
+		respawn_location = last_checkpoint
+	
 	if respawn_location:
 		_respawn_at(respawn_location)
 

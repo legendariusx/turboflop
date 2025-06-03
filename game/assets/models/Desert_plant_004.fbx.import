@@ -41,7 +41,12 @@ _subresources={
 },
 "nodes": {
 "PATH:Desert_plant_004": {
-"generate/physics": true
+"generate/physics": true,
+"physics/shape_type": 5,
+"primitive/height": 0.6,
+"primitive/position": Vector3(0, 0.3, 0),
+"primitive/radius": 0.201,
+"primitive/size": Vector3(1, 2, 2)
 }
 }
 }

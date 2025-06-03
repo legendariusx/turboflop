@@ -54,7 +54,7 @@ func booster_entered(boost_multiplier: float, boost_duration: float):
 
 func _ready():
 	if not is_current_user:
-		$Collider.disabled = true
+		#$Collider.disabled = true
 		$NameLabel.text = owner_name
 		# FIXME: ugly fix for cars bugging around when tabbed out (#14)
 		freeze = true
@@ -79,16 +79,15 @@ func _ready():
 	
 	glowing_particles_r.emitting = false
 	glowing_particles_r.material_override = MATERIAL_GLOWING_SMOKE
+	
+	get_window().focus_entered.connect(_on_window_focus_entered)
+	get_window().focus_exited.connect(_on_window_focus_exited)
 
 func _physics_process(delta: float) -> void:
 	var desired_engine_pitch = 0.05 + linear_velocity.length() / (acceleration_force * 0.5)
 	$EngineSound.pitch_scale = lerpf($EngineSound.pitch_scale, desired_engine_pitch, 0.2)
 	
-	if not is_current_user or _is_update_disabled: return
-	
-	UserData.set_user_data(global_position, global_rotation, linear_velocity, angular_velocity, true, GameState.track_id)
-	
-	# check if boost has finished
+		# check if boost has finished
 	if Time.get_ticks_msec() > _boost_finish_time:
 		_boost_multiplier = 1.0
 		
@@ -96,6 +95,10 @@ func _physics_process(delta: float) -> void:
 		dark_particles_r.emitting = true
 		glowing_particles_l.emitting = false
 		glowing_particles_r.emitting = false
+	
+	if not is_current_user or _is_update_disabled: return
+	
+	UserData.set_user_data(global_position, global_rotation, linear_velocity, angular_velocity, true, GameState.track_id)
 	
 	# get current speed
 	_speed = linear_velocity.dot(transform.basis.z)
@@ -171,3 +174,12 @@ func _on_user_updated(row: User):
 		$NameLabel.text = row.name
 		owner_name = row.name
 		
+func _on_window_focus_entered() -> void:
+	var tween = get_tree().create_tween()
+	tween.tween_callback(AudioServer.set_bus_mute.bind(0, false))
+	tween.tween_method(func(v): AudioServer.set_bus_volume_db(0, v), -80, 0, 0.5)
+
+func _on_window_focus_exited() -> void:
+	var tween = get_tree().create_tween()
+	tween.tween_method(func(v): AudioServer.set_bus_volume_db(0, v), 0, -80, 0.5)
+	tween.tween_callback(AudioServer.set_bus_mute.bind(0, true))

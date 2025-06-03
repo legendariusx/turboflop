@@ -62,10 +62,11 @@ transform = Transform3D(0.19971, 0, 0.979855, 0, 1, 0, -0.979855, 0, 0.19971, 0,
 track_id = 3
 
 [node name="Car" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.4628, 0, -7.32289)
 acceleration_force = 175.0
 
 [node name="Start" parent="." index="3"]
-transform = Transform3D(0.699801, 0, -0.714339, 0, 1, 0, 0.714339, 0, 0.699801, -46.1198, -0.265684, -53.9107)
+transform = Transform3D(0.699801, 0, -0.714339, 0, 1, 0, 0.714339, 0, 0.699801, -46.1198, -0.188434, -53.9107)
 
 [node name="Checkpoint2" parent="Checkpoints" index="0" instance=ExtResource("2_qu104")]
 transform = Transform3D(-0.410672, 0, 0.911784, 0, 1, 0, -0.911784, 0, -0.410672, 20.3299, -0.126095, 68.9361)
@@ -242,7 +243,7 @@ randomRotMax = Vector3(0, 3, 0)
 metadata/_custom_type_script = "uid://csde1218ubj0b"
 
 [node name="ObjectBrush1" type="Node3D" parent="." index="17"]
-transform = Transform3D(-5.92058e-07, 0, -1, 0, 1, 0, 1, 0, -5.92058e-07, 0, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 script = ExtResource("42_u8rub")
 brushSize = 2.0
 brushDensity = 2
