@@ -33,10 +33,11 @@ var _speed : float
 @onready var audio_listener: AudioListener3D = $AudioListener3D
 @onready var speedometer: Label3D = $Speedometer
 
-@onready var dark_particles_l: GPUParticles3D = $DarkParticlesL
-@onready var dark_particles_r: GPUParticles3D = $DarkParticlesR
-@onready var glowing_particles_l: GPUParticles3D = $GlowingParticlesL
-@onready var glowing_particles_r: GPUParticles3D = $GlowingParticlesR
+@onready var dark_particles_l: GPUParticles3D = $Exhaust/DarkParticlesL
+@onready var dark_particles_r: GPUParticles3D = $Exhaust/DarkParticlesR
+@onready var glowing_particles_l: GPUParticles3D = $Exhaust/GlowingParticlesL
+@onready var glowing_particles_r: GPUParticles3D = $Exhaust/GlowingParticlesR
+@onready var wheel_dust_r: GPUParticles3D = $WheelParticles/WheelDustBL
 
 func set_owner_data(u_owner_identity: PackedByteArray, u_owner_name: String):
 	owner_identity = u_owner_identity
@@ -54,7 +55,7 @@ func booster_entered(boost_multiplier: float, boost_duration: float):
 
 func _ready():
 	if not is_current_user:
-		#$Collider.disabled = true
+		$Collider.disabled = true
 		$NameLabel.text = owner_name
 		# FIXME: ugly fix for cars bugging around when tabbed out (#14)
 		freeze = true
@@ -101,8 +102,9 @@ func _physics_process(delta: float) -> void:
 	UserData.set_user_data(global_position, global_rotation, linear_velocity, angular_velocity, true, GameState.track_id)
 	
 	# get current speed
-	_speed = linear_velocity.dot(transform.basis.z)
-	speedometer.text = str(abs(int(_speed * 15)))
+	#_speed = linear_velocity.dot(transform.basis.z)ss
+	_speed = (quaternion.inverse() * linear_velocity).length()
+	speedometer.text = str(abs(int(_speed * 3.6)))
 	
 	# get input
 	var steer_axis = Input.get_axis(&"turn_right", &"turn_left")
@@ -154,6 +156,14 @@ func _update_particle_systems():
 	dark_particles_r.amount_ratio = t
 	glowing_particles_l.amount_ratio = t
 	glowing_particles_r.amount_ratio = t
+	
+	(dark_particles_l.process_material as ParticleProcessMaterial).initial_velocity_min = linear_velocity.dot(transform.basis.z) * -1
+	(dark_particles_l.process_material as ParticleProcessMaterial).initial_velocity_max = linear_velocity.dot(transform.basis.z) * -1
+	
+	(wheel_dust_r.process_material as ParticleProcessMaterial).initial_velocity_min = linear_velocity.dot(transform.basis.z) * -1
+	(wheel_dust_r.process_material as ParticleProcessMaterial).initial_velocity_max = linear_velocity.dot(transform.basis.z) * -1
+	
+	
 
 func _on_visibility_changed(u_visibility: Enum.Visibility):
 	if is_current_user: return
