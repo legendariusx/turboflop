@@ -17,15 +17,16 @@ var was_entered: bool = false
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is Vehicle and (body as Vehicle).is_current_user and not was_entered:
 		checkpoint_entered.emit()
-		
-func set_green_light():
-	left_pillar_light_mesh.material_override = MATERIAL_LIGHT_GREEN
-	right_pillar_light_mesh.material_override = MATERIAL_LIGHT_GREEN
 
-func set_orange_light():
-	left_pillar_light_mesh.material_override = MATERIAL_LIGHT_ORANGE
-	right_pillar_light_mesh.material_override = MATERIAL_LIGHT_ORANGE
-
-func set_red_light():
-	left_pillar_light_mesh.material_override = MATERIAL_LIGHT_RED
-	right_pillar_light_mesh.material_override = MATERIAL_LIGHT_RED
+func set_light_color(color: Enum.LightColor):
+	match color:
+		Enum.LightColor.GREEN:
+			_set_light_material(MATERIAL_LIGHT_GREEN)
+		Enum.LightColor.ORANGE:
+			_set_light_material(MATERIAL_LIGHT_ORANGE)
+		Enum.LightColor.RED:
+			_set_light_material(MATERIAL_LIGHT_RED)
+	
+func _set_light_material(material: Material):
+	left_pillar_light_mesh.material_override = material
+	right_pillar_light_mesh.material_override = material

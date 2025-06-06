@@ -7,3 +7,9 @@ enum Visibility {
 	TRANSPARENT,
 	NONE
 }
+
+enum LightColor {
+	GREEN,
+	ORANGE,
+	RED
+}

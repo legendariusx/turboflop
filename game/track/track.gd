@@ -96,7 +96,7 @@ func _input(event: InputEvent) -> void:
 func _exit_tree() -> void:
 	UserData.set_user_data(Vector3.ZERO, Vector3.ZERO, Vector3.ZERO, Vector3.ZERO, false, 0)
 
-func _start():
+func _start():	
 	randomize()
 	# reset track state
 	checkpoint_times.assign([0])
@@ -104,13 +104,13 @@ func _start():
 	_checkpoint_index = -1
 	for checkpoint in checkpoints.get_children() + finishes.get_children():
 		(checkpoint as Checkpoint).was_entered = false
-		(checkpoint as Checkpoint).set_red_light()
+		(checkpoint as Checkpoint).set_light_color(Enum.LightColor.RED)
 		
-	start_node.set_green_light()
+	start_node.set_light_color(Enum.LightColor.GREEN)
 	start_node.was_entered = true
 	
 	if checkpoints.get_children().size() > 0:
-		checkpoints.get_children()[0].set_orange_light()
+		checkpoints.get_children()[0].set_light_color(Enum.LightColor.ORANGE)
 	
 	track_ui.reset()
 	camera.start()
@@ -191,7 +191,7 @@ func _on_checkpoint_entered(checkpoint: Checkpoint):
 	last_checkpoint = checkpoint
 	
 	checkpoint.was_entered = true
-	checkpoint.set_green_light()
+	checkpoint.set_light_color(Enum.LightColor.GREEN)
 	
 	track_ui.on_checkpoint_entered(checkpoint_times.size() - 1, time)
 	_set_next_checkpoint()
@@ -207,7 +207,7 @@ func _on_finish_entered(_finish: Finish):
 		
 	for f in finishes.get_children():
 		(f as Checkpoint).was_entered = true
-		(f as Checkpoint).set_green_light()
+		(f as Checkpoint).set_light_color(Enum.LightColor.GREEN)
 	
 	_update_track_state(TrackState.FINISHED)
 	
@@ -224,10 +224,10 @@ func _set_next_checkpoint():
 	var checkpoint_instances = checkpoints.get_children()
 	
 	if _checkpoint_index < checkpoint_instances.size():
-		checkpoint_instances[_checkpoint_index].set_orange_light()
+		checkpoint_instances[_checkpoint_index].set_light_color(Enum.LightColor.ORANGE)
 	else:
 		for finish in finishes.get_children():
-			finish.set_orange_light()
+			finish.set_light_color(Enum.LightColor.ORANGE)
 			
 
 func _replace_dead_tree_instances(root: Node, palm_variants: Array):
