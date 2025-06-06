@@ -130,6 +130,8 @@ func _respawn_at(checkpoint: Checkpoint):
 	player_vehicle.linear_velocity = Vector3.ZERO
 	player_vehicle.angular_velocity = Vector3.ZERO
 	player_vehicle.engine_force = 0
+	player_vehicle.boost_timer.stop()
+	player_vehicle.on_boost_timer_timeout()
 	respawn_location = null
 	
 func _countdown():

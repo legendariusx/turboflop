@@ -33,6 +33,7 @@ var _speed : float
 @onready var audio_listener: AudioListener3D = $AudioListener3D
 @onready var speedometer: Label3D = $Speedometer
 
+@onready var boost_timer: Timer = $BoostTimer
 @onready var dark_particles_l: GPUParticles3D = $Exhaust/DarkParticlesL
 @onready var dark_particles_r: GPUParticles3D = $Exhaust/DarkParticlesR
 @onready var glowing_particles_l: GPUParticles3D = $Exhaust/GlowingParticlesL
@@ -45,13 +46,14 @@ func set_owner_data(u_owner_identity: PackedByteArray, u_owner_name: String):
 	owner_name = u_owner_name
 	
 func booster_entered(boost_multiplier: float, boost_duration: float):
-	_boost_finish_time = Time.get_ticks_msec() + (boost_duration * 1000.0)
+	boost_timer.start()
 	_boost_multiplier = boost_multiplier
 	
-	dark_particles_l.emitting = false
-	dark_particles_r.emitting = false
-	glowing_particles_l.emitting = true
-	glowing_particles_r.emitting = true
+	_set_particles(true)
+
+func on_boost_timer_timeout() -> void:
+	_boost_multiplier = 1.0
+	_set_particles(false)
 
 func _ready():
 	if not is_current_user:
@@ -69,34 +71,13 @@ func _ready():
 	
 	UserState.update.connect(_on_user_updated)
 	
-	dark_particles_l.emitting = true
-	dark_particles_l.material_override = MATERIAL_DARK_SMOKE
-	
-	dark_particles_r.emitting = true
-	dark_particles_r.material_override = MATERIAL_DARK_SMOKE
-	
-	glowing_particles_l.emitting = false
-	glowing_particles_l.material_override = MATERIAL_GLOWING_SMOKE
-	
-	glowing_particles_r.emitting = false
-	glowing_particles_r.material_override = MATERIAL_GLOWING_SMOKE
-	
 	get_window().focus_entered.connect(_on_window_focus_entered)
 	get_window().focus_exited.connect(_on_window_focus_exited)
 
 func _physics_process(delta: float) -> void:
 	var desired_engine_pitch = 0.05 + linear_velocity.length() / (acceleration_force * 0.5)
 	$EngineSound.pitch_scale = lerpf($EngineSound.pitch_scale, desired_engine_pitch, 0.2)
-	
-		# check if boost has finished
-	if Time.get_ticks_msec() > _boost_finish_time:
-		_boost_multiplier = 1.0
-		
-		dark_particles_l.emitting = true
-		dark_particles_r.emitting = true
-		glowing_particles_l.emitting = false
-		glowing_particles_r.emitting = false
-	
+
 	if not is_current_user or _is_update_disabled: return
 	
 	UserData.set_user_data(global_position, global_rotation, linear_velocity, angular_velocity, true, GameState.track_id)
@@ -162,8 +143,12 @@ func _update_particle_systems():
 	
 	(wheel_dust_r.process_material as ParticleProcessMaterial).initial_velocity_min = linear_velocity.dot(transform.basis.z) * -1
 	(wheel_dust_r.process_material as ParticleProcessMaterial).initial_velocity_max = linear_velocity.dot(transform.basis.z) * -1
-	
-	
+
+func _set_particles(is_boosting: bool):
+	dark_particles_l.emitting = not is_boosting
+	dark_particles_r.emitting = not is_boosting
+	glowing_particles_l.emitting = is_boosting
+	glowing_particles_r.emitting = is_boosting
 
 func _on_visibility_changed(u_visibility: Enum.Visibility):
 	if is_current_user: return
