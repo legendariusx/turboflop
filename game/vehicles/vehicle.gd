@@ -38,6 +38,7 @@ var _speed : float
 @onready var dark_particles_r: GPUParticles3D = $Exhaust/DarkParticlesR
 @onready var glowing_particles_l: GPUParticles3D = $Exhaust/GlowingParticlesL
 @onready var glowing_particles_r: GPUParticles3D = $Exhaust/GlowingParticlesR
+@onready var particle_systems: Array[GPUParticles3D] = [dark_particles_l, dark_particles_r, glowing_particles_l, glowing_particles_r]
 @onready var wheel_dust_r: GPUParticles3D = $WheelParticles/WheelDustBL
 
 func set_owner_data(u_owner_identity: PackedByteArray, u_owner_name: String):
@@ -77,6 +78,8 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	var desired_engine_pitch = 0.05 + linear_velocity.length() / (acceleration_force * 0.5)
 	$EngineSound.pitch_scale = lerpf($EngineSound.pitch_scale, desired_engine_pitch, 0.2)
+	
+	_update_particle_systems()
 
 	if not is_current_user or _is_update_disabled: return
 	
@@ -127,22 +130,14 @@ func _physics_process(delta: float) -> void:
 		engine_force = 0.0
 		steering = 0.0
 		brake = 0.0
-		
-	_update_particle_systems()
 	
 func _update_particle_systems():
 	var t = clampf(_speed / 6.0, 0.1, 1.0)
 	
-	dark_particles_l.amount_ratio = t
-	dark_particles_r.amount_ratio = t
-	glowing_particles_l.amount_ratio = t
-	glowing_particles_r.amount_ratio = t
-	
-	(dark_particles_l.process_material as ParticleProcessMaterial).initial_velocity_min = linear_velocity.dot(transform.basis.z) * -1
-	(dark_particles_l.process_material as ParticleProcessMaterial).initial_velocity_max = linear_velocity.dot(transform.basis.z) * -1
-	
-	(wheel_dust_r.process_material as ParticleProcessMaterial).initial_velocity_min = linear_velocity.dot(transform.basis.z) * -1
-	(wheel_dust_r.process_material as ParticleProcessMaterial).initial_velocity_max = linear_velocity.dot(transform.basis.z) * -1
+	for particle_system in particle_systems:
+		particle_system.amount_ratio = t
+		particle_system.process_material.initial_velocity_min = linear_velocity.dot(transform.basis.z) * -1
+		particle_system.process_material.initial_velocity_max = linear_velocity.dot(transform.basis.z) * -1
 
 func _set_particles(is_boosting: bool):
 	dark_particles_l.emitting = not is_boosting
