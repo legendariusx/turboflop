@@ -19,7 +19,6 @@ func _init(parent: Node = null) -> void:
 	assert(query != "", "query has to be set")
 	
 	if parent:
-		print(parent)
 		if not parent.is_node_ready():
 			await parent.ready
 		parent.add_child(self)
