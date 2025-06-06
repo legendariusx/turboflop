@@ -70,7 +70,7 @@ func _ready() -> void:
 		if not GameState.current_user: await GameState.current_user_upated
 		player_vehicle.set_owner_data(GameState.identity, GameState.current_user.name)
 
-	_replace_dead_tree_instances(get_tree().get_current_scene(), palm_variants)
+	#_replace_dead_tree_instances(get_tree().get_current_scene(), palm_variants)
 	
 	# TODO: implement starting from user input
 	_start()
