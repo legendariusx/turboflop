@@ -18,13 +18,14 @@ func _replace_dead_tree_instances(root: Node, palm_variants: Array):
 		if "dead_tree" in child.name:
 			var palm_scene = palm_variants[randi() % palm_variants.size()]
 			var palm_instance = palm_scene.instantiate()
+			get_editor_interface().get_edited_scene_root().get_node("LevelObjects").add_child(palm_instance)
+			palm_instance.owner = get_editor_interface().get_edited_scene_root()
 			palm_instance.transform = child.transform
-			palm_instance.name = child.name
+			palm_instance.scale = Vector3.ONE
+			palm_instance.name = "PalmTree_" + Time.get_date_string_from_system()
 
 			root.remove_child(child)
 			child.free()
-
-			root.add_child(palm_instance)
 			continue
 		else:
 			var nchild = child.get_children()
@@ -32,13 +33,14 @@ func _replace_dead_tree_instances(root: Node, palm_variants: Array):
 				if "DeadTree" in nchild[0].name:
 					var palm_scene = palm_variants[randi() % palm_variants.size()]
 					var palm_instance = palm_scene.instantiate()
+					get_editor_interface().get_edited_scene_root().get_node("LevelObjects").add_child(palm_instance)
+					palm_instance.owner = get_editor_interface().get_edited_scene_root()
 					palm_instance.transform = child.transform
-					palm_instance.name = child.name
+					palm_instance.scale = Vector3.ONE
+					palm_instance.name = "PalmTree_" + Time.get_date_string_from_system()
 
 					root.remove_child(child)
 					child.free()
-
-					root.add_child(palm_instance)
 					continue
 			
 		_replace_dead_tree_instances(child, palm_variants)
