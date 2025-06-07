@@ -12,7 +12,7 @@ enum TrackState {
 signal started
 signal finished(time: int)
 
-const CAR_SCENE = preload("res://vehicles/car.scn")
+const CAR_SCENE = preload("res://vehicles/car001.tscn")
 
 var palm_variants = [
 	preload("res://assets/models/PalmTree1.tscn"),

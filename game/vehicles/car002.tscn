@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://cp0r61bx7v3pk"]
+
+[ext_resource type="PackedScene" uid="uid://baihr0lcc5kf3" path="res://vehicle/car.scn" id="1_xcbyt"]
+[ext_resource type="PackedScene" uid="uid://dx5nbc4v0x66t" path="res://assets/models/car002.blend" id="2_sidwy"]
+[ext_resource type="PackedScene" uid="uid://c0ilk0wr4f5hk" path="res://vehicle/exhaust.tscn" id="3_ufd5r"]
+
+[node name="Car" instance=ExtResource("1_xcbyt")]
+
+[node name="NameLabel" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.73915, 0)
+
+[node name="Speedometer" parent="." index="1"]
+transform = Transform3D(-0.999953, 0.000239692, 0.00967215, 0.000380681, 0.999894, 0.0145782, -0.00966763, 0.0145812, -0.999847, -0.0200981, 1.07209, -0.308329)
+
+[node name="DarkParticlesL" parent="ExhaustParticles" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.179056, 0.0363708, 0.181854)
+
+[node name="DarkParticlesR" parent="ExhaustParticles" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.04633, 0.0455976, 0.187449)
+
+[node name="GlowingParticlesL" parent="ExhaustParticles" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.179056, 0.0363708, 0.181854)
+
+[node name="GlowingParticlesR" parent="ExhaustParticles" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.04633, 0.0455976, 0.187449)
+
+[node name="car002" parent="." index="7" instance=ExtResource("2_sidwy")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.0166572, 0.165335, -0.315469)
+
+[node name="Exhaust" parent="." index="8" instance=ExtResource("3_ufd5r")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.408917, 0.419516, -1.41804)
+
+[node name="Exhaust2" parent="." index="9" instance=ExtResource("3_ufd5r")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.454276, 0.419516, -1.41804)

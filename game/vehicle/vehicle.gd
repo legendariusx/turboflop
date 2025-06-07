@@ -5,8 +5,6 @@ const STEER_SPEED = 1.5
 const STEER_LIMIT = 0.4
 const BRAKE_STRENGTH = 2.0
 const BRAKE_SOFT_STRENGTH = 0.5
-const MATERIAL_CAR_OPAQUE = preload("res://vehicles/car.tres")
-const MATERIAL_CAR_TRANSPARENT = preload("res://vehicles/car_transparent.tres")
 const MATERIAL_DARK_SMOKE = preload("res://assets/materials/DarkSmoke.tres")
 const MATERIAL_GLOWING_SMOKE = preload("res://assets/materials/GlowingSmoke.tres")
 
@@ -29,15 +27,17 @@ var _speed : float
 
 @export var acceleration_force := 100.0
 @export var wheels: Array[VehicleWheel3D]
+@export var material_car_opaque: StandardMaterial3D
+@export var material_car_transparent: StandardMaterial3D
 
 @onready var audio_listener: AudioListener3D = $AudioListener3D
 @onready var speedometer: Label3D = $Speedometer
 
 @onready var boost_timer: Timer = $BoostTimer
-@onready var dark_particles_l: GPUParticles3D = $Exhaust/DarkParticlesL
-@onready var dark_particles_r: GPUParticles3D = $Exhaust/DarkParticlesR
-@onready var glowing_particles_l: GPUParticles3D = $Exhaust/GlowingParticlesL
-@onready var glowing_particles_r: GPUParticles3D = $Exhaust/GlowingParticlesR
+@onready var dark_particles_l: GPUParticles3D = $ExhaustParticles/DarkParticlesL
+@onready var dark_particles_r: GPUParticles3D = $ExhaustParticles/DarkParticlesR
+@onready var glowing_particles_l: GPUParticles3D = $ExhaustParticles/GlowingParticlesL
+@onready var glowing_particles_r: GPUParticles3D = $ExhaustParticles/GlowingParticlesR
 @onready var particle_systems: Array[GPUParticles3D] = [dark_particles_l, dark_particles_r, glowing_particles_l, glowing_particles_r]
 @onready var wheel_dust_r: GPUParticles3D = $WheelParticles/WheelDustBL
 
@@ -152,7 +152,7 @@ func _on_visibility_changed(u_visibility: Enum.Visibility):
 		visible = false
 		return
 	
-	var new_material = MATERIAL_CAR_OPAQUE if u_visibility == Enum.Visibility.OPAQUE else MATERIAL_CAR_TRANSPARENT
+	var new_material = material_car_opaque if u_visibility == Enum.Visibility.OPAQUE else material_car_transparent
 	mesh.material_override = new_material
 	for wheel in wheels:
 		wheel.get_node("Mesh").material_override = new_material
