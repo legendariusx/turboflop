@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://cp0r61bx7v3pk"]
+[gd_scene load_steps=5 format=3 uid="uid://cp0r61bx7v3pk"]
 
 [ext_resource type="PackedScene" uid="uid://baihr0lcc5kf3" path="res://vehicle/car.scn" id="1_xcbyt"]
-[ext_resource type="PackedScene" uid="uid://dx5nbc4v0x66t" path="res://assets/models/car002.blend" id="2_sidwy"]
+[ext_resource type="PackedScene" uid="uid://jqrr0g0qbsyn" path="res://assets/models/car002_body.blend" id="3_sidwy"]
 [ext_resource type="PackedScene" uid="uid://c0ilk0wr4f5hk" path="res://vehicle/exhaust.tscn" id="3_ufd5r"]
 
-[node name="Car" instance=ExtResource("1_xcbyt")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_ufd5r"]
+size = Vector3(1, 0.615143, 2.72064)
+
+[node name="Car" node_paths=PackedStringArray("wheel_bl", "wheel_br") instance=ExtResource("1_xcbyt")]
+wheel_bl = NodePath("")
+wheel_br = NodePath("")
 
 [node name="NameLabel" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.73915, 0)
@@ -24,11 +29,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.179056, 0.0363708, 0.18185
 [node name="GlowingParticlesR" parent="ExhaustParticles" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.04633, 0.0455976, 0.187449)
 
-[node name="car002" parent="." index="7" instance=ExtResource("2_sidwy")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.0166572, 0.165335, -0.315469)
-
-[node name="Exhaust" parent="." index="8" instance=ExtResource("3_ufd5r")]
+[node name="ExhaustL" parent="." index="7" instance=ExtResource("3_ufd5r")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.408917, 0.419516, -1.41804)
 
-[node name="Exhaust2" parent="." index="9" instance=ExtResource("3_ufd5r")]
+[node name="ExhaustR" parent="." index="8" instance=ExtResource("3_ufd5r")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.454276, 0.419516, -1.41804)
+
+[node name="Body" parent="." index="9" instance=ExtResource("3_sidwy")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.47107, 0.192067)
+shape = SubResource("BoxShape3D_ufd5r")
