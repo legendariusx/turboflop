@@ -40,7 +40,7 @@
 [ext_resource type="PackedScene" uid="uid://jh8g12wsekpk" path="res://assets/models/stone5.blend" id="38_pgcb2"]
 [ext_resource type="PackedScene" uid="uid://c4mjgfoeosssl" path="res://assets/models/wooden_bridge.tscn" id="39_pgcb2"]
 [ext_resource type="PackedScene" uid="uid://bkmhvg2o6djws" path="res://assets/models/wooden_pillar.tscn" id="40_obujn"]
-[ext_resource type="Material" path="res://assets/materials/Water.tres" id="40_tqvxf"]
+[ext_resource type="Material" uid="uid://b8bb3a4lwindu" path="res://assets/materials/Water.tres" id="40_tqvxf"]
 [ext_resource type="Script" uid="uid://csde1218ubj0b" path="res://addons/scene_object_brush/Brush.gd" id="42_u8rub"]
 [ext_resource type="PackedScene" uid="uid://cs0dduger853e" path="res://assets/models/Fence.glb" id="43_llksv"]
 [ext_resource type="PackedScene" uid="uid://dbpx74ic3icw7" path="res://assets/models/Pile of Bones.glb" id="44_lbgwf"]
@@ -2761,236 +2761,236 @@ transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -2
 [node name="Desert_plant_322" parent="LevelObjects" index="835" instance=ExtResource("13_v1pjo")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -18.1068, 3.94166, 64.2557)
 
-[node name="PalmTree_2025-06-06" type="Node3D" parent="LevelObjects" index="836" instance=ExtResource("47_sg03t")]
+[node name="PalmTree_2025-06-06" parent="LevelObjects" index="836" instance=ExtResource("47_sg03t")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -55.1283, 0.00813396, -53.6894)
 
-[node name="PalmTree_2025-06-07" type="Node3D" parent="LevelObjects" index="837" instance=ExtResource("46_uuupp")]
+[node name="PalmTree_2025-06-07" parent="LevelObjects" index="837" instance=ExtResource("46_uuupp")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -72.1454, 0.00524307, -35.1801)
 
-[node name="PalmTree_2025-06-08" type="Node3D" parent="LevelObjects" index="838" instance=ExtResource("47_sg03t")]
+[node name="PalmTree_2025-06-08" parent="LevelObjects" index="838" instance=ExtResource("47_sg03t")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -100.787, 7.12606, -43.0524)
 
-[node name="PalmTree_2025-06-09" type="Node3D" parent="LevelObjects" index="839" instance=ExtResource("47_sg03t")]
+[node name="PalmTree_2025-06-09" parent="LevelObjects" index="839" instance=ExtResource("47_sg03t")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -64.7665, -0.0916119, 11.28)
 
-[node name="PalmTree_2025-06-10" type="Node3D" parent="LevelObjects" index="840" instance=ExtResource("47_sg03t")]
+[node name="PalmTree_2025-06-10" parent="LevelObjects" index="840" instance=ExtResource("47_sg03t")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -87.7872, 2.45553, 41.4205)
 
-[node name="PalmTree_2025-06-11" type="Node3D" parent="LevelObjects" index="841" instance=ExtResource("47_sg03t")]
+[node name="PalmTree_2025-06-11" parent="LevelObjects" index="841" instance=ExtResource("47_sg03t")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -54.6292, -0.0217678, 13.5016)
 
-[node name="PalmTree_2025-06-12" type="Node3D" parent="LevelObjects" index="842" instance=ExtResource("47_sg03t")]
+[node name="PalmTree_2025-06-12" parent="LevelObjects" index="842" instance=ExtResource("47_sg03t")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -51.3124, 0.0132097, 11.9042)
 
-[node name="PalmTree_2025-06-13" type="Node3D" parent="LevelObjects" index="843" instance=ExtResource("46_uuupp")]
+[node name="PalmTree_2025-06-13" parent="LevelObjects" index="843" instance=ExtResource("46_uuupp")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -62.7486, 0.00913602, -11.7413)
 
-[node name="PalmTree_2025-06-14" type="Node3D" parent="LevelObjects" index="844" instance=ExtResource("48_nv1r4")]
+[node name="PalmTree_2025-06-14" parent="LevelObjects" index="844" instance=ExtResource("48_nv1r4")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -40.2096, -0.890388, -11.4931)
 
-[node name="PalmTree_2025-06-15" type="Node3D" parent="LevelObjects" index="845" instance=ExtResource("47_sg03t")]
+[node name="PalmTree_2025-06-15" parent="LevelObjects" index="845" instance=ExtResource("47_sg03t")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -25.9521, 0.107887, 27.8895)
 
-[node name="PalmTree_2025-06-16" type="Node3D" parent="LevelObjects" index="846" instance=ExtResource("48_nv1r4")]
+[node name="PalmTree_2025-06-16" parent="LevelObjects" index="846" instance=ExtResource("48_nv1r4")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -29.0377, -0.0525224, -5.69141)
 
-[node name="PalmTree_2025-06-17" type="Node3D" parent="LevelObjects" index="847" instance=ExtResource("47_sg03t")]
+[node name="PalmTree_2025-06-17" parent="LevelObjects" index="847" instance=ExtResource("47_sg03t")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -41.3468, 0.130985, 36.2072)
 
-[node name="PalmTree_2025-06-18" type="Node3D" parent="LevelObjects" index="848" instance=ExtResource("47_sg03t")]
+[node name="PalmTree_2025-06-18" parent="LevelObjects" index="848" instance=ExtResource("47_sg03t")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -41.3468, 0.130985, 36.2072)
 
-[node name="PalmTree_2025-06-19" type="Node3D" parent="LevelObjects" index="849" instance=ExtResource("47_sg03t")]
+[node name="PalmTree_2025-06-19" parent="LevelObjects" index="849" instance=ExtResource("47_sg03t")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -41.3468, 0.130985, 36.2072)
 
-[node name="PalmTree_2025-06-20" type="Node3D" parent="LevelObjects" index="850" instance=ExtResource("47_sg03t")]
+[node name="PalmTree_2025-06-20" parent="LevelObjects" index="850" instance=ExtResource("47_sg03t")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -18.8118, 0.327397, 31.2433)
 
-[node name="PalmTree_2025-06-21" type="Node3D" parent="LevelObjects" index="851" instance=ExtResource("46_uuupp")]
+[node name="PalmTree_2025-06-21" parent="LevelObjects" index="851" instance=ExtResource("46_uuupp")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -27.4212, 0.698625, 68.183)
 
-[node name="PalmTree_2025-06-22" type="Node3D" parent="LevelObjects" index="852" instance=ExtResource("47_sg03t")]
+[node name="PalmTree_2025-06-22" parent="LevelObjects" index="852" instance=ExtResource("47_sg03t")]
 transform = Transform3D(1, 0.000766115, -4.12027e-07, -0.000766115, 1, 0.000240197, 5.96046e-07, -0.000240197, 1, -2.70211, 0.010309, 29.0638)
 
-[node name="PalmTree_2025-06-23" type="Node3D" parent="LevelObjects" index="853" instance=ExtResource("47_sg03t")]
+[node name="PalmTree_2025-06-23" parent="LevelObjects" index="853" instance=ExtResource("47_sg03t")]
 transform = Transform3D(1, 0.000766268, -4.12364e-07, -0.000766268, 1, 0.000239709, 5.96046e-07, -0.000239709, 1, -1.25632, 0.00947428, 34.9617)
 
-[node name="PalmTree_2025-06-24" type="Node3D" parent="LevelObjects" index="854" instance=ExtResource("47_sg03t")]
+[node name="PalmTree_2025-06-24" parent="LevelObjects" index="854" instance=ExtResource("47_sg03t")]
 transform = Transform3D(1, 0.000771329, -4.24127e-07, -0.000771329, 1, 0.000222886, 5.96046e-07, -0.000222886, 1, -2.40789, 0.0102718, 32.6829)
 
-[node name="PalmTree_2025-06-25" type="Node3D" parent="LevelObjects" index="855" instance=ExtResource("48_nv1r4")]
+[node name="PalmTree_2025-06-25" parent="LevelObjects" index="855" instance=ExtResource("48_nv1r4")]
 transform = Transform3D(-5.99166e-07, 0.000195846, -1, 0.000207266, 1, 0.000195846, 1, -0.000207266, -6.39758e-07, 8.17172, 0.0041256, 36.8205)
 
-[node name="PalmTree_2025-06-26" type="Node3D" parent="LevelObjects" index="856" instance=ExtResource("48_nv1r4")]
+[node name="PalmTree_2025-06-26" parent="LevelObjects" index="856" instance=ExtResource("48_nv1r4")]
 transform = Transform3D(-5.99213e-07, 0.000193981, -1, 0.000209013, 1, 0.000193981, 1, -0.000209013, -6.39758e-07, 22.8458, 0.00341654, 54.4692)
 
-[node name="PalmTree_2025-06-27" type="Node3D" parent="LevelObjects" index="857" instance=ExtResource("47_sg03t")]
+[node name="PalmTree_2025-06-27" parent="LevelObjects" index="857" instance=ExtResource("47_sg03t")]
 transform = Transform3D(-6.38994e-07, -2.08752e-05, -1, -3.66107e-05, 1, -2.08752e-05, 1, 3.66107e-05, -6.39758e-07, 46.6939, 0.000399828, 53.4539)
 
-[node name="PalmTree_2025-06-28" type="Node3D" parent="LevelObjects" index="858" instance=ExtResource("46_uuupp")]
+[node name="PalmTree_2025-06-28" parent="LevelObjects" index="858" instance=ExtResource("46_uuupp")]
 transform = Transform3D(1, -0.000944418, -5.43723e-07, 0.000944418, 1, -3.96249e-05, 5.81145e-07, 3.96244e-05, 1, 47.781, 0.000392199, 56.0344)
 
-[node name="PalmTree_2025-06-29" type="Node3D" parent="LevelObjects" index="859" instance=ExtResource("48_nv1r4")]
+[node name="PalmTree_2025-06-29" parent="LevelObjects" index="859" instance=ExtResource("48_nv1r4")]
 transform = Transform3D(1, -0.000943045, -5.35205e-07, 0.000943045, 1, -6.4515e-05, 5.96046e-07, 6.45145e-05, 1, 50.9228, 0.00276947, 52.4499)
 
-[node name="PalmTree_2025-06-30" type="Node3D" parent="LevelObjects" index="860" instance=ExtResource("47_sg03t")]
+[node name="PalmTree_2025-06-30" parent="LevelObjects" index="860" instance=ExtResource("47_sg03t")]
 transform = Transform3D(-6.39013e-07, -2.01204e-05, -1, -3.70308e-05, 1, -2.01204e-05, 1, 3.70308e-05, -6.39758e-07, 38.0051, 0.000688314, 36.2799)
 
-[node name="PalmTree_2025-06-31" type="Node3D" parent="LevelObjects" index="861" instance=ExtResource("46_uuupp")]
+[node name="PalmTree_2025-06-31" parent="LevelObjects" index="861" instance=ExtResource("46_uuupp")]
 transform = Transform3D(-5.99139e-07, 0.000197216, -1, 0.000205963, 1, 0.000197216, 1, -0.000205963, -6.39758e-07, 22.4531, 0.000944376, 38.1755)
 
-[node name="PalmTree_2025-06-32" type="Node3D" parent="LevelObjects" index="862" instance=ExtResource("47_sg03t")]
+[node name="PalmTree_2025-06-32" parent="LevelObjects" index="862" instance=ExtResource("47_sg03t")]
 transform = Transform3D(0.999872, -0.0160039, 0.000130925, 0.0160044, 0.999838, -0.00821396, 5.51328e-07, 0.008215, 0.999966, 55.9055, 0.0400944, 37.3474)
 
-[node name="PalmTree_2025-06-33" type="Node3D" parent="LevelObjects" index="863" instance=ExtResource("46_uuupp")]
+[node name="PalmTree_2025-06-33" parent="LevelObjects" index="863" instance=ExtResource("46_uuupp")]
 transform = Transform3D(-6.35865e-07, -3.45116e-05, -1, -0.00011279, 1, -3.45115e-05, 1, 0.00011279, -6.39758e-07, 49.5584, 0.00138187, 29.2928)
 
-[node name="PalmTree_2025-06-34" type="Node3D" parent="LevelObjects" index="864" instance=ExtResource("48_nv1r4")]
+[node name="PalmTree_2025-06-34" parent="LevelObjects" index="864" instance=ExtResource("48_nv1r4")]
 transform = Transform3D(-6.38978e-07, -2.1528e-05, -1, -3.62306e-05, 1, -2.1528e-05, 1, 3.62306e-05, -6.39758e-07, 42.2822, 0.000899553, 33.3863)
 
-[node name="PalmTree_2025-06-35" type="Node3D" parent="LevelObjects" index="865" instance=ExtResource("48_nv1r4")]
+[node name="PalmTree_2025-06-35" parent="LevelObjects" index="865" instance=ExtResource("48_nv1r4")]
 transform = Transform3D(-6.35824e-07, -3.49202e-05, -1, -0.000112664, 1, -3.49201e-05, 1, 0.000112664, -6.39758e-07, 23.3909, 0.00133705, 15.0063)
 
-[node name="PalmTree_2025-06-36" type="Node3D" parent="LevelObjects" index="866" instance=ExtResource("46_uuupp")]
+[node name="PalmTree_2025-06-36" parent="LevelObjects" index="866" instance=ExtResource("46_uuupp")]
 transform = Transform3D(-5.90459e-07, 0.115403, -0.993319, -0.219493, 0.969096, 0.112589, 0.975614, 0.218027, 0.0253296, 44.263, 0.615329, 6.29941)
 
-[node name="PalmTree_2025-06-37" type="Node3D" parent="LevelObjects" index="867" instance=ExtResource("48_nv1r4")]
+[node name="PalmTree_2025-06-37" parent="LevelObjects" index="867" instance=ExtResource("48_nv1r4")]
 transform = Transform3D(-6.01134e-07, -7.92597e-05, -1, -0.0666817, 0.997774, -7.90432e-05, 0.997774, 0.0666817, -5.88497e-06, 44.4281, 0.0184798, 11.8658)
 
-[node name="PalmTree_2025-06-38" type="Node3D" parent="LevelObjects" index="868" instance=ExtResource("48_nv1r4")]
+[node name="PalmTree_2025-06-38" parent="LevelObjects" index="868" instance=ExtResource("48_nv1r4")]
 transform = Transform3D(0.999084, -0.0427811, -0.0010819, 0.0427948, 0.998765, 0.0252443, 5.81029e-07, -0.0252675, 0.999681, 63.0639, 0.332997, 10.0712)
 
-[node name="PalmTree_2025-06-39" type="Node3D" parent="LevelObjects" index="869" instance=ExtResource("48_nv1r4")]
+[node name="PalmTree_2025-06-39" parent="LevelObjects" index="869" instance=ExtResource("48_nv1r4")]
 transform = Transform3D(0.999909, 0.0134951, -4.26227e-05, -0.0134952, 0.999904, -0.00311391, 5.96043e-07, 0.0031142, 0.999995, 23.1221, -0.151298, -48.5359)
 
-[node name="PalmTree_2025-06-40" type="Node3D" parent="LevelObjects" index="870" instance=ExtResource("47_sg03t")]
+[node name="PalmTree_2025-06-40" parent="LevelObjects" index="870" instance=ExtResource("47_sg03t")]
 transform = Transform3D(-5.40589e-07, 0.00621407, -0.999981, 0.00843747, 0.999945, 0.00621385, 0.999964, -0.00843731, -5.29716e-05, 9.84004, -0.0191627, -32.5207)
 
-[node name="PalmTree_2025-06-41" type="Node3D" parent="LevelObjects" index="871" instance=ExtResource("47_sg03t")]
+[node name="PalmTree_2025-06-41" parent="LevelObjects" index="871" instance=ExtResource("47_sg03t")]
 transform = Transform3D(-5.88596e-07, -0.25395, -0.967217, 0.276722, 0.929448, -0.244033, 0.96095, -0.26765, 0.070273, -6.92932, -2.01159, -35.0873)
 
-[node name="PalmTree_2025-06-42" type="Node3D" parent="LevelObjects" index="872" instance=ExtResource("46_uuupp")]
+[node name="PalmTree_2025-06-42" parent="LevelObjects" index="872" instance=ExtResource("46_uuupp")]
 transform = Transform3D(0.511563, -0.774407, 0.372286, 0.859246, 0.461053, -0.221646, 3.42727e-07, 0.433271, 0.901264, 22.4621, 0.678756, -39.5117)
 
-[node name="PalmTree_2025-06-43" type="Node3D" parent="LevelObjects" index="873" instance=ExtResource("48_nv1r4")]
+[node name="PalmTree_2025-06-43" parent="LevelObjects" index="873" instance=ExtResource("48_nv1r4")]
 transform = Transform3D(0.999892, -0.0146679, -0.000211385, 0.0146694, 0.999789, 0.0143667, 6.10933e-07, -0.0143683, 0.999897, 21.4125, -0.109938, -37.2079)
 
-[node name="PalmTree_2025-06-44" type="Node3D" parent="LevelObjects" index="874" instance=ExtResource("48_nv1r4")]
+[node name="PalmTree_2025-06-44" parent="LevelObjects" index="874" instance=ExtResource("48_nv1r4")]
 transform = Transform3D(0.993917, -0.110116, 0.00184373, 0.110131, 0.993778, -0.0166447, 5.81378e-07, 0.0167465, 0.99986, 63.3186, 0.00943318, -16.6302)
 
-[node name="PalmTree_2025-06-45" type="Node3D" parent="LevelObjects" index="875" instance=ExtResource("48_nv1r4")]
+[node name="PalmTree_2025-06-45" parent="LevelObjects" index="875" instance=ExtResource("48_nv1r4")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -7.07444, 0.0577814, 5.04706)
 
-[node name="PalmTree_2025-06-46" type="Node3D" parent="LevelObjects" index="876" instance=ExtResource("46_uuupp")]
+[node name="PalmTree_2025-06-46" parent="LevelObjects" index="876" instance=ExtResource("46_uuupp")]
 transform = Transform3D(0.859595, 0.491525, -0.139638, -0.510975, 0.826875, -0.234908, 4.91738e-07, 0.273277, 0.961935, -75.2146, 6.35495, -70.0265)
 
-[node name="PalmTree_2025-06-47" type="Node3D" parent="LevelObjects" index="877" instance=ExtResource("47_sg03t")]
+[node name="PalmTree_2025-06-47" parent="LevelObjects" index="877" instance=ExtResource("47_sg03t")]
 transform = Transform3D(0.93717, 0.348714, -0.0105417, -0.348873, 0.936742, -0.0283165, 5.50412e-07, 0.0302151, 0.999543, -92.6436, 4.7829, -45.6131)
 
-[node name="PalmTree_2025-06-48" type="Node3D" parent="LevelObjects" index="878" instance=ExtResource("46_uuupp")]
+[node name="PalmTree_2025-06-48" parent="LevelObjects" index="878" instance=ExtResource("46_uuupp")]
 transform = Transform3D(0.957802, 0.285891, -0.0296916, -0.287429, 0.952678, -0.0989398, 5.21541e-07, 0.103299, 0.99465, -94.0956, 6.0758, -50.8228)
 
-[node name="PalmTree_2025-06-49" type="Node3D" parent="LevelObjects" index="879" instance=ExtResource("47_sg03t")]
+[node name="PalmTree_2025-06-49" parent="LevelObjects" index="879" instance=ExtResource("47_sg03t")]
 transform = Transform3D(0.110396, 0.554657, -0.824723, -0.765862, 0.576346, 0.285097, 0.633457, 0.600151, 0.488417, -52.3816, 8.16548, -84.2422)
 
-[node name="PalmTree_2025-06-50" type="Node3D" parent="LevelObjects" index="880" instance=ExtResource("46_uuupp")]
+[node name="PalmTree_2025-06-50" parent="LevelObjects" index="880" instance=ExtResource("46_uuupp")]
 transform = Transform3D(0.103594, 0.581839, -0.806679, -0.797449, 0.533301, 0.282249, 0.594427, 0.614046, 0.519234, -40.0975, 8.60659, -91.792)
 
-[node name="PalmTree_2025-06-51" type="Node3D" parent="LevelObjects" index="881" instance=ExtResource("46_uuupp")]
+[node name="PalmTree_2025-06-51" parent="LevelObjects" index="881" instance=ExtResource("46_uuupp")]
 transform = Transform3D(-4.47035e-07, 0.410573, -0.911828, -0.475565, 0.802117, 0.361173, 0.879681, 0.433633, 0.195254, -68.028, 7.39173, -73.6559)
 
-[node name="PalmTree_2025-06-52" type="Node3D" parent="LevelObjects" index="882" instance=ExtResource("46_uuupp")]
+[node name="PalmTree_2025-06-52" parent="LevelObjects" index="882" instance=ExtResource("46_uuupp")]
 transform = Transform3D(0.133873, 0.571126, -0.809872, -0.626097, 0.682214, 0.377606, 0.768167, 0.456507, 0.44891, -66.9473, 5.32201, -73.3606)
 
-[node name="PalmTree_2025-06-53" type="Node3D" parent="LevelObjects" index="883" instance=ExtResource("48_nv1r4")]
+[node name="PalmTree_2025-06-53" parent="LevelObjects" index="883" instance=ExtResource("48_nv1r4")]
 transform = Transform3D(0.865698, 0.480543, 0.140164, -0.500567, 0.831067, 0.242405, 5.36442e-07, -0.280011, 0.959997, -115.981, 9.69807, 4.94574)
 
-[node name="PalmTree_2025-06-54" type="Node3D" parent="LevelObjects" index="884" instance=ExtResource("48_nv1r4")]
+[node name="PalmTree_2025-06-54" parent="LevelObjects" index="884" instance=ExtResource("48_nv1r4")]
 transform = Transform3D(0.533525, 0.687126, 0.493163, -0.845785, 0.433441, 0.31109, 4.61936e-07, -0.583084, 0.812412, -107.523, 7.20192, 25.8441)
 
-[node name="PalmTree_2025-06-55" type="Node3D" parent="LevelObjects" index="885" instance=ExtResource("47_sg03t")]
+[node name="PalmTree_2025-06-55" parent="LevelObjects" index="885" instance=ExtResource("47_sg03t")]
 transform = Transform3D(0.978561, 0.205786, 0.00839904, -0.205957, 0.977747, 0.0399089, 5.34579e-07, -0.0407831, 0.999168, -95.7497, 2.5354, -22.012)
 
-[node name="PalmTree_2025-06-56" type="Node3D" parent="LevelObjects" index="886" instance=ExtResource("48_nv1r4")]
+[node name="PalmTree_2025-06-56" parent="LevelObjects" index="886" instance=ExtResource("48_nv1r4")]
 transform = Transform3D(0.926271, 0.376854, 0.00145953, -0.376857, 0.926264, 0.0035887, 5.06407e-07, -0.00387415, 0.999992, -108.099, 7.18419, -23.7051)
 
-[node name="PalmTree_2025-06-57" type="Node3D" parent="LevelObjects" index="887" instance=ExtResource("47_sg03t")]
+[node name="PalmTree_2025-06-57" parent="LevelObjects" index="887" instance=ExtResource("47_sg03t")]
 transform = Transform3D(0.968194, 0.250198, -0.000632227, -0.250199, 0.968191, -0.00244408, 6.10948e-07, 0.00252453, 0.999997, -106.866, 6.79836, -23.3937)
 
-[node name="PalmTree_2025-06-58" type="Node3D" parent="LevelObjects" index="888" instance=ExtResource("47_sg03t")]
+[node name="PalmTree_2025-06-58" parent="LevelObjects" index="888" instance=ExtResource("47_sg03t")]
 transform = Transform3D(0.93234, 0.359564, 0.0381525, -0.361582, 0.927135, 0.098378, 5.73695e-07, -0.105517, 0.994418, -103.529, 4.95318, 5.44421)
 
-[node name="PalmTree_2025-06-59" type="Node3D" parent="LevelObjects" index="889" instance=ExtResource("48_nv1r4")]
+[node name="PalmTree_2025-06-59" parent="LevelObjects" index="889" instance=ExtResource("48_nv1r4")]
 transform = Transform3D(0.954483, 0.298255, -0.00267573, -0.298267, 0.954444, -0.00856073, 5.5111e-07, 0.00896915, 0.99996, -102.431, 4.74163, -3.15965)
 
-[node name="PalmTree_2025-06-60" type="Node3D" parent="LevelObjects" index="890" instance=ExtResource("47_sg03t")]
+[node name="PalmTree_2025-06-60" parent="LevelObjects" index="890" instance=ExtResource("47_sg03t")]
 transform = Transform3D(-5.36442e-07, 0.322891, -0.946436, -0.487232, 0.826497, 0.281972, 0.873273, 0.461134, 0.157322, -24.374, 11.7959, -99.1682)
 
-[node name="PalmTree_2025-06-61" type="Node3D" parent="LevelObjects" index="891" instance=ExtResource("48_nv1r4")]
+[node name="PalmTree_2025-06-61" parent="LevelObjects" index="891" instance=ExtResource("48_nv1r4")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, 45.9184, 5.48589, -15.5413)
 
-[node name="PalmTree_2025-06-62" type="Node3D" parent="LevelObjects" index="892" instance=ExtResource("47_sg03t")]
+[node name="PalmTree_2025-06-62" parent="LevelObjects" index="892" instance=ExtResource("47_sg03t")]
 transform = Transform3D(-4.58211e-07, -0.108093, -0.994141, -0.600365, 0.79504, -0.0864445, 0.799726, 0.596847, -0.0648956, 27.1003, 7.60753, -91.7406)
 
-[node name="PalmTree_2025-06-63" type="Node3D" parent="LevelObjects" index="893" instance=ExtResource("46_uuupp")]
+[node name="PalmTree_2025-06-63" parent="LevelObjects" index="893" instance=ExtResource("46_uuupp")]
 transform = Transform3D(-5.51343e-07, -0.110592, -0.993866, -0.453169, 0.885957, -0.0985842, 0.891425, 0.450389, -0.0501173, 27.2402, 8.5613, -94.1328)
 
-[node name="PalmTree_2025-06-64" type="Node3D" parent="LevelObjects" index="894" instance=ExtResource("46_uuupp")]
+[node name="PalmTree_2025-06-64" parent="LevelObjects" index="894" instance=ExtResource("46_uuupp")]
 transform = Transform3D(-4.84288e-07, 0.158795, -0.987312, -0.501415, 0.854229, 0.137391, 0.865207, 0.495053, 0.0796218, 4.81285, 12.3375, -100.196)
 
-[node name="PalmTree_2025-06-65" type="Node3D" parent="LevelObjects" index="895" instance=ExtResource("47_sg03t")]
+[node name="PalmTree_2025-06-65" parent="LevelObjects" index="895" instance=ExtResource("47_sg03t")]
 transform = Transform3D(-4.58211e-07, 0.0858736, -0.996306, -0.556187, 0.827987, 0.0713661, 0.831057, 0.554133, 0.0477614, 12.8911, 10.1158, -96.7612)
 
-[node name="PalmTree_2025-06-66" type="Node3D" parent="LevelObjects" index="896" instance=ExtResource("46_uuupp")]
+[node name="PalmTree_2025-06-66" parent="LevelObjects" index="896" instance=ExtResource("46_uuupp")]
 transform = Transform3D(-5.2806e-07, -0.0723507, -0.997379, -0.121188, 0.990028, -0.0718174, 0.99263, 0.12087, -0.00876856, 64.2562, 0.0044775, -60.0241)
 
-[node name="PalmTree_2025-06-67" type="Node3D" parent="LevelObjects" index="897" instance=ExtResource("48_nv1r4")]
+[node name="PalmTree_2025-06-67" parent="LevelObjects" index="897" instance=ExtResource("48_nv1r4")]
 transform = Transform3D(-5.99772e-07, -0.0816596, -0.99666, -0.302739, 0.94989, -0.0778274, 0.953074, 0.301728, -0.0247221, 65.3398, 0.627692, -64.934)
 
-[node name="PalmTree_2025-06-68" type="Node3D" parent="LevelObjects" index="898" instance=ExtResource("48_nv1r4")]
+[node name="PalmTree_2025-06-68" parent="LevelObjects" index="898" instance=ExtResource("48_nv1r4")]
 transform = Transform3D(0.97737, 0.210071, -0.0248483, -0.211535, 0.970604, -0.114806, 5.21541e-07, 0.117464, 0.993077, 83.9954, 15.0605, -74.865)
 
-[node name="PalmTree_2025-06-69" type="Node3D" parent="LevelObjects" index="899" instance=ExtResource("46_uuupp")]
+[node name="PalmTree_2025-06-69" parent="LevelObjects" index="899" instance=ExtResource("46_uuupp")]
 transform = Transform3D(-5.35045e-07, -0.00512802, -0.999987, 0.195828, 0.980625, -0.00502884, 0.980638, -0.195825, 0.00100369, 93.5338, 15.364, -52.8677)
 
-[node name="PalmTree_2025-06-70" type="Node3D" parent="LevelObjects" index="900" instance=ExtResource("47_sg03t")]
+[node name="PalmTree_2025-06-70" parent="LevelObjects" index="900" instance=ExtResource("47_sg03t")]
 transform = Transform3D(-6.08532e-07, -0.0119252, -0.999929, 0.0169401, 0.999785, -0.0119235, 0.999857, -0.0169389, 0.000201406, 33.8041, -0.0711796, -41.647)
 
-[node name="PalmTree_2025-06-71" type="Node3D" parent="LevelObjects" index="901" instance=ExtResource("48_nv1r4")]
+[node name="PalmTree_2025-06-71" parent="LevelObjects" index="901" instance=ExtResource("48_nv1r4")]
 transform = Transform3D(0.999964, -0.00847857, -2.8553e-05, 0.00847862, 0.999959, 0.00329547, 6.10948e-07, -0.00329559, 0.999995, 60.9828, -0.0202162, -28.0197)
 
-[node name="PalmTree_2025-06-72" type="Node3D" parent="LevelObjects" index="902" instance=ExtResource("48_nv1r4")]
+[node name="PalmTree_2025-06-72" parent="LevelObjects" index="902" instance=ExtResource("48_nv1r4")]
 transform = Transform3D(-5.5501e-07, 0.0187241, -0.999825, -0.0362725, 0.999167, 0.0187118, 0.999342, 0.0362661, 0.000678615, 39.8185, 0.0137527, -48.405)
 
-[node name="PalmTree_2025-06-73" type="Node3D" parent="LevelObjects" index="903" instance=ExtResource("48_nv1r4")]
+[node name="PalmTree_2025-06-73" parent="LevelObjects" index="903" instance=ExtResource("48_nv1r4")]
 transform = Transform3D(0.99919, 0.0402109, -0.00159326, -0.0402425, 0.998407, -0.0395434, 6.40517e-07, 0.0395755, 0.999217, 34.297, 0.00936007, -76.7452)
 
-[node name="PalmTree_2025-06-74" type="Node3D" parent="LevelObjects" index="904" instance=ExtResource("47_sg03t")]
+[node name="PalmTree_2025-06-74" parent="LevelObjects" index="904" instance=ExtResource("47_sg03t")]
 transform = Transform3D(0.965818, -0.259214, 0.00172617, 0.25922, 0.965797, -0.00643376, 5.96046e-07, 0.0066613, 0.999978, 12.7154, -0.237993, -50.2601)
 
-[node name="PalmTree_2025-06-75" type="Node3D" parent="LevelObjects" index="905" instance=ExtResource("47_sg03t")]
+[node name="PalmTree_2025-06-75" parent="LevelObjects" index="905" instance=ExtResource("47_sg03t")]
 transform = Transform3D(0.994906, -0.100797, -0.00117528, 0.100804, 0.994839, 0.0115936, 6.1118e-07, -0.011653, 0.999932, 77.2405, 0.222838, -31.2128)
 
-[node name="PalmTree_2025-06-76" type="Node3D" parent="LevelObjects" index="906" instance=ExtResource("47_sg03t")]
+[node name="PalmTree_2025-06-76" parent="LevelObjects" index="906" instance=ExtResource("47_sg03t")]
 transform = Transform3D(-4.85685e-07, -0.0175007, -0.999847, 0.332557, 0.942939, -0.0165048, 0.943083, -0.332506, 0.00581952, 68.1518, 12.7039, -94.8208)
 
-[node name="PalmTree_2025-06-77" type="Node3D" parent="LevelObjects" index="907" instance=ExtResource("47_sg03t")]
+[node name="PalmTree_2025-06-77" parent="LevelObjects" index="907" instance=ExtResource("47_sg03t")]
 transform = Transform3D(0.377596, -0.374473, -0.846871, -0.465162, 0.714091, -0.523162, 0.800653, 0.591476, 0.0954473, 44.5522, 11.2636, -93.5462)
 
-[node name="PalmTree_2025-06-78" type="Node3D" parent="LevelObjects" index="908" instance=ExtResource("48_nv1r4")]
+[node name="PalmTree_2025-06-78" parent="LevelObjects" index="908" instance=ExtResource("48_nv1r4")]
 transform = Transform3D(-6.20261e-07, 0.0100944, -0.999949, 0.151404, 0.988422, 0.00997794, 0.988472, -0.151396, -0.00152895, 26.8802, 3.8662, 77.9029)
 
-[node name="PalmTree_2025-06-79" type="Node3D" parent="LevelObjects" index="909" instance=ExtResource("47_sg03t")]
+[node name="PalmTree_2025-06-79" parent="LevelObjects" index="909" instance=ExtResource("47_sg03t")]
 transform = Transform3D(-5.66244e-07, -0.052632, -0.998614, 0.192832, 0.979872, -0.0516443, 0.981232, -0.192565, 0.0101486, 30.7498, 3.88835, 79.098)
 
-[node name="PalmTree_2025-06-80" type="Node3D" parent="LevelObjects" index="910" instance=ExtResource("47_sg03t")]
+[node name="PalmTree_2025-06-80" parent="LevelObjects" index="910" instance=ExtResource("47_sg03t")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, 73.4241, 6.34982, 75.5944)
 
-[node name="PalmTree_2025-06-81" type="Node3D" parent="LevelObjects" index="911" instance=ExtResource("47_sg03t")]
+[node name="PalmTree_2025-06-81" parent="LevelObjects" index="911" instance=ExtResource("47_sg03t")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, 2.42875, 3.55948, 70.8425)
 
-[node name="PalmTree_2025-06-82" type="Node3D" parent="LevelObjects" index="912" instance=ExtResource("47_sg03t")]
+[node name="PalmTree_2025-06-82" parent="LevelObjects" index="912" instance=ExtResource("47_sg03t")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, -8.15627, 7.08884, 70.7221)
 
-[node name="PalmTree_2025-06-83" type="Node3D" parent="LevelObjects" index="913" instance=ExtResource("48_nv1r4")]
+[node name="PalmTree_2025-06-83" parent="LevelObjects" index="913" instance=ExtResource("48_nv1r4")]
 transform = Transform3D(0.19971, 0, -0.979855, 0, 1, 0, 0.979855, 0, 0.19971, 1.51906, 10.114, -12.3054)

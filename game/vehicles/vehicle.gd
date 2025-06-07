@@ -47,7 +47,7 @@ func set_owner_data(u_owner_identity: PackedByteArray, u_owner_name: String):
 	owner_name = u_owner_name
 	
 func booster_entered(boost_multiplier: float, boost_duration: float):
-	boost_timer.start()
+	boost_timer.start(boost_duration)
 	_boost_multiplier = boost_multiplier
 	
 	_set_particles(true)
