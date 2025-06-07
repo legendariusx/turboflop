@@ -29,6 +29,8 @@ var _speed : float
 @export var wheels: Array[VehicleWheel3D]
 @export var material_car_opaque: StandardMaterial3D
 @export var material_car_transparent: StandardMaterial3D
+@export var wheel_bl: VehicleWheel3D
+@export var wheel_br: VehicleWheel3D
 
 @onready var audio_listener: AudioListener3D = $AudioListener3D
 @onready var speedometer: Label3D = $Speedometer
@@ -38,8 +40,11 @@ var _speed : float
 @onready var dark_particles_r: GPUParticles3D = $ExhaustParticles/DarkParticlesR
 @onready var glowing_particles_l: GPUParticles3D = $ExhaustParticles/GlowingParticlesL
 @onready var glowing_particles_r: GPUParticles3D = $ExhaustParticles/GlowingParticlesR
-@onready var particle_systems: Array[GPUParticles3D] = [dark_particles_l, dark_particles_r, glowing_particles_l, glowing_particles_r]
-@onready var wheel_dust_r: GPUParticles3D = $WheelParticles/WheelDustBL
+
+@onready var wheel_particles_bl: GPUParticles3D = $WheelParticles/WheelDustBL
+@onready var wheel_particles_br: GPUParticles3D = $WheelParticles/WheelDustBR
+
+@onready var exhaust_particles: Array[GPUParticles3D] = [dark_particles_l, dark_particles_r, glowing_particles_l, glowing_particles_r]
 
 func set_owner_data(u_owner_identity: PackedByteArray, u_owner_name: String):
 	owner_identity = u_owner_identity
@@ -134,10 +139,14 @@ func _physics_process(delta: float) -> void:
 func _update_particle_systems():
 	var t = clampf(_speed / 6.0, 0.1, 1.0)
 	
-	for particle_system in particle_systems:
+	for particle_system in exhaust_particles:
 		particle_system.amount_ratio = t
 		particle_system.process_material.initial_velocity_min = linear_velocity.dot(transform.basis.z) * -1
 		particle_system.process_material.initial_velocity_max = linear_velocity.dot(transform.basis.z) * -1
+	
+	# FIXME: check if the contacting body is the terrain
+	wheel_particles_bl.emitting = wheel_bl.get_contact_body() != null
+	wheel_particles_br.emitting = wheel_br.get_contact_body() != null
 
 func _set_particles(is_boosting: bool):
 	dark_particles_l.emitting = not is_boosting

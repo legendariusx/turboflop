@@ -105,6 +105,8 @@ func _add_checkpoint_label(number: String, time: int) -> void:
 	
 	new_row.set_text_alignment(0, HORIZONTAL_ALIGNMENT_CENTER)
 	new_row.set_text_alignment(1, HORIZONTAL_ALIGNMENT_CENTER)
+	
+	cp_times.scroll_to_item(new_row)
 
 func _show_checkpoint_time(checkpoint_text: String, index: int, time: int, is_finish: bool):
 	var current_pb_index = personal_best_state.data.find_custom(func(pb): return pb.identity == GameState.identity)
