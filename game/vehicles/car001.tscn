@@ -38,11 +38,17 @@ shadow_mesh = SubResource("ArrayMesh_vtxm0")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_oetmd"]
 points = PackedVector3Array(1.20775, 1.04869, 0.862108, 1.20775, 0.93414, 0.862108, 0.999921, 0.295965, -1.663, 0.999921, 0.842535, -1.57437, 0.842686, 2.2495, -0.843573, 0.842686, 2.2495, 0.843168, 0.999921, 0.842535, 1.98779, 0.999921, 0.295965, 1.98779, -1.00016, 0.295965, -1.663, -1.00016, 0.842535, -1.57437, -0.842922, 2.2495, -0.843573, -0.842922, 2.2495, 0.843168, -1.00016, 0.842535, 1.98779, -1.00016, 0.295965, 1.98779, -1.20775, 1.04869, 0.862108, -1.20775, 0.93414, 0.862108)
 
-[node name="Car" node_paths=PackedStringArray("wheel_bl", "wheel_br") instance=ExtResource("1_br4tv")]
+[node name="Car" node_paths=PackedStringArray("wheel_fl", "wheel_fr", "wheel_bl", "wheel_br", "body_mesh", "body_collider") instance=ExtResource("1_br4tv")]
+mass = 280.0
+acceleration_force = 1225.0
 material_car_opaque = ExtResource("2_l4xwu")
 material_car_transparent = ExtResource("3_bodge")
+wheel_fl = NodePath("WheelFL")
+wheel_fr = NodePath("WheelFR")
 wheel_bl = NodePath("WheelBL")
 wheel_br = NodePath("WheelBR")
+body_mesh = NodePath("Mesh")
+body_collider = NodePath("Collider")
 
 [node name="WheelFL" type="VehicleWheel3D" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.836987, 0.295965, 1.0031)

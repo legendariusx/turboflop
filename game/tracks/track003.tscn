@@ -67,7 +67,7 @@ transform = Transform3D(1, 0, 7.45058e-09, 0, 0.573576, 0.819152, 0, -0.819152, 
 [node name="Car" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.4628, 0, -7.32289)
 
-[node name="Start" parent="." index="3"]
+[node name="Start" parent="." index="4"]
 transform = Transform3D(0.699801, 0, -0.714339, 0, 1, 0, 0.714339, 0, 0.699801, -46.1198, -0.188434, -53.9107)
 
 [node name="Checkpoint2" parent="Checkpoints" index="0" instance=ExtResource("2_qu104")]

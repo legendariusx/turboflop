@@ -11,6 +11,9 @@
 [node name="Track" instance=ExtResource("1_3dh60")]
 track_id = 1
 
+[node name="Car" parent="." index="2"]
+acceleration_force = 100.0
+
 [node name="Checkpoint" parent="Checkpoints" index="0" instance=ExtResource("2_wrt2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.513344, 6.66061)
 

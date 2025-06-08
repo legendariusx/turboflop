@@ -147,8 +147,14 @@ func _countdown():
 
 func _update_track_state(u_track_state: TrackState):
 	track_state = u_track_state
-	player_vehicle.is_input_enabled = track_state == TrackState.RUNNING
-	if track_state == TrackState.COUNTDOWN: track_ui.timer.text = "00.000"
+	
+	match u_track_state:
+		TrackState.COUNTDOWN:
+			track_ui.timer.text = "00.000"
+		TrackState.RUNNING:
+			player_vehicle.enable_input()
+		TrackState.FINISHED:
+			player_vehicle.disable_input()
 
 func _on_update_ui():
 	if track_state == TrackState.RUNNING:
