@@ -14,6 +14,8 @@ const MATERIAL_GLOWING_SMOKE = preload("res://assets/materials/GlowingSmoke.tres
 @export var brake_soft_strength: float = 0.5
 @export var steer_speed: float = 1.5
 @export var steer_limit: float = 0.4
+@export var boost_increment: float = 1.0
+@export var boost_duration: float = 1.5
 
 @export_group("Car Components")
 @export var material_car_opaque: StandardMaterial3D
@@ -30,7 +32,8 @@ const MATERIAL_GLOWING_SMOKE = preload("res://assets/materials/GlowingSmoke.tres
 # generic vehicle components
 @onready var engine_sound: AudioStreamPlayer3D = $EngineSound
 @onready var audio_listener: AudioListener3D = $AudioListener3D
-@onready var speedometer: Label3D = $Speedometer
+@onready var speedometer: Label3D = $UI/Speedometer
+@onready var boost_sprite: Sprite3D = $UI/BoostSprite
 @onready var name_label: Label3D = $NameLabel
 @onready var boost_timer: Timer = $BoostTimer
 @onready var fpv_marker: Marker3D = $FPVMarker
@@ -53,6 +56,7 @@ var _is_steering : bool
 var _is_accelerating : bool
 var _is_braking : bool
 var _is_update_disabled: bool = false
+var _has_boosted: bool = false
 
 var _speed : float
 var _boost_multiplier: float = 1
@@ -62,9 +66,9 @@ func set_owner_data(u_owner_identity: PackedByteArray, u_owner_name: String):
 	is_current_user = u_owner_identity == GameState.identity or not SpacetimeDB.is_connected_db()
 	owner_name = u_owner_name
 	
-func booster_entered(boost_multiplier: float, boost_duration: float):
+func booster_entered(boost_increment: float, boost_duration: float):
 	boost_timer.start(boost_duration)
-	_boost_multiplier = boost_multiplier
+	_boost_multiplier += boost_increment
 	
 	_set_particles(true)
 
@@ -155,7 +159,14 @@ func _physics_process(delta: float) -> void:
 		engine_force *= _boost_multiplier
 	else:
 		engine_force = 0.0
-	
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed(&"boost") and _has_boosted == false:
+		_has_boosted = true
+		boost_sprite.modulate = Color(1.0, 1.0, 1.0, 0.4)
+		# a bit a hacky way to enable the boost
+		booster_entered(boost_increment, boost_duration)
+		
 func _update_particle_systems():
 	var t = clampf(_speed / 6.0, 0.1, 1.0)
 	

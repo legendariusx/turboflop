@@ -14,7 +14,7 @@ size = Vector3(2.621, 0.853789, 4.55998)
 [node name="Car" node_paths=PackedStringArray("wheel_fl", "wheel_fr", "wheel_bl", "wheel_br", "body_mesh", "body_collider") instance=ExtResource("1_xcbyt")]
 mass = 280.0
 center_of_mass_mode = 1
-center_of_mass = Vector3(0, 0.3, 0)
+center_of_mass = Vector3(0, 0.3, 0.1)
 car_id = 2
 car_name = "Truck"
 car_thumbnail = ExtResource("2_togh5")
@@ -22,6 +22,7 @@ acceleration_force = 1100.0
 brake_force = 25.0
 steer_speed = 2.0
 steer_limit = 0.6
+boost_duration = 2.0
 material_car_opaque = ExtResource("2_aq5d5")
 material_car_transparent = ExtResource("3_togh5")
 wheel_fl = NodePath("WheelFL")
@@ -36,9 +37,6 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.8
 
 [node name="NameLabel" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.59396, 0.4779)
-
-[node name="Speedometer" parent="." index="2"]
-transform = Transform3D(-0.999953, 0.000239692, 0.00967215, 0.000380681, 0.999894, 0.0145782, -0.00966763, 0.0145812, -0.999847, -0.0200981, 1.72407, 0.0721735)
 
 [node name="DarkParticlesL" parent="ExhaustParticles" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12724, 0.0363708, -0.342776)
@@ -77,7 +75,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.21133, 0.344521, 1.55945)
 use_as_traction = true
 use_as_steering = true
 wheel_radius = 0.34
-wheel_friction_slip = 1.2
+wheel_friction_slip = 1.5
 suspension_stiffness = 30.0
 
 [node name="Mesh" type="MeshInstance3D" parent="WheelFR" index="0"]
@@ -90,7 +88,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.20697, 0.344521, 1.56515)
 use_as_traction = true
 use_as_steering = true
 wheel_radius = 0.34
-wheel_friction_slip = 1.2
+wheel_friction_slip = 1.5
 suspension_stiffness = 30.0
 
 [node name="Mesh" type="MeshInstance3D" parent="WheelFL" index="0"]
@@ -101,7 +99,7 @@ skeleton = NodePath("../..")
 [node name="WheelBL" type="VehicleWheel3D" parent="." index="13"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.20697, 0.344521, -1.09395)
 wheel_radius = 0.34
-wheel_friction_slip = 1.2
+wheel_friction_slip = 1.5
 suspension_stiffness = 30.0
 
 [node name="Mesh" type="MeshInstance3D" parent="WheelBL" index="0"]
@@ -112,10 +110,13 @@ skeleton = NodePath("../..")
 [node name="WheelBR" type="VehicleWheel3D" parent="." index="14"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.21133, 0.344521, -1.09643)
 wheel_radius = 0.34
-wheel_friction_slip = 1.2
+wheel_friction_slip = 1.5
 suspension_stiffness = 30.0
 
 [node name="Mesh" type="MeshInstance3D" parent="WheelBR" index="0"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.344521, -0.00696003)
 mesh = ExtResource("4_aq5d5")
 skeleton = NodePath("../..")
+
+[node name="UI" parent="." index="15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.205465, 1.75385, -0.00165963)

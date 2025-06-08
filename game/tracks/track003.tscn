@@ -106,40 +106,46 @@ transform = Transform3D(-1, 0, -8.74227e-08, 0, 1, 0, 8.74227e-08, 0, -1, -4.586
 
 [node name="Booster" parent="Boosters" index="0" instance=ExtResource("35_uf1la")]
 transform = Transform3D(0.799716, 0, -0.600378, 0, 1, 0, 0.600378, 0, 0.799716, -59.9917, 0.00321225, -36.6305)
-boost_multiplier = 1.5
+boost_increment = 0.3
 
 [node name="Booster2" parent="Boosters" index="1" instance=ExtResource("35_uf1la")]
 transform = Transform3D(0.651841, 0.00175427, 0.758355, -0.0600335, 0.996978, 0.0492953, -0.755977, -0.0776593, 0.649976, -60.6473, 0.397582, 37.4721)
+boost_increment = 0.2
 
 [node name="Booster3" parent="Boosters" index="2" instance=ExtResource("35_uf1la")]
 transform = Transform3D(0.602921, 0.0265861, 0.797359, -0.056995, 0.998327, 0.00980981, -0.795764, -0.05136, 0.603426, -54.7325, 0.295034, 42.2252)
+boost_increment = 0.2
 
 [node name="Booster4" parent="Boosters" index="3" instance=ExtResource("35_uf1la")]
 transform = Transform3D(-0.239042, 0, -0.97101, 0, 1, 0, 0.97101, 0, -0.239042, 42.9623, -0.0421939, -59.3928)
+boost_increment = 0.2
 
 [node name="Booster6" parent="Boosters" index="4" instance=ExtResource("35_uf1la")]
 transform = Transform3D(-0.223216, 0.0115831, -0.974701, -0.0528193, 0.998317, 0.0239599, 0.973337, 0.0568312, -0.222228, 19.3895, 0.1025, -64.5757)
+boost_increment = 0.1
 
 [node name="Booster5" parent="Boosters" index="5" instance=ExtResource("35_uf1la")]
 transform = Transform3D(-0.66262, 0, -0.748956, 0, 1, 0, 0.748956, 0, -0.66262, 63.9818, 0.141702, -46.5827)
+boost_increment = 0.2
 
 [node name="Booster7" parent="Boosters" index="6" instance=ExtResource("35_uf1la")]
 transform = Transform3D(0.0299633, 0, 0.999551, 0, 1, 0, -0.999551, 0, 0.0299633, -58.6653, -0.0277078, 2.59538)
+boost_increment = 0.3
 
 [node name="HillBridge" type="Node3D" parent="." index="13"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.13817, 0, 0.0905334)
 
 [node name="Booster" parent="HillBridge" index="0" instance=ExtResource("35_uf1la")]
 transform = Transform3D(-0.199368, -0.281592, 0.938594, 0, 0.957822, 0.287361, -0.979925, 0.0572905, -0.190959, -23.5566, 3.02435, -0.229489)
-boost_multiplier = 6.0
+boost_increment = 0.15
 
 [node name="Booster2" parent="HillBridge" index="1" instance=ExtResource("35_uf1la")]
-transform = Transform3D(-0.199368, -0.281592, 0.938594, 0, 0.957822, 0.287361, -0.979925, 0.0572905, -0.190959, 1.90555, 10.8449, -5.41908)
-boost_multiplier = 6.0
+transform = Transform3D(-0.199368, -0.281592, 0.938594, 0, 0.957822, 0.287361, -0.979925, 0.0572905, -0.190959, -0.464224, 10.0719, -4.93608)
+boost_increment = 0.1
 
 [node name="Booster3" parent="HillBridge" index="2" instance=ExtResource("35_uf1la")]
 transform = Transform3D(-0.199368, -0.281592, 0.938594, 0, 0.957822, 0.287361, -0.979925, 0.0572905, -0.190959, 18.3011, 15.7622, -8.76075)
-boost_multiplier = 6.0
+boost_increment = 0.1
 
 [node name="WoodenBridge5" parent="HillBridge" index="3" instance=ExtResource("39_pgcb2")]
 transform = Transform3D(0.119621, -0.136379, -0.970388, 0, 0.990268, -0.139173, 0.587955, 0.0277467, 0.197428, -39.1465, -1.39548, 2.48812)

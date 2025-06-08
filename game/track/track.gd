@@ -129,6 +129,10 @@ func start():
 	_countdown()
 	await started
 	started_at = Time.get_ticks_msec()
+	
+	# hacky way to reset car boost
+	player_vehicle._has_boosted = false
+	player_vehicle.boost_sprite.modulate = Color(1.0, 1.0, 1.0, 1.0)
 
 func _respawn_at(checkpoint: Checkpoint):
 	player_vehicle.global_position = checkpoint.spawnpoint.global_position

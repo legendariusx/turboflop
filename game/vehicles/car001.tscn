@@ -44,9 +44,11 @@ mass = 280.0
 car_id = 1
 car_name = "City Car"
 car_thumbnail = ExtResource("2_oetmd")
-acceleration_force = 1275.0
+acceleration_force = 1225.0
 brake_force = 20.0
 steer_limit = 0.6
+boost_increment = 0.8
+boost_duration = 1.0
 material_car_opaque = ExtResource("2_l4xwu")
 material_car_transparent = ExtResource("3_bodge")
 wheel_fl = NodePath("WheelFL")
@@ -64,7 +66,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.836987, 0.295965, 1.0031)
 use_as_traction = true
 use_as_steering = true
 wheel_radius = 0.3
-wheel_friction_slip = 1.0
+wheel_friction_slip = 1.2
 suspension_stiffness = 30.0
 
 [node name="Mesh" type="MeshInstance3D" parent="WheelFL" index="0"]
@@ -78,7 +80,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.819356, 0.295965, 1.0031)
 use_as_traction = true
 use_as_steering = true
 wheel_radius = 0.3
-wheel_friction_slip = 1.0
+wheel_friction_slip = 1.2
 suspension_stiffness = 30.0
 
 [node name="Mesh" type="MeshInstance3D" parent="WheelFR" index="0"]
@@ -90,7 +92,7 @@ skeleton = NodePath("")
 [node name="WheelBL" type="VehicleWheel3D" parent="." index="9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.836987, 0.295965, -1)
 wheel_radius = 0.3
-wheel_friction_slip = 1.0
+wheel_friction_slip = 1.2
 suspension_stiffness = 30.0
 
 [node name="Mesh" type="MeshInstance3D" parent="WheelBL" index="0"]
@@ -102,7 +104,7 @@ skeleton = NodePath("")
 [node name="WheelBR" type="VehicleWheel3D" parent="." index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.819356, 0.295965, -1)
 wheel_radius = 0.3
-wheel_friction_slip = 1.0
+wheel_friction_slip = 1.2
 suspension_stiffness = 30.0
 
 [node name="Mesh" type="MeshInstance3D" parent="WheelBR" index="0"]
@@ -124,3 +126,6 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.5507
 
 [node name="ExhaustR" parent="." index="14" instance=ExtResource("5_bodge")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.599916, 0.372865, -1.58652)
+
+[node name="UI" parent="." index="15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.29292, 1.27832, -1.01743)
