@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cp0r61bx7v3pk"]
+[gd_scene load_steps=9 format=3 uid="uid://cp0r61bx7v3pk"]
 
 [ext_resource type="PackedScene" uid="uid://baihr0lcc5kf3" path="res://vehicle/car.scn" id="1_xcbyt"]
 [ext_resource type="Material" uid="uid://ddnbyd1ewpsg5" path="res://assets/materials/Car002.tres" id="2_aq5d5"]
+[ext_resource type="Texture2D" uid="uid://dwf2hyo3xyfkf" path="res://assets/textures/car002_thumbnail.png" id="2_togh5"]
 [ext_resource type="ArrayMesh" uid="uid://8njujt7iv2d3" path="res://assets/meshes/car002_mesh.res" id="3_8lwxu"]
 [ext_resource type="Material" uid="uid://b14ao8tclpl8v" path="res://assets/materials/Car002_transparent.tres" id="3_togh5"]
 [ext_resource type="PackedScene" uid="uid://c0ilk0wr4f5hk" path="res://vehicle/exhaust.tscn" id="3_ufd5r"]
@@ -16,6 +17,7 @@ center_of_mass_mode = 1
 center_of_mass = Vector3(0, 0.3, 0)
 car_id = 2
 car_name = "Truck"
+car_thumbnail = ExtResource("2_togh5")
 acceleration_force = 1100.0
 brake_force = 25.0
 steer_speed = 2.0
@@ -30,7 +32,7 @@ body_mesh = NodePath("BodyMesh")
 body_collider = NodePath("BodyCollision")
 
 [node name="NameLabel" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.57024, 0.4779)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.59396, 0.4779)
 
 [node name="Speedometer" parent="." index="1"]
 transform = Transform3D(-0.999953, 0.000239692, 0.00967215, 0.000380681, 0.999894, 0.0145782, -0.00966763, 0.0145812, -0.999847, -0.0200981, 1.72407, 0.0721735)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=4 uid="uid://de70kychdhqhn"]
+[gd_scene load_steps=10 format=4 uid="uid://de70kychdhqhn"]
 
 [ext_resource type="PackedScene" uid="uid://baihr0lcc5kf3" path="res://vehicle/car.scn" id="1_br4tv"]
 [ext_resource type="Material" uid="uid://jx2jrd6swdio" path="res://assets/materials/car001.tres" id="2_l4xwu"]
+[ext_resource type="Texture2D" uid="uid://cb6yr8yuq8run" path="res://assets/textures/car001_thumbnail.png" id="2_oetmd"]
 [ext_resource type="Material" uid="uid://5m7y4kqcc6gq" path="res://assets/materials/car001_transparent.tres" id="3_bodge"]
 [ext_resource type="ArrayMesh" uid="uid://dd3hhbeu4lvqu" path="res://assets/meshes/car001_wheelmesh.res" id="3_x38vr"]
 [ext_resource type="PackedScene" uid="uid://c0ilk0wr4f5hk" path="res://vehicle/exhaust.tscn" id="5_bodge"]
@@ -42,6 +43,7 @@ points = PackedVector3Array(1.20775, 1.04869, 0.862108, 1.20775, 0.93414, 0.8621
 mass = 280.0
 car_id = 1
 car_name = "City Car"
+car_thumbnail = ExtResource("2_oetmd")
 acceleration_force = 1275.0
 brake_force = 20.0
 steer_limit = 0.6

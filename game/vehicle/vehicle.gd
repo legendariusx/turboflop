@@ -6,6 +6,7 @@ const MATERIAL_GLOWING_SMOKE = preload("res://assets/materials/GlowingSmoke.tres
 
 @export var car_id: int = -1
 @export var car_name: String
+@export var car_thumbnail: Texture2D
 
 @export_group("Car Behaviour")
 @export var acceleration_force: float = 1000.0

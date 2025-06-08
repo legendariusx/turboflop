@@ -83,12 +83,11 @@ func _render_car_selection():
 			continue
 			
 		var car_scene = (load(file_name).instantiate() as Vehicle)
-		var car_name = car_scene.car_name
-		var car_id = car_scene.car_id
 		
 		var new_car_select_scene = car_select_scene.instantiate()
-		new_car_select_scene.button.text = car_name
-		new_car_select_scene.button.pressed.connect(func(): track_and_car_selected.emit(_selected_track_id, car_id))
+		new_car_select_scene.button.text = car_scene.car_name
+		new_car_select_scene.button.pressed.connect(func(): track_and_car_selected.emit(_selected_track_id, car_scene.car_id))
+		new_car_select_scene.image.texture = car_scene.car_thumbnail
 		car_container.add_child(new_car_select_scene)
 		
 func _track_selected(track_id: int) -> void:
