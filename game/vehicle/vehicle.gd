@@ -5,8 +5,8 @@ const MATERIAL_DARK_SMOKE = preload("res://assets/materials/DarkSmoke.tres")
 const MATERIAL_GLOWING_SMOKE = preload("res://assets/materials/GlowingSmoke.tres")
 
 @export_group("Car Behaviour")
-@export var acceleration_force: float = 100.0
-@export var brake_strength: float = 2.0
+@export var acceleration_force: float = 1000.0
+@export var brake_force: float = 5.0
 @export var brake_soft_strength: float = 0.5
 @export var steer_speed: float = 1.5
 @export var steer_limit: float = 0.4
@@ -97,7 +97,7 @@ func _ready():
 	get_window().focus_exited.connect(_on_window_focus_exited)
 
 func _physics_process(delta: float) -> void:
-	var desired_engine_pitch = 0.05 + linear_velocity.length() / (acceleration_force * 0.5)
+	var desired_engine_pitch = 0.05 + linear_velocity.length() / (acceleration_force * 0.1 * 0.5)
 	engine_sound.pitch_scale = lerpf(engine_sound.pitch_scale, desired_engine_pitch, 0.2)
 	
 	_update_particle_systems()
@@ -108,7 +108,7 @@ func _physics_process(delta: float) -> void:
 	
 	# get current speed
 	#_speed = linear_velocity.dot(transform.basis.z)
-	_speed = (quaternion.inverse() * linear_velocity).length()
+	_speed = (quaternion.inverse() * linear_velocity).length() 
 	speedometer.text = str(abs(int(_speed * 3.6)))
 	
 	if not _is_input_enabled:
@@ -129,7 +129,7 @@ func _physics_process(delta: float) -> void:
 	
 	# set brake
 	if _is_braking:
-		brake = brake_strength * brake_strength
+		brake = brake_force * brake_strength
 	# TODO: is this needed? currently stops the car
 	elif not _is_accelerating and false:
 		brake = brake_soft_strength
@@ -183,7 +183,7 @@ func _on_visibility_changed(u_visibility: Enum.Visibility):
 	
 func _on_user_updated(row: User):
 	if row.identity == owner_identity:
-		$NameLabel.text = row.name
+		name_label.text = row.name
 		owner_name = row.name
 		
 func _on_window_focus_entered() -> void:
