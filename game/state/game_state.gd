@@ -13,7 +13,7 @@ var track_id: int = -1:
 		track_id_changed.emit(u_track_id)
 
 signal identity_updated(identity: PackedByteArray)
-signal current_user_upated(user: User)
+signal current_user_updated(user: User)
 signal visibility_changed(visibility: Enum.Visibility)
 signal track_id_changed(track_id: int)
 
@@ -34,7 +34,7 @@ func is_current_user(user: User):
 func _on_user_update(user: User):
 	if user.identity == identity:
 		current_user = user
-		current_user_upated.emit(current_user)
+		current_user_updated.emit(current_user)
 		
 		if not user.online or user.banned:
 			SpacetimeDB.disconnect_db()

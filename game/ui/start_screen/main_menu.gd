@@ -13,24 +13,32 @@ const USERNAME_MIN_LENGTH = 4
 @onready var confirm_button = $CenterContainer/VBoxContainer/UsernameContainer/HBoxContainer/Confirm
 @onready var track_selection_container = $CenterContainer/VBoxContainer/TrackSelectionContainer
 @onready var track_container = $CenterContainer/VBoxContainer/TrackSelectionContainer/TrackContainer
+@onready var change_username_container = $ChangeUsernameContainer
+@onready var change_username_container_label = $ChangeUsernameContainer/Label
 
 func display(connected: bool):
 	visible = true
-	if connected and not GameState.current_user: await GameState.current_user_upated
+	GameState.current_user_updated.connect(_on_current_user_updated)
+	if connected and not GameState.current_user: await GameState.current_user_updated
 	
 	if GameState.current_user.name == "":
 		_render_username_selection()
-	elif track_container.get_child_count() == 0:
+	else:
 		_render_track_selection()
 
 func _render_username_selection():
 	username_container.visible = true
 	track_selection_container.visible = false
+	change_username_container.visible = false
 
 func _render_track_selection():
 	username_container.visible = false
 	track_selection_container.visible = true
-		
+	change_username_container.visible = true
+	
+	if track_container.get_child_count() >= 0:
+		return
+	
 	var dir = DirAccess.open("res://tracks")
 	var track_names: Array[String] = []
 	if dir:
@@ -57,13 +65,19 @@ func _on_name_input_text_changed(new_text: String) -> void:
 func _on_confirm_pressed() -> void:
 	_on_confirm(name_input.text)
 
+func _on_current_user_updated(user: User):
+	change_username_container_label.text = user.name
+
 func _on_confirm(u_name: String):
 	if len(name_input.text) < USERNAME_MIN_LENGTH: return
 	
 	if GameState.current_user.online:
 		User.set_name_reducer(u_name)
-		await GameState.current_user_upated
+		await GameState.current_user_updated
 	else:
 		GameState.current_user.name = u_name
 			
 	display(GameState.current_user.online)
+
+func _on_change_username_pressed() -> void:
+	_render_username_selection()

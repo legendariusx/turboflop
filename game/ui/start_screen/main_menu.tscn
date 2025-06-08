@@ -83,9 +83,32 @@ theme_override_constants/h_separation = 15
 theme_override_constants/v_separation = 15
 alignment = 1
 
+[node name="ChangeUsernameContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -81.0
+offset_top = -76.0
+offset_right = -41.0
+offset_bottom = -36.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 2
+
+[node name="Label" type="Label" parent="ChangeUsernameContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="ChangeUsernameContainer"]
+layout_mode = 2
+text = "Change Username"
+
 [node name="GithubLink" parent="." instance=ExtResource("3_tvvmp")]
 layout_mode = 1
 
 [connection signal="text_changed" from="CenterContainer/VBoxContainer/UsernameContainer/HBoxContainer/NameInput" to="." method="_on_name_input_text_changed"]
 [connection signal="text_submitted" from="CenterContainer/VBoxContainer/UsernameContainer/HBoxContainer/NameInput" to="." method="_on_name_input_text_submitted"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/UsernameContainer/HBoxContainer/Confirm" to="." method="_on_confirm_pressed"]
+[connection signal="pressed" from="ChangeUsernameContainer/Button" to="." method="_on_change_username_pressed"]

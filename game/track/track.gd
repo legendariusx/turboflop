@@ -67,7 +67,7 @@ func _ready() -> void:
 	user_data.update.connect(_on_user_data_updated)
 	
 	if SpacetimeDB.is_connected_db():
-		if not GameState.current_user: await GameState.current_user_upated
+		if not GameState.current_user: await GameState.current_user_updated
 		player_vehicle.set_owner_data(GameState.identity, GameState.current_user.name)
 	
 	# TODO: implement starting from user input
