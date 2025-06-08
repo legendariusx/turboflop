@@ -16,9 +16,11 @@ const USERNAME_MIN_LENGTH = 4
 @onready var change_username_container = $ChangeUsernameContainer
 @onready var change_username_container_label = $ChangeUsernameContainer/Label
 
+func _ready():
+	GameState.current_user_updated.connect(_on_current_user_updated)
+
 func display(connected: bool):
 	visible = true
-	GameState.current_user_updated.connect(_on_current_user_updated)
 	if connected and not GameState.current_user: await GameState.current_user_updated
 	
 	if GameState.current_user.name == "":
