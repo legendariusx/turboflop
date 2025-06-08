@@ -4,6 +4,9 @@ class_name Vehicle
 const MATERIAL_DARK_SMOKE = preload("res://assets/materials/DarkSmoke.tres")
 const MATERIAL_GLOWING_SMOKE = preload("res://assets/materials/GlowingSmoke.tres")
 
+@export var car_id: int = -1
+@export var car_name: String
+
 @export_group("Car Behaviour")
 @export var acceleration_force: float = 1000.0
 @export var brake_force: float = 5.0
@@ -78,6 +81,8 @@ func disable_input() -> void:
 	engine_force = 0.0
 
 func _ready():
+	assert(car_id != -1, "vehicle_id needs to be set")	
+	
 	if not is_current_user:
 		body_collider.disabled = true
 		name_label.text = owner_name

@@ -40,6 +40,8 @@ points = PackedVector3Array(1.20775, 1.04869, 0.862108, 1.20775, 0.93414, 0.8621
 
 [node name="Car" node_paths=PackedStringArray("wheel_fl", "wheel_fr", "wheel_bl", "wheel_br", "body_mesh", "body_collider") instance=ExtResource("1_br4tv")]
 mass = 280.0
+car_id = 1
+car_name = "City Car"
 acceleration_force = 1225.0
 brake_force = 20.0
 steer_limit = 0.6

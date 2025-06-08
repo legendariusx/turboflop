@@ -4,6 +4,7 @@ extends Node3D
 signal spacetime_connection_callback(success: bool)
 
 const TRACK_PATH_TEMPLATE = &"res://tracks/track%s.tscn"
+const CAR_PATH_TEMPLATE = &"res://vehicles/car%s.tscn"
 
 @onready var loading_screen: LoadingScreen = $LoadingScreen
 @onready var main_menu: MainMenu = $MainMenu
@@ -18,7 +19,7 @@ func _ready() -> void:
 	loading_screen.play_offline.connect(func(): _transition_to_main_menu(false))
 	loading_screen.try_again.connect(_connect)
 	
-	main_menu.track_selected.connect(_load_track)
+	main_menu.track_and_car_selected.connect(_load_track)
 	
 	_connect()
 
@@ -47,15 +48,20 @@ func _connect():
 	if success: _transition_to_main_menu(true)
 	else: loading_screen.show_connection_failed()
 
-func _load_track(track_id: int):
+func _load_track(track_id: int, car_id: int):
 	# TODO: error-handling if file does not exist?
 	var new_track: Track = load(TRACK_PATH_TEMPLATE % str(track_id).pad_zeros(3)).instantiate()
+	var new_car: Vehicle = load(CAR_PATH_TEMPLATE % str(car_id).pad_zeros(3)).instantiate()
 	
+	new_track.set_car(new_car)
 	main_menu.visible = false
 	
 	add_child(new_track)
 	GameState.track_id = track_id
+	GameState.car_id = car_id
 	current_track = new_track
+	
+	current_track.start()
 
 func _transition_to_main_menu(connected: bool):
 	loading_screen.visible = false

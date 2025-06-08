@@ -11,11 +11,16 @@ var track_id: int = -1:
 	set(u_track_id):
 		track_id = u_track_id
 		track_id_changed.emit(u_track_id)
+var car_id: int = -1:
+	set(u_car_id):
+		car_id = u_car_id
+		car_id_changed.emit(u_car_id)
 
 signal identity_updated(identity: PackedByteArray)
 signal current_user_updated(user: User)
 signal visibility_changed(visibility: Enum.Visibility)
 signal track_id_changed(track_id: int)
+signal car_id_changed(car_id: int)
 
 func _init():
 	if SpacetimeDB.get_local_identity() == null:

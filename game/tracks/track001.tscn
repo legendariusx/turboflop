@@ -11,11 +11,11 @@
 [node name="Track" instance=ExtResource("1_3dh60")]
 track_id = 1
 
-[node name="Car" parent="." index="2"]
-acceleration_force = 1000.0
-
 [node name="Checkpoint" parent="Checkpoints" index="0" instance=ExtResource("2_wrt2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.513344, 6.66061)
+
+[node name="Finish" parent="Finishes" index="0" instance=ExtResource("3_tv5bj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.74401, 19.0665)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="6"]
 transform = Transform3D(43.9516, -0.00147033, 8.28426, 0.374001, 0.992596, -17.3216, -2.52449, 0.121454, 141.664, 0, 0, 0)
@@ -25,6 +25,3 @@ mesh = SubResource("BoxMesh_038fw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_038fw")
-
-[node name="Finish" parent="Finishes" index="0" instance=ExtResource("3_tv5bj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.74401, 19.0665)

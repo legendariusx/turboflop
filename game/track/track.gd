@@ -20,7 +20,8 @@ var palm_variants = [
 	preload("res://assets/models/PalmTree3.tscn")
 ]
 
-@onready var player_vehicle: Vehicle = $Car
+@export var track_id: int = -1
+
 @onready var camera: CameraFollow = $Camera3D
 @onready var start_node: Checkpoint = $Start
 @onready var checkpoints: Node = $Checkpoints
@@ -36,15 +37,21 @@ var palm_variants = [
 @onready var personal_best_state = PersonalBestState.new(self, track_id)
 @onready var user_data = UserDataState.new(self)
 
-@export var track_id: int = -1
+var player_vehicle: Vehicle
 
 var track_state = TrackState.IDLE
 var started_at: int
 var checkpoint_times: Array[int] = [0]
+
 # FIXME bit of an ugly fix to allow player position updates based on _input
 var respawn_location: Checkpoint
 
 var _checkpoint_index: int = -1
+
+func set_car(car: Vehicle) -> void:
+	player_vehicle = car
+	player_vehicle.set_owner_data(GameState.identity, GameState.current_user.name)
+	add_child(player_vehicle)
 
 func _ready() -> void:
 	# verify parent type
@@ -68,10 +75,8 @@ func _ready() -> void:
 	
 	if SpacetimeDB.is_connected_db():
 		if not GameState.current_user: await GameState.current_user_updated
-		player_vehicle.set_owner_data(GameState.identity, GameState.current_user.name)
 	
-	# TODO: implement starting from user input
-	_start()
+	camera.target = player_vehicle
 
 func _process(_delta: float) -> void:
 	_on_update_ui()
@@ -87,14 +92,14 @@ func _input(event: InputEvent) -> void:
 			TrackState.RUNNING:
 				respawn_location = last_checkpoint
 			TrackState.FINISHED:
-				_start()
+				start()
 	elif event.is_action_pressed(&"reset"):
-		_start()
+		start()
 
 func _exit_tree() -> void:
 	UserData.set_user_data(Vector3.ZERO, Vector3.ZERO, Vector3.ZERO, Vector3.ZERO, false, 0)
 
-func _start():	
+func start():	
 	randomize()
 	# reset track state
 	checkpoint_times.assign([0])

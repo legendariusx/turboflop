@@ -9,6 +9,8 @@
 size = Vector3(2.621, 1.11909, 4.55998)
 
 [node name="Car" node_paths=PackedStringArray("wheel_bl", "wheel_br") instance=ExtResource("1_xcbyt")]
+car_id = 2
+car_name = "Truck"
 wheel_bl = NodePath("WheelBL")
 wheel_br = NodePath("WheelBR")
 

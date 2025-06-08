@@ -9,6 +9,7 @@ extends Resource
 @export var angular_velocity: Vector3
 @export var is_active: bool
 @export var track_id: int
+@export var car_id: int 
 
 func _init():
 	set_meta("table_name", "user_data")
