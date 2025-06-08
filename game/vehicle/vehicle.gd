@@ -20,7 +20,6 @@ var _is_accelerating : bool
 var _is_braking : bool
 var _is_update_disabled: bool = false
 
-var _boost_finish_time: int = 0
 var _boost_multiplier: float = 1
 
 var _speed : float
