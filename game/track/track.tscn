@@ -34,7 +34,6 @@ compositor = SubResource("Compositor_pk2yb")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.573576, 0.819152, 0, -0.819152, 0.573576, 0, 9.52202, 0)
-light_energy = 0.5
 light_angular_distance = 5.0
 shadow_enabled = true
 
