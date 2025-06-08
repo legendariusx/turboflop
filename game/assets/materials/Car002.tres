@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://ddnbyd1ewpsg5"]
+
+[ext_resource type="Texture2D" uid="uid://jk7q7dhea31w" path="res://assets/models/textures/Image_0.png" id="1_udjn4"]
+[ext_resource type="Texture2D" uid="uid://tymk3b8ukjsr" path="res://assets/models/textures/Image_1.png" id="2_hj5xa"]
+
+[resource]
+resource_name = "Material.001"
+cull_mode = 2
+albedo_texture = ExtResource("1_udjn4")
+metallic = 1.0
+metallic_texture = ExtResource("2_hj5xa")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_hj5xa")
+roughness_texture_channel = 1
+ao_enabled = true
+ao_texture = ExtResource("2_hj5xa")

@@ -34,9 +34,19 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
-"citybits_texture": {
+"Material.001": {
 "use_external/enabled": true,
-"use_external/path": "uid://df8af0ggl3kpl"
+"use_external/path": "uid://ddnbyd1ewpsg5"
+}
+},
+"meshes": {
+"car002_wheel_Cube_001_Material_001_0_004": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://assets/meshes/car002_wheel_mesh.res"
 }
 }
 }
