@@ -38,7 +38,7 @@ func _render_track_selection():
 	track_selection_container.visible = true
 	change_username_container.visible = true
 	
-	if track_container.get_child_count() >= 0:
+	if track_container.get_child_count() > 0:
 		return
 	
 	var dir = DirAccess.open("res://tracks")
