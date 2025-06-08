@@ -2,11 +2,11 @@ class_name CameraFollow
 
 extends Camera3D
 
-@export var target : Node3D
 @export var distance := 10.0
 @export var angle := 30.0
 @export var follow_speed := 4.0
 
+var target : Node3D
 var _is_stopped := false
 
 func _physics_process(delta: float) -> void:

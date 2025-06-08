@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cj4nalfx5w66b"]
+[gd_scene load_steps=6 format=3 uid="uid://cj4nalfx5w66b"]
 
 [ext_resource type="Script" uid="uid://bcsnjxv5g6ndm" path="res://ui/start_screen/main_menu.gd" id="1_66k6o"]
 [ext_resource type="PackedScene" uid="uid://ckwtqyml8hjep" path="res://ui/start_screen/track_select.tscn" id="2_yiyh1"]
 [ext_resource type="PackedScene" uid="uid://chcgc7ul3otmr" path="res://ui/start_screen/car_select.tscn" id="3_moydl"]
 [ext_resource type="PackedScene" uid="uid://vsldeuxso8ge" path="res://ui/github_link.tscn" id="3_tvvmp"]
+[ext_resource type="Texture2D" uid="uid://bsq3r0ank567g" path="res://assets/textures/track003_thumbnail.png" id="4_fk4mv"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -15,6 +16,16 @@ grow_vertical = 2
 script = ExtResource("1_66k6o")
 track_select_scene = ExtResource("2_yiyh1")
 car_select_scene = ExtResource("3_moydl")
+
+[node name="BackgroundImage" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.294118)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fk4mv")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
