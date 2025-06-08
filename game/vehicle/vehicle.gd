@@ -33,6 +33,7 @@ const MATERIAL_GLOWING_SMOKE = preload("res://assets/materials/GlowingSmoke.tres
 @onready var speedometer: Label3D = $Speedometer
 @onready var name_label: Label3D = $NameLabel
 @onready var boost_timer: Timer = $BoostTimer
+@onready var fpv_marker: Marker3D = $FPVMarker
 
 # particle systems
 @onready var dark_particles_l: GPUParticles3D = $ExhaustParticles/DarkParticlesL

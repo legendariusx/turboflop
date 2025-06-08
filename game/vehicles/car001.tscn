@@ -56,6 +56,9 @@ wheel_br = NodePath("WheelBR")
 body_mesh = NodePath("Mesh")
 body_collider = NodePath("Collider")
 
+[node name="FPVMarker" parent="." index="0"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.31583, 1.02488)
+
 [node name="WheelFL" type="VehicleWheel3D" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.836987, 0.295965, 1.0031)
 use_as_traction = true

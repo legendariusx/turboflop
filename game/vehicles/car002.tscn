@@ -31,10 +31,13 @@ wheel_br = NodePath("WheelBR")
 body_mesh = NodePath("BodyMesh")
 body_collider = NodePath("BodyCollision")
 
-[node name="NameLabel" parent="." index="0"]
+[node name="FPVMarker" parent="." index="0"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.86406, 1.38641)
+
+[node name="NameLabel" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.59396, 0.4779)
 
-[node name="Speedometer" parent="." index="1"]
+[node name="Speedometer" parent="." index="2"]
 transform = Transform3D(-0.999953, 0.000239692, 0.00967215, 0.000380681, 0.999894, 0.0145782, -0.00966763, 0.0145812, -0.999847, -0.0200981, 1.72407, 0.0721735)
 
 [node name="DarkParticlesL" parent="ExhaustParticles" index="0"]

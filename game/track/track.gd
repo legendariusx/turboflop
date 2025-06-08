@@ -77,6 +77,7 @@ func _ready() -> void:
 		if not GameState.current_user: await GameState.current_user_updated
 	
 	camera.target = player_vehicle
+	camera.fpv_marker = player_vehicle.fpv_marker
 
 func _process(_delta: float) -> void:
 	_on_update_ui()
@@ -95,6 +96,8 @@ func _input(event: InputEvent) -> void:
 				start()
 	elif event.is_action_pressed(&"reset"):
 		start()
+	elif event.is_action_pressed(&"cycle_camera_mode"):
+		camera.cycle_camera_mode()
 
 func _exit_tree() -> void:
 	UserData.set_user_data(Vector3.ZERO, Vector3.ZERO, Vector3.ZERO, Vector3.ZERO, false, 0)
