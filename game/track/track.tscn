@@ -17,6 +17,8 @@ background_mode = 2
 sky = SubResource("Sky_76lv3")
 sky_custom_fov = 76.0
 sky_rotation = Vector3(-0.0610865, 0, 0)
+sdfgi_enabled = true
+glow_enabled = true
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_m4vyt"]
 
@@ -32,7 +34,7 @@ compositor = SubResource("Compositor_pk2yb")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.573576, 0.819152, 0, -0.819152, 0.573576, 0, 9.52202, 0)
-light_energy = 0.8
+light_energy = 0.5
 light_angular_distance = 5.0
 shadow_enabled = true
 
