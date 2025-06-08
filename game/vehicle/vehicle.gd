@@ -10,6 +10,7 @@ const MATERIAL_GLOWING_SMOKE = preload("res://assets/materials/GlowingSmoke.tres
 
 @export_group("Car Behaviour")
 @export var acceleration_force: float = 1000.0
+@export var max_backwards_speed: float = 8.0
 @export var brake_force: float = 5.0
 @export var brake_soft_strength: float = 0.5
 @export var steer_speed: float = 1.5
@@ -141,6 +142,7 @@ func _physics_process(delta: float) -> void:
 	# set brake
 	if _is_braking:
 		brake = brake_force * brake_strength
+		engine_force = 0.0
 	# TODO: is this needed? currently stops the car
 	elif not _is_accelerating and false:
 		brake = brake_soft_strength
@@ -149,14 +151,10 @@ func _physics_process(delta: float) -> void:
 	
 	# set engine force
 	if _is_accelerating and not _is_braking:
-		var force = force_axis * acceleration_force
-		if abs(_speed) < 5.0 and not is_zero_approx(_speed):
-			engine_force = clampf(force * 5.0 / abs(_speed), -acceleration_force, acceleration_force)
+		if force_axis < 0 and _speed > max_backwards_speed:
+			engine_force = 0.0
 		else:
-			engine_force = force
-		
-		# add booster multiplier
-		engine_force *= _boost_multiplier
+			engine_force = force_axis * acceleration_force * _boost_multiplier
 	else:
 		engine_force = 0.0
 
