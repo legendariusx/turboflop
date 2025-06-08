@@ -6,13 +6,23 @@
 [ext_resource type="PackedScene" uid="uid://cg0hxd23hm3u" path="res://assets/models/car002_wheel.blend" id="4_ufd5r"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ufd5r"]
-size = Vector3(2.621, 1.11909, 4.55998)
+size = Vector3(2.621, 0.853789, 4.55998)
 
-[node name="Car" node_paths=PackedStringArray("wheel_bl", "wheel_br") instance=ExtResource("1_xcbyt")]
+[node name="Car" node_paths=PackedStringArray("wheel_fl", "wheel_fr", "wheel_bl", "wheel_br", "body_collider") instance=ExtResource("1_xcbyt")]
+mass = 280.0
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, 0.3, 0)
 car_id = 2
 car_name = "Truck"
+acceleration_force = 1050.0
+brake_force = 25.0
+steer_speed = 2.0
+steer_limit = 0.6
+wheel_fl = NodePath("WheelFL")
+wheel_fr = NodePath("WheelFR")
 wheel_bl = NodePath("WheelBL")
 wheel_br = NodePath("WheelBR")
+body_collider = NodePath("BodyCollision")
 
 [node name="NameLabel" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.73915, 0)
@@ -42,14 +52,15 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.454
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="BodyCollision" type="CollisionShape3D" parent="." index="10"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00584412, 0.723046, 0.334805)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00584412, 0.855697, 0.334805)
 shape = SubResource("BoxShape3D_ufd5r")
 
 [node name="WheelFR" type="VehicleWheel3D" parent="." index="11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.21018, 0.345114, 1.5584)
+use_as_traction = true
 use_as_steering = true
 wheel_radius = 0.34
-wheel_friction_slip = 1.0
+wheel_friction_slip = 1.2
 suspension_stiffness = 30.0
 
 [node name="car002_wheel" parent="WheelFR" index="0" instance=ExtResource("4_ufd5r")]
@@ -57,9 +68,10 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.345114, 0)
 
 [node name="WheelFL" type="VehicleWheel3D" parent="." index="12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19721, 0.345114, 1.5584)
+use_as_traction = true
 use_as_steering = true
 wheel_radius = 0.34
-wheel_friction_slip = 1.0
+wheel_friction_slip = 1.2
 suspension_stiffness = 30.0
 
 [node name="car002_wheel" parent="WheelFL" index="0" instance=ExtResource("4_ufd5r")]
@@ -67,9 +79,8 @@ transform = Transform3D(-0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, 
 
 [node name="WheelBL" type="VehicleWheel3D" parent="." index="13"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19721, 0.345114, -1.09905)
-use_as_traction = true
 wheel_radius = 0.34
-wheel_friction_slip = 1.0
+wheel_friction_slip = 1.2
 suspension_stiffness = 30.0
 
 [node name="car002_wheel" parent="WheelBL" index="0" instance=ExtResource("4_ufd5r")]
@@ -77,9 +88,8 @@ transform = Transform3D(-0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, 
 
 [node name="WheelBR" type="VehicleWheel3D" parent="." index="14"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.20437, 0.345114, -1.09093)
-use_as_traction = true
 wheel_radius = 0.34
-wheel_friction_slip = 1.0
+wheel_friction_slip = 1.2
 suspension_stiffness = 30.0
 
 [node name="car002_wheel" parent="WheelBR" index="0" instance=ExtResource("4_ufd5r")]

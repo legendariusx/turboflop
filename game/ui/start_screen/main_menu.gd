@@ -12,10 +12,13 @@ const USERNAME_MIN_LENGTH = 4
 @onready var username_container = $CenterContainer/VBoxContainer/UsernameContainer
 @onready var name_input = $CenterContainer/VBoxContainer/UsernameContainer/HBoxContainer/NameInput
 @onready var confirm_button = $CenterContainer/VBoxContainer/UsernameContainer/HBoxContainer/Confirm
+
 @onready var track_selection_container = $CenterContainer/VBoxContainer/TrackSelectionContainer
 @onready var track_container = $CenterContainer/VBoxContainer/TrackSelectionContainer/TrackContainer
+
 @onready var car_selection_container = $CenterContainer/VBoxContainer/CarSelectionContainer
 @onready var car_container = $CenterContainer/VBoxContainer/CarSelectionContainer/CarContainer
+
 @onready var change_username_container = $ChangeUsernameContainer
 @onready var change_username_container_label = $ChangeUsernameContainer/Label
 
@@ -79,9 +82,9 @@ func _render_car_selection():
 		if not FileAccess.file_exists(file_name):
 			continue
 			
-		var car_scene = load(file_name).instantiate()
-		var car_name = (car_scene as Vehicle).car_name
-		var car_id = (car_scene as Vehicle).car_id
+		var car_scene = (load(file_name).instantiate() as Vehicle)
+		var car_name = car_scene.car_name
+		var car_id = car_scene.car_id
 		
 		var new_car_select_scene = car_select_scene.instantiate()
 		new_car_select_scene.button.text = car_name
