@@ -154,6 +154,7 @@ func _update_track_state(u_track_state: TrackState):
 	
 	match u_track_state:
 		TrackState.COUNTDOWN:
+			player_vehicle.disable_input()
 			track_ui.timer.text = "00.000"
 		TrackState.RUNNING:
 			player_vehicle.enable_input()
