@@ -4,7 +4,7 @@ import { DataGrid, GridColDef, GridComparatorFn, GridFilterInputValue, GridSortD
 import { memo, useMemo } from 'react';
 
 import createGridFilterOperator from '../../lib/createGridFilterOperator';
-import { formatIdentity, formatTime } from '../../lib/helpers';
+import { convertCarIdToName, formatIdentity, formatTime } from '../../lib/helpers';
 import { PersonalBest, User } from '../../module_bindings';
 import { useAppSelector } from '../../redux/hooks';
 
@@ -66,6 +66,14 @@ const PersonalBestTrackDisplay = ({ hidden, personalBests, users }: Props) => {
             hideable: false,
             getSortComparator: (sortDirection) => getPersonalBestSort(sortDirection),
             sortingOrder: ['asc', 'desc'],
+        },
+        {
+            field: 'carId',
+            headerName: 'Car',
+            flex: 2,
+            filterOperators: [createGridFilterOperator(GridFilterInputValue)],
+            hideable: false,
+            valueFormatter: convertCarIdToName
         },
         {
             field: 'actions',

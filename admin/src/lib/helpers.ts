@@ -22,3 +22,17 @@ export const formatTime = (value: bigint) => {
 export const formatIdentity = (identity: Identity | null): string => {
     return identity?.toHexString().substring(0, 10) ?? ""
 }
+
+// FIXME: names should be stored on and fetched from the server
+export const convertCarIdToName = (carId: number): string => {
+    switch (carId) {
+        case 0:
+            return "None"
+        case 1:
+            return "City Car"
+        case 2:
+            return "Truck"
+        default:
+            return carId.toString()
+    }
+}

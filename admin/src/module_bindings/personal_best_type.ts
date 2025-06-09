@@ -37,6 +37,7 @@ export type PersonalBest = {
   time: bigint,
   checkpointTimes: bigint[],
   date: Timestamp,
+  carId: number,
 };
 
 /**
@@ -55,6 +56,7 @@ export namespace PersonalBest {
       new ProductTypeElement("time", AlgebraicType.createU64Type()),
       new ProductTypeElement("checkpointTimes", AlgebraicType.createArrayType(AlgebraicType.createU64Type())),
       new ProductTypeElement("date", AlgebraicType.createTimestampType()),
+      new ProductTypeElement("carId", AlgebraicType.createU8Type()),
     ]);
   }
 

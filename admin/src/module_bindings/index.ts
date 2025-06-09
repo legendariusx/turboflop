@@ -293,35 +293,35 @@ export class RemoteReducers {
     this.connection.offReducer("set_player_banned", callback);
   }
 
-  setUserData(position: Vector3, rotation: Vector3, linearVelocity: Vector3, angularVelocity: Vector3, isActive: boolean, trackId: number) {
-    const __args = { position, rotation, linearVelocity, angularVelocity, isActive, trackId };
+  setUserData(position: Vector3, rotation: Vector3, linearVelocity: Vector3, angularVelocity: Vector3, isActive: boolean, trackId: bigint, carId: bigint) {
+    const __args = { position, rotation, linearVelocity, angularVelocity, isActive, trackId, carId };
     let __writer = new BinaryWriter(1024);
     SetUserData.getTypeScriptAlgebraicType().serialize(__writer, __args);
     let __argsBuffer = __writer.getBuffer();
     this.connection.callReducer("set_user_data", __argsBuffer, this.setCallReducerFlags.setUserDataFlags);
   }
 
-  onSetUserData(callback: (ctx: ReducerEventContext, position: Vector3, rotation: Vector3, linearVelocity: Vector3, angularVelocity: Vector3, isActive: boolean, trackId: number) => void) {
+  onSetUserData(callback: (ctx: ReducerEventContext, position: Vector3, rotation: Vector3, linearVelocity: Vector3, angularVelocity: Vector3, isActive: boolean, trackId: bigint, carId: bigint) => void) {
     this.connection.onReducer("set_user_data", callback);
   }
 
-  removeOnSetUserData(callback: (ctx: ReducerEventContext, position: Vector3, rotation: Vector3, linearVelocity: Vector3, angularVelocity: Vector3, isActive: boolean, trackId: number) => void) {
+  removeOnSetUserData(callback: (ctx: ReducerEventContext, position: Vector3, rotation: Vector3, linearVelocity: Vector3, angularVelocity: Vector3, isActive: boolean, trackId: bigint, carId: bigint) => void) {
     this.connection.offReducer("set_user_data", callback);
   }
 
-  updatePersonalBest(trackId: bigint, time: bigint, checkpointTimes: bigint[]) {
-    const __args = { trackId, time, checkpointTimes };
+  updatePersonalBest(trackId: bigint, time: bigint, checkpointTimes: bigint[], carId: number) {
+    const __args = { trackId, time, checkpointTimes, carId };
     let __writer = new BinaryWriter(1024);
     UpdatePersonalBest.getTypeScriptAlgebraicType().serialize(__writer, __args);
     let __argsBuffer = __writer.getBuffer();
     this.connection.callReducer("update_personal_best", __argsBuffer, this.setCallReducerFlags.updatePersonalBestFlags);
   }
 
-  onUpdatePersonalBest(callback: (ctx: ReducerEventContext, trackId: bigint, time: bigint, checkpointTimes: bigint[]) => void) {
+  onUpdatePersonalBest(callback: (ctx: ReducerEventContext, trackId: bigint, time: bigint, checkpointTimes: bigint[], carId: number) => void) {
     this.connection.onReducer("update_personal_best", callback);
   }
 
-  removeOnUpdatePersonalBest(callback: (ctx: ReducerEventContext, trackId: bigint, time: bigint, checkpointTimes: bigint[]) => void) {
+  removeOnUpdatePersonalBest(callback: (ctx: ReducerEventContext, trackId: bigint, time: bigint, checkpointTimes: bigint[], carId: number) => void) {
     this.connection.offReducer("update_personal_best", callback);
   }
 

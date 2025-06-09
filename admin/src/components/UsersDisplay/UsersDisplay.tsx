@@ -5,7 +5,7 @@ import { memo } from 'react';
 
 import useUserData from '../../hooks/useUserData';
 import createGridFilterOperator from '../../lib/createGridFilterOperator';
-import { formatIdentity, formatVector3 } from '../../lib/helpers';
+import { convertCarIdToName, formatIdentity, formatVector3 } from '../../lib/helpers';
 import { User, UserData } from '../../module_bindings';
 import { useAppSelector } from '../../redux/hooks';
 import SectionTitle from '../SectionTitle/SectionTitle';
@@ -77,7 +77,15 @@ const UsersDisplay = ({ users }: Props) => {
             headerName: 'Track ID',
             flex: 1,
             filterOperators: [createGridFilterOperator(GridFilterInputValue)],
+            hideable: false
+        },
+        {
+            field: 'carId',
+            headerName: 'Car',
+            flex: 1,
+            filterOperators: [createGridFilterOperator(GridFilterInputValue)],
             hideable: false,
+            valueFormatter: convertCarIdToName
         },
         {
             field: 'position',

@@ -40,6 +40,7 @@ export type UserData = {
   angularVelocity: __Vector3,
   isActive: boolean,
   trackId: number,
+  carId: number,
 };
 
 /**
@@ -59,6 +60,7 @@ export namespace UserData {
       new ProductTypeElement("angularVelocity", __Vector3.getTypeScriptAlgebraicType()),
       new ProductTypeElement("isActive", AlgebraicType.createBoolType()),
       new ProductTypeElement("trackId", AlgebraicType.createU8Type()),
+      new ProductTypeElement("carId", AlgebraicType.createU8Type()),
     ]);
   }
 

@@ -35,6 +35,7 @@ export type UpdatePersonalBest = {
   trackId: bigint,
   time: bigint,
   checkpointTimes: bigint[],
+  carId: number,
 };
 
 /**
@@ -50,6 +51,7 @@ export namespace UpdatePersonalBest {
       new ProductTypeElement("trackId", AlgebraicType.createU64Type()),
       new ProductTypeElement("time", AlgebraicType.createU64Type()),
       new ProductTypeElement("checkpointTimes", AlgebraicType.createArrayType(AlgebraicType.createU64Type())),
+      new ProductTypeElement("carId", AlgebraicType.createU8Type()),
     ]);
   }
 

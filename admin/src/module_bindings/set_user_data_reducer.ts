@@ -39,7 +39,8 @@ export type SetUserData = {
   linearVelocity: __Vector3,
   angularVelocity: __Vector3,
   isActive: boolean,
-  trackId: number,
+  trackId: bigint,
+  carId: bigint,
 };
 
 /**
@@ -57,7 +58,8 @@ export namespace SetUserData {
       new ProductTypeElement("linearVelocity", __Vector3.getTypeScriptAlgebraicType()),
       new ProductTypeElement("angularVelocity", __Vector3.getTypeScriptAlgebraicType()),
       new ProductTypeElement("isActive", AlgebraicType.createBoolType()),
-      new ProductTypeElement("trackId", AlgebraicType.createU8Type()),
+      new ProductTypeElement("trackId", AlgebraicType.createU64Type()),
+      new ProductTypeElement("carId", AlgebraicType.createU64Type()),
     ]);
   }
 
