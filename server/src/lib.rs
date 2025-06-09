@@ -282,8 +282,6 @@ pub fn set_user_data(
         None => return Err("User not found".to_string()),
     };
 
-    log::info!("{car_id}");
-
     if let Some(user_data) = ctx.db.user_data().identity().find(ctx.sender) {
         ctx.db.user_data().identity().update(UserData {
             position,
