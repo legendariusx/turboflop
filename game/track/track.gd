@@ -12,14 +12,6 @@ enum TrackState {
 signal started
 signal finished(time: int)
 
-const CAR_SCENE = preload("res://vehicles/car001.tscn")
-
-var palm_variants = [
-	preload("res://assets/models/PalmTree1.tscn"),
-	preload("res://assets/models/PalmTree2.tscn"),
-	preload("res://assets/models/PalmTree3.tscn")
-]
-
 @export var track_id: int = -1
 
 @onready var camera: CameraFollow = $Camera3D
@@ -100,9 +92,9 @@ func _input(event: InputEvent) -> void:
 		camera.cycle_camera_mode()
 
 func _exit_tree() -> void:
-	UserData.set_user_data(Vector3.ZERO, Vector3.ZERO, Vector3.ZERO, Vector3.ZERO, false, 0)
+	UserData.set_user_data(Vector3.ZERO, Vector3.ZERO, Vector3.ZERO, Vector3.ZERO, false, 0, 0)
 
-func start():	
+func start():
 	randomize()
 	# reset track state
 	checkpoint_times.assign([0])
@@ -188,10 +180,10 @@ func _on_user_data_updated(row: UserData):
 		opponent.linear_velocity = row.linear_velocity
 		opponent.angular_velocity = row.angular_velocity
 	# otherwise if row is active and is on current track -> add new vehicle to container
-	elif row.is_active and row.track_id == GameState.track_id:
+	elif row.is_active and row.track_id == GameState.track_id and row.car_id != 0:
 		var user := UserState.find_by_pk(row.identity)
 		if not user: return
-		var new_vehicle = CAR_SCENE.instantiate()
+		var new_vehicle = CarHelper.get_car_by_id(row.car_id)
 		new_vehicle.set_owner_data(row.identity, user.name)
 		opponents.add_child(new_vehicle)
 
@@ -232,7 +224,7 @@ func _on_finish_entered(_finish: Finish):
 	checkpoint_sound.play()
 	camera.stop()
 	
-	PersonalBest.update_personal_best(track_id, finish_time, checkpoint_times)
+	PersonalBest.update_personal_best(track_id, finish_time, checkpoint_times, player_vehicle.car_id)
 	finished.emit(finish_time)
 
 func _set_next_checkpoint():

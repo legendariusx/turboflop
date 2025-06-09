@@ -26,6 +26,7 @@ pub struct UserData {
     angular_velocity: Vector3,
     is_active: bool,
     track_id: u8,
+    car_id: u8
 }
 
 #[table(
@@ -43,6 +44,7 @@ pub struct PersonalBest {
     time: u64,
     checkpoint_times: Vec<u64>,
     date: Timestamp,
+    car_id: u8
 }
 
 #[table(name = setting)]
@@ -262,6 +264,7 @@ pub fn reset_user_data(ctx: &ReducerContext, identity: Identity) {
 
 // Updates user data
 // TODO: could probably be split up to reduce size of individual calls
+// FIXME: track_id and car_id are interpreted as u64 although they are actually u8. the reason is that currently the client side SDK does not send them as u8 so car_id is always 0
 #[reducer]
 pub fn set_user_data(
     ctx: &ReducerContext,
@@ -270,7 +273,8 @@ pub fn set_user_data(
     linear_velocity: Vector3,
     angular_velocity: Vector3,
     is_active: bool,
-    track_id: u8,
+    track_id: u64,
+    car_id: u64
 ) -> Result<(), String> {
     match ctx.db().user().identity().find(ctx.sender) {
         Some(user) if user.online => user,
@@ -278,25 +282,31 @@ pub fn set_user_data(
         None => return Err("User not found".to_string()),
     };
 
+    log::info!("{car_id}");
+
     if let Some(user_data) = ctx.db.user_data().identity().find(ctx.sender) {
         ctx.db.user_data().identity().update(UserData {
-            position: position,
-            rotation: rotation,
-            linear_velocity: linear_velocity,
-            angular_velocity: angular_velocity,
-            is_active: is_active,
-            track_id: track_id,
+            position,
+            rotation,
+            linear_velocity,
+            angular_velocity,
+            is_active,
+            // FIXME: see above
+            track_id: track_id.try_into().unwrap(),
+            car_id: car_id.try_into().unwrap(),
             ..user_data
         });
     } else {
         ctx.db.user_data().insert(UserData {
             identity: ctx.sender,
-            position: position,
-            rotation: rotation,
-            linear_velocity: linear_velocity,
-            angular_velocity: angular_velocity,
-            is_active: is_active,
-            track_id: track_id,
+            position,
+            rotation,
+            linear_velocity,
+            angular_velocity,
+            is_active,
+            // FIXME: see above
+            track_id: track_id.try_into().unwrap(),
+            car_id: car_id.try_into().unwrap()
         });
     }
 
@@ -309,6 +319,7 @@ pub fn update_personal_best(
     track_id: u64,
     time: u64,
     checkpoint_times: Vec<u64>,
+    car_id: u8
 ) {
     // filter personal bests on track_id to find user identity
     // (unfortunately spacetimedb does not allow find with multiple properties)
@@ -325,19 +336,21 @@ pub fn update_personal_best(
         }
 
         ctx.db.personal_best().id().update(PersonalBest {
-            time: time,
+            time,
             date: ctx.timestamp,
             checkpoint_times,
+            car_id,
             ..personal_best
         });
     } else {
         ctx.db.personal_best().insert(PersonalBest {
             id: 0,
             identity: ctx.sender,
-            track_id: track_id,
-            time: time,
+            track_id,
+            time,
             date: ctx.timestamp,
             checkpoint_times,
+            car_id
         });
     }
 }

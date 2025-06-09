@@ -37,7 +37,7 @@ func stop() -> void:
 	_is_stopped = true
 	
 func cycle_camera_mode() -> void:
-	camera_mode = (camera_mode + 1) % CameraMode.size()
+	camera_mode = ((camera_mode + 1) % CameraMode.size()) as CameraMode
 	
 	if camera_mode == CameraMode.CINEMATIC:
 		_set_new_cinematic_position()

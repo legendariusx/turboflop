@@ -4,7 +4,6 @@ extends Node3D
 signal spacetime_connection_callback(success: bool)
 
 const TRACK_PATH_TEMPLATE = &"res://tracks/track%s.tscn"
-const CAR_PATH_TEMPLATE = &"res://vehicles/car%s.tscn"
 
 @onready var loading_screen: LoadingScreen = $LoadingScreen
 @onready var main_menu: MainMenu = $MainMenu
@@ -51,7 +50,7 @@ func _connect():
 func _load_track(track_id: int, car_id: int):
 	# TODO: error-handling if file does not exist?
 	var new_track: Track = load(TRACK_PATH_TEMPLATE % str(track_id).pad_zeros(3)).instantiate()
-	var new_car: Vehicle = load(CAR_PATH_TEMPLATE % str(car_id).pad_zeros(3)).instantiate()
+	var new_car: Vehicle = CarHelper.get_car_by_id(car_id)
 	
 	new_track.set_car(new_car)
 	main_menu.visible = false

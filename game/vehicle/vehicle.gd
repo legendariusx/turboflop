@@ -67,9 +67,9 @@ func set_owner_data(u_owner_identity: PackedByteArray, u_owner_name: String):
 	is_current_user = u_owner_identity == GameState.identity or not SpacetimeDB.is_connected_db()
 	owner_name = u_owner_name
 	
-func booster_entered(boost_increment: float, boost_duration: float):
-	boost_timer.start(boost_duration)
-	_boost_multiplier += boost_increment
+func booster_entered(u_boost_increment: float, u_boost_duration: float):
+	boost_timer.start(u_boost_duration)
+	_boost_multiplier += u_boost_increment
 	
 	_set_particles(true)
 
@@ -115,8 +115,7 @@ func _physics_process(delta: float) -> void:
 	_update_particle_systems()
 	
 	if not is_current_user or _is_update_disabled: return
-	
-	UserData.set_user_data(global_position, global_rotation, linear_velocity, angular_velocity, true, GameState.track_id)
+	UserData.set_user_data(global_position, global_rotation, linear_velocity, angular_velocity, true, GameState.track_id, car_id)
 	
 	# get current speed
 	#_speed = linear_velocity.dot(transform.basis.z)
@@ -159,7 +158,7 @@ func _physics_process(delta: float) -> void:
 		engine_force = 0.0
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed(&"boost") and _has_boosted == false:
+	if event.is_action_pressed(&"boost") and not _has_boosted:
 		_has_boosted = true
 		boost_sprite.modulate = Color(1.0, 1.0, 1.0, 0.4)
 		# a bit a hacky way to enable the boost

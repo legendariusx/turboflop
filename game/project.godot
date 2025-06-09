@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 SpacetimeDB="*res://addons/SpacetimeDB/Core/SpacetimeDBClient.gd"
 UserState="*res://state/user_state.gd"
 GameState="*res://state/game_state.gd"
+CarHelper="*res://helpers/car_helper.gd"
 
 [display]
 

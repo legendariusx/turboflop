@@ -4,7 +4,8 @@ extends Control
 
 signal track_and_car_selected(track_id: int, car_id: int)
 
-const USERNAME_MIN_LENGTH = 4
+const USERNAME_MIN_LENGTH := 4
+const TRACKS_BASE_PATH := "res://tracks/"
 
 @export var track_select_scene: PackedScene
 @export var car_select_scene: PackedScene
@@ -51,14 +52,17 @@ func _render_track_selection():
 	if track_container.get_child_count() > 0:
 		return
 	
-	var dir = DirAccess.open("res://tracks")
+	var dir = DirAccess.open(TRACKS_BASE_PATH)
 	var track_names: Array[String] = []
-	if dir:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		while file_name != "" and "track" in file_name:
-			track_names.append(file_name)
-			file_name = dir.get_next()
+	
+	if not dir:
+		return
+		
+	dir.list_dir_begin()
+	var file_name = dir.get_next()
+	while file_name != "" and "track" in file_name:
+		track_names.append(file_name)
+		file_name = dir.get_next()
 	
 	track_names.sort()
 	for track_name in track_names:
@@ -77,13 +81,7 @@ func _render_car_selection():
 	if car_container.get_child_count() > 0:
 		return
 	
-	for i in 100:
-		var file_name = &"res://vehicles/car%s.tscn" % str(i).pad_zeros(3)
-		if not FileAccess.file_exists(file_name):
-			continue
-			
-		var car_scene = (load(file_name).instantiate() as Vehicle)
-		
+	for car_scene in CarHelper.car_scenes:
 		var new_car_select_scene = car_select_scene.instantiate()
 		new_car_select_scene.button.text = car_scene.car_name
 		new_car_select_scene.button.pressed.connect(func(): track_and_car_selected.emit(_selected_track_id, car_scene.car_id))

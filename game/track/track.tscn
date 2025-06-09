@@ -18,7 +18,6 @@ background_mode = 2
 sky = SubResource("Sky_76lv3")
 sky_custom_fov = 76.0
 sky_rotation = Vector3(-0.0610865, 0, 0)
-sdfgi_enabled = true
 glow_enabled = true
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_m4vyt"]
