@@ -127,12 +127,18 @@ grow_horizontal = 0
 grow_vertical = 0
 alignment = 2
 
+[node name="LabelLabel" type="Label" parent="ChangeUsernameContainer"]
+layout_mode = 2
+text = "Username:"
+horizontal_alignment = 1
+
 [node name="Label" type="Label" parent="ChangeUsernameContainer"]
 layout_mode = 2
+horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="ChangeUsernameContainer"]
 layout_mode = 2
-text = "Change Username"
+text = "Edit"
 
 [node name="GithubLink" parent="." instance=ExtResource("3_tvvmp")]
 layout_mode = 1
