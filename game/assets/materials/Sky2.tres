@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://icdhmuecs5cm"]
+
+[ext_resource type="Shader" uid="uid://co7x6nuyhuvtw" path="res://assets/shaders/Sky.gdshader" id="1_su73m"]
+
+[resource]
+shader = ExtResource("1_su73m")
+shader_parameter/scale = 50.0
+shader_parameter/speed = 1.0
+shader_parameter/frequency = 6.0
+shader_parameter/sky_color = Vector3(0.38, 0.863, 0.965)
