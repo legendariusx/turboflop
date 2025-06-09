@@ -66,6 +66,7 @@ transform = Transform3D(1, 0, 7.45058e-09, 0, 0.573576, 0.819152, 0, -0.819152, 
 
 [node name="Camera3D" parent="." index="2"]
 transform = Transform3D(-0.225359, 0.466378, -0.855398, -2.25728e-08, 0.877983, 0.478692, 0.974276, 0.107878, -0.197861, -63.6423, 1.78872, 4.27524)
+mouse_sensitivity = 0.3
 
 [node name="Start" parent="." index="3"]
 transform = Transform3D(0.699801, 0, -0.714339, 0, 1, 0, 0.714339, 0, 0.699801, -46.1198, -0.188434, -53.9107)
