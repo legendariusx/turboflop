@@ -5,4 +5,4 @@
 [node name="Node3D" type="Node3D"]
 
 [node name="arrow" parent="." instance=ExtResource("1_q77pr")]
-transform = Transform3D(-2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 0, 0, 0.5, 0.325381, 0, 0)
+transform = Transform3D(9.55343e-16, 2.18557e-08, -0.5, 0.5, -2.18557e-08, 0, -2.18557e-08, -0.5, -2.18557e-08, 0.0422349, 0, 0.791652)

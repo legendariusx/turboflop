@@ -4,17 +4,19 @@ extends Node3D
 const ARROW_SCENE: PackedScene = preload("res://assets/models/Arrow.tscn")
 @export_group("Spawn Settings")
 @export var aircraft_scenes: Array[PackedScene]
-@export var max_aircrafts: int = 5
+@export var max_aircrafts: int = 1
 @export var min_spawn_height: float = 75.0
 @export var max_spawn_height: float = 125.0
 @export_group("Flow Field Settings")
 @export var show_flow_field: bool = true
-@export var flow_field_size: float = 300.0
+@export var flow_field_visual_size: float = 200.0
 @export var flow_field_visual_resolution: int = 70
-@export var frequency: float = 0.01
+@export var frequency: float = 0.05
+@export var speed: float = 1.0
 
 var _noise_generator: FastNoiseLite    = FastNoiseLite.new()
 var _aircrafts: Array[AmbientAircraft] = []
+var _arrow_nodes: Array[Node3D]        = []
 
 
 func _ready() -> void:
@@ -27,7 +29,6 @@ func _ready() -> void:
 	for i in range(max_aircrafts):
 		_spawn_new_aircraft()
 
-
 	if not show_flow_field:
 		return
 
@@ -38,26 +39,35 @@ func _ready() -> void:
 			add_child(arrow_node)
 
 			arrow_node.global_position = Vector3(
-				(x / (flow_field_visual_resolution - 1.0)) * flow_field_size - flow_field_size / 2.0,
+				(x / (flow_field_visual_resolution - 1.0)) * flow_field_visual_size - flow_field_visual_size / 2.0,
 				min_spawn_height,
-				(z / (flow_field_visual_resolution - 1.0)) * flow_field_size - flow_field_size / 2.0
+				(z / (flow_field_visual_resolution - 1.0)) * flow_field_visual_size - flow_field_visual_size / 2.0
 			)
 
-			var direction: Vector3 = _get_flow_field_direction(arrow_node.global_position)
+			var direction: Vector3     = _get_flow_field_direction(arrow_node.global_position)
 			var rotation_axis: Vector3 = direction.cross(-arrow_node.basis.z).normalized()
-			var rotation_angle: float = direction.angle_to(-arrow_node.basis.z) + PI / 2.0
+			var rotation_angle: float  = direction.angle_to(-arrow_node.basis.z)
 			arrow_node.basis = Basis().rotated(rotation_axis, rotation_angle)
 
+			_arrow_nodes.append(arrow_node)
 
-func _process(_delta: float) -> void:
+
+func _process(delta: float) -> void:
+	_noise_generator.offset += Vector3(0.0, delta * speed, 0.0)
+
 	for aircraft in _aircrafts:
 		var direction: Vector3 = _get_flow_field_direction(aircraft.node.global_position)
-		aircraft.node.global_position += direction * aircraft.speed * _delta
+		aircraft.node.global_position += direction * aircraft.speed * delta
 
-		var rotation_axis: Vector3 = direction.cross(-aircraft.node.basis.z).normalized()
-		var rotation_angle: float = direction.angle_to(-aircraft.node.basis.z)
-		aircraft.node.basis = Basis().rotated(rotation_axis, rotation_angle)
+		var look_at_target = aircraft.node.global_transform.origin + direction * -1
+		aircraft.node.look_at(look_at_target, Vector3(0, 1, 0)) # Or Vector3(0, 1, 0) for a specific up direction
 
+	for arrow_node in _arrow_nodes:
+		var direction: Vector3 = _get_flow_field_direction(arrow_node.global_position)
+#		arrow_node.global_position += direction * delta
+
+		var look_at_target = arrow_node.global_transform.origin + direction * -1
+		arrow_node.look_at(look_at_target, Vector3(0, 1, 0)) # Or Vector3(0, 1, 0) for a specific up direction
 
 func _spawn_new_aircraft() -> void:
 	var new_aircraft_node: Node3D = aircraft_scenes[randi() % aircraft_scenes.size()].instantiate()
@@ -70,12 +80,12 @@ func _spawn_new_aircraft() -> void:
 	var direction: Vector3 = _get_flow_field_direction(new_aircraft_node.global_position)
 	look_at(direction)
 
-	var new_aircraft = AmbientAircraft.new(direction, new_aircraft_node, randf_range(10.0, 15.0))
+	var new_aircraft = AmbientAircraft.new(direction, new_aircraft_node, randf_range(2.0, 5.0))
 	_aircrafts.append(new_aircraft)
 
 
 func _get_flow_field_direction(pos: Vector3) -> Vector3:
-	var angle: float = _noise_generator.get_noise_3dv(pos) * PI
+	var angle: float = _noise_generator.get_noise_3dv(pos) * PI + PI
 
 	return Vector3(0.0, 0.0, 1.0).rotated(Vector3(0.0, 1.0, 0.0), angle)
 
