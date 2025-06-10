@@ -12,11 +12,6 @@ var keybinds: Array[Keybind] = [
 			&"LT"
 		),
 		Keybind.new(
-			&"Brake",
-			&"Space",
-			&"B"
-		),
-		Keybind.new(
 			&"Steer",
 			&"A, D, Left, Right",
 			&"LS"

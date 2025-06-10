@@ -2,13 +2,6 @@ class_name Track
 
 extends Node3D
 
-enum TrackState {
-	IDLE,
-	COUNTDOWN,
-	RUNNING,
-	FINISHED
-}
-
 signal started
 signal finished(time: int)
 
@@ -30,8 +23,6 @@ signal finished(time: int)
 @onready var user_data = UserDataState.new(self)
 
 var player_vehicle: Vehicle
-
-var track_state = TrackState.IDLE
 var started_at: int
 var checkpoint_times: Array[int] = [0]
 
@@ -81,10 +72,10 @@ func _process(_delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"respawn"):
-		match track_state:
-			TrackState.RUNNING:
+		match GameState.track_state:
+			Enum.TrackState.RUNNING:
 				respawn_location = last_checkpoint
-			TrackState.FINISHED:
+			Enum.TrackState.FINISHED:
 				start()
 	elif event.is_action_pressed(&"reset"):
 		start()
@@ -137,7 +128,7 @@ func _respawn_at(checkpoint: Checkpoint):
 	respawn_location = null
 	
 func _countdown():
-	_update_track_state(TrackState.COUNTDOWN)
+	_update_track_state(Enum.TrackState.COUNTDOWN)
 	for i in range(3,0,-1):
 		countdown_sound.play()
 		track_ui.countdown.text = str(i)
@@ -146,23 +137,23 @@ func _countdown():
 		countdown_sound.stop()
 	countdown_sound.play(2.95)
 	track_ui.countdown.text = ""
-	_update_track_state(TrackState.RUNNING)
+	_update_track_state(Enum.TrackState.RUNNING)
 	started.emit()
 
-func _update_track_state(u_track_state: TrackState):
-	track_state = u_track_state
+func _update_track_state(u_track_state: Enum.TrackState):
+	GameState.track_state = u_track_state
 	
 	match u_track_state:
-		TrackState.COUNTDOWN:
+		Enum.TrackState.COUNTDOWN:
 			track_ui.timer.text = "00.000"
 			GameState.input_enabled = false
-		TrackState.RUNNING:
+		Enum.TrackState.RUNNING:
 			GameState.input_enabled = true
-		TrackState.FINISHED:
+		Enum.TrackState.FINISHED:
 			GameState.input_enabled = false
 
 func _on_update_ui():
-	if track_state == TrackState.RUNNING:
+	if GameState.track_state == Enum.TrackState.RUNNING:
 		track_ui.timer.text = TimeHelper.format_time_ms(Time.get_ticks_msec() - started_at)
 
 func _on_user_data_updated(row: UserData):
@@ -218,7 +209,7 @@ func _on_finish_entered(_finish: Finish):
 		(f as Checkpoint).was_entered = true
 		(f as Checkpoint).set_light_color(Enum.LightColor.GREEN)
 	
-	_update_track_state(TrackState.FINISHED)
+	_update_track_state(Enum.TrackState.FINISHED)
 	
 	checkpoint_times.append(finish_time)
 	track_ui.timer.text = TimeHelper.format_time_ms(finish_time)

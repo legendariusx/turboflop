@@ -18,7 +18,11 @@ background_mode = 2
 sky = SubResource("Sky_76lv3")
 sky_custom_fov = 76.0
 sky_rotation = Vector3(-0.0610865, 0, 0)
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.8
 glow_enabled = true
+glow_intensity = 0.7
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_m4vyt"]
 
@@ -73,3 +77,4 @@ volume_db = -10.0
 [node name="AmbientAircrafts" type="Node3D" parent="."]
 script = ExtResource("8_mufdi")
 aircraft_scenes = Array[PackedScene]([ExtResource("9_mufdi")])
+show_flow_field = false

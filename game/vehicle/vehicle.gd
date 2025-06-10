@@ -124,29 +124,29 @@ func _physics_process(delta: float) -> void:
 	# get input
 	var steer_axis = Input.get_axis(&"turn_right", &"turn_left")
 	var force_axis = Input.get_axis(&"reverse", &"accelerate")
-	var brake_strength = Input.get_action_strength(&"brake")
 	
 	# set input flags
 	_is_steering = not is_zero_approx(steer_axis)
 	_is_accelerating = not is_zero_approx(force_axis)
-	_is_braking = Input.is_action_pressed(&"brake")
+	var _linear_speed = linear_velocity.dot(transform.basis.z)
+	var _is_reversing = _linear_speed < 0 or abs(_linear_speed) < 0.5
+	_is_braking = force_axis < 0 and not _is_reversing
 	
 	# set steering angle
 	steering = move_toward(steering, steer_axis * steer_limit, delta * steer_speed)
 	
 	# set brake
-	if _is_braking:
-		brake = brake_force * brake_strength
+	if _is_braking and not _is_reversing:
+		brake = brake_force
 		engine_force = 0.0
-	# TODO: is this needed? currently stops the car
-	elif not _is_accelerating and false:
+	elif not _is_braking and not _is_accelerating:
 		brake = brake_soft_strength
 	else:
 		brake = 0.0
 	
 	# set engine force
 	if _is_accelerating and not _is_braking:
-		if force_axis < 0 and _speed > max_backwards_speed:
+		if force_axis < 0 and _speed > max_backwards_speed and _is_reversing:
 			engine_force = 0.0
 		else:
 			engine_force = force_axis * acceleration_force * _boost_multiplier

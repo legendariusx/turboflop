@@ -13,3 +13,10 @@ enum LightColor {
 	ORANGE,
 	RED
 }
+
+enum TrackState {
+	IDLE,
+	COUNTDOWN,
+	RUNNING,
+	FINISHED
+}

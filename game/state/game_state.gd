@@ -19,6 +19,10 @@ var input_enabled := false:
 	set(u_input_enabled):
 		input_enabled = u_input_enabled
 		input_enabled_changed.emit(input_enabled)
+var track_state := Enum.TrackState.IDLE:
+	set(u_track_state):
+		track_state = u_track_state
+		track_state_changed.emit(track_state)
 
 signal identity_updated(identity: PackedByteArray)
 signal current_user_updated(user: User)
@@ -26,6 +30,7 @@ signal visibility_changed(visibility: Enum.Visibility)
 signal track_id_changed(track_id: int)
 signal car_id_changed(car_id: int)
 signal input_enabled_changed(input_enabled: bool)
+signal track_state_changed(track_state: Enum.TrackState)
 
 func _init():
 	if SpacetimeDB.get_local_identity() == null:
