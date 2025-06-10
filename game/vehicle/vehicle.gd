@@ -170,8 +170,8 @@ func _update_particle_systems():
 		particle_system.process_material.initial_velocity_min = particle_velocity
 		particle_system.process_material.initial_velocity_max = particle_velocity
 	
-	# FIXME: check if the contacting body is the terrain
-	var is_touching_ground := wheel_bl.get_contact_body() != null
+	var body =  wheel_bl.get_contact_body()
+	var is_touching_ground := &"Terrain" in body.get_path().get_concatenated_names() if body else false
 	wheel_particles_bl.emitting = is_touching_ground
 	wheel_particles_br.emitting = is_touching_ground
 
