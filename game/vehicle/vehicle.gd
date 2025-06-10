@@ -110,15 +110,13 @@ func _physics_process(delta: float) -> void:
 	var desired_engine_pitch = 0.05 + linear_velocity.length() / (acceleration_force * 0.1 * 0.5)
 	engine_sound.pitch_scale = lerpf(engine_sound.pitch_scale, desired_engine_pitch, 0.2)
 	
+	_speed = (quaternion.inverse() * linear_velocity).length()
+	speedometer.text = str(abs(int(_speed * 3.6)))
+	
 	_update_particle_systems()
 	
 	if not is_current_user or _is_update_disabled: return
 	UserData.set_user_data(global_position, global_rotation, linear_velocity, angular_velocity, true, GameState.track_id, car_id)
-	
-	# get current speed
-	#_speed = linear_velocity.dot(transform.basis.z)
-	_speed = (quaternion.inverse() * linear_velocity).length() 
-	speedometer.text = str(abs(int(_speed * 3.6)))
 	
 	if not GameState.input_enabled:
 		return
@@ -161,18 +159,21 @@ func _input(event: InputEvent) -> void:
 		boost_sprite.modulate = Color(1.0, 1.0, 1.0, 0.4)
 		# a bit a hacky way to enable the boost
 		booster_entered(boost_increment, boost_duration)
-		
+
 func _update_particle_systems():
 	var t = clampf(_speed / 6.0, 0.1, 1.0)
 	
+	var particle_velocity := linear_velocity.dot(transform.basis.z) * -1
+	
 	for particle_system in exhaust_particles:
 		particle_system.amount_ratio = t
-		particle_system.process_material.initial_velocity_min = linear_velocity.dot(transform.basis.z) * -1
-		particle_system.process_material.initial_velocity_max = linear_velocity.dot(transform.basis.z) * -1
+		particle_system.process_material.initial_velocity_min = particle_velocity
+		particle_system.process_material.initial_velocity_max = particle_velocity
 	
 	# FIXME: check if the contacting body is the terrain
-	wheel_particles_bl.emitting = wheel_bl.get_contact_body() != null
-	wheel_particles_br.emitting = wheel_br.get_contact_body() != null
+	var is_touching_ground := wheel_bl.get_contact_body() != null
+	wheel_particles_bl.emitting = is_touching_ground
+	wheel_particles_br.emitting = is_touching_ground
 
 func _set_particles(is_boosting: bool):
 	dark_particles_l.emitting = not is_boosting

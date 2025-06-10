@@ -1,7 +1,8 @@
-[gd_scene load_steps=56 format=3 uid="uid://ce7uyrofns7ml"]
+[gd_scene load_steps=57 format=3 uid="uid://ce7uyrofns7ml"]
 
 [ext_resource type="PackedScene" uid="uid://clthdr6beclys" path="res://track/track.tscn" id="1_mn4nu"]
 [ext_resource type="PackedScene" uid="uid://p7atvo2gj2c5" path="res://checkpoint/finish/finish.tscn" id="2_7j01r"]
+[ext_resource type="LightmapGIData" uid="uid://c24iqjsq6vn5" path="res://tracks/track003.lmbake" id="2_fm3r7"]
 [ext_resource type="PackedScene" uid="uid://w4x7lllpyfuy" path="res://assets/terrain/terrain_track003.blend" id="2_mn4nu"]
 [ext_resource type="PackedScene" uid="uid://bnd1qqdentrpd" path="res://checkpoint/checkpoint.tscn" id="2_qu104"]
 [ext_resource type="PackedScene" uid="uid://duba1hy6lraw6" path="res://assets/models/wooden_pillar.blend" id="4_w7cg1"]
@@ -64,11 +65,15 @@ track_id = 3
 [node name="DirectionalLight3D" parent="." index="1"]
 transform = Transform3D(1, 0, 7.45058e-09, 0, 0.573576, 0.819152, 0, -0.819152, 0.573576, -0.096822, 9.44196, -0.103624)
 
-[node name="Camera3D" parent="." index="2"]
+[node name="LightmapGI" parent="." index="2"]
+directional = true
+light_data = ExtResource("2_fm3r7")
+
+[node name="Camera3D" parent="." index="3"]
 transform = Transform3D(-0.225359, 0.466378, -0.855398, -2.25728e-08, 0.877983, 0.478692, 0.974276, 0.107878, -0.197861, -63.6423, 1.78872, 4.27524)
 mouse_sensitivity = 0.3
 
-[node name="Start" parent="." index="3"]
+[node name="Start" parent="." index="4"]
 transform = Transform3D(0.699801, 0, -0.714339, 0, 1, 0, 0.714339, 0, 0.699801, -46.1198, -0.188434, -53.9107)
 
 [node name="Checkpoint2" parent="Checkpoints" index="0" instance=ExtResource("2_qu104")]

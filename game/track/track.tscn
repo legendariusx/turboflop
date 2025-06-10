@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://clthdr6beclys"]
+[gd_scene load_steps=15 format=3 uid="uid://clthdr6beclys"]
 
 [ext_resource type="Script" uid="uid://b4fwattb13utc" path="res://track/track.gd" id="1_76lv3"]
 [ext_resource type="Material" uid="uid://ceuc5jtl8b5e8" path="res://assets/materials/Sky1.tres" id="2_038fw"]
@@ -24,6 +24,8 @@ glow_enabled = true
 
 [sub_resource type="Compositor" id="Compositor_pk2yb"]
 
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_mufdi"]
+
 [node name="Track" type="Node3D"]
 script = ExtResource("1_76lv3")
 
@@ -36,7 +38,11 @@ compositor = SubResource("Compositor_pk2yb")
 transform = Transform3D(1, 0, 0, 0, 0.573576, 0.819152, 0, -0.819152, 0.573576, 0, 9.52202, 0)
 light_energy = 0.8
 light_angular_distance = 5.0
+light_bake_mode = 1
 shadow_enabled = true
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+camera_attributes = SubResource("CameraAttributesPractical_mufdi")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 script = ExtResource("4_76lv3")
@@ -68,4 +74,3 @@ volume_db = -10.0
 [node name="AmbientAircrafts" type="Node3D" parent="."]
 script = ExtResource("8_mufdi")
 aircraft_scenes = Array[PackedScene]([ExtResource("9_mufdi")])
-max_aircrafts = 1

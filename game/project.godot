@@ -21,6 +21,7 @@ SpacetimeDB="*res://addons/SpacetimeDB/Core/SpacetimeDBClient.gd"
 UserState="*res://state/user_state.gd"
 GameState="*res://state/game_state.gd"
 CarHelper="*res://helpers/car_helper.gd"
+TrackHelper="*res://helpers/track_helper.gd"
 
 [display]
 

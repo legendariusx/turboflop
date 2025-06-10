@@ -52,24 +52,10 @@ func _render_track_selection():
 	if track_container.get_child_count() > 0:
 		return
 	
-	var dir = DirAccess.open(TRACKS_BASE_PATH)
-	var track_names: Array[String] = []
-	
-	if not dir:
-		return
-		
-	dir.list_dir_begin()
-	var file_name = dir.get_next()
-	while file_name != "" and "track" in file_name:
-		track_names.append(file_name)
-		file_name = dir.get_next()
-	
-	track_names.sort()
-	for track_name in track_names:
+	for track_scene in TrackHelper.track_scenes:
 		var new_button = track_select_scene.instantiate()
-		var clean_track_name = track_name.replace("track", "").replace(".tscn", "").replace(".remap", "")
-		new_button.text = clean_track_name
-		new_button.pressed.connect(func(): _track_selected(clean_track_name.to_int()))
+		new_button.text = str(track_scene.track_id).pad_zeros(3)
+		new_button.pressed.connect(func(): _track_selected(track_scene.track_id))
 		track_container.add_child(new_button)
 		
 func _render_car_selection():

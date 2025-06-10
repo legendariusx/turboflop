@@ -16,5 +16,4 @@ albedo_color = Color(0, 1, 0, 0.392157)
 script = SubResource("GDScript_amehq")
 
 [node name="MeshInstance3D" parent="." index="0"]
-visible = false
 surface_material_override/0 = SubResource("StandardMaterial3D_6kjkp")

@@ -20,6 +20,11 @@ var _arrow_nodes: Array[Node3D]        = []
 
 
 func _ready() -> void:
+	# FIXME: web performance optimization
+	if OS.get_name() == "Web":
+		queue_free()
+		return
+
 	randomize()
 
 	_noise_generator.seed = randi()

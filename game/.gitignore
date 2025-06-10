@@ -1,6 +1,7 @@
 # Godot 4+ specific ignores
 .godot/
 .nomedia
+*.unwrap_cache
 
 # Godot-specific ignores
 .import/
