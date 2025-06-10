@@ -98,6 +98,9 @@ func _ready():
 	GameState.visibility_changed.connect(_on_visibility_changed)
 	_on_visibility_changed(GameState.visibility)
 	
+	GameState.input_enabled_changed.connect(_on_input_enabled_changed)
+	_on_input_enabled_changed(GameState.input_enabled)
+	
 	UserState.update.connect(_on_user_updated)
 	
 	get_window().focus_entered.connect(_on_window_focus_entered)
