@@ -47,6 +47,7 @@ func cycle_camera_mode() -> void:
 		GameState.input_enabled = false
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		GameState.input_enabled = true
 
 func _physics_process(delta: float) -> void:
 	if target == null or _is_stopped: return
