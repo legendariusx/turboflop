@@ -257,6 +257,7 @@ pub fn reset_user_data(ctx: &ReducerContext, identity: Identity) {
             angular_velocity: Vector3::ZERO,
             is_active: false,
             track_id: 0,
+            car_id: 0,
             ..user_data
         });
     }
