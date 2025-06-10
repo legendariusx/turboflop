@@ -44,6 +44,7 @@ func cycle_camera_mode() -> void:
 		
 	if camera_mode == CameraMode.FREE_FLIGHT:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		GameState.input_enabled = false
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 

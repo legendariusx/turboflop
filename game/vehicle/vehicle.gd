@@ -52,7 +52,6 @@ var owner_identity: PackedByteArray
 var owner_name: String
 var is_current_user: bool = true
 
-var _is_input_enabled: bool = false
 var _is_steering : bool
 var _is_accelerating : bool
 var _is_braking : bool
@@ -77,15 +76,11 @@ func on_boost_timer_timeout() -> void:
 	_boost_multiplier = 1.0
 	_set_particles(false)
 	
-func enable_input() -> void:
-	_is_input_enabled = true
-	
-func disable_input() -> void:
-	_is_input_enabled = false
-	
-	steering = 0.0
-	brake = 0.0
-	engine_force = 0.0
+func _on_input_enabled_changed(u_input_enabled: bool) -> void:
+	if not u_input_enabled:
+		steering = 0.0
+		brake = 0.0
+		engine_force = 0.0
 
 func _ready():
 	assert(car_id != -1, "vehicle_id needs to be set")	
@@ -122,7 +117,7 @@ func _physics_process(delta: float) -> void:
 	_speed = (quaternion.inverse() * linear_velocity).length() 
 	speedometer.text = str(abs(int(_speed * 3.6)))
 	
-	if not _is_input_enabled:
+	if not GameState.input_enabled:
 		return
 	
 	# get input
