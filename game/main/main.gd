@@ -36,10 +36,10 @@ func _connect():
 	
 	# TODO: add dotenv config
 	SpacetimeDB.connect_db(
-		"http://localhost:3000",
+		"https://turboflop.legendarius.net",
 		"turboflop",
 		SpacetimeDBConnection.CompressionPreference.NONE,
-		false,
+		true,
 		true
 	)
 	

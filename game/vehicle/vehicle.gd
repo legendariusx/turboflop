@@ -154,7 +154,7 @@ func _physics_process(delta: float) -> void:
 		engine_force = 0.0
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed(&"boost") and not _has_boosted:
+	if event.is_action_pressed(&"boost") and not _has_boosted and is_current_user:
 		_has_boosted = true
 		boost_sprite.modulate = Color(1.0, 1.0, 1.0, 0.4)
 		# a bit a hacky way to enable the boost
