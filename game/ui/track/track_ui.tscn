@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7myrwvkhwi71"]
+[gd_scene load_steps=5 format=3 uid="uid://b7myrwvkhwi71"]
 
 [ext_resource type="Script" uid="uid://jt2pf5ygs2y1" path="res://ui/track/track_ui.gd" id="1_7f7ei"]
 [ext_resource type="PackedScene" uid="uid://dvfr7tv4f8suv" path="res://ui/track/cp_split/cp_split.tscn" id="2_fii46"]
 [ext_resource type="PackedScene" uid="uid://vsldeuxso8ge" path="res://ui/github_link.tscn" id="3_fek1n"]
+[ext_resource type="PackedScene" uid="uid://6pox4c3xeqff" path="res://ui/track/keybinds/keybinds_ui.tscn" id="4_jxekm"]
 
 [node name="TrackUI" type="Control"]
 layout_mode = 3
@@ -101,3 +102,25 @@ offset_bottom = -364.0
 
 [node name="GithubLink" parent="." instance=ExtResource("3_fek1n")]
 layout_mode = 1
+
+[node name="KeybindsButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -94.0
+offset_top = -47.0
+offset_right = -15.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Keybinds"
+
+[node name="Keybinds" parent="." instance=ExtResource("4_jxekm")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="KeybindsButton" to="." method="_on_keybinds_button_pressed"]
+[connection signal="close" from="Keybinds" to="." method="_on_keybinds_close"]

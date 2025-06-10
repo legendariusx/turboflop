@@ -9,6 +9,8 @@ const MAX_SCORES = 10
 @onready var scoreboard: Tree = $Scoreboard
 @onready var cp_times: Tree = $CheckpointTimes
 @onready var cp_split: CPSplit = $CPSplit
+@onready var keybinds_button: Button = $KeybindsButton
+@onready var keybinds: VBoxContainer = $Keybinds
 
 var personal_best_state: PersonalBestState
 var cp_tree_root: TreeItem
@@ -115,3 +117,11 @@ func _show_checkpoint_time(checkpoint_text: String, index: int, time: int, is_fi
 
 func _hide_checkpoint_time():
 	cp_split.reset()
+
+func _on_keybinds_button_pressed() -> void:
+	keybinds.visible = true
+	keybinds_button.visible = false
+
+func _on_keybinds_close() -> void:
+	keybinds.visible = false
+	keybinds_button.visible = true
