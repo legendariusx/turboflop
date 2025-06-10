@@ -66,11 +66,11 @@ track_id = 3
 transform = Transform3D(1, 0, 7.45058e-09, 0, 0.573576, 0.819152, 0, -0.819152, 0.573576, -0.096822, 9.44196, -0.103624)
 
 [node name="LightmapGI" parent="." index="2"]
-directional = true
 light_data = ExtResource("2_fm3r7")
 
 [node name="Camera3D" parent="." index="3"]
 transform = Transform3D(-0.225359, 0.466378, -0.855398, -2.25728e-08, 0.877983, 0.478692, 0.974276, 0.107878, -0.197861, -63.6423, 1.78872, 4.27524)
+current = true
 mouse_sensitivity = 0.3
 
 [node name="Start" parent="." index="4"]
