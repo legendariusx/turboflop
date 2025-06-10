@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cppcnfng4sqhv"]
+[gd_scene load_steps=7 format=3 uid="uid://cppcnfng4sqhv"]
 
 [ext_resource type="PackedScene" uid="uid://clthdr6beclys" path="res://track/track.tscn" id="1_3dh60"]
+[ext_resource type="LightmapGIData" uid="uid://cwul7bh2i35jn" path="res://tracks/track001.lmbake" id="2_tv5bj"]
 [ext_resource type="PackedScene" uid="uid://bnd1qqdentrpd" path="res://checkpoint/checkpoint.tscn" id="2_wrt2c"]
 [ext_resource type="PackedScene" uid="uid://p7atvo2gj2c5" path="res://checkpoint/finish/finish.tscn" id="3_tv5bj"]
 
@@ -10,6 +11,9 @@
 
 [node name="Track" instance=ExtResource("1_3dh60")]
 track_id = 1
+
+[node name="LightmapGI" parent="." index="2"]
+light_data = ExtResource("2_tv5bj")
 
 [node name="Camera3D" parent="." index="3"]
 current = true
