@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://chcgc7ul3otmr"]
+
+[ext_resource type="Script" uid="uid://b2yt20oeecorl" path="res://ui/start_screen/car_select.gd" id="1_7makm"]
+
+[node name="CarSelect" type="VBoxContainer" node_paths=PackedStringArray("button", "image")]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_7makm")
+button = NodePath("Button")
+image = NodePath("Image")
+
+[node name="Image" type="TextureRect" parent="."]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+text = "Car"

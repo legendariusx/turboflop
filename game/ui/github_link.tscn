@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://vsldeuxso8ge"]
+
+[ext_resource type="Texture2D" uid="uid://3qte6q1moffn" path="res://assets/images/github_logo.png" id="1_kqc7o"]
+[ext_resource type="Script" uid="uid://bjjx1gsad77av" path="res://ui/github_link.gd" id="2_bfubq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3wy1v"]
+bg_color = Color(0.584314, 0.584314, 0.584314, 0.588235)
+corner_radius_top_left = 400
+corner_radius_top_right = 400
+corner_radius_bottom_right = 400
+corner_radius_bottom_left = 400
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kfbq2"]
+bg_color = Color(0.227451, 0.227451, 0.227451, 0.588235)
+corner_radius_top_left = 400
+corner_radius_top_right = 400
+corner_radius_bottom_right = 400
+corner_radius_bottom_left = 400
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c651c"]
+bg_color = Color(0.384314, 0.384314, 0.384314, 0.588235)
+corner_radius_top_left = 400
+corner_radius_top_right = 400
+corner_radius_bottom_right = 400
+corner_radius_bottom_left = 400
+
+[node name="GithubLink" type="Button"]
+process_priority = -1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = -76.0
+offset_right = 1623.0
+offset_bottom = 1532.0
+grow_vertical = 0
+scale = Vector2(0.0400007, 0.0399125)
+theme_override_colors/icon_hover_color = Color(0.655053, 0.655053, 0.655053, 1)
+theme_override_styles/hover = SubResource("StyleBoxFlat_3wy1v")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_kfbq2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_c651c")
+icon = ExtResource("1_kqc7o")
+icon_alignment = 1
+script = ExtResource("2_bfubq")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

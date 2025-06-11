@@ -1,0 +1,16 @@
+.header__root {
+    backdrop-filter: blur(16px);
+    background-color: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    border-bottom: 2px solid var(--mui-palette-divider);
+    position: sticky !important;
+    top: 0 !important;
+}
+
+.header {
+    display: flex;
+    gap: 1rem;
+
+    padding: 0 1.5rem;
+}

@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=3 uid="uid://6pox4c3xeqff"]
+
+[ext_resource type="Script" uid="uid://cs3e8neuyy5rn" path="res://ui/track/keybinds/keybinds_ui.gd" id="1_2tbv8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2tbv8"]
+content_margin_right = 5.0
+bg_color = Color(0.0235294, 0.0235294, 0.0235294, 0.768627)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lns7s"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n2sj5"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+bg_color = Color(0.0870161, 0.0870161, 0.0870161, 0.686275)
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="Keybinds" type="VBoxContainer"]
+custom_minimum_size = Vector2(1500, 500)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -28.5
+offset_right = 30.0
+offset_bottom = 28.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+alignment = 1
+script = ExtResource("1_2tbv8")
+
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2tbv8")
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 2
+size_flags_horizontal = 8
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_lns7s")
+text = "Close"
+
+[node name="KeybindsContainer" type="Tree" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_n2sj5")
+columns = 3
+column_titles_visible = true
+allow_search = false
+hide_folding = true
+hide_root = true
+scroll_horizontal_enabled = false
+scroll_vertical_enabled = false
+auto_tooltip = false
+
+[connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]

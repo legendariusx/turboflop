@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c70ythi8xw81q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7f7ei"]
+bg_color = Color(4.81308e-06, 0.657923, 0.855364, 1)
+
+[node name="Difference" type="PanelContainer"]
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_7f7ei")

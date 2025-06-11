@@ -1,0 +1,81 @@
+[gd_scene load_steps=15 format=3 uid="uid://clthdr6beclys"]
+
+[ext_resource type="Script" uid="uid://b4fwattb13utc" path="res://track/track.gd" id="1_76lv3"]
+[ext_resource type="Material" uid="uid://ceuc5jtl8b5e8" path="res://assets/materials/Sky1.tres" id="2_038fw"]
+[ext_resource type="PackedScene" uid="uid://bip0a8c663lj2" path="res://checkpoint/start/start.tscn" id="3_038fw"]
+[ext_resource type="Script" uid="uid://dnqvalo71k0hi" path="res://camera_follow.gd" id="4_76lv3"]
+[ext_resource type="PackedScene" uid="uid://b7myrwvkhwi71" path="res://ui/track/track_ui.tscn" id="6_m4vyt"]
+[ext_resource type="AudioStream" uid="uid://76pgk3kxq1rp" path="res://assets/sounds/countdown-sound-effect-8-bit.mp3" id="7_pk2yb"]
+[ext_resource type="AudioStream" uid="uid://d0lvyb272uhw3" path="res://assets/sounds/camera-flash.mp3" id="8_fnbnb"]
+[ext_resource type="Script" uid="uid://b7e24c2m05egr" path="res://track/ambient_aircrafts.gd" id="8_mufdi"]
+[ext_resource type="PackedScene" uid="uid://di0hvrm4njg2j" path="res://assets/models/Airplane1.tscn" id="9_mufdi"]
+
+[sub_resource type="Sky" id="Sky_76lv3"]
+sky_material = ExtResource("2_038fw")
+
+[sub_resource type="Environment" id="Environment_038fw"]
+background_mode = 2
+sky = SubResource("Sky_76lv3")
+sky_custom_fov = 76.0
+sky_rotation = Vector3(-0.0610865, 0, 0)
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.8
+glow_enabled = true
+glow_intensity = 0.7
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_m4vyt"]
+
+[sub_resource type="Compositor" id="Compositor_pk2yb"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_mufdi"]
+
+[node name="Track" type="Node3D"]
+script = ExtResource("1_76lv3")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_038fw")
+camera_attributes = SubResource("CameraAttributesPractical_m4vyt")
+compositor = SubResource("Compositor_pk2yb")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.573576, 0.819152, 0, -0.819152, 0.573576, 0, 9.52202, 0)
+light_energy = 0.8
+light_angular_distance = 5.0
+shadow_enabled = true
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+camera_attributes = SubResource("CameraAttributesPractical_mufdi")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+script = ExtResource("4_76lv3")
+mouse_sensitivity = 0.2
+
+[node name="Start" parent="." instance=ExtResource("3_038fw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.955756, -3.94829)
+
+[node name="Checkpoints" type="Node" parent="."]
+
+[node name="Finishes" type="Node" parent="."]
+
+[node name="Opponents" type="Node" parent="."]
+
+[node name="CountdownTimer" type="Timer" parent="."]
+wait_time = 0.75
+one_shot = true
+
+[node name="CountdownSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_pk2yb")
+volume_db = -10.0
+
+[node name="CheckpointSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_fnbnb")
+volume_db = -10.0
+
+[node name="TrackUI" parent="." instance=ExtResource("6_m4vyt")]
+
+[node name="AmbientAircrafts" type="Node3D" parent="."]
+visible = false
+script = ExtResource("8_mufdi")
+aircraft_scenes = Array[PackedScene]([ExtResource("9_mufdi")])
+show_flow_field = false

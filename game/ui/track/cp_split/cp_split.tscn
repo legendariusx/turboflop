@@ -1,0 +1,97 @@
+[gd_scene load_steps=6 format=3 uid="uid://dvfr7tv4f8suv"]
+
+[ext_resource type="Script" uid="uid://bes1rgs2j85em" path="res://ui/track/cp_split/cp_split.gd" id="1_kxmnk"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7f7ei"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kxmnk"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.648488, 0.648488, 0.648488, 0.392157)
+corner_radius_top_left = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6r7wx"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6r7wx"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.918339, 0.308213, 0.284494, 1)
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+
+[node name="CPSplit" type="CenterContainer"]
+material = SubResource("CanvasItemMaterial_7f7ei")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+use_top_left = true
+script = ExtResource("1_kxmnk")
+
+[node name="HBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="PersonalBest" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "New Personal Best!"
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Container" type="HBoxContainer" parent="HBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Checkpoint" type="PanelContainer" parent="HBoxContainer/PanelContainer/Container"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kxmnk")
+
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer/Container/Checkpoint"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "01"
+
+[node name="Time" type="Label" parent="HBoxContainer/PanelContainer/Container"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxEmpty_6r7wx")
+text = "00:00.000"
+
+[node name="Difference" type="PanelContainer" parent="HBoxContainer/PanelContainer/Container"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6r7wx")
+
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer/Container/Difference"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "-00:00.000"
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.5
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

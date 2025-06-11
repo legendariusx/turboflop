@@ -1,0 +1,22 @@
+.error_boundary_fallback {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-image: none !important;
+
+    grid-column-start: 1;
+    grid-column-end: 3;
+
+    &__info {
+        padding: 2rem 2.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.75rem;
+
+        &__icon {
+            margin: 0 auto;
+        }
+    }
+}

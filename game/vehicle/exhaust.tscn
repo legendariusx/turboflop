@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0ilk0wr4f5hk"]
+
+[ext_resource type="Material" uid="uid://tqrwtsptuugn" path="res://assets/materials/Exhaust.tres" id="1_htqn7"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_htqn7"]
+
+[node name="Exhaust" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.08, 0, 0, 0, 0.2, 0, 0, 0, 0.08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_htqn7")
+surface_material_override/0 = ExtResource("1_htqn7")
