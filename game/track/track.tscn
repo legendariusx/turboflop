@@ -75,6 +75,7 @@ volume_db = -10.0
 [node name="TrackUI" parent="." instance=ExtResource("6_m4vyt")]
 
 [node name="AmbientAircrafts" type="Node3D" parent="."]
+visible = false
 script = ExtResource("8_mufdi")
 aircraft_scenes = Array[PackedScene]([ExtResource("9_mufdi")])
 show_flow_field = false
