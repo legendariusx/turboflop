@@ -7,6 +7,7 @@ extends CenterContainer
 @onready var time_label: Label = $HBoxContainer/PanelContainer/Container/Time
 @onready var difference: PanelContainer = $HBoxContainer/PanelContainer/Container/Difference
 @onready var difference_label: Label = $HBoxContainer/PanelContainer/Container/Difference/Label
+@onready var timer: Timer = $Timer
 
 func _ready():
 	reset_size()
@@ -38,8 +39,8 @@ func show_split(checkpoint_text: String, index: int, time: int, is_finish: bool,
 	reset_size()
 	
 	if not is_finish:
-		await get_tree().create_timer(2.5).timeout
-		visible = false
+		timer.stop()
+		timer.start()
 	else:
 		personal_best.visible = is_pb
 
@@ -47,3 +48,6 @@ func reset():
 	visible = false
 	personal_best.visible = false
 	difference.visible = false
+
+func _on_timer_timeout() -> void:
+	visible = false

@@ -89,3 +89,9 @@ text = "-00:00.000"
 
 [node name="Label" type="Label" parent="HBoxContainer"]
 layout_mode = 2
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.5
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
