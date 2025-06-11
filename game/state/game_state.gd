@@ -2,6 +2,7 @@ extends Node
 
 var identity: PackedByteArray
 var current_user: User
+var volume := 0.0
 var visibility: Enum.Visibility = Enum.Visibility.TRANSPARENT:
 	set(u_visibility):
 		visibility = u_visibility

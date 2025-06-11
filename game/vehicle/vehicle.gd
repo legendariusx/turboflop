@@ -102,9 +102,6 @@ func _ready():
 	_on_input_enabled_changed(GameState.input_enabled)
 	
 	UserState.update.connect(_on_user_updated)
-	
-	get_window().focus_entered.connect(_on_window_focus_entered)
-	get_window().focus_exited.connect(_on_window_focus_exited)
 
 func _physics_process(delta: float) -> void:
 	if not is_current_user and GameState.visibility == Enum.Visibility.NONE:
@@ -203,13 +200,3 @@ func _on_user_updated(row: User):
 	if row.identity == owner_identity:
 		name_label.text = row.name
 		owner_name = row.name
-		
-func _on_window_focus_entered() -> void:
-	var tween = get_tree().create_tween()
-	tween.tween_callback(AudioServer.set_bus_mute.bind(0, false))
-	tween.tween_method(func(v): AudioServer.set_bus_volume_db(0, v), -80, 0, 0.5)
-
-func _on_window_focus_exited() -> void:
-	var tween = get_tree().create_tween()
-	tween.tween_method(func(v): AudioServer.set_bus_volume_db(0, v), 0, -80, 0.5)
-	tween.tween_callback(AudioServer.set_bus_mute.bind(0, true))

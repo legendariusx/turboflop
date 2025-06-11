@@ -56,6 +56,9 @@ func _ready() -> void:
 	
 	user_data.update.connect(_on_user_data_updated)
 	
+	get_window().focus_entered.connect(_on_window_focus_entered)
+	get_window().focus_exited.connect(_on_window_focus_exited)
+	
 	if SpacetimeDB.is_connected_db():
 		if not GameState.current_user: await GameState.current_user_updated
 	
@@ -228,3 +231,13 @@ func _set_next_checkpoint():
 	else:
 		for finish in finishes.get_children():
 			finish.set_light_color(Enum.LightColor.ORANGE)
+
+func _on_window_focus_entered() -> void:
+	var tween = get_tree().create_tween()
+	tween.tween_callback(AudioServer.set_bus_mute.bind(0, false))
+	tween.tween_method(func(v): AudioServer.set_bus_volume_db(0, v), -80, GameState.volume, 0.5)
+
+func _on_window_focus_exited() -> void:
+	var tween = get_tree().create_tween()
+	tween.tween_method(func(v): AudioServer.set_bus_volume_db(0, v), GameState.volume, -80, 0.5)
+	tween.tween_callback(AudioServer.set_bus_mute.bind(0, true))

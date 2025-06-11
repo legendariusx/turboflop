@@ -11,6 +11,7 @@ const MAX_SCORES = 10
 @onready var cp_split: CPSplit = $CPSplit
 @onready var keybinds_button: Button = $KeybindsButton
 @onready var keybinds: VBoxContainer = $Keybinds
+@onready var volume_slider: HSlider = $VolumeContainer/VolumeSlider
 
 var personal_best_state: PersonalBestState
 var cp_tree_root: TreeItem
@@ -48,6 +49,8 @@ func _ready():
 	
 	cp_times.set_column_expand_ratio(0, 1)
 	cp_times.set_column_expand_ratio(1, 2)
+	
+	_on_volume_slider_value_changed(GameState.volume)
 
 func _process(_delta: float) -> void:
 	scoreboard.visible = Input.is_action_pressed("show_scoreboard")
@@ -125,3 +128,8 @@ func _on_keybinds_button_pressed() -> void:
 func _on_keybinds_close() -> void:
 	keybinds.visible = false
 	keybinds_button.visible = true
+
+func _on_volume_slider_value_changed(value: float) -> void:
+	volume_slider.value = value
+	GameState.volume = value
+	AudioServer.set_bus_volume_db(0, value)
