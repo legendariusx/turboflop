@@ -8,7 +8,7 @@
 [ext_resource type="ArrayMesh" uid="uid://5owaa2ye8vik" path="res://assets/meshes/car004_wheel_mesh.res" id="3_s0fjo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pgcqk"]
-size = Vector3(1, 0.544418, 2.0188)
+size = Vector3(1.61731, 0.544418, 2.0188)
 
 [node name="Car" node_paths=PackedStringArray("wheel_fl", "wheel_fr", "wheel_bl", "wheel_br", "body_mesh", "body_collider") instance=ExtResource("1_vi6p1")]
 mass = 180.0
@@ -52,7 +52,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.430529, 0.00141805, -0.8660
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.138707, 1.22541, -0.567095)
 
 [node name="Collider" type="CollisionShape3D" parent="." index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.60362, -0.0235596)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.110535, 0.604, 0)
 shape = SubResource("BoxShape3D_pgcqk")
 
 [node name="BodyMesh" type="MeshInstance3D" parent="." index="9"]
