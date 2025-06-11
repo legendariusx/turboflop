@@ -107,6 +107,10 @@ func _ready():
 	get_window().focus_exited.connect(_on_window_focus_exited)
 
 func _physics_process(delta: float) -> void:
+	if not is_current_user and GameState.visibility == Enum.Visibility.NONE:
+		engine_sound.pitch_scale = 0
+		return
+	
 	var desired_engine_pitch = 0.05 + linear_velocity.length() / (acceleration_force * 0.1 * 0.5)
 	engine_sound.pitch_scale = lerpf(engine_sound.pitch_scale, desired_engine_pitch, 0.2)
 	
