@@ -32,6 +32,10 @@ export const convertCarIdToName = (carId: number): string => {
             return "City Car"
         case 2:
             return "Truck"
+        case 3:
+            return "Golf Cart"
+        case 4:
+            return "Rover"
         default:
             return carId.toString()
     }
