@@ -6,7 +6,7 @@ TurboFlop is a low poly multiplayer arcade racing game built with the [Godot 4.4
 * [SpacetimeDB](https://spacetimedb.com/install) (recommended, 1.1.1, full install)
 * [Rust](https://www.rust-lang.org/tools/install) (required for multiplayer, preferrably using rustup)
 * [wasm-opt](https://github.com/WebAssembly/binaryen) (optional)
-* [Bun](https://bun.sh/) (optional)
+* [Bun](https://bun.sh/) (optional, you can also use a different node package manager but beware the lockfile is specific to bun)
 
 ## Usage (Debug)
 ### Start SpacetimeDB server (recommended)
@@ -22,9 +22,6 @@ Should be pretty straightforward. Make sure to use Compatibility mode for develo
 3. Run `bun dev` which starts the webserver on `localhost:5173` by default
 4. Run `spacetime logs turboflop` and look for the admin token
 5. Enter the admin token on the website and you're good to go
-
-## Deployment
-TODO
 
 ## Future Work / Major ToDos
 * Performance improvements (especially first track load)

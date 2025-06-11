@@ -39,7 +39,7 @@ func _connect():
 		"http://localhost:3000",
 		"turboflop",
 		SpacetimeDBConnection.CompressionPreference.NONE,
-		false,
+		true,
 		true
 	)
 	
