@@ -50,7 +50,7 @@ func _connect():
 func _load_track(track_id: int, car_id: int):
 	# TODO: error-handling if file does not exist?
 	var new_track: Track = load(TRACK_PATH_TEMPLATE % str(track_id).pad_zeros(3)).instantiate()
-	var new_car: Vehicle = CarHelper.get_car_by_id(car_id)
+	var new_car: Vehicle = CarHelper.get_new_car_by_id(car_id)
 	
 	new_track.set_car(new_car)
 	main_menu.visible = false

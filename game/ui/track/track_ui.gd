@@ -34,15 +34,18 @@ func _ready():
 	
 	scoreboard.set_column_title(0, "#")
 	scoreboard.set_column_title(1, "Player")
-	scoreboard.set_column_title(2, "Time")
+	scoreboard.set_column_title(2, "Car")
+	scoreboard.set_column_title(3, "Time")
 	
 	scoreboard.set_column_expand_ratio(0, 1)
 	scoreboard.set_column_expand_ratio(1, 10)
-	scoreboard.set_column_expand_ratio(2, 10)
+	scoreboard.set_column_expand_ratio(2, 5)
+	scoreboard.set_column_expand_ratio(3, 10)
 	
 	scoreboard.set_column_title_alignment(0, HORIZONTAL_ALIGNMENT_CENTER)
 	scoreboard.set_column_title_alignment(1, HORIZONTAL_ALIGNMENT_CENTER)
 	scoreboard.set_column_title_alignment(2, HORIZONTAL_ALIGNMENT_CENTER)
+	scoreboard.set_column_title_alignment(3, HORIZONTAL_ALIGNMENT_CENTER)
 	
 	cp_times.set_column_title(0, "#")
 	cp_times.set_column_title(1, "Time")
@@ -88,20 +91,22 @@ func _update_ui():
 		if not user: continue
 		var player_name = user.name
 		if pb.identity == GameState.identity: player_name += " (You)"
-		_create_scoreboard_row(tree_root, i + 1, player_name, pb.time)
+		_create_scoreboard_row(tree_root, i + 1, player_name, pb.time, pb.car_id)
 
 	if current_player_not_in_top:
-		_create_scoreboard_row(tree_root, current_player_index + 1, GameState.current_user.name + " (You)", sorted_pbs[current_player_index].time)
+		_create_scoreboard_row(tree_root, current_player_index + 1, GameState.current_user.name + " (You)", sorted_pbs[current_player_index].time, sorted_pbs[current_player_index].car_id)
 
-func _create_scoreboard_row(root: TreeItem, placement: int, player_name: String, time: int):
+func _create_scoreboard_row(root: TreeItem, placement: int, player_name: String, time: int, car_id: int):
 	var new_row = scoreboard.create_item(root)
 	new_row.set_text(0, str(placement))
 	new_row.set_text(1, player_name) 
-	new_row.set_text(2, TimeHelper.format_time_ms(time)) 
+	new_row.set_text(2, CarHelper.get_car_name_by_id(car_id))
+	new_row.set_text(3, TimeHelper.format_time_ms(time)) 
 	
 	new_row.set_text_alignment(0, HORIZONTAL_ALIGNMENT_CENTER)
 	new_row.set_text_alignment(1, HORIZONTAL_ALIGNMENT_CENTER)
 	new_row.set_text_alignment(2, HORIZONTAL_ALIGNMENT_CENTER)
+	new_row.set_text_alignment(3, HORIZONTAL_ALIGNMENT_CENTER)
 
 func _add_checkpoint_label(number: String, time: int) -> void:
 	var new_row = cp_times.create_item(cp_tree_root)
