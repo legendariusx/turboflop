@@ -11,6 +11,7 @@ const MATERIAL_GLOWING_SMOKE = preload("res://assets/materials/GlowingSmoke.tres
 @export_group("Car Behaviour")
 @export var acceleration_force: float = 1000.0
 @export var max_backwards_speed: float = 8.0
+@export var max_steering_speed: float = 150.0
 @export var brake_force: float = 5.0
 @export var brake_soft_strength: float = 0.5
 @export var steer_speed: float = 1.5
@@ -123,7 +124,7 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	# get input
-	var steer_axis = Input.get_axis(&"turn_right", &"turn_left")
+	var steer_axis = Input.get_axis(&"turn_right", &"turn_left") * clampf((1 - (_speed / max_steering_speed)), 0, 1)
 	var force_axis = Input.get_axis(&"reverse", &"accelerate")
 	
 	# set input flags
