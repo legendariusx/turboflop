@@ -19,7 +19,17 @@ func _load_car_scenes():
 		car_scenes.append(car_scene)
 		file_name = dir.get_next()
 
-func get_car_by_id(car_id: int):
+func _get_car_by_id(car_id: int):
 	var index := car_scenes.find_custom(func(car_scene: Vehicle): return car_scene.car_id == car_id)
 	if index != -1:
-		return car_scenes[index].duplicate()
+		return car_scenes[index]
+
+func get_new_car_by_id(car_id: int):
+	var car_scene = _get_car_by_id(car_id)
+	if car_scene:
+		return car_scene.duplicate()
+
+func get_car_name_by_id(car_id: int):
+	var car_scene = _get_car_by_id(car_id)
+	if car_scene:
+		return car_scene.car_name

@@ -26,7 +26,7 @@ export const initSpacetimeConnection = (): AppThunk<void> => (dispatch) => {
     };
 
     const conn = DbConnection.builder()
-        .withUri(env.BASE_URL)
+        .withUri(env.SPACETIMEDB_BASE_URL)
         .withModuleName(env.PROJECT_NAME)
         .withToken(localStorage.getItem('auth_token') || '')
         .onConnect(onConnect)

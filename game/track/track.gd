@@ -166,7 +166,7 @@ func _on_user_data_updated(row: UserData):
 	var opponent_index = opponents.get_children().find_custom(func(node: Vehicle): return node.owner_identity == row.identity)
 	var opponent: Vehicle = opponents.get_children()[opponent_index] if opponent_index != -1 else null
 	# opponent exists but is not active anymore -> remove
-	if opponent and (row.is_active == false or not row.track_id == GameState.track_id):
+	if opponent and (not row.is_active or row.track_id != GameState.track_id):
 		opponent.queue_free()
 	# opponent exists and is active -> update data from row
 	elif opponent != null:
