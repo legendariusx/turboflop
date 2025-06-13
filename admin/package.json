@@ -1,6 +1,6 @@
 {
     "name": "turboflop-admin",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "private": true,
     "dependencies": {
         "@clockworklabs/spacetimedb-sdk": "^1.1.0",
