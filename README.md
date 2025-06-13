@@ -1,12 +1,12 @@
 # TurboFlop
-TurboFlop is a low poly multiplayer arcade racing game built with the [Godot 4.4](https://godotengine.org) Engine. The multiplayer features are implemented with [SpacetimeDB](https://spacetimedb.com) using the inofficial  [Godot-SpacetimeDB-SDK](https://github.com/flametime/Godot-SpacetimeDB-SDK) which is implemented entirely in GDScript. For user management there is an admin UI written in [React](https://react.dev/) using the [Bun](https://bun.sh/) package manager.
+TurboFlop is a low poly multiplayer arcade racing game built with the [Godot 4.4](https://godotengine.org) Engine. The multiplayer features are implemented with [SpacetimeDB](https://spacetimedb.com) using the inofficial  [Godot-SpacetimeDB-SDK](https://github.com/flametime/Godot-SpacetimeDB-SDK) which is implemented entirely in GDScript. For user management there is an admin UI written in [React](https://react.dev/) using the [Bun](https://bun.sh/) package manager ([yarn](https://classic.yarnpkg.com/en/) is also supported).
 
 ## Dependencies
 * [Godot 4.4](https://godotengine.org/download) (no .NET support)
 * [SpacetimeDB](https://spacetimedb.com/install) (required for multiplayer, version 1.1.1, full install)
 * [Rust](https://www.rust-lang.org/tools/install) (required for multiplayer, preferrably using rustup)
 * [wasm-opt](https://github.com/WebAssembly/binaryen) (optional)
-* [Bun](https://bun.sh/) (optional, you can also use a different package manager but beware the lockfile is specific to bun)
+* [Bun](https://bun.sh/) or [yarn](https://classic.yarnpkg.com/lang/en/docs/install) (optional, required for admin UI)
 
 ## Usage (Debug)
 ### Start SpacetimeDB server (recommended)
