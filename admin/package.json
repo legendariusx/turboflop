@@ -1,5 +1,5 @@
 {
-    "name": "turboflop-web",
+    "name": "turboflop-admin",
     "version": "1.0.0",
     "private": true,
     "dependencies": {
@@ -31,8 +31,8 @@
         "uuid": "^11.1.0"
     },
     "scripts": {
-        "dev": "bun x vite",
-        "build": "bun x vite build",
+        "dev": "vite",
+        "build": "vite build --base=/admin",
         "release": "git flow release start",
         "finish-release": "yarn bump-version && yarn push-release",
         "bump-version": "git add . && git commit -m \"bump version\" && git flow release finish",

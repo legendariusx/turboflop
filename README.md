@@ -3,10 +3,10 @@ TurboFlop is a low poly multiplayer arcade racing game built with the [Godot 4.4
 
 ## Dependencies
 * [Godot 4.4](https://godotengine.org/download) (no .NET support)
-* [SpacetimeDB](https://spacetimedb.com/install) (recommended, 1.1.1, full install)
+* [SpacetimeDB](https://spacetimedb.com/install) (required for multiplayer, version 1.1.1, full install)
 * [Rust](https://www.rust-lang.org/tools/install) (required for multiplayer, preferrably using rustup)
 * [wasm-opt](https://github.com/WebAssembly/binaryen) (optional)
-* [Bun](https://bun.sh/) (optional, you can also use a different node package manager but beware the lockfile is specific to bun)
+* [Bun](https://bun.sh/) (optional, you can also use a different package manager but beware the lockfile is specific to bun)
 
 ## Usage (Debug)
 ### Start SpacetimeDB server (recommended)
@@ -29,6 +29,10 @@ Should be pretty straightforward. Make sure to use Compatibility mode for develo
 * Backend refactoring (split reducers into multiple files)
 * Deployment documentation / Docker Compose file
 * Build pipeline (currently three separate builds are necessary)
+* Server Lobbies
+* Real singleplayer mode which stores personal bests
+* Anti-Cheat
+* More and better UI (e.g. menu)
 
 ## References
 * Countdown sound by [Lesiakower from Pixabay](https://pixabay.com/users/lesiakower-25701529/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=151797)
