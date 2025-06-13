@@ -1,0 +1,16 @@
+services:
+    nginx:
+        image: ghcr.io/legendariusx/turboflop-web:latest
+        restart: unless-stopped
+        ports:
+            - 8402:80
+        depends_on:
+            - spacetime
+    spacetime:
+        image: ghcr.io/legendariusx/turboflop-spacetime:latest
+        restart: unless-stopped
+        user: "1000:1000"
+        ports:
+            - 8403:3000
+        volumes:
+            - ./spacetime_data:/home/spacetime/.local/share/spacetime/data

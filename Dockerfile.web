@@ -1,0 +1,51 @@
+###  GAME  ###
+FROM debian:latest AS game-builder
+
+RUN apt-get update && apt-get install -y \
+    wget \
+    unzip \
+    libxcursor1 \
+    libxrandr2 \
+    libxinerama1 \
+    libxi6 \
+    libgl1 \
+    && rm -rf /var/lib/apt/lists/*
+
+ARG GODOT_VERSION="4.4.1"
+ARG GODOT_VERSION_TYPE="stable"
+ARG GODOT_LINUX_URL="https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-${GODOT_VERSION_TYPE}/Godot_v${GODOT_VERSION}-${GODOT_VERSION_TYPE}_linux.x86_64.zip"
+RUN wget -q ${GODOT_LINUX_URL} -O godot-headless.zip && \
+    unzip godot-headless.zip && \
+    mv Godot_v${GODOT_VERSION}-${GODOT_VERSION_TYPE}_linux.x86_64 /usr/local/bin/godot && \
+    chmod +x /usr/local/bin/godot && \
+    rm godot-headless.zip
+
+ARG GODOT_TEMPLATES_URL="https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-${GODOT_VERSION_TYPE}/Godot_v${GODOT_VERSION}-${GODOT_VERSION_TYPE}_export_templates.tpz"
+RUN mkdir -p ~/.local/share/godot/export_templates/${GODOT_VERSION}.${GODOT_VERSION_TYPE} && \
+    wget -q ${GODOT_TEMPLATES_URL} -O templates.tpz && \
+    unzip templates.tpz && \
+    mv templates/* ~/.local/share/godot/export_templates/${GODOT_VERSION}.${GODOT_VERSION_TYPE}/ && \
+    rm -rf templates templates.tpz
+
+WORKDIR /game
+COPY game/ .    
+
+ARG DIST_PATH="dist/"
+RUN mkdir ${DIST_PATH}
+RUN /usr/local/bin/godot --headless --export-release "Web" ${DIST_PATH}/index.html
+
+### ADMIN UI ###
+# FIXME: should be updated to :latest as soon as vite error is fixed there
+FROM oven/bun:1.2 AS admin-builder
+WORKDIR /admin
+COPY admin/package.json admin/bun.lockb ./
+COPY admin/.env.example .env
+RUN bun i
+COPY admin .
+RUN bun run build
+
+###  NGINX   ###
+FROM nginx:alpine
+COPY --from=game-builder /game/dist /usr/share/nginx/html/game
+COPY --from=admin-builder /admin/dist /usr/share/nginx/html/admin
+EXPOSE 80

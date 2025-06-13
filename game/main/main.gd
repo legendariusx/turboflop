@@ -3,7 +3,7 @@ extends Node3D
 
 signal spacetime_connection_callback(success: bool)
 
-const TRACK_PATH_TEMPLATE = &"res://tracks/track%s.tscn"
+const TRACK_PATH_TEMPLATE := &"res://tracks/track%s.tscn"
 
 @onready var loading_screen: LoadingScreen = $LoadingScreen
 @onready var main_menu: MainMenu = $MainMenu
@@ -36,10 +36,10 @@ func _connect():
 	
 	# TODO: add dotenv config
 	SpacetimeDB.connect_db(
-		"http://localhost:3000",
+		URLHelper.get_spacetimedb_url(),
 		"turboflop",
 		SpacetimeDBConnection.CompressionPreference.NONE,
-		true,
+		OS.get_name() != "Web" or URLHelper.is_localhost(),
 		true
 	)
 	

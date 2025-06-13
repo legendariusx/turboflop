@@ -20,23 +20,29 @@ export const formatTime = (value: bigint) => {
 };
 
 export const formatIdentity = (identity: Identity | null): string => {
-    return identity?.toHexString().substring(0, 10) ?? ""
-}
+    return identity?.toHexString().substring(0, 10) ?? '';
+};
 
 // FIXME: names should be stored on and fetched from the server
 export const convertCarIdToName = (carId: number): string => {
     switch (carId) {
         case 0:
-            return "None"
+            return 'None';
         case 1:
-            return "City Car"
+            return 'City Car';
         case 2:
-            return "Truck"
+            return 'Truck';
         case 3:
-            return "Golf Cart"
+            return 'Golf Cart';
         case 4:
-            return "Rover"
+            return 'Rover';
         default:
-            return carId.toString()
+            return carId.toString();
     }
-}
+};
+
+export const getSpacetimeDBUrl = (defaultHost: string): string => {
+    const host = `${window.location.protocol}//${window.location.host}`;
+    if (host.includes('localhost')) return defaultHost;
+    else return host;
+};

@@ -1,0 +1,11 @@
+FROM clockworklabs/spacetime:latest
+
+WORKDIR /turboflop
+COPY . .
+
+USER root
+RUN chmod +x publish.sh
+RUN chmod +x entrypoint.sh
+USER 1000
+
+ENTRYPOINT ["/turboflop/entrypoint.sh"]
