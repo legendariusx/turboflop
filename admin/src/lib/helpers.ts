@@ -44,5 +44,5 @@ export const convertCarIdToName = (carId: number): string => {
 export const getSpacetimeDBUrl = (defaultHost: string): string => {
     const host = `${window.location.protocol}//${window.location.host}`;
     if (host.includes('localhost')) return defaultHost;
-    else return host;
+    else return host.replace("http", "ws");
 };
