@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bb7ag0ehkmbbl"
-path="res://.godot/imported/terrain_track002.blend-752cb6efc59dc9006afd4f693b9b0027.scn"
+valid=false
 
 [deps]
 
 source_file="res://assets/terrain/terrain_track002.blend"
-dest_files=["res://.godot/imported/terrain_track002.blend-752cb6efc59dc9006afd4f693b9b0027.scn"]
 
 [params]
 

@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://corlliprjyvyg"
-path="res://.godot/imported/car003_wheel.blend-ad712f5887f5d22b3941d23269229523.scn"
+valid=false
 
 [deps]
 
 source_file="res://assets/models/car003_wheel.blend"
-dest_files=["res://.godot/imported/car003_wheel.blend-ad712f5887f5d22b3941d23269229523.scn"]
 
 [params]
 
