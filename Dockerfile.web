@@ -30,19 +30,18 @@ RUN mkdir -p ~/.local/share/godot/export_templates/${GODOT_VERSION}.${GODOT_VERS
 WORKDIR /game
 COPY game/ .    
 
-ARG DIST_PATH="dist"
-RUN mkdir ${DIST_PATH}
-RUN godot --headless --export-release "Web" ${DIST_PATH}/index.html
+RUN mkdir dist
+RUN godot --headless --export-release "Web" dist/index.html
 
 ### ADMIN UI ###
 # FIXME: should be updated to :latest as soon as vite error is fixed there
-FROM node:alpine AS admin-builder
+FROM oven/bun:1.2 AS admin-builder
 WORKDIR /admin
-COPY admin/package.json admin/bun.lockb admin/yarn.lock ./
+COPY admin/package.json admin/bun.lock ./
 COPY admin/.env.example .env
-RUN yarn
+RUN bun i --frozen-lockfile
 COPY admin .
-RUN yarn run build
+RUN bunx vite build
 
 ###  NGINX   ###
 FROM nginx:alpine
