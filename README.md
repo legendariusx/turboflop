@@ -14,7 +14,7 @@ Download `docker-compose.yml` and execute `docker-compose up` or `deploy.sh` to 
 
 ### Build and run the Docker containers yourself
 If you want to deploy your own version of the game, you can either:
-1. Fork this repository and publish a new tag which will build and publish the Docker images on `ghcr.io/{{repository_owner}}/turboflop-{{web/spacetime}}` which you can then replace the current URLs in `docker-compose.yml` with or
+1. Fork this repository and publish a new tag which will build and publish the Docker images on `ghcr.io/{{repository_owner}}/turboflop-{{web/spacetime}}` which you can then replace the current URLs in `docker-compose.yml` with (NOTE: you have to add a personal access token (classic) to the GHCR_TOKEN secret in your repository) or
 2. Run `docker build server -t legendariusx/turboflop-spacetime -f server/Dockerfile.spacetime` and `docker build . -t legendariusx/turboflop-web -f Dockerfile.web`
 
 Afterwards you can start the docker containers separately 
