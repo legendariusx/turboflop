@@ -31,6 +31,7 @@ WORKDIR /game
 COPY game/ .    
 
 RUN mkdir dist
+RUN godot --headless --editor --quit
 RUN godot --headless --export-release "Web" dist/index.html
 
 ### ADMIN UI ###
