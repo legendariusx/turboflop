@@ -9,6 +9,15 @@ RUN apt-get update && apt-get install -y \
     libxinerama1 \
     libxi6 \
     libgl1 \
+    libx11-6 \
+    libxxf86vm1 \
+    libxrender1 \
+    libxfixes3 \
+    libegl1 \
+    xorg \
+    xz-utils \
+    xvfb \
+    libxkbcommon-x11-0 \
     && rm -rf /var/lib/apt/lists/*
 
 ARG GODOT_VERSION="4.4.1"
@@ -27,11 +36,21 @@ RUN mkdir -p ~/.local/share/godot/export_templates/${GODOT_VERSION}.${GODOT_VERS
     mv templates/* ~/.local/share/godot/export_templates/${GODOT_VERSION}.${GODOT_VERSION_TYPE}/ && \
     rm -rf templates templates.tpz
 
+
+ARG DESIRED_BLENDER_VERSION="4.4"
+ARG DESIRED_BLENDER_PATCH_VERSION="${DESIRED_BLENDER_VERSION}.3"
+RUN wget -nv https://download.blender.org/release/Blender${DESIRED_BLENDER_VERSION}/blender-${DESIRED_BLENDER_PATCH_VERSION}-linux-x64.tar.xz && \
+    tar -xJf ./blender-${DESIRED_BLENDER_PATCH_VERSION}-linux-x64.tar.xz && \
+    mv ./blender-${DESIRED_BLENDER_PATCH_VERSION}-linux-x64 /opt/blender && \
+    chmod +x /opt/blender/blender
+
 WORKDIR /game
-COPY game/ .    
+COPY game/ .
+
+COPY game/editor_settings-4.4.tres.default /root/.config/godot/editor_settings-4.4.tres
+RUN godot --headless --import
 
 RUN mkdir dist
-RUN godot --headless --import
 RUN godot --headless --export-release "Web" dist/index.html
 
 ### ADMIN UI ###

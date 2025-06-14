@@ -1,0 +1,28 @@
+# GENERAL
+dist
+
+# GAME
+game/.godot/
+game/.nomedia
+game/*.unwrap_cache
+
+game/.import/
+game/export.cfg
+game/export_credentials.cfg
+
+game/*.translation
+
+game/.mono/
+game/data_*/
+game/mono_crash.*.json
+game/*.tmp
+
+game/blendcache_*
+game/*.blend1
+game/*.blend2
+
+# ADMIN
+admin/node_modules
+admin/dist
+admin/.vite
+admin/.env

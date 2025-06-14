@@ -1,0 +1,5 @@
+[gd_resource type="EditorSettings" load_steps=7 format=3]
+
+[resource]
+filesystem/import/blender/blender_path = "/opt/blender/blender"
+filesystem/import/blender/rpc_port = 0
