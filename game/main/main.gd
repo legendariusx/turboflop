@@ -12,7 +12,7 @@ var current_track: Track
 
 func _ready() -> void:
 	SpacetimeDB.connected.connect(func(): spacetime_connection_callback.emit(true))
-	SpacetimeDB.connection_error.connect(func(_code: int, _reason: String): spacetime_connection_callback.emit(false))
+	SpacetimeDB.connection_error.connect(_on_connection_error)
 	SpacetimeDB.disconnected.connect(_on_disconnected)
 	
 	loading_screen.play_offline.connect(func(): _transition_to_main_menu(false))
@@ -65,6 +65,12 @@ func _load_track(track_id: int, car_id: int):
 func _transition_to_main_menu(connected: bool):
 	loading_screen.visible = false
 	main_menu.display(connected)
+
+func _on_connection_error(_code: int, _reason: String):
+	spacetime_connection_callback.emit(false)
+	if OS.get_name() != "Web" or not URLHelper.is_localhost():
+		SpacetimeDB._token = ""
+		SpacetimeDB._save_token("")
 
 func _on_disconnected():
 	if current_track:
